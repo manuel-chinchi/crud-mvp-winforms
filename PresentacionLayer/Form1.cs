@@ -44,6 +44,7 @@ namespace PresentationLayer
             try
             {
                 _articleService.InsertArticle(txtName.Text, txtDescription.Text, txtBrand.Text, txtStock.Text);
+                MessageBox.Show("Se ha agregado el articulo");
                 ShowArticles();
                 ClearForm();
             }
