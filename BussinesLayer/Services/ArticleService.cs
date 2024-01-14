@@ -23,5 +23,10 @@ namespace BussinesLayer.Services
         {
             articleRepository.InsertArticle(name, description, brand, stock);
         }
+
+        public void DeleteArticle(string id)
+        {
+            articleRepository.DeleteArticle(id);
+        }
     }
 }

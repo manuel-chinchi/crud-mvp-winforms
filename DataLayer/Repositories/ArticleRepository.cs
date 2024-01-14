@@ -42,5 +42,35 @@ namespace DataLayer.Repositories
             cmd.Parameters.Clear();
             connection.CerrarConexion();
         }
+
+        public void EditArticle(string name, string description, string brand, string stock, string id)
+        {
+            cmd.Connection = connection.AbrirConexion();
+            cmd.CommandText = "UpdateArticle";
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@Name", name);
+            cmd.Parameters.AddWithValue("@Description", description);
+            cmd.Parameters.AddWithValue("@Brand", brand);
+            cmd.Parameters.AddWithValue("@Stock", stock);
+            cmd.Parameters.AddWithValue("@Id", id);
+
+            cmd.ExecuteNonQuery();
+            cmd.Parameters.Clear();
+            connection.CerrarConexion();
+        }
+
+        public void DeleteArticle(string id)
+        {
+            cmd.Connection = connection.AbrirConexion();
+            cmd.CommandText = "DeleteArticle";
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@Id", Convert.ToInt32(id));
+            
+            cmd.ExecuteNonQuery();
+            cmd.Parameters.Clear();
+            connection.CerrarConexion();
+        }
     }
 }

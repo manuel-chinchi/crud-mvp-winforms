@@ -52,5 +52,20 @@ namespace PresentationLayer
                 MessageBox.Show("Error: " + ex);
             }
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string id = dataGridView1.CurrentRow.Cells["Id"].Value.ToString();
+                articleService.DeleteArticle(id);
+                MessageBox.Show("Se ha eliminado el articulo");
+                ShowArticles();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex);
+            }
+        }
     }
 }
