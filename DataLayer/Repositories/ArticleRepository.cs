@@ -12,7 +12,7 @@ namespace DataLayer.Repositories
 {
     public class ArticleRepository
     {
-        private DataConnection connection = new DataConnection();
+        private DataConnection _connection = new DataConnection();
 
         SqlDataReader drArticles;
         DataTable dtArticles = new DataTable();
@@ -20,18 +20,18 @@ namespace DataLayer.Repositories
         
         public DataTable GetArticles()
         {
-            cmd.Connection = connection.AbrirConexion();
+            cmd.Connection = _connection.OpenConnection();
             cmd.CommandText = "GetArticles";
             cmd.CommandType = CommandType.StoredProcedure;
             drArticles = cmd.ExecuteReader();
             dtArticles.Load(drArticles);
-            connection.CerrarConexion();
+            _connection.CloseConnection();
             return dtArticles;
         }
 
         public void InsertArticle(string name, string description, string brand, string stock)
         {
-            cmd.Connection = connection.AbrirConexion();
+            cmd.Connection = _connection.OpenConnection();
             cmd.CommandText = "InsertArticle";
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Name", name);
@@ -40,12 +40,12 @@ namespace DataLayer.Repositories
             cmd.Parameters.AddWithValue("@Stock", stock);
             cmd.ExecuteNonQuery();
             cmd.Parameters.Clear();
-            connection.CerrarConexion();
+            _connection.CloseConnection();
         }
 
         public void EditArticle(string name, string description, string brand, string stock, string id)
         {
-            cmd.Connection = connection.AbrirConexion();
+            cmd.Connection = _connection.OpenConnection();
             cmd.CommandText = "UpdateArticle";
             cmd.CommandType = CommandType.StoredProcedure;
 
@@ -57,12 +57,12 @@ namespace DataLayer.Repositories
 
             cmd.ExecuteNonQuery();
             cmd.Parameters.Clear();
-            connection.CerrarConexion();
+            _connection.CloseConnection();
         }
 
         public void DeleteArticle(string id)
         {
-            cmd.Connection = connection.AbrirConexion();
+            cmd.Connection = _connection.OpenConnection();
             cmd.CommandText = "DeleteArticle";
             cmd.CommandType = CommandType.StoredProcedure;
 
@@ -70,7 +70,7 @@ namespace DataLayer.Repositories
             
             cmd.ExecuteNonQuery();
             cmd.Parameters.Clear();
-            connection.CerrarConexion();
+            _connection.CloseConnection();
         }
     }
 }

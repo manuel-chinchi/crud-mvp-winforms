@@ -13,7 +13,7 @@ namespace DataLayer.Models
         const string CONNECTION_STRING = "Server=(localdb)\\MSSQLLocalDB; DataBase=crud_mvp_winforms; Integrated Security=true";
         private SqlConnection _connection = new SqlConnection(CONNECTION_STRING);
 
-        public SqlConnection AbrirConexion()
+        public SqlConnection OpenConnection()
         {
             if (_connection.State == ConnectionState.Closed)
             {
@@ -22,7 +22,7 @@ namespace DataLayer.Models
             return _connection;
         }
 
-        public SqlConnection CerrarConexion()
+        public SqlConnection CloseConnection()
         {
             if (_connection.State == ConnectionState.Open)
             {

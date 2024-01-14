@@ -13,7 +13,7 @@ namespace PresentationLayer
 {
     public partial class Form1 : Form
     {
-        private ArticleService articleService = new ArticleService();
+        private ArticleService _articleService = new ArticleService();
 
         public Form1()
         {
@@ -43,7 +43,7 @@ namespace PresentationLayer
         {
             try
             {
-                articleService.InsertArticle(txtName.Text, txtDescription.Text, txtBrand.Text, txtStock.Text);
+                _articleService.InsertArticle(txtName.Text, txtDescription.Text, txtBrand.Text, txtStock.Text);
                 ShowArticles();
                 ClearForm();
             }
@@ -58,7 +58,7 @@ namespace PresentationLayer
             try
             {
                 string id = dataGridView1.CurrentRow.Cells["Id"].Value.ToString();
-                articleService.DeleteArticle(id);
+                _articleService.DeleteArticle(id);
                 MessageBox.Show("Se ha eliminado el articulo");
                 ShowArticles();
             }
