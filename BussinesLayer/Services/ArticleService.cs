@@ -18,5 +18,10 @@ namespace BussinesLayer.Services
             dt = articleRepository.GetArticles();
             return dt;
         }
+
+        public void InsertArticle(string name, string description, string brand, string stock)
+        {
+            articleRepository.InsertArticle(name, description, brand, stock);
+        }
     }
 }

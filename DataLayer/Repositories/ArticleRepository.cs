@@ -1,4 +1,5 @@
 ﻿using DataLayer.Models;
+using EntityLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -26,6 +27,20 @@ namespace DataLayer.Repositories
             dtArticles.Load(drArticles);
             connection.CerrarConexion();
             return dtArticles;
+        }
+
+        public void InsertArticle(string name, string description, string brand, string stock)
+        {
+            cmd.Connection = connection.AbrirConexion();
+            cmd.CommandText = "InsertArticle";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Name", name);
+            cmd.Parameters.AddWithValue("@Description", description);
+            cmd.Parameters.AddWithValue("@Brand", brand);
+            cmd.Parameters.AddWithValue("@Stock", stock);
+            cmd.ExecuteNonQuery();
+            cmd.Parameters.Clear();
+            connection.CerrarConexion();
         }
     }
 }

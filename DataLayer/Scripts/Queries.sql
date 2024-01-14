@@ -30,8 +30,6 @@ VALUES
 	('Buso', 'tipo kanguro, c/capucha', 'Topper', 220)
 GO
 
--- #enregion 
-
 
 -- ######################################################################################
 -- CREATE STORE PROCEDURES

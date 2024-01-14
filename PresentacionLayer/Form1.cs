@@ -13,6 +13,8 @@ namespace PresentationLayer
 {
     public partial class Form1 : Form
     {
+        private ArticleService articleService = new ArticleService();
+
         public Form1()
         {
             InitializeComponent();
@@ -25,8 +27,30 @@ namespace PresentationLayer
 
         private void ShowArticles()
         {
-            ArticleService objeto = new ArticleService();
-            dataGridView1.DataSource = objeto.GetArticles();
+            ArticleService articleService = new ArticleService();
+            dataGridView1.DataSource = articleService.GetArticles();
+        }
+
+        private void ClearForm()
+        {
+            txtName.Clear();
+            txtDescription.Clear();
+            txtBrand.Clear();
+            txtStock.Clear();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                articleService.InsertArticle(txtName.Text, txtDescription.Text, txtBrand.Text, txtStock.Text);
+                ShowArticles();
+                ClearForm();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex);
+            }
         }
     }
 }
