@@ -14,6 +14,8 @@ namespace PresentationLayer
     public partial class Form1 : Form
     {
         private ArticleService _articleService = new ArticleService();
+        private string id;
+        private bool isEdit = false;
 
         public Form1()
         {
@@ -41,16 +43,34 @@ namespace PresentationLayer
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            try
+            if (isEdit == false)
             {
-                _articleService.InsertArticle(txtName.Text, txtDescription.Text, txtBrand.Text, txtStock.Text);
-                MessageBox.Show("Se ha agregado el articulo");
-                ShowArticles();
-                ClearForm();
+                try
+                {
+                    _articleService.InsertArticle(txtName.Text, txtDescription.Text, txtBrand.Text, txtStock.Text);
+                    MessageBox.Show("Se ha agregado el articulo");
+                    ShowArticles();
+                    ClearForm();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex);
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Error: " + ex);
+                try
+                {
+                    _articleService.UpdateArticle(txtName.Text, txtDescription.Text, txtBrand.Text, txtStock.Text, id);
+                    MessageBox.Show("Se edito el articulo");
+                    ShowArticles();
+                    ClearForm();
+                    isEdit = false;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex);
+                }
             }
         }
 
@@ -66,6 +86,23 @@ namespace PresentationLayer
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex);
+            }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 1)
+            {
+                isEdit = true;
+                txtName.Text = dataGridView1.CurrentRow.Cells["Name"].Value.ToString();
+                txtDescription.Text = dataGridView1.CurrentRow.Cells["Description"].Value.ToString();
+                txtBrand.Text = dataGridView1.CurrentRow.Cells["Brand"].Value.ToString();
+                txtStock.Text = dataGridView1.CurrentRow.Cells["Stock"].Value.ToString();
+                id = dataGridView1.CurrentRow.Cells["Id"].Value.ToString();
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una sola fila");
             }
         }
     }

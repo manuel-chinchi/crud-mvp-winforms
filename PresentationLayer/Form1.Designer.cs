@@ -146,6 +146,7 @@ namespace PresentationLayer
             this.btnEdit.TabIndex = 11;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // Form1
             // 
