@@ -89,3 +89,24 @@ SET Name = @Name,
     Stock = @Stock
 WHERE Id = @Id
 GO
+
+
+CREATE PROCEDURE SearchArticle
+    @IncludeName BIT,
+    @IncludeDesc BIT,
+    @IncludeBrand BIT,
+    @SEARCH VARCHAR(20)
+AS
+SELECT
+    *
+FROM
+    Articles a
+WHERE
+    (@IncludeName = 1 AND a.Name LIKE '%' + @SEARCH + '%')
+    OR
+    (@IncludeDesc = 1 AND a.Description LIKE '%' + @SEARCH + '%')
+    OR
+    (@IncludeBrand = 1 AND a.Brand LIKE '%' + @SEARCH + '%')
+    AND
+    @SEARCH <> ''
+GO
