@@ -95,18 +95,18 @@ CREATE PROCEDURE SearchArticle
     @IncludeName BIT,
     @IncludeDesc BIT,
     @IncludeBrand BIT,
-    @SEARCH VARCHAR(20)
+    @Search VARCHAR(100)
 AS
 SELECT
     *
 FROM
     Articles a
 WHERE
-    (@IncludeName = 1 AND a.Name LIKE '%' + @SEARCH + '%')
+    (@IncludeName = 1 AND a.Name LIKE '%' + @Search + '%')
     OR
-    (@IncludeDesc = 1 AND a.Description LIKE '%' + @SEARCH + '%')
+    (@IncludeDesc = 1 AND a.Description LIKE '%' + @Search + '%')
     OR
-    (@IncludeBrand = 1 AND a.Brand LIKE '%' + @SEARCH + '%')
+    (@IncludeBrand = 1 AND a.Brand LIKE '%' + @Search + '%')
     AND
-    @SEARCH <> ''
+    @Search <> ''
 GO
