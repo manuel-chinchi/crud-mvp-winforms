@@ -102,11 +102,13 @@ SELECT
 FROM
     Articles a
 WHERE
-    (@IncludeName = 1 AND a.Name LIKE '%' + @Search + '%')
-    OR
-    (@IncludeDesc = 1 AND a.Description LIKE '%' + @Search + '%')
-    OR
-    (@IncludeBrand = 1 AND a.Brand LIKE '%' + @Search + '%')
+    (
+        (@IncludeName = 1 AND a.Name LIKE '%' + @Search + '%')
+        OR
+        (@IncludeDesc = 1 AND a.Description LIKE '%' + @Search + '%')
+        OR
+        (@IncludeBrand = 1 AND a.Brand LIKE '%' + @Search + '%')
+    )
     AND
     @Search <> ''
 GO
