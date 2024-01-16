@@ -105,5 +105,23 @@ namespace PresentationLayer
                 MessageBox.Show("Seleccione una sola fila");
             }
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ArticleService articleService = new ArticleService();
+                dataGridView1.DataSource = articleService.SearchArticle(((int)chkName.CheckState), ((int)chkDescription.CheckState), ((int)chkBrand.CheckState), txtSearch.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex);
+            }
+        }
+
+        private void btnShowAll_Click(object sender, EventArgs e)
+        {
+            ShowArticles();
+        }
     }
 }

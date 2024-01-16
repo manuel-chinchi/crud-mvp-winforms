@@ -33,5 +33,10 @@ namespace BussinesLayer.Services
         {
             _articleRepository.EditArticle(name, description, brand, stock, id);
         }
+
+        public DataTable SearchArticle(int includeName, int includeDescription, int includeBrand, string search)
+        {
+            return _articleRepository.SearchArticle(includeName, includeDescription, includeBrand, search);
+        }
     }
 }

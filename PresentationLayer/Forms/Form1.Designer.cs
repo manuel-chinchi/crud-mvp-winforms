@@ -41,7 +41,15 @@ namespace PresentationLayer
             this.btnSave = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.grpFilters = new System.Windows.Forms.GroupBox();
+            this.chkName = new System.Windows.Forms.CheckBox();
+            this.chkDescription = new System.Windows.Forms.CheckBox();
+            this.chkBrand = new System.Windows.Forms.CheckBox();
+            this.btnShowAll = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.grpFilters.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -148,11 +156,84 @@ namespace PresentationLayer
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(841, 448);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(231, 22);
+            this.txtSearch.TabIndex = 12;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(697, 440);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(138, 39);
+            this.btnSearch.TabIndex = 14;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // grpFilters
+            // 
+            this.grpFilters.Controls.Add(this.chkBrand);
+            this.grpFilters.Controls.Add(this.chkDescription);
+            this.grpFilters.Controls.Add(this.chkName);
+            this.grpFilters.Location = new System.Drawing.Point(697, 485);
+            this.grpFilters.Name = "grpFilters";
+            this.grpFilters.Size = new System.Drawing.Size(375, 81);
+            this.grpFilters.TabIndex = 15;
+            this.grpFilters.TabStop = false;
+            this.grpFilters.Text = "Filters";
+            // 
+            // chkName
+            // 
+            this.chkName.AutoSize = true;
+            this.chkName.Location = new System.Drawing.Point(40, 21);
+            this.chkName.Name = "chkName";
+            this.chkName.Size = new System.Drawing.Size(67, 21);
+            this.chkName.TabIndex = 0;
+            this.chkName.Text = "Name";
+            this.chkName.UseVisualStyleBackColor = true;
+            // 
+            // chkDescription
+            // 
+            this.chkDescription.AutoSize = true;
+            this.chkDescription.Location = new System.Drawing.Point(40, 48);
+            this.chkDescription.Name = "chkDescription";
+            this.chkDescription.Size = new System.Drawing.Size(101, 21);
+            this.chkDescription.TabIndex = 1;
+            this.chkDescription.Text = "Description";
+            this.chkDescription.UseVisualStyleBackColor = true;
+            // 
+            // chkBrand
+            // 
+            this.chkBrand.AutoSize = true;
+            this.chkBrand.Location = new System.Drawing.Point(174, 21);
+            this.chkBrand.Name = "chkBrand";
+            this.chkBrand.Size = new System.Drawing.Size(68, 21);
+            this.chkBrand.TabIndex = 2;
+            this.chkBrand.Text = "Brand";
+            this.chkBrand.UseVisualStyleBackColor = true;
+            // 
+            // btnShowAll
+            // 
+            this.btnShowAll.Location = new System.Drawing.Point(737, 386);
+            this.btnShowAll.Name = "btnShowAll";
+            this.btnShowAll.Size = new System.Drawing.Size(335, 39);
+            this.btnShowAll.TabIndex = 16;
+            this.btnShowAll.Text = "Show all";
+            this.btnShowAll.UseVisualStyleBackColor = true;
+            this.btnShowAll.Click += new System.EventHandler(this.btnShowAll_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 578);
+            this.Controls.Add(this.btnShowAll);
+            this.Controls.Add(this.grpFilters);
+            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSave);
@@ -169,6 +250,8 @@ namespace PresentationLayer
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.grpFilters.ResumeLayout(false);
+            this.grpFilters.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -188,6 +271,13 @@ namespace PresentationLayer
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.GroupBox grpFilters;
+        private System.Windows.Forms.CheckBox chkBrand;
+        private System.Windows.Forms.CheckBox chkDescription;
+        private System.Windows.Forms.CheckBox chkName;
+        private System.Windows.Forms.Button btnShowAll;
     }
 }
 

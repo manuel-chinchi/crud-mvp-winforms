@@ -72,5 +72,25 @@ namespace DataLayer.Repositories
             cmd.Parameters.Clear();
             _connection.CloseConnection();
         }
+
+        public DataTable SearchArticle(int includeName, int includeDescription, int includeBrand, string search)
+        {
+            cmd.Connection = _connection.OpenConnection();
+            cmd.CommandText = "SearchArticle";
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@IncludeName", includeName);
+            cmd.Parameters.AddWithValue("@IncludeDesc", includeDescription);
+            cmd.Parameters.AddWithValue("@IncludeBrand", includeBrand);
+            cmd.Parameters.AddWithValue("@Search", search);
+
+            drArticles = cmd.ExecuteReader();
+            dtArticles.Load(drArticles);
+
+            cmd.Parameters.Clear();
+            _connection.CloseConnection();
+
+            return dtArticles;
+        }
     }
 }
