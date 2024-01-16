@@ -123,5 +123,15 @@ namespace PresentationLayer
         {
             ShowArticles();
         }
+
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+                btnSearch_Click(sender, e);
+            }
+        }
     }
 }
