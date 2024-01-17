@@ -62,14 +62,14 @@ namespace PresentationLayer.Views
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count == 1)
+            if (dgvArticles.SelectedRows.Count == 1)
             {
                 isEdit = true;
-                txtName.Text = dataGridView1.CurrentRow.Cells["Name"].Value.ToString();
-                txtDescription.Text = dataGridView1.CurrentRow.Cells["Description"].Value.ToString();
-                txtBrand.Text = dataGridView1.CurrentRow.Cells["Brand"].Value.ToString();
-                txtStock.Text = dataGridView1.CurrentRow.Cells["Stock"].Value.ToString();
-                id = dataGridView1.CurrentRow.Cells["Id"].Value.ToString();
+                txtName.Text = dgvArticles.CurrentRow.Cells["Name"].Value.ToString();
+                txtDescription.Text = dgvArticles.CurrentRow.Cells["Description"].Value.ToString();
+                txtBrand.Text = dgvArticles.CurrentRow.Cells["Brand"].Value.ToString();
+                txtStock.Text = dgvArticles.CurrentRow.Cells["Stock"].Value.ToString();
+                id = dgvArticles.CurrentRow.Cells["Id"].Value.ToString();
             }
             else
             {
@@ -81,7 +81,7 @@ namespace PresentationLayer.Views
         {
             try
             {
-                string id = dataGridView1.CurrentRow.Cells["Id"].Value.ToString();
+                string id = dgvArticles.CurrentRow.Cells["colId"].Value.ToString();
                 _articleService.DeleteArticle(id);
                 MessageBox.Show("Se ha eliminado el articulo");
                 ShowArticles();
@@ -102,7 +102,7 @@ namespace PresentationLayer.Views
             try
             {
                 ArticleService articleService = new ArticleService();
-                dataGridView1.DataSource = articleService.SearchArticle(((int)chkName.CheckState), ((int)chkDescription.CheckState), ((int)chkBrand.CheckState), txtSearch.Text);
+                dgvArticles.DataSource = articleService.SearchArticle(((int)chkName.CheckState), ((int)chkDescription.CheckState), ((int)chkBrand.CheckState), txtSearch.Text);
             }
             catch (Exception ex)
             {
@@ -115,7 +115,7 @@ namespace PresentationLayer.Views
         private void ShowArticles()
         {
             ArticleService articleService = new ArticleService();
-            dataGridView1.DataSource = articleService.GetArticles();
+            dgvArticles.DataSource = articleService.GetArticles();
         }
 
         private void ClearForm()
