@@ -9,36 +9,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PresentationLayer
+namespace PresentacionLayer.Views
 {
-    public partial class Form1 : Form
+    public partial class ArticleView : UserControl
     {
         private ArticleService _articleService = new ArticleService();
         private string id;
         private bool isEdit = false;
 
-        public Form1()
+        public ArticleView()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void ArticleView_Load(object sender, EventArgs e)
         {
             ShowArticles();
-        }
-
-        private void ShowArticles()
-        {
-            ArticleService articleService = new ArticleService();
-            dataGridView1.DataSource = articleService.GetArticles();
-        }
-
-        private void ClearForm()
-        {
-            txtName.Clear();
-            txtDescription.Clear();
-            txtBrand.Clear();
-            txtStock.Clear();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -74,21 +60,6 @@ namespace PresentationLayer
             }
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string id = dataGridView1.CurrentRow.Cells["Id"].Value.ToString();
-                _articleService.DeleteArticle(id);
-                MessageBox.Show("Se ha eliminado el articulo");
-                ShowArticles();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex);
-            }
-        }
-
         private void btnEdit_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count == 1)
@@ -105,6 +76,26 @@ namespace PresentationLayer
                 MessageBox.Show("Seleccione una sola fila");
             }
         }
+        
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string id = dataGridView1.CurrentRow.Cells["Id"].Value.ToString();
+                _articleService.DeleteArticle(id);
+                MessageBox.Show("Se ha eliminado el articulo");
+                ShowArticles();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex);
+            }
+        }
+
+        private void btnShowAll_Click(object sender, EventArgs e)
+        {
+            ShowArticles();
+        }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -119,10 +110,23 @@ namespace PresentationLayer
             }
         }
 
-        private void btnShowAll_Click(object sender, EventArgs e)
+        #region Methods
+
+        private void ShowArticles()
         {
-            ShowArticles();
+            ArticleService articleService = new ArticleService();
+            dataGridView1.DataSource = articleService.GetArticles();
         }
+
+        private void ClearForm()
+        {
+            txtName.Clear();
+            txtDescription.Clear();
+            txtBrand.Clear();
+            txtStock.Clear();
+        }
+
+        #endregion
 
         private void txtSearch_KeyDown(object sender, KeyEventArgs e)
         {
