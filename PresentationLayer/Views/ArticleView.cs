@@ -1,4 +1,6 @@
 ﻿using BussinesLayer.Services;
+using EntityLayer;
+using EntityLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +15,7 @@ namespace PresentationLayer.Views
 {
     public partial class ArticleView : UserControl
     {
-        private ArticleService _articleService = new ArticleService();
+        private IArticleService<SortableBindingList<Article>> _articleService = new ArticleService2();
         private string id;
         private bool isEdit = false;
 
@@ -65,11 +67,11 @@ namespace PresentationLayer.Views
             if (dgvArticles.SelectedRows.Count == 1)
             {
                 isEdit = true;
-                txtName.Text = dgvArticles.CurrentRow.Cells["Name"].Value.ToString();
-                txtDescription.Text = dgvArticles.CurrentRow.Cells["Description"].Value.ToString();
-                txtBrand.Text = dgvArticles.CurrentRow.Cells["Brand"].Value.ToString();
-                txtStock.Text = dgvArticles.CurrentRow.Cells["Stock"].Value.ToString();
-                id = dgvArticles.CurrentRow.Cells["Id"].Value.ToString();
+                txtName.Text = dgvArticles.CurrentRow.Cells["colName"].Value.ToString();
+                txtDescription.Text = dgvArticles.CurrentRow.Cells["colDescription"].Value.ToString();
+                txtBrand.Text = dgvArticles.CurrentRow.Cells["colBrand"].Value.ToString();
+                txtStock.Text = dgvArticles.CurrentRow.Cells["colStock"].Value.ToString();
+                id = dgvArticles.CurrentRow.Cells["colId"].Value.ToString();
             }
             else
             {
@@ -114,7 +116,7 @@ namespace PresentationLayer.Views
 
         private void ShowArticles()
         {
-            ArticleService articleService = new ArticleService();
+            var articleService = new ArticleService2();
             dgvArticles.DataSource = articleService.GetArticles();
         }
 

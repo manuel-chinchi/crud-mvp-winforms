@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace EntityLayer
 {
+    /// <summary>
+    /// https://stackoverflow.com/questions/23661195/datagridview-using-sortablebindinglist
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class SortableBindingList<T> : BindingList<T>
     {
         private bool isSortedValue;

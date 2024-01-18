@@ -1,4 +1,6 @@
 ﻿using DataLayer.Repositories;
+using DataLayer.Repositories.Contracts;
+using EntityLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace BussinesLayer.Services
 {
-    public class ArticleService
+    public class ArticleService : IArticleService<DataTable>
     {
-        private ArticleRepository _articleRepository = new ArticleRepository();
+        public IArticleRepository<DataTable> _articleRepository = new ArticleRepository();
 
         public DataTable GetArticles()
         {

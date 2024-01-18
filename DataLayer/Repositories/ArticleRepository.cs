@@ -1,4 +1,5 @@
 ﻿using DataLayer.Models;
+using DataLayer.Repositories.Contracts;
 using EntityLayer.Models;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Repositories
 {
-    public class ArticleRepository
+    public class ArticleRepository : IArticleRepository<DataTable>
     {
         private DataConnection _connection = new DataConnection();
 
