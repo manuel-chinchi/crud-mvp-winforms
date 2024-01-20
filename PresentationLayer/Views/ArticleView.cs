@@ -1,8 +1,7 @@
-﻿using BussinesLayer.Services;
+﻿using BussinesLayer.Services.Contracts;
 using EntityLayer;
 using EntityLayer.Models;
 using PresentacionLayer.Presenters;
-using PresentacionLayer.Presenters.Contracts;
 using PresentacionLayer.Views.Contracts;
 using System;
 using System.Collections.Generic;
@@ -81,7 +80,7 @@ namespace PresentationLayer.Views
 
         public int SelectedRows => dgvArticles.SelectedRows.Count;
 
-        public IArticlePresenter presenter { get; set; }
+        public ArticlePresenter presenter { get; set; }
 
         public ArticleView()
         {

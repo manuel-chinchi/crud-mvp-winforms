@@ -1,7 +1,6 @@
-﻿using BussinesLayer.Services;
+﻿using BussinesLayer.Services.Contracts;
 using EntityLayer;
 using EntityLayer.Models;
-using PresentacionLayer.Presenters.Contracts;
 using PresentacionLayer.Views.Contracts;
 using PresentationLayer.Views;
 using System;
@@ -13,7 +12,7 @@ using System.Windows.Forms;
 
 namespace PresentacionLayer.Presenters
 {
-    public class ArticlePresenter : IArticlePresenter
+    public class ArticlePresenter
     {
         public IArticleView view { get; set; }
         public IArticleService<SortableBindingList<Article>> service { get; set; }

@@ -55,7 +55,6 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Presenters\ArticlePresenter.cs" />
-    <Compile Include="Presenters\Contracts\IArticlePresenter.cs" />
     <Compile Include="Views\Contracts\IArticleView.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
