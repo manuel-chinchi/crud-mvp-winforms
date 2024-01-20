@@ -1,3 +1,4 @@
+
 -- ######################################################################################
 -- CREATE DATABASE AND TABLES
 -- ######################################################################################
@@ -112,3 +113,27 @@ WHERE
     AND
     @Search <> ''
 GO
+
+---
+use crud_mvp_winforms
+
+
+declare @Search varchar(100)='chi';
+declare @IncludeName int=1;
+declare @IncludeDesc int=1;
+declare @IncludeBrand int=1;
+
+SELECT
+    *
+FROM
+    Articles a
+WHERE
+    (
+        (@IncludeName = 1 AND a.Name LIKE '%' + @Search + '%')
+        OR
+        (@IncludeDesc = 1 AND a.Description LIKE '%' + @Search + '%')
+        OR
+        (@IncludeBrand = 1 AND a.Brand LIKE '%' + @Search + '%')
+    )
+    AND
+    @Search <> ''

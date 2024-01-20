@@ -14,6 +14,8 @@ namespace BussinesLayer.Services
     {
         private IArticleRepository<IEnumerable<Article>> _articleRepository = new ArticleRepository2();
 
+        public IArticleRepository<IEnumerable<Article>> Repository = new ArticleRepository2();
+
         public SortableBindingList<Article> GetArticles()
         {
             var res = _articleRepository.GetArticles().ToList();

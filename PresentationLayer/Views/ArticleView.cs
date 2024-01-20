@@ -1,6 +1,9 @@
 ﻿using BussinesLayer.Services;
 using EntityLayer;
 using EntityLayer.Models;
+using PresentacionLayer.Presenters;
+using PresentacionLayer.Presenters.Contracts;
+using PresentacionLayer.Views.Contracts;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,131 +16,111 @@ using System.Windows.Forms;
 
 namespace PresentationLayer.Views
 {
-    public partial class ArticleView : UserControl
+    public partial class ArticleView : UserControl, IArticleView
     {
-        private IArticleService<SortableBindingList<Article>> _articleService = new ArticleService2();
-        private string id;
-        private bool isEdit = false;
+        private string _id;
+        public string Id
+        {
+            get => dgvArticles.CurrentRow.Cells["colId"].Value.ToString(); 
+            set => _id = value;
+        }
+
+        public string NameA
+        {
+            get => txtName.Text;
+            set => txtName.Text = value;
+        }
+
+        public string Description
+        {
+            get => txtDescription.Text;
+            set => txtDescription.Text = value;
+        }
+
+        public string Brand
+        {
+            get => txtBrand.Text;
+            set => txtBrand.Text = value;
+        }
+
+        public string Stock
+        {
+            get => txtStock.Text;
+            set => txtStock.Text = value;
+        }
+
+        public int IncludeName
+        {
+            get => (int)chkName.CheckState;
+            set => chkName.CheckState = (CheckState)Convert.ToInt32(value);
+        }
+
+        public int IncludeDescription
+        {
+            get => (int)chkDescription.CheckState;
+            set => chkDescription.CheckState = (CheckState)Convert.ToInt32(value);
+        }
+
+        public int IncludeBrand
+        {
+            get => (int)chkBrand.CheckState;
+            set => chkBrand.CheckState = (CheckState)Convert.ToInt32(value);
+        }
+        public string Search
+        {
+            get => txtSearch.Text;
+            set => txtSearch.Text = value;
+        }
+
+        private bool _isEdit;
+        public bool IsEdit
+        {
+            get => _isEdit;
+            set => _isEdit = value;
+        }
+
+        public int SelectedRows => dgvArticles.SelectedRows.Count;
+
+        public IArticlePresenter presenter { get; set; }
 
         public ArticleView()
         {
             InitializeComponent();
+            presenter = new ArticlePresenter(this, new ArticleService2());
+            AsociateEvents();
         }
 
-        private void ArticleView_Load(object sender, EventArgs e)
+        private void AsociateEvents()
         {
-            ShowArticles();
-        }
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            if (isEdit == false)
+            this.btnShowAll.Click += delegate { LoadArticles?.Invoke(this, EventArgs.Empty); };
+            this.btnSave.Click += delegate { SaveArticle?.Invoke(this, EventArgs.Empty); };
+            this.btnEdit.Click += delegate { EditArticle?.Invoke(this, EventArgs.Empty); };
+            this.btnDelete.Click += delegate { DeleteArticle?.Invoke(this, EventArgs.Empty); };
+            this.btnSearch.Click += delegate { SearchArticle?.Invoke(this, EventArgs.Empty); };
+            this.txtSearch.KeyDown += (s, e) =>
             {
-                try
+                if (e.KeyCode == Keys.Enter)
                 {
-                    _articleService.InsertArticle(txtName.Text, txtDescription.Text, txtBrand.Text, txtStock.Text);
-                    MessageBox.Show("Se ha agregado el articulo");
-                    ShowArticles();
-                    ClearForm();
+                    SearchArticle?.Invoke(this, EventArgs.Empty);
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex);
-                }
-            }
-            else
-            {
-                try
-                {
-                    _articleService.UpdateArticle(txtName.Text, txtDescription.Text, txtBrand.Text, txtStock.Text, id);
-                    MessageBox.Show("Se edito el articulo");
-                    ShowArticles();
-                    ClearForm();
-                    isEdit = false;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex);
-                }
-            }
+            };
+            this.Load += delegate { LoadArticles?.Invoke(this, EventArgs.Empty); };
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
+        public void SetBindingSource(BindingSource dataSource)
         {
-            if (dgvArticles.SelectedRows.Count == 1)
-            {
-                isEdit = true;
-                txtName.Text = dgvArticles.CurrentRow.Cells["colName"].Value.ToString();
-                txtDescription.Text = dgvArticles.CurrentRow.Cells["colDescription"].Value.ToString();
-                txtBrand.Text = dgvArticles.CurrentRow.Cells["colBrand"].Value.ToString();
-                txtStock.Text = dgvArticles.CurrentRow.Cells["colStock"].Value.ToString();
-                id = dgvArticles.CurrentRow.Cells["colId"].Value.ToString();
-            }
-            else
-            {
-                MessageBox.Show("Seleccione una sola fila");
-            }
+            dgvArticles.DataSource = dataSource;
         }
-        
-        private void btnDelete_Click(object sender, EventArgs e)
+
+        public BindingSource GetBindingSource()
         {
-            try
-            {
-                string id = dgvArticles.CurrentRow.Cells["colId"].Value.ToString();
-                _articleService.DeleteArticle(id);
-                MessageBox.Show("Se ha eliminado el articulo");
-                ShowArticles();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex);
-            }
+            return (BindingSource)dgvArticles.DataSource;
         }
 
-        private void btnShowAll_Click(object sender, EventArgs e)
-        {
-            ShowArticles();
-        }
-
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                ArticleService articleService = new ArticleService();
-                dgvArticles.DataSource = articleService.SearchArticle(((int)chkName.CheckState), ((int)chkDescription.CheckState), ((int)chkBrand.CheckState), txtSearch.Text);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex);
-            }
-        }
-
-        #region Methods
-
-        private void ShowArticles()
-        {
-            var articleService = new ArticleService2();
-            dgvArticles.DataSource = articleService.GetArticles();
-        }
-
-        private void ClearForm()
-        {
-            txtName.Clear();
-            txtDescription.Clear();
-            txtBrand.Clear();
-            txtStock.Clear();
-        }
-
-        #endregion
-
-        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == Keys.Enter)
-            {
-                e.Handled = true;
-                e.SuppressKeyPress = true;
-                btnSearch_Click(sender, e);
-            }
-        }
+        public event EventHandler LoadArticles;
+        public event EventHandler SaveArticle;
+        public event EventHandler EditArticle;
+        public event EventHandler DeleteArticle;
+        public event EventHandler SearchArticle;
     }
 }

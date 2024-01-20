@@ -68,7 +68,6 @@ namespace PresentationLayer.Views
             this.btnShowAll.TabIndex = 32;
             this.btnShowAll.Text = "Show all";
             this.btnShowAll.UseVisualStyleBackColor = true;
-            this.btnShowAll.Click += new System.EventHandler(this.btnShowAll_Click);
             // 
             // grpFilters
             // 
@@ -120,7 +119,6 @@ namespace PresentationLayer.Views
             this.btnSearch.TabIndex = 34;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtSearch
             // 
@@ -128,7 +126,6 @@ namespace PresentationLayer.Views
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(231, 22);
             this.txtSearch.TabIndex = 33;
-            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
             // 
             // btnEdit
             // 
@@ -138,7 +135,6 @@ namespace PresentationLayer.Views
             this.btnEdit.TabIndex = 36;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDelete
             // 
@@ -148,7 +144,6 @@ namespace PresentationLayer.Views
             this.btnDelete.TabIndex = 37;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnSave
             // 
@@ -158,7 +153,6 @@ namespace PresentationLayer.Views
             this.btnSave.TabIndex = 31;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // lblStock
             // 
@@ -274,7 +268,6 @@ namespace PresentationLayer.Views
             this.colId.MinimumWidth = 6;
             this.colId.Name = "colId";
             this.colId.ReadOnly = true;
-            this.colId.Width = 125;
             // 
             // colName
             // 
@@ -310,7 +303,6 @@ namespace PresentationLayer.Views
             this.colStock.MinimumWidth = 6;
             this.colStock.Name = "colStock";
             this.colStock.ReadOnly = true;
-            this.colStock.Width = 125;
             // 
             // ArticleView
             // 
@@ -334,7 +326,6 @@ namespace PresentationLayer.Views
             this.Controls.Add(this.dgvArticles);
             this.Name = "ArticleView";
             this.Size = new System.Drawing.Size(1069, 560);
-            this.Load += new System.EventHandler(this.ArticleView_Load);
             this.grpFilters.ResumeLayout(false);
             this.grpFilters.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticles)).EndInit();
