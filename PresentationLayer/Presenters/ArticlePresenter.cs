@@ -1,6 +1,7 @@
 ﻿using BussinesLayer.Services.Contracts;
 using EntityLayer;
 using EntityLayer.Models;
+using EntityLayer.Models.Utils;
 using PresentacionLayer.Views.Contracts;
 using PresentationLayer.Views;
 using System;
@@ -17,7 +18,6 @@ namespace PresentacionLayer.Presenters
         public IArticleView view { get; set; }
         public IArticleService<SortableBindingList<Article>> service { get; set; }
         public BindingSource bindingSource = new BindingSource();
-        //public IEnumerable<Article> articles;
 
         public ArticlePresenter(IArticleView view, IArticleService<SortableBindingList<Article>> service)
         {

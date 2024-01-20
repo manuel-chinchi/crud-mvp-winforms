@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntityLayer
+namespace EntityLayer.Models.Utils
 {
     /// <summary>
     /// https://stackoverflow.com/questions/23661195/datagridview-using-sortablebindinglist
