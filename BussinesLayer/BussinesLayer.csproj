@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\ArticleService2.cs" />
+    <Compile Include="Services\ArticleService.cs" />
     <Compile Include="Services\IArticleService.cs" />
   </ItemGroup>
   <ItemGroup>

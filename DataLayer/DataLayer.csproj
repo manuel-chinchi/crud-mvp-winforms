@@ -46,7 +46,7 @@
   <ItemGroup>
     <Compile Include="Models\DataConnection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\ArticleRepository2.cs" />
+    <Compile Include="Repositories\ArticleRepository.cs" />
     <Compile Include="Repositories\Contracts\IArticleRepository.cs" />
   </ItemGroup>
   <ItemGroup>

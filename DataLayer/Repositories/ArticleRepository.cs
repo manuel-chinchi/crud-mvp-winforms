@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Repositories
 {
-    public class ArticleRepository2 : IArticleRepository<IEnumerable<Article>>
+    public class ArticleRepository : IArticleRepository<IEnumerable<Article>>
     {
         const string CONNECTION_STRING = "Server=(localdb)\\MSSQLLocalDB; DataBase=crud_mvp_winforms; Integrated Security=true";
 

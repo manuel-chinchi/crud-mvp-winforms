@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace BussinesLayer.Services
 {
-    public class ArticleService2 : IArticleService<SortableBindingList<Article>>
+    public class ArticleService : IArticleService<SortableBindingList<Article>>
     {
-        private IArticleRepository<IEnumerable<Article>> _articleRepository = new ArticleRepository2();
+        private IArticleRepository<IEnumerable<Article>> _articleRepository = new ArticleRepository();
 
-        public IArticleRepository<IEnumerable<Article>> Repository = new ArticleRepository2();
+        public IArticleRepository<IEnumerable<Article>> Repository = new ArticleRepository();
 
         public SortableBindingList<Article> GetArticles()
         {

@@ -86,7 +86,7 @@ namespace PresentationLayer.Views
         public ArticleView()
         {
             InitializeComponent();
-            presenter = new ArticlePresenter(this, new ArticleService2());
+            presenter = new ArticlePresenter(this, new ArticleService());
             AsociateEvents();
         }
 
