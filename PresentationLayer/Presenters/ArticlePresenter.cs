@@ -17,21 +17,17 @@ namespace PresentacionLayer.Presenters
     {
         public IArticleView view { get; set; }
         public IArticleService<IEnumerable<Article>> service { get; set; }
-        public BindingSource bindingSource = new BindingSource();
 
         public ArticlePresenter(IArticleView view, IArticleService<IEnumerable<Article>> service)
         {
-            // dependency injection
             this.view = view;
             this.service = service;
-            // events
+
             this.view.LoadArticles += View_LoadArticles;
             this.view.SaveArticle += View_SaveArticle;
             this.view.EditArticle += View_EditArticleEvent;
             this.view.DeleteArticle += View_DeleteArticleEvent;
             this.view.SearchArticle += View_SearchArticle;
-            // binding data
-            RefreshDataGridView();
         }
 
         private void View_SearchArticle(object sender, EventArgs e)
@@ -41,7 +37,7 @@ namespace PresentacionLayer.Presenters
             {
                 MessageBox.Show("No se encontraron resultados");
             }
-            RefreshDataGridView(result);
+            RefreshArticleList(result);
         }
 
         private void View_DeleteArticleEvent(object sender, EventArgs e)
@@ -49,7 +45,7 @@ namespace PresentacionLayer.Presenters
             service.DeleteArticle(view.Id);
             //bindingSource.DataSource = service.GetArticles(); // con esto actualiza la grilla antes de mostrar el msgbox 
             MessageBox.Show("Se ha eliminado el artículo");
-            RefreshDataGridView();
+            RefreshArticleList();
         }
 
         private void View_EditArticleEvent(object sender, EventArgs e)
@@ -78,9 +74,9 @@ namespace PresentacionLayer.Presenters
         {
             if (view.IsEdit == false)
             {
-                service.InsertArticle(view.NameA, view.Description, view.Brand, view.Stock);
+                service.CreateArticle(view.NameA, view.Description, view.Brand, view.Stock);
                 MessageBox.Show("Se ha agregado el artículo");
-                RefreshDataGridView();
+                RefreshArticleList();
                 ClearArticleForm();
             }
             else
@@ -95,7 +91,7 @@ namespace PresentacionLayer.Presenters
 
         private void View_LoadArticles(object sender, EventArgs e)
         {
-            RefreshDataGridView();
+            RefreshArticleList();
         }
 
         void ClearArticleForm()
@@ -106,8 +102,9 @@ namespace PresentacionLayer.Presenters
             view.Stock = "";
         }
 
-        void RefreshDataGridView(IEnumerable<Article> data = null)
+        void RefreshArticleList(IEnumerable<Article> data = null)
         {
+            BindingSource bindingSource = new BindingSource();
             if (data != null)
             {
                 bindingSource.DataSource = new SortableBindingList<Article>(data.ToList());

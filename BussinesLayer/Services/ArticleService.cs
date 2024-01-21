@@ -23,9 +23,9 @@ namespace BussinesLayer.Services.Contracts
             _repository.DeleteArticle(id);
         }
 
-        public void InsertArticle(string name, string description, string brand, string stock)
+        public void CreateArticle(string name, string description, string brand, string stock)
         {
-            _repository.InsertArticle(name, description, brand, stock);
+            _repository.CreateArticle(name, description, brand, stock);
         }
 
         public IEnumerable<Article> SearchArticle(int includeName, int includeDescription, int includeBrand, string search)

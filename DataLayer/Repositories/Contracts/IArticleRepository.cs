@@ -9,9 +9,9 @@ namespace DataLayer.Repositories.Contracts
     public interface IArticleRepository<T>
     {
         T GetArticles();
-        void InsertArticle(string name, string description, string brand, string stock);
-        void DeleteArticle(string id);
+        void CreateArticle(string name, string description, string brand, string stock);
         void EditArticle(string name, string description, string brand, string stock, string id);
+        void DeleteArticle(string id);
         T SearchArticle(int includeName, int includeDescription, int includeBrand, string search);
     }
 }

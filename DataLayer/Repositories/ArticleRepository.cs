@@ -26,7 +26,7 @@ namespace DataLayer.Repositories
             return result;
         }
 
-        public void InsertArticle(string name, string description, string brand, string stock)
+        public void CreateArticle(string name, string description, string brand, string stock)
         {
             using (var connection = new SqlConnection(CONNECTION_STRING))
             {
