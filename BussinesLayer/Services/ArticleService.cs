@@ -1,8 +1,6 @@
 ﻿using DataLayer.Repositories;
 using DataLayer.Repositories.Contracts;
-using EntityLayer;
 using EntityLayer.Models;
-using EntityLayer.Models.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,15 +9,13 @@ using System.Threading.Tasks;
 
 namespace BussinesLayer.Services.Contracts
 {
-    public class ArticleService : IArticleService<SortableBindingList<Article>>
+    public class ArticleService : IArticleService<IEnumerable<Article>>
     {
         private IArticleRepository<IEnumerable<Article>> _repository = new ArticleRepository();
 
-        public SortableBindingList<Article> GetArticles()
+        public IEnumerable<Article> GetArticles()
         {
-            var res = _repository.GetArticles().ToList();
-            var sortRes = new SortableBindingList<Article>(res);
-            return sortRes;
+            return _repository.GetArticles();
         }
 
         public void DeleteArticle(string id)
@@ -32,11 +28,9 @@ namespace BussinesLayer.Services.Contracts
             _repository.InsertArticle(name, description, brand, stock);
         }
 
-        public SortableBindingList<Article> SearchArticle(int includeName, int includeDescription, int includeBrand, string search)
+        public IEnumerable<Article> SearchArticle(int includeName, int includeDescription, int includeBrand, string search)
         {
-            var res = _repository.SearchArticle(includeName, includeDescription, includeBrand,  search).ToList();
-            var sortRes = new SortableBindingList<Article>(res);
-            return sortRes;
+            return _repository.SearchArticle(includeName, includeDescription, includeBrand, search).ToList();
         }
 
         public void UpdateArticle(string name, string description, string brand, string stock, string id)

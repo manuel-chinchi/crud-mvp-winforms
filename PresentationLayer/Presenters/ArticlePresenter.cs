@@ -16,12 +16,12 @@ namespace PresentacionLayer.Presenters
     public class ArticlePresenter
     {
         public IArticleView view { get; set; }
-        public IArticleService<SortableBindingList<Article>> service { get; set; }
+        public IArticleService<IEnumerable<Article>> service { get; set; }
         public BindingSource bindingSource = new BindingSource();
 
-        public ArticlePresenter(IArticleView view, IArticleService<SortableBindingList<Article>> service)
+        public ArticlePresenter(IArticleView view, IArticleService<IEnumerable<Article>> service)
         {
-            // dependency inyection
+            // dependency injection
             this.view = view;
             this.service = service;
             // events
@@ -31,19 +31,17 @@ namespace PresentacionLayer.Presenters
             this.view.DeleteArticle += View_DeleteArticleEvent;
             this.view.SearchArticle += View_SearchArticle;
             // binding data
-            bindingSource.DataSource = service.GetArticles();
-            this.view.SetBindingSource(bindingSource);
+            RefreshDataGridView();
         }
 
         private void View_SearchArticle(object sender, EventArgs e)
         {
             var result = service.SearchArticle(view.IncludeName, view.IncludeDescription, view.IncludeBrand, view.Search);
-            if ((view.IncludeName != 0 || view.IncludeDescription != 0 || view.IncludeBrand != 0) && result.Count == 0)
+            if ((view.IncludeName != 0 || view.IncludeDescription != 0 || view.IncludeBrand != 0) && result.Count() == 0)
             {
                 MessageBox.Show("No se encontraron resultados");
             }
-            bindingSource.DataSource = result;
-            view.SetBindingSource(bindingSource);
+            RefreshDataGridView(result);
         }
 
         private void View_DeleteArticleEvent(object sender, EventArgs e)
@@ -51,15 +49,14 @@ namespace PresentacionLayer.Presenters
             service.DeleteArticle(view.Id);
             //bindingSource.DataSource = service.GetArticles(); // con esto actualiza la grilla antes de mostrar el msgbox 
             MessageBox.Show("Se ha eliminado el artículo");
-            bindingSource.DataSource = service.GetArticles();
-            view.SetBindingSource(bindingSource);
+            RefreshDataGridView();
         }
 
         private void View_EditArticleEvent(object sender, EventArgs e)
         {
             if (view.SelectedRows == 1)
             {
-                var article = (Article)view.GetBindingSource().Current;
+                var article = (Article)view.DataSource.Current;
                 view.IsEdit = true;
                 view.NameA = article.Name;
                 view.Description = article.Description;
@@ -83,31 +80,43 @@ namespace PresentacionLayer.Presenters
             {
                 service.InsertArticle(view.NameA, view.Description, view.Brand, view.Stock);
                 MessageBox.Show("Se ha agregado el artículo");
-                View_LoadArticles(sender, e);
-                ClearArticleInputs();
+                RefreshDataGridView();
+                ClearArticleForm();
             }
             else
             {
                 service.UpdateArticle(view.NameA, view.Description, view.Brand, view.Stock, view.Id);
                 MessageBox.Show("Se ha actualizado el artículo");
                 View_LoadArticles(sender, e);
-                ClearArticleInputs();
+                ClearArticleForm();
                 view.IsEdit = false;
             }
         }
 
         private void View_LoadArticles(object sender, EventArgs e)
         {
-            bindingSource.DataSource = service.GetArticles();
-            view.SetBindingSource(bindingSource);
+            RefreshDataGridView();
         }
 
-        void ClearArticleInputs()
+        void ClearArticleForm()
         {
             view.NameA = "";
             view.Description = "";
             view.Brand = "";
             view.Stock = "";
+        }
+
+        void RefreshDataGridView(IEnumerable<Article> data = null)
+        {
+            if (data != null)
+            {
+                bindingSource.DataSource = new SortableBindingList<Article>(data.ToList());
+            }
+            else
+            {
+                bindingSource.DataSource = new SortableBindingList<Article>(service.GetArticles().ToList());
+            }
+            view.DataSource = bindingSource;
         }
     }
 }

@@ -1,8 +1,6 @@
-﻿using BussinesLayer.Services.Contracts;
-using EntityLayer;
-using EntityLayer.Models;
-using PresentacionLayer.Presenters;
+﻿using PresentacionLayer.Presenters;
 using PresentacionLayer.Views.Contracts;
+using BussinesLayer.Services.Contracts;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,7 +18,7 @@ namespace PresentationLayer.Views
         private string _id;
         public string Id
         {
-            get => dgvArticles.CurrentRow.Cells["colId"].Value.ToString(); 
+            get => dgvArticles.CurrentRow.Cells["colId"].Value.ToString();
             set => _id = value;
         }
 
@@ -80,6 +78,12 @@ namespace PresentationLayer.Views
 
         public int SelectedRows => dgvArticles.SelectedRows.Count;
 
+        public BindingSource DataSource
+        {
+            get => (BindingSource)dgvArticles.DataSource;
+            set => dgvArticles.DataSource = value;
+        }
+
         public ArticlePresenter presenter { get; set; }
 
         public ArticleView()
@@ -104,16 +108,6 @@ namespace PresentationLayer.Views
                 }
             };
             this.Load += delegate { LoadArticles?.Invoke(this, EventArgs.Empty); };
-        }
-
-        public void SetBindingSource(BindingSource dataSource)
-        {
-            dgvArticles.DataSource = dataSource;
-        }
-
-        public BindingSource GetBindingSource()
-        {
-            return (BindingSource)dgvArticles.DataSource;
         }
 
         public event EventHandler LoadArticles;

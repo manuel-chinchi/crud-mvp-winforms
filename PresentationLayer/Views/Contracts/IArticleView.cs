@@ -23,7 +23,6 @@ namespace PresentacionLayer.Views.Contracts
         event EventHandler DeleteArticle;
         event EventHandler SearchArticle;
 
-        void SetBindingSource(BindingSource dataSource);
-        BindingSource GetBindingSource();
+        BindingSource DataSource { get; set; }
     }
 }
