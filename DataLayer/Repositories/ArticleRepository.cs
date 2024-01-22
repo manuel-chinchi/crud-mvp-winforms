@@ -42,7 +42,7 @@ namespace DataLayer.Repositories
                     null,
                     null,
                     CommandType.StoredProcedure
-                    );
+                );
             }
         }
 
@@ -61,7 +61,7 @@ namespace DataLayer.Repositories
                         Id = id
                     }, null, null,
                     CommandType.StoredProcedure
-                    );
+                );
             }
         }
 
@@ -78,7 +78,7 @@ namespace DataLayer.Repositories
                     },
                     null, null,
                     CommandType.StoredProcedure
-                    );
+                );
             }
         }
 
