@@ -10,11 +10,13 @@ using System.Windows.Forms;
 
 namespace PresentationLayer.Forms
 {
-    public partial class MainForm : Form
+    public partial class BaseForm : Form
     {
-        public MainForm()
+        public BaseForm()
         {
             InitializeComponent();
+            this.Hide();
+            (new ListArticleForm()).ShowDialog();
         }
     }
 }

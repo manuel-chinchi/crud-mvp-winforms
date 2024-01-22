@@ -1,7 +1,7 @@
 ﻿
 namespace PresentationLayer.Forms
 {
-    partial class MainForm
+    partial class ListArticlesForm
     {
         /// <summary>
         /// Required designer variable.
@@ -49,6 +49,7 @@ namespace PresentationLayer.Forms
             this.Name = "MainForm";
             this.ShowIcon = false;
             this.Text = "MainForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ListArticlesForm_FormClosing);
             this.ResumeLayout(false);
 
         }
