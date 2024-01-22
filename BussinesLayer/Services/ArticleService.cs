@@ -1,29 +1,33 @@
 ﻿using DataLayer.Repositories;
-using DataLayer.Repositories.Contracts;
+using EntityLayer;
 using EntityLayer.Models;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BussinesLayer.Services
 {
-    public class ArticleService : IArticleService<DataTable>
+    public class ArticleService : IArticleService<SortableBindingList<Article>>
     {
-        public IArticleRepository<DataTable> _articleRepository = new ArticleRepository();
+        private IArticleRepository<IEnumerable<Article>> _articleRepository = new ArticleRepository();
 
-        public DataTable GetArticles()
+        public SortableBindingList<Article> GetArticles()
         {
-            DataTable dt = new DataTable();
-            dt = _articleRepository.GetArticles();
-            return dt;
+            var result = _articleRepository.GetArticles().ToList();
+            var sortable = new SortableBindingList<Article>(result);
+            return sortable;
         }
 
-        public void InsertArticle(string name, string description, string brand, string stock)
+        public void CreateArticle(string name, string description, string brand, string stock)
         {
-            _articleRepository.InsertArticle(name, description, brand, stock);
+            _articleRepository.CreateArticle(name, description, brand, stock);
+        }
+
+        public void UpdateArticle(string name, string description, string brand, string stock, string id)
+        {
+            _articleRepository.UpdateArticle(name, description, brand, stock, id);
         }
 
         public void DeleteArticle(string id)
@@ -31,14 +35,11 @@ namespace BussinesLayer.Services
             _articleRepository.DeleteArticle(id);
         }
 
-        public void UpdateArticle(string name, string description, string brand, string stock, string id)
+        public SortableBindingList<Article> SearchArticle(int includeName, int includeDescription, int includeBrand, string search)
         {
-            _articleRepository.EditArticle(name, description, brand, stock, id);
-        }
-
-        public DataTable SearchArticle(int includeName, int includeDescription, int includeBrand, string search)
-        {
-            return _articleRepository.SearchArticle(includeName, includeDescription, includeBrand, search);
+            var result = _articleRepository.SearchArticle(includeName, includeDescription, includeBrand, search).ToList();
+            var sortable = new SortableBindingList<Article>(result);
+            return sortable;
         }
     }
 }

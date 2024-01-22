@@ -1,5 +1,4 @@
-﻿using DataLayer.Models;
-using DataLayer.Repositories.Contracts;
+﻿using Dapper;
 using EntityLayer.Models;
 using System;
 using System.Collections.Generic;
@@ -11,87 +10,102 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Repositories
 {
-    public class ArticleRepository : IArticleRepository<DataTable>
+    public class ArticleRepository : IArticleRepository<IEnumerable<Article>>
     {
-        private DataConnection _connection = new DataConnection();
+        const string CONNECTION_STRING = "Server=(localdb)\\MSSQLLocalDB; DataBase=crud_mvp_winforms; Integrated Security=true";
 
-        SqlDataReader drArticles;
-        DataTable dtArticles = new DataTable();
-        SqlCommand cmd = new SqlCommand();
-        
-        public DataTable GetArticles()
+        public IEnumerable<Article> GetArticles()
         {
-            cmd.Connection = _connection.OpenConnection();
-            cmd.CommandText = "GetArticles";
-            cmd.CommandType = CommandType.StoredProcedure;
-            drArticles = cmd.ExecuteReader();
-            dtArticles.Load(drArticles);
-            _connection.CloseConnection();
-            return dtArticles;
+            IEnumerable<Article> result = new List<Article>();
+            using (var connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                result = connection.Query<Article>("GetArticles", CommandType.StoredProcedure);
+            }
+            return result;
         }
 
-        public void InsertArticle(string name, string description, string brand, string stock)
+        public void CreateArticle(string name, string description, string brand, string stock)
         {
-            cmd.Connection = _connection.OpenConnection();
-            cmd.CommandText = "InsertArticle";
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@Name", name);
-            cmd.Parameters.AddWithValue("@Description", description);
-            cmd.Parameters.AddWithValue("@Brand", brand);
-            cmd.Parameters.AddWithValue("@Stock", stock);
-            cmd.ExecuteNonQuery();
-            cmd.Parameters.Clear();
-            _connection.CloseConnection();
+            using (var connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                connection.Execute(
+                    "InsertArticle",
+                    new
+                    {
+                        Name = name,
+                        Description = description,
+                        Brand = brand,
+                        Stock = stock
+                    },
+                    null,
+                    null,
+                    CommandType.StoredProcedure
+                    );
+            }
         }
 
-        public void EditArticle(string name, string description, string brand, string stock, string id)
+        public void UpdateArticle(string name, string description, string brand, string stock, string id)
         {
-            cmd.Connection = _connection.OpenConnection();
-            cmd.CommandText = "UpdateArticle";
-            cmd.CommandType = CommandType.StoredProcedure;
-
-            cmd.Parameters.AddWithValue("@Name", name);
-            cmd.Parameters.AddWithValue("@Description", description);
-            cmd.Parameters.AddWithValue("@Brand", brand);
-            cmd.Parameters.AddWithValue("@Stock", stock);
-            cmd.Parameters.AddWithValue("@Id", id);
-
-            cmd.ExecuteNonQuery();
-            cmd.Parameters.Clear();
-            _connection.CloseConnection();
+            using (var connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                connection.Execute(
+                    "UpdateArticle",
+                    new
+                    {
+                        Name = name,
+                        Description = description,
+                        Brand = brand,
+                        Stock = stock,
+                        Id = id
+                    }, null, null,
+                    CommandType.StoredProcedure
+                    );
+            }
         }
 
         public void DeleteArticle(string id)
         {
-            cmd.Connection = _connection.OpenConnection();
-            cmd.CommandText = "DeleteArticle";
-            cmd.CommandType = CommandType.StoredProcedure;
-
-            cmd.Parameters.AddWithValue("@Id", Convert.ToInt32(id));
-            
-            cmd.ExecuteNonQuery();
-            cmd.Parameters.Clear();
-            _connection.CloseConnection();
+            using (var connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                connection.Execute(
+                    "DeleteArticle",
+                    new
+                    {
+                        Id = id
+                    },
+                    null, null,
+                    CommandType.StoredProcedure
+                    );
+            }
         }
 
-        public DataTable SearchArticle(int includeName, int includeDescription, int includeBrand, string search)
+        public IEnumerable<Article> SearchArticle(int includeName, int includeDescription, int includeBrand, string search)
         {
-            cmd.Connection = _connection.OpenConnection();
-            cmd.CommandText = "SearchArticle";
-            cmd.CommandType = CommandType.StoredProcedure;
-
-            cmd.Parameters.AddWithValue("@IncludeName", includeName);
-            cmd.Parameters.AddWithValue("@IncludeDesc", includeDescription);
-            cmd.Parameters.AddWithValue("@IncludeBrand", includeBrand);
-            cmd.Parameters.AddWithValue("@Search", search);
-
-            drArticles = cmd.ExecuteReader();
-            dtArticles.Load(drArticles);
-
-            cmd.Parameters.Clear();
-            _connection.CloseConnection();
-
-            return dtArticles;
+            var result = new List<Article>();
+            using (var connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                result = connection.Query<Article>(
+                    "SearchArticle",
+                    new
+                    {
+                        IncludeName = includeName,
+                        IncludeDesc = includeDescription,
+                        IncludeBrand = includeBrand,
+                        Search = search
+                    },
+                    null,
+                    false,
+                    null,
+                    CommandType.StoredProcedure
+                ).ToList();
+            }
+            return result;
         }
+
     }
 }

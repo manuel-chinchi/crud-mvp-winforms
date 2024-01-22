@@ -15,7 +15,7 @@ namespace PresentationLayer.Views
 {
     public partial class ArticleView : UserControl
     {
-        private IArticleService<SortableBindingList<Article>> _articleService = new ArticleService2();
+        private IArticleService<SortableBindingList<Article>> _articleService = new ArticleService();
         private string id;
         private bool isEdit = false;
 
@@ -35,7 +35,7 @@ namespace PresentationLayer.Views
             {
                 try
                 {
-                    _articleService.InsertArticle(txtName.Text, txtDescription.Text, txtBrand.Text, txtStock.Text);
+                    _articleService.CreateArticle(txtName.Text, txtDescription.Text, txtBrand.Text, txtStock.Text);
                     MessageBox.Show("Se ha agregado el articulo");
                     ShowArticles();
                     ClearForm();
@@ -116,7 +116,7 @@ namespace PresentationLayer.Views
 
         private void ShowArticles()
         {
-            var articleService = new ArticleService2();
+            var articleService = new ArticleService();
             dgvArticles.DataSource = articleService.GetArticles();
         }
 
