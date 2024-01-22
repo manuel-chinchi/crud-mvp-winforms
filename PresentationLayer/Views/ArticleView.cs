@@ -35,7 +35,7 @@ namespace PresentationLayer.Views
             {
                 try
                 {
-                    _articleService.CreateArticle(txtName.Text, txtDescription.Text, txtBrand.Text, txtStock.Text);
+                    _articleService.CreateArticle(txtName.Text, txtDescription.Text, txtStock.Text);
                     MessageBox.Show("Se ha agregado el articulo");
                     ShowArticles();
                     ClearForm();
@@ -49,7 +49,7 @@ namespace PresentationLayer.Views
             {
                 try
                 {
-                    _articleService.UpdateArticle(txtName.Text, txtDescription.Text, txtBrand.Text, txtStock.Text, id);
+                    _articleService.UpdateArticle(txtName.Text, txtDescription.Text, txtStock.Text, id);
                     MessageBox.Show("Se edito el articulo");
                     ShowArticles();
                     ClearForm();
@@ -69,7 +69,6 @@ namespace PresentationLayer.Views
                 isEdit = true;
                 txtName.Text = dgvArticles.CurrentRow.Cells["colName"].Value.ToString();
                 txtDescription.Text = dgvArticles.CurrentRow.Cells["colDescription"].Value.ToString();
-                txtBrand.Text = dgvArticles.CurrentRow.Cells["colBrand"].Value.ToString();
                 txtStock.Text = dgvArticles.CurrentRow.Cells["colStock"].Value.ToString();
                 id = dgvArticles.CurrentRow.Cells["colId"].Value.ToString();
             }
@@ -104,7 +103,7 @@ namespace PresentationLayer.Views
             try
             {
                 ArticleService articleService = new ArticleService();
-                dgvArticles.DataSource = articleService.SearchArticle(((int)chkName.CheckState), ((int)chkDescription.CheckState), ((int)chkBrand.CheckState), txtSearch.Text);
+                dgvArticles.DataSource = articleService.SearchArticle(((int)chkName.CheckState), ((int)chkDescription.CheckState), txtSearch.Text);
             }
             catch (Exception ex)
             {
@@ -124,7 +123,6 @@ namespace PresentationLayer.Views
         {
             txtName.Clear();
             txtDescription.Clear();
-            txtBrand.Clear();
             txtStock.Clear();
         }
 

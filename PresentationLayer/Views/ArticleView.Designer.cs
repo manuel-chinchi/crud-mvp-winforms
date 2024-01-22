@@ -34,7 +34,6 @@ namespace PresentationLayer.Views
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnShowAll = new System.Windows.Forms.Button();
             this.grpFilters = new System.Windows.Forms.GroupBox();
-            this.chkBrand = new System.Windows.Forms.CheckBox();
             this.chkDescription = new System.Windows.Forms.CheckBox();
             this.chkName = new System.Windows.Forms.CheckBox();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -43,18 +42,15 @@ namespace PresentationLayer.Views
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.lblStock = new System.Windows.Forms.Label();
-            this.lblBrand = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.txtStock = new System.Windows.Forms.TextBox();
-            this.txtBrand = new System.Windows.Forms.TextBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.dgvArticles = new System.Windows.Forms.DataGridView();
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpFilters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticles)).BeginInit();
@@ -72,7 +68,6 @@ namespace PresentationLayer.Views
             // 
             // grpFilters
             // 
-            this.grpFilters.Controls.Add(this.chkBrand);
             this.grpFilters.Controls.Add(this.chkDescription);
             this.grpFilters.Controls.Add(this.chkName);
             this.grpFilters.Location = new System.Drawing.Point(688, 476);
@@ -81,16 +76,6 @@ namespace PresentationLayer.Views
             this.grpFilters.TabIndex = 35;
             this.grpFilters.TabStop = false;
             this.grpFilters.Text = "Filters";
-            // 
-            // chkBrand
-            // 
-            this.chkBrand.AutoSize = true;
-            this.chkBrand.Location = new System.Drawing.Point(174, 21);
-            this.chkBrand.Name = "chkBrand";
-            this.chkBrand.Size = new System.Drawing.Size(68, 21);
-            this.chkBrand.TabIndex = 15;
-            this.chkBrand.Text = "Brand";
-            this.chkBrand.UseVisualStyleBackColor = true;
             // 
             // chkDescription
             // 
@@ -163,20 +148,11 @@ namespace PresentationLayer.Views
             // lblStock
             // 
             this.lblStock.AutoSize = true;
-            this.lblStock.Location = new System.Drawing.Point(779, 216);
+            this.lblStock.Location = new System.Drawing.Point(779, 157);
             this.lblStock.Name = "lblStock";
             this.lblStock.Size = new System.Drawing.Size(47, 17);
             this.lblStock.TabIndex = 30;
             this.lblStock.Text = "Stock:";
-            // 
-            // lblBrand
-            // 
-            this.lblBrand.AutoSize = true;
-            this.lblBrand.Location = new System.Drawing.Point(776, 158);
-            this.lblBrand.Name = "lblBrand";
-            this.lblBrand.Size = new System.Drawing.Size(50, 17);
-            this.lblBrand.TabIndex = 29;
-            this.lblBrand.Text = "Brand:";
             // 
             // lblDescription
             // 
@@ -198,17 +174,10 @@ namespace PresentationLayer.Views
             // 
             // txtStock
             // 
-            this.txtStock.Location = new System.Drawing.Point(832, 216);
+            this.txtStock.Location = new System.Drawing.Point(832, 157);
             this.txtStock.Name = "txtStock";
             this.txtStock.Size = new System.Drawing.Size(231, 22);
             this.txtStock.TabIndex = 26;
-            // 
-            // txtBrand
-            // 
-            this.txtBrand.Location = new System.Drawing.Point(832, 158);
-            this.txtBrand.Name = "txtBrand";
-            this.txtBrand.Size = new System.Drawing.Size(231, 22);
-            this.txtBrand.TabIndex = 25;
             // 
             // txtDescription
             // 
@@ -241,7 +210,6 @@ namespace PresentationLayer.Views
             this.colId,
             this.colName,
             this.colDescription,
-            this.colBrand,
             this.colStock});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
@@ -294,15 +262,6 @@ namespace PresentationLayer.Views
             this.colDescription.ReadOnly = true;
             this.colDescription.Width = 200;
             // 
-            // colBrand
-            // 
-            this.colBrand.DataPropertyName = "Brand";
-            this.colBrand.HeaderText = "Brand";
-            this.colBrand.MinimumWidth = 6;
-            this.colBrand.Name = "colBrand";
-            this.colBrand.ReadOnly = true;
-            this.colBrand.Width = 125;
-            // 
             // colStock
             // 
             this.colStock.DataPropertyName = "Stock";
@@ -324,11 +283,9 @@ namespace PresentationLayer.Views
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.lblStock);
-            this.Controls.Add(this.lblBrand);
             this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.txtStock);
-            this.Controls.Add(this.txtBrand);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.dgvArticles);
@@ -347,7 +304,6 @@ namespace PresentationLayer.Views
 
         private System.Windows.Forms.Button btnShowAll;
         private System.Windows.Forms.GroupBox grpFilters;
-        private System.Windows.Forms.CheckBox chkBrand;
         private System.Windows.Forms.CheckBox chkDescription;
         private System.Windows.Forms.CheckBox chkName;
         private System.Windows.Forms.Button btnSearch;
@@ -356,18 +312,15 @@ namespace PresentationLayer.Views
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label lblStock;
-        private System.Windows.Forms.Label lblBrand;
         private System.Windows.Forms.Label lblDescription;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.TextBox txtStock;
-        private System.Windows.Forms.TextBox txtBrand;
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.DataGridView dgvArticles;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDescription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colBrand;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStock;
     }
 }

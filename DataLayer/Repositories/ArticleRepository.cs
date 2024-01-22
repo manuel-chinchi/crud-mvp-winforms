@@ -25,7 +25,7 @@ namespace DataLayer.Repositories
             return result;
         }
 
-        public void CreateArticle(string name, string description, string brand, string stock)
+        public void CreateArticle(string name, string description, string stock)
         {
             using (var connection = new SqlConnection(CONNECTION_STRING))
             {
@@ -36,7 +36,6 @@ namespace DataLayer.Repositories
                     {
                         Name = name,
                         Description = description,
-                        Brand = brand,
                         Stock = stock
                     },
                     null,
@@ -46,7 +45,7 @@ namespace DataLayer.Repositories
             }
         }
 
-        public void UpdateArticle(string name, string description, string brand, string stock, string id)
+        public void UpdateArticle(string name, string description, string stock, string id)
         {
             using (var connection = new SqlConnection(CONNECTION_STRING))
             {
@@ -57,7 +56,6 @@ namespace DataLayer.Repositories
                     {
                         Name = name,
                         Description = description,
-                        Brand = brand,
                         Stock = stock,
                         Id = id
                     }, null, null,
@@ -83,7 +81,7 @@ namespace DataLayer.Repositories
             }
         }
 
-        public IEnumerable<Article> SearchArticle(int includeName, int includeDescription, int includeBrand, string search)
+        public IEnumerable<Article> SearchArticle(int includeName, int includeDescription, string search)
         {
             var result = new List<Article>();
             using (var connection = new SqlConnection(CONNECTION_STRING))
@@ -95,7 +93,6 @@ namespace DataLayer.Repositories
                     {
                         IncludeName = includeName,
                         IncludeDesc = includeDescription,
-                        IncludeBrand = includeBrand,
                         Search = search
                     },
                     null,

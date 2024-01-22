@@ -20,14 +20,14 @@ namespace BussinesLayer.Services
             return sortable;
         }
 
-        public void CreateArticle(string name, string description, string brand, string stock)
+        public void CreateArticle(string name, string description, string stock)
         {
-            _articleRepository.CreateArticle(name, description, brand, stock);
+            _articleRepository.CreateArticle(name, description, stock);
         }
 
-        public void UpdateArticle(string name, string description, string brand, string stock, string id)
+        public void UpdateArticle(string name, string description, string stock, string id)
         {
-            _articleRepository.UpdateArticle(name, description, brand, stock, id);
+            _articleRepository.UpdateArticle(name, description, stock, id);
         }
 
         public void DeleteArticle(string id)
@@ -35,9 +35,9 @@ namespace BussinesLayer.Services
             _articleRepository.DeleteArticle(id);
         }
 
-        public SortableBindingList<Article> SearchArticle(int includeName, int includeDescription, int includeBrand, string search)
+        public SortableBindingList<Article> SearchArticle(int includeName, int includeDescription, string search)
         {
-            var result = _articleRepository.SearchArticle(includeName, includeDescription, includeBrand, search).ToList();
+            var result = _articleRepository.SearchArticle(includeName, includeDescription, search).ToList();
             var sortable = new SortableBindingList<Article>(result);
             return sortable;
         }

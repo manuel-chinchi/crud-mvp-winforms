@@ -9,9 +9,9 @@ namespace BussinesLayer.Services
     public interface IArticleService<T>
     {
         T GetArticles();
-        void CreateArticle(string name, string description, string brand, string stock);
-        void UpdateArticle(string name, string description, string brand, string stock, string id);
+        void CreateArticle(string name, string description, string stock);
+        void UpdateArticle(string name, string description, string stock, string id);
         void DeleteArticle(string id);
-        T SearchArticle(int includeName, int includeDescription, int includeBrand, string search);
+        T SearchArticle(int includeName, int includeDescription, string search);
     }
 }
