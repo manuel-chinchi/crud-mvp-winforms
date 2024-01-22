@@ -1,5 +1,5 @@
 ﻿
-namespace PresentacionLayer.Views
+namespace PresentationLayer.Views
 {
     partial class CreateArticleView
     {

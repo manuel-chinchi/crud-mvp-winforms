@@ -1,5 +1,5 @@
 ﻿
-namespace PresentacionLayer.Forms
+namespace PresentationLayer.Forms
 {
     partial class CreateArticleForm
     {
@@ -29,7 +29,7 @@ namespace PresentacionLayer.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.createArticleView1 = new PresentacionLayer.Views.CreateArticleView();
+            this.createArticleView1 = new PresentationLayer.Views.CreateArticleView();
             this.SuspendLayout();
             // 
             // createArticleView1

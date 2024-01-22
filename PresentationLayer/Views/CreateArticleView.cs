@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PresentacionLayer.Views
+namespace PresentationLayer.Views
 {
     public partial class CreateArticleView : UserControl
     {
