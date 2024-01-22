@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\CreateArticleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CreateArticleForm.Designer.cs">
+      <DependentUpon>CreateArticleForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +68,15 @@
     <Compile Include="Views\ArticleView.Designer.cs">
       <DependentUpon>ArticleView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\CreateArticleView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\CreateArticleView.Designer.cs">
+      <DependentUpon>CreateArticleView.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Forms\CreateArticleForm.resx">
+      <DependentUpon>CreateArticleForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -76,6 +91,9 @@
     </Compile>
     <EmbeddedResource Include="Views\ArticleView.resx">
       <DependentUpon>ArticleView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CreateArticleView.resx">
+      <DependentUpon>CreateArticleView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="Properties\Settings.settings">
