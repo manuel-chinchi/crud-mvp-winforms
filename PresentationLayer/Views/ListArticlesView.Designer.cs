@@ -1,7 +1,7 @@
 ﻿
 namespace PresentationLayer.Views
 {
-    partial class ArticleView
+    partial class ListArticlesView
     {
         /// <summary> 
         /// Variable del diseñador necesaria.
@@ -291,7 +291,7 @@ namespace PresentationLayer.Views
             this.Controls.Add(this.dgvArticles);
             this.Name = "ArticleView";
             this.Size = new System.Drawing.Size(1069, 560);
-            this.Load += new System.EventHandler(this.ArticleView_Load);
+            this.Load += new System.EventHandler(this.ListArticlesView_Load);
             this.grpFilters.ResumeLayout(false);
             this.grpFilters.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticles)).EndInit();

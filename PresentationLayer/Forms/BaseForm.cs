@@ -16,7 +16,7 @@ namespace PresentationLayer.Forms
         {
             InitializeComponent();
             this.Hide();
-            (new ListArticleForm()).ShowDialog();
+            (new ListArticlesForm()).ShowDialog();
         }
     }
 }

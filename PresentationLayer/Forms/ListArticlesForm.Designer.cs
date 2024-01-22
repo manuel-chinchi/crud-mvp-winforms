@@ -29,7 +29,7 @@ namespace PresentationLayer.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.articleView1 = new PresentationLayer.Views.ArticleView();
+            this.articleView1 = new PresentationLayer.Views.ListArticlesView();
             this.SuspendLayout();
             // 
             // articleView1
@@ -56,6 +56,6 @@ namespace PresentationLayer.Forms
 
         #endregion
 
-        private Views.ArticleView articleView1;
+        private Views.ListArticlesView articleView1;
     }
 }

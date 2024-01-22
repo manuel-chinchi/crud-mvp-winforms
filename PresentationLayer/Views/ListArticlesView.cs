@@ -14,18 +14,18 @@ using System.Windows.Forms;
 
 namespace PresentationLayer.Views
 {
-    public partial class ArticleView : UserControl
+    public partial class ListArticlesView : UserControl
     {
         private IArticleService<SortableBindingList<Article>> _articleService = new ArticleService();
         private string id;
         private bool isEdit = false;
 
-        public ArticleView()
+        public ListArticlesView()
         {
             InitializeComponent();
         }
 
-        private void ArticleView_Load(object sender, EventArgs e)
+        private void ListArticlesView_Load(object sender, EventArgs e)
         {
             ShowArticles();
         }
