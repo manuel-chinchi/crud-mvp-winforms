@@ -13,7 +13,6 @@ CREATE TABLE Articles (
     Id INT identity(1, 1) PRIMARY KEY,
     Name NVARCHAR(100),
     Description NVARCHAR(100),
-    Brand NVARCHAR(100),
     Stock INT
     )
 
@@ -24,11 +23,16 @@ CREATE TABLE Articles (
 
 INSERT INTO Articles
 VALUES 
-	('Camisa', 'algodon 100%', 'Adidas', 100), 
-	('Zapatilla', 'cuero', 'Nike', 200), 
-	('Zapatilla', 'cuero sintetico', 'China', 250), 
-	('Camisa', 'algodon 75%', 'Lacoste', 150), 
-	('Buso', 'tipo kanguro, c/capucha', 'Topper', 220)
+	('Camisa', 'algodon 100%', 100), 
+	('Zapatilla', 'cuero',  200), 
+	('Zapatilla', 'cuero sintético', 250), 
+	('Camisa', 'algodon 75%', 150), 
+	('Pantalon', 'deportivo', 200),
+	('Jean', 'cuero chupin', 220),
+	('Buso', 'tipo kanguro, c/capucha', 120),
+	('Gorra', 'blanca', 500),
+	('Medias', 'tipo soquetes p/hombre', 500),
+	('Medias', 'tipo soquetes p/mujer', 400)
 GO
 
 
@@ -40,14 +44,12 @@ GO
 CREATE PROCEDURE InsertArticle 
     @Name NVARCHAR(100),
     @Description NVARCHAR(100),
-    @Brand NVARCHAR(100),
     @Stock INT
 AS
 INSERT INTO Articles
 VALUES (
     @Name,
     @Description,
-    @Brand,
     @Stock
     )
 GO
@@ -79,14 +81,12 @@ GO
 CREATE PROCEDURE UpdateArticle 
     @Name NVARCHAR(100),
     @Description NVARCHAR(100),
-    @Brand NVARCHAR(100),
     @Stock INT,
     @Id INT
 AS
 UPDATE Articles
 SET Name = @Name,
     Description = @Description,
-    Brand = @Brand,
     Stock = @Stock
 WHERE Id = @Id
 GO
@@ -95,7 +95,6 @@ GO
 CREATE PROCEDURE SearchArticle
     @IncludeName BIT,
     @IncludeDesc BIT,
-    @IncludeBrand BIT,
     @Search VARCHAR(100)
 AS
 SELECT
@@ -107,33 +106,7 @@ WHERE
         (@IncludeName = 1 AND a.Name LIKE '%' + @Search + '%')
         OR
         (@IncludeDesc = 1 AND a.Description LIKE '%' + @Search + '%')
-        OR
-        (@IncludeBrand = 1 AND a.Brand LIKE '%' + @Search + '%')
     )
     AND
     @Search <> ''
 GO
-
----
-use crud_mvp_winforms
-
-
-declare @Search varchar(100)='chi';
-declare @IncludeName int=1;
-declare @IncludeDesc int=1;
-declare @IncludeBrand int=1;
-
-SELECT
-    *
-FROM
-    Articles a
-WHERE
-    (
-        (@IncludeName = 1 AND a.Name LIKE '%' + @Search + '%')
-        OR
-        (@IncludeDesc = 1 AND a.Description LIKE '%' + @Search + '%')
-        OR
-        (@IncludeBrand = 1 AND a.Brand LIKE '%' + @Search + '%')
-    )
-    AND
-    @Search <> ''

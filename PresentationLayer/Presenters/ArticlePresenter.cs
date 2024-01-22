@@ -32,8 +32,8 @@ namespace PresentacionLayer.Presenters
 
         private void View_SearchArticle(object sender, EventArgs e)
         {
-            var result = service.SearchArticle(view.IncludeName, view.IncludeDescription, view.IncludeBrand, view.Search);
-            if ((view.IncludeName != 0 || view.IncludeDescription != 0 || view.IncludeBrand != 0) && result.Count() == 0)
+            var result = service.SearchArticle(view.IncludeName, view.IncludeDescription, view.Search);
+            if ((view.IncludeName != 0 || view.IncludeDescription != 0) && result.Count() == 0)
             {
                 MessageBox.Show("No se encontraron resultados");
             }
@@ -56,7 +56,7 @@ namespace PresentacionLayer.Presenters
                 view.IsEdit = true;
                 view.NameA = article.Name;
                 view.Description = article.Description;
-                view.Brand = article.Brand;
+                //view.Brand = article.Brand;
                 view.Stock = article.Stock.ToString();
                 view.Id = article.Id.ToString();
             }
@@ -74,14 +74,14 @@ namespace PresentacionLayer.Presenters
         {
             if (view.IsEdit == false)
             {
-                service.CreateArticle(view.NameA, view.Description, view.Brand, view.Stock);
+                service.CreateArticle(view.NameA, view.Description, view.Stock);
                 MessageBox.Show("Se ha agregado el artículo");
                 RefreshArticleList();
                 ClearArticleForm();
             }
             else
             {
-                service.UpdateArticle(view.NameA, view.Description, view.Brand, view.Stock, view.Id);
+                service.UpdateArticle(view.NameA, view.Description, view.Stock, view.Id);
                 MessageBox.Show("Se ha actualizado el artículo");
                 View_LoadArticles(sender, e);
                 ClearArticleForm();
@@ -98,7 +98,6 @@ namespace PresentacionLayer.Presenters
         {
             view.NameA = "";
             view.Description = "";
-            view.Brand = "";
             view.Stock = "";
         }
 

@@ -23,19 +23,19 @@ namespace BussinesLayer.Services.Contracts
             _repository.DeleteArticle(id);
         }
 
-        public void CreateArticle(string name, string description, string brand, string stock)
+        public void CreateArticle(string name, string description, string stock)
         {
-            _repository.CreateArticle(name, description, brand, stock);
+            _repository.CreateArticle(name, description, stock);
         }
 
-        public IEnumerable<Article> SearchArticle(int includeName, int includeDescription, int includeBrand, string search)
+        public IEnumerable<Article> SearchArticle(int includeName, int includeDescription, string search)
         {
-            return _repository.SearchArticle(includeName, includeDescription, includeBrand, search).ToList();
+            return _repository.SearchArticle(includeName, includeDescription, search).ToList();
         }
 
-        public void UpdateArticle(string name, string description, string brand, string stock, string id)
+        public void UpdateArticle(string name, string description, string stock, string id)
         {
-            _repository.EditArticle(name, description, brand, stock, id);
+            _repository.EditArticle(name, description, stock, id);
         }
     }
 }

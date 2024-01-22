@@ -54,7 +54,6 @@ namespace PresentationLayer.Views
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpFilters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticles)).BeginInit();
@@ -235,7 +234,6 @@ namespace PresentationLayer.Views
             this.colId,
             this.colName,
             this.colDescription,
-            this.colBrand,
             this.colStock});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
@@ -268,6 +266,7 @@ namespace PresentationLayer.Views
             this.colId.MinimumWidth = 6;
             this.colId.Name = "colId";
             this.colId.ReadOnly = true;
+            this.colId.Width = 125;
             // 
             // colName
             // 
@@ -287,15 +286,6 @@ namespace PresentationLayer.Views
             this.colDescription.ReadOnly = true;
             this.colDescription.Width = 200;
             // 
-            // colBrand
-            // 
-            this.colBrand.DataPropertyName = "Brand";
-            this.colBrand.HeaderText = "Brand";
-            this.colBrand.MinimumWidth = 6;
-            this.colBrand.Name = "colBrand";
-            this.colBrand.ReadOnly = true;
-            this.colBrand.Width = 125;
-            // 
             // colStock
             // 
             this.colStock.DataPropertyName = "Stock";
@@ -303,6 +293,7 @@ namespace PresentationLayer.Views
             this.colStock.MinimumWidth = 6;
             this.colStock.Name = "colStock";
             this.colStock.ReadOnly = true;
+            this.colStock.Width = 125;
             // 
             // ArticleView
             // 
@@ -358,7 +349,6 @@ namespace PresentationLayer.Views
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDescription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colBrand;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStock;
     }
 }

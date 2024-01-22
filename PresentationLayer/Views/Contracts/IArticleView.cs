@@ -8,11 +8,9 @@ namespace PresentacionLayer.Views.Contracts
         string Id { get; set; }
         string NameA { get; set; }
         string Description { get; set; }
-        string Brand { get; set; }
         string Stock { get; set; }
         int IncludeName { get; set; }
         int IncludeDescription { get; set; }
-        int IncludeBrand { get; set; }
         string Search { get; set; }
         bool IsEdit { get; set; }
         int SelectedRows { get; }
