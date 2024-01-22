@@ -44,9 +44,14 @@ namespace PresentacionLayer.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(265, 268);
             this.Controls.Add(this.createArticleView1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "CreateArticleForm";
+            this.ShowIcon = false;
             this.Text = "CreateArticle";
             this.ResumeLayout(false);
 
