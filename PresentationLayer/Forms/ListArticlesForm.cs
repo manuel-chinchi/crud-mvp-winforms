@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BussinesLayer.Services;
+using EntityLayer.Models;
+using PresentationLayer.Presenters;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +15,8 @@ namespace PresentationLayer.Forms
 {
     public partial class ListArticlesForm : Form
     {
+        public CreateArticleForm _createArticleForm { get; } = new CreateArticleForm();
+
         public ListArticlesForm()
         {
             InitializeComponent();

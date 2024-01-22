@@ -9,15 +9,16 @@ using System.Threading.Tasks;
 
 namespace BussinesLayer.Services
 {
-    public class ArticleService : IArticleService<SortableBindingList<Article>>
+    public class ArticleService : IArticleService<IEnumerable<Article>>
     {
         private IArticleRepository<IEnumerable<Article>> _articleRepository = new ArticleRepository();
 
-        public SortableBindingList<Article> GetArticles()
+        public IEnumerable<Article> GetArticles()
         {
-            var result = _articleRepository.GetArticles().ToList();
-            var sortable = new SortableBindingList<Article>(result);
-            return sortable;
+            //var result = _articleRepository.GetArticles().ToList();
+            //var sortable = new SortableBindingList<Article>(result);
+            //return sortable;
+            return _articleRepository.GetArticles().ToList();
         }
 
         public void CreateArticle(string name, string description, string stock)
@@ -35,11 +36,12 @@ namespace BussinesLayer.Services
             _articleRepository.DeleteArticle(id);
         }
 
-        public SortableBindingList<Article> SearchArticle(int includeName, int includeDescription, string search)
+        public IEnumerable<Article> SearchArticle(int includeName, int includeDescription, string search)
         {
-            var result = _articleRepository.SearchArticle(includeName, includeDescription, search).ToList();
-            var sortable = new SortableBindingList<Article>(result);
-            return sortable;
+            //var result = _articleRepository.SearchArticle(includeName, includeDescription, search).ToList();
+            //var sortable = new SortableBindingList<Article>(result);
+            //return sortable;
+            return _articleRepository.SearchArticle(includeName, includeDescription, search).ToList();
         }
     }
 }

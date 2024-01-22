@@ -66,8 +66,12 @@
     <Compile Include="Forms\ListArticlesForm.Designer.cs">
       <DependentUpon>ListArticlesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presenters\CreateArticlePresenter.cs" />
+    <Compile Include="Presenters\ListArticlesPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\ICreateArticleView.cs" />
+    <Compile Include="Views\IListArticlesView.cs" />
     <Compile Include="Views\ListArticlesView.cs">
       <SubType>UserControl</SubType>
     </Compile>

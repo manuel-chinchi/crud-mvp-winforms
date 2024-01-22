@@ -2,6 +2,7 @@
 using EntityLayer;
 using EntityLayer.Models;
 using PresentationLayer.Forms;
+using PresentationLayer.Presenters;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,25 +15,56 @@ using System.Windows.Forms;
 
 namespace PresentationLayer.Views
 {
-    public partial class ListArticlesView : UserControl
+    public partial class ListArticlesView : UserControl, IListArticlesView
     {
-        private IArticleService<SortableBindingList<Article>> _articleService = new ArticleService();
+        public IEnumerable<Article> Articles
+        {
+            get
+            {
+                var bs = (BindingSource)dgvArticles.DataSource;
+                var list = (IEnumerable<Article>)bs.DataSource;
+                return list;
+            }
+            set
+            {
+                // no permite ordenacion
+                //BindingSource bs = new BindingSource();
+                //bs.DataSource = new List<Article>();
+                //dgvArticles.DataSource = bs.DataSource;
+
+                //BindingSource bs = new BindingSource((IContainer)value.ToList());
+
+                var bs = new BindingSource();
+                bs.DataSource = new SortableBindingList<Article>(value.ToList());
+                dgvArticles.DataSource = bs;
+            }
+        }
+        public int ArticleSelected
+        {
+            get => dgvArticles.CurrentCell.RowIndex;
+        }
+        public ListArticlesPresenter Presenter { get; set; }
+
+        private IArticleService<IEnumerable<Article>> _articleService = new ArticleService();
         private string id;
-        private bool isEdit = false;
+        private bool isEditMode = false;
 
         public ListArticlesView()
         {
             InitializeComponent();
+
+            Presenter = new ListArticlesPresenter(this, _articleService);
         }
 
         private void ListArticlesView_Load(object sender, EventArgs e)
         {
-            ShowArticles();
+            //ShowArticles();
+            Presenter.LoadArticles();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (isEdit == false)
+            if (isEditMode == false)
             {
                 try
                 {
@@ -54,7 +86,7 @@ namespace PresentationLayer.Views
                     MessageBox.Show("Se edito el articulo");
                     ShowArticles();
                     ClearForm();
-                    isEdit = false;
+                    isEditMode = false;
                 }
                 catch (Exception ex)
                 {
@@ -67,7 +99,7 @@ namespace PresentationLayer.Views
         {
             if (dgvArticles.SelectedRows.Count == 1)
             {
-                isEdit = true;
+                isEditMode = true;
                 txtName.Text = dgvArticles.CurrentRow.Cells["colName"].Value.ToString();
                 txtDescription.Text = dgvArticles.CurrentRow.Cells["colDescription"].Value.ToString();
                 txtStock.Text = dgvArticles.CurrentRow.Cells["colStock"].Value.ToString();
@@ -78,7 +110,7 @@ namespace PresentationLayer.Views
                 MessageBox.Show("Seleccione una sola fila");
             }
         }
-        
+
         private void btnDelete_Click(object sender, EventArgs e)
         {
             try
@@ -96,7 +128,8 @@ namespace PresentationLayer.Views
 
         private void btnShowAll_Click(object sender, EventArgs e)
         {
-            ShowArticles();
+            //ShowArticles();
+            Presenter.LoadArticles();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -116,8 +149,9 @@ namespace PresentationLayer.Views
 
         private void ShowArticles()
         {
-            var articleService = new ArticleService();
-            dgvArticles.DataSource = articleService.GetArticles();
+            //var articleService = new ArticleService();
+            //dgvArticles.DataSource = articleService.GetArticles();
+            Presenter.LoadArticles();
         }
 
         private void ClearForm()
@@ -137,6 +171,35 @@ namespace PresentationLayer.Views
                 e.SuppressKeyPress = true;
                 btnSearch_Click(sender, e);
             }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            var frm = new CreateArticleForm();
+            frm.ShowDialog();
+            MessageBox.Show("Se ha agregado el artículo");
+            Presenter.LoadArticles();
+
+            //var stock = string.IsNullOrEmpty(txtStock.Text) == true ? 0 : Convert.ToInt32(txtStock.Text);
+            //Presenter.AddArticle(new Article() { Name = txtName.Text, Description = txtDescription.Text, Stock = stock });
+        }
+
+        private void btnEdit2_Click(object sender, EventArgs e)
+        {
+            var frm = new CreateArticleForm(this.Presenter.GetArticleSelected());
+            frm.ShowDialog();
+            MessageBox.Show("Se ha actualizado el artículo");
+            Presenter.LoadArticles();
+
+            //var article = Articles.ToArray()[SelectedRow];
+            //Presenter.EditArticle(article.Id);
+        }
+
+        private void btnDelete2_Click(object sender, EventArgs e)
+        {
+            Presenter.DeleteArticle();
+            MessageBox.Show("Se ha eliminado el artículo");
+            Presenter.LoadArticles();
         }
     }
 }
