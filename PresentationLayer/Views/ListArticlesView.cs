@@ -129,13 +129,17 @@ namespace PresentationLayer.Views
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            Presenter.DeleteArticle();
-            var status = Presenter.GetStatus();
-            if (!string.IsNullOrEmpty(status))
+            var result = MessageBox.Show("¿Desea eliminar el artículo?", "Alerta", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
             {
-                MessageBox.Show(status);
+                Presenter.DeleteArticle();
+                var status = Presenter.GetStatus();
+                if (!string.IsNullOrEmpty(status))
+                {
+                    MessageBox.Show(status);
+                }
+                Presenter.LoadArticles();
             }
-            Presenter.LoadArticles();
         }
     }
 }
