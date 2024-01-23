@@ -55,6 +55,12 @@ namespace PresentationLayer.Views
             {
                 Presenter.SaveArticle();
             }
+
+            var status = Presenter.GetStatus();
+            if (!string.IsNullOrEmpty(status))
+            {
+                MessageBox.Show(status);
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

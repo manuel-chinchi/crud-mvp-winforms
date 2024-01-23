@@ -24,12 +24,14 @@ namespace PresentationLayer.Presenters
         public void SaveArticle()
         {
             _service.CreateArticle(_view.NameA, _view.Description, _view.Stock.ToString());
+            _view.MsgStatus = "Se ha agregado el artículo";
             _view.Close();
         }
 
         public void UpdateArticle()
         {
             _service.UpdateArticle(_view.NameA, _view.Description, _view.Stock.ToString(), _view.Id.ToString());
+            _view.MsgStatus = "Se ha actualizado el artículo";
             _view.Close();
         }
 
@@ -49,5 +51,7 @@ namespace PresentationLayer.Presenters
         public string GetError() { return _view.MsgError; }
 
         public string GetStatus() { return _view.MsgStatus; }
+
+
     }
 }

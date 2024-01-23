@@ -117,7 +117,6 @@ namespace PresentationLayer.Views
         {
             var frm = new CreateArticleForm();
             frm.ShowDialog();
-            MessageBox.Show(Presenter.GetStatus());
             Presenter.LoadArticles();
         }
 
@@ -125,26 +124,18 @@ namespace PresentationLayer.Views
         {
             var frm = new CreateArticleForm(this.Presenter.GetArticleSelected());
             frm.ShowDialog();
-            MessageBox.Show(Presenter.GetStatus());
             Presenter.LoadArticles();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            try
+            Presenter.DeleteArticle();
+            var status = Presenter.GetStatus();
+            if (!string.IsNullOrEmpty(status))
             {
-                Presenter.DeleteArticle();
-                var status = Presenter.GetStatus();
-                if (!string.IsNullOrEmpty(status))
-                {
-                    MessageBox.Show(status);
-                }
-                Presenter.LoadArticles();
+                MessageBox.Show(status);
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex);
-            }
+            Presenter.LoadArticles();
         }
     }
 }

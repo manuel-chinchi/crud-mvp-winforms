@@ -14,7 +14,6 @@ namespace PresentationLayer.Presenters
         IListArticlesView _view { get; set; }
         IArticleService<IEnumerable<Article>> _service { get; set; }
 
-
         public ListArticlesPresenter(IListArticlesView view, IArticleService<IEnumerable<Article>> service)
         {
             _view = view;
@@ -25,6 +24,7 @@ namespace PresentationLayer.Presenters
         public void DeleteArticle()
         {
             var article = _view.Articles.ToList()[_view.ArticleSelected];
+            _view.MsgStatus = "Se ha eliminado el artículo";
             _service.DeleteArticle(article.Id.ToString());
         }
 
