@@ -43,53 +43,60 @@ namespace PresentationLayer.Views
             // lblStock
             // 
             this.lblStock.AutoSize = true;
-            this.lblStock.Location = new System.Drawing.Point(37, 194);
+            this.lblStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStock.Location = new System.Drawing.Point(3, 170);
             this.lblStock.Name = "lblStock";
-            this.lblStock.Size = new System.Drawing.Size(47, 17);
+            this.lblStock.Size = new System.Drawing.Size(47, 18);
             this.lblStock.TabIndex = 36;
-            this.lblStock.Text = "Stock:";
+            this.lblStock.Text = "Stock";
             // 
             // lblDescription
             // 
             this.lblDescription.AutoSize = true;
-            this.lblDescription.Location = new System.Drawing.Point(3, 137);
+            this.lblDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescription.Location = new System.Drawing.Point(3, 113);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(83, 17);
+            this.lblDescription.Size = new System.Drawing.Size(83, 18);
             this.lblDescription.TabIndex = 35;
-            this.lblDescription.Text = "Description:";
+            this.lblDescription.Text = "Description";
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(37, 80);
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Location = new System.Drawing.Point(3, 56);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(49, 17);
+            this.lblName.Size = new System.Drawing.Size(48, 18);
             this.lblName.TabIndex = 34;
-            this.lblName.Text = "Name:";
+            this.lblName.Text = "Name";
             // 
             // txtStock
             // 
-            this.txtStock.Location = new System.Drawing.Point(92, 191);
+            this.txtStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStock.Location = new System.Drawing.Point(6, 191);
             this.txtStock.Name = "txtStock";
-            this.txtStock.Size = new System.Drawing.Size(231, 22);
+            this.txtStock.Size = new System.Drawing.Size(317, 27);
             this.txtStock.TabIndex = 33;
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(92, 134);
+            this.txtDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescription.Location = new System.Drawing.Point(6, 134);
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(231, 22);
+            this.txtDescription.Size = new System.Drawing.Size(317, 27);
             this.txtDescription.TabIndex = 32;
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(92, 77);
+            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtName.Location = new System.Drawing.Point(6, 77);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(231, 22);
+            this.txtName.Size = new System.Drawing.Size(317, 27);
             this.txtName.TabIndex = 31;
             // 
             // btnAccept
             // 
+            this.btnAccept.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAccept.Location = new System.Drawing.Point(6, 271);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(317, 39);
@@ -100,6 +107,7 @@ namespace PresentationLayer.Views
             // 
             // btnCancel
             // 
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.Location = new System.Drawing.Point(6, 336);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(317, 39);
@@ -111,12 +119,12 @@ namespace PresentationLayer.Views
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(129, 10);
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(99, 13);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(94, 20);
+            this.lblTitle.Size = new System.Drawing.Size(141, 20);
             this.lblTitle.TabIndex = 39;
-            this.lblTitle.Text = "Article data";
+            this.lblTitle.Text = "ARTICLE DATA";
             // 
             // CreateArticleView
             // 
