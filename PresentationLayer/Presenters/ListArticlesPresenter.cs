@@ -31,6 +31,8 @@ namespace PresentationLayer.Presenters
         public void LoadArticles()
         {
             _view.Articles = _service.GetArticles();
+            _view.IncludeName = false;
+            _view.IncludeDescription = false;
         }
 
         public Article GetArticleSelected()
