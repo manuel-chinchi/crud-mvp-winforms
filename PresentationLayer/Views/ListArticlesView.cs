@@ -122,6 +122,7 @@ namespace PresentationLayer.Views
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            // passing a model automatically activates the editor mode
             var frm = new CreateArticleForm(this.Presenter.GetArticleSelected());
             frm.ShowDialog();
             Presenter.LoadArticles();
@@ -129,7 +130,9 @@ namespace PresentationLayer.Views
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            var result = MessageBox.Show("¿Desea eliminar el artículo?", "Alerta", MessageBoxButtons.YesNo);
+            var article = Articles.ToArray()[ArticleSelected];
+            var result = MessageBox.Show($"¿Desea eliminar el artículo? '{article.Name}, id={article.Id}'", "Alerta", MessageBoxButtons.YesNo);
+
             if (result == DialogResult.Yes)
             {
                 Presenter.DeleteArticle();
