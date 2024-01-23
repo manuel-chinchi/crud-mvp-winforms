@@ -17,6 +17,27 @@ namespace PresentationLayer.Views
 {
     public partial class ListArticlesView : UserControl, IListArticlesView
     {
+        public int ArticleSelected
+        {
+            get => dgvArticles.CurrentCell.RowIndex;
+        }
+        public bool IncludeName
+        {
+            get => Convert.ToBoolean(chkName.CheckState);
+            set { chkName.CheckState = (CheckState)Convert.ToInt32(value); }
+        }
+        public bool IncludeDescription
+        {
+            get => Convert.ToBoolean(chkDescription.CheckState);
+            set { chkDescription.CheckState = (CheckState)Convert.ToInt32(value); }
+        }
+        public string Search
+        {
+            get => txtSearch.Text;
+            set { txtSearch.Text = value; }
+        }
+        public string MsgError { get; set; }
+        public string MsgStatus { get; set; }
         public IEnumerable<Article> Articles
         {
             get
@@ -39,28 +60,7 @@ namespace PresentationLayer.Views
                 dgvArticles.DataSource = bs;
             }
         }
-        public int ArticleSelected
-        {
-            get => dgvArticles.CurrentCell.RowIndex;
-        }
         public ListArticlesPresenter Presenter { get; set; }
-        public bool IncludeName
-        {
-            get => Convert.ToBoolean(chkName.CheckState);
-            set { chkName.CheckState = (CheckState)Convert.ToInt32(value); }
-        }
-        public bool IncludeDescription
-        {
-            get => Convert.ToBoolean(chkDescription.CheckState);
-            set { chkDescription.CheckState = (CheckState)Convert.ToInt32(value); }
-        }
-        public string Search
-        {
-            get => txtSearch.Text;
-            set { txtSearch.Text = value; }
-        }
-        public string MsgError { get; set; }
-        public string MsgStatus { get; set; }
 
         public ListArticlesView()
         {

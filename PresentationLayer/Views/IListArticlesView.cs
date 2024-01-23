@@ -5,13 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace PresentationLayer.Views
 {
     public interface IListArticlesView
     {
-        IEnumerable<Article> Articles { get; set; }
         int ArticleSelected { get; }
         bool IncludeName { get; set; }
         bool IncludeDescription { get; set; }
@@ -19,6 +17,7 @@ namespace PresentationLayer.Views
         string MsgError { get; set; }
         string MsgStatus { get; set; }
 
+        IEnumerable<Article> Articles { get; set; }
         ListArticlesPresenter Presenter { get; set; }
     }
 }

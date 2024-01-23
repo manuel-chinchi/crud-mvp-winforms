@@ -26,7 +26,6 @@ namespace PresentationLayer.Presenters
         {
             var article = _view.Articles.ToList()[_view.ArticleSelected];
             _service.DeleteArticle(article.Id.ToString());
-            _view.MsgStatus = "Se ha eliminado el artículo";
         }
 
         public void LoadArticles()
