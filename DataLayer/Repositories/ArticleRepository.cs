@@ -15,12 +15,12 @@ namespace DataLayer.Repositories
     {
         // FIXME: System.Configuration reference not found
         //https://stackoverflow.com/questions/4431034/configurationmanager-not-found
-        private static string CONNECTION_STRING = ConfigurationManager.ConnectionStrings["MicrosoftDataBase"].ConnectionString;
+        private static string _connectionString = ConfigurationManager.ConnectionStrings["MicrosoftDataBase"].ConnectionString;
 
         public IEnumerable<Article> GetArticles()
         {
             IEnumerable<Article> result = new List<Article>();
-            using (var connection = new SqlConnection(CONNECTION_STRING))
+            using (var connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
                 result = connection.Query<Article>("GetArticles", CommandType.StoredProcedure);
@@ -30,7 +30,7 @@ namespace DataLayer.Repositories
 
         public void CreateArticle(string name, string description, string stock)
         {
-            using (var connection = new SqlConnection(CONNECTION_STRING))
+            using (var connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
                 connection.Execute(
@@ -44,13 +44,13 @@ namespace DataLayer.Repositories
                     null,
                     null,
                     CommandType.StoredProcedure
-                    );
+                );
             }
         }
 
         public void UpdateArticle(string name, string description, string stock, string id)
         {
-            using (var connection = new SqlConnection(CONNECTION_STRING))
+            using (var connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
                 connection.Execute(
@@ -69,7 +69,7 @@ namespace DataLayer.Repositories
 
         public void DeleteArticle(string id)
         {
-            using (var connection = new SqlConnection(CONNECTION_STRING))
+            using (var connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
                 connection.Execute(
@@ -87,7 +87,7 @@ namespace DataLayer.Repositories
         public IEnumerable<Article> SearchArticle(int includeName, int includeDescription, string search)
         {
             var result = new List<Article>();
-            using (var connection = new SqlConnection(CONNECTION_STRING))
+            using (var connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
                 result = connection.Query<Article>(
