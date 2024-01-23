@@ -2,6 +2,7 @@
 using EntityLayer.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -12,7 +13,9 @@ namespace DataLayer.Repositories
 {
     public class ArticleRepository : IArticleRepository<IEnumerable<Article>>
     {
-        const string CONNECTION_STRING = "Server=(localdb)\\MSSQLLocalDB; DataBase=crud_mvp_winforms; Integrated Security=true";
+        // FIXME: System.Configuration reference not found
+        //https://stackoverflow.com/questions/4431034/configurationmanager-not-found
+        private static string CONNECTION_STRING = ConfigurationManager.ConnectionStrings["MicrosoftDataBase"].ConnectionString;
 
         public IEnumerable<Article> GetArticles()
         {
