@@ -59,7 +59,6 @@ namespace PresentationLayer.Views
             get => txtSearch.Text;
             set { txtSearch.Text = value; }
         }
-
         public string MsgError { get; set; }
         public string MsgStatus { get; set; }
 
@@ -73,24 +72,6 @@ namespace PresentationLayer.Views
         private void ListArticlesView_Load(object sender, EventArgs e)
         {
             Presenter.LoadArticles();
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Presenter.DeleteArticle();
-                var status = Presenter.GetStatus();
-                if (!string.IsNullOrEmpty(status))
-                {
-                    MessageBox.Show(status);
-                }
-                Presenter.LoadArticles();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex);
-            }
         }
 
         private void btnShowAll_Click(object sender, EventArgs e)
@@ -136,29 +117,34 @@ namespace PresentationLayer.Views
         {
             var frm = new CreateArticleForm();
             frm.ShowDialog();
-            MessageBox.Show("Se ha agregado el artículo");
+            MessageBox.Show(Presenter.GetStatus());
             Presenter.LoadArticles();
-
-            //var stock = string.IsNullOrEmpty(txtStock.Text) == true ? 0 : Convert.ToInt32(txtStock.Text);
-            //Presenter.AddArticle(new Article() { Name = txtName.Text, Description = txtDescription.Text, Stock = stock });
         }
 
-        private void btnEdit2_Click(object sender, EventArgs e)
+        private void btnEdit_Click(object sender, EventArgs e)
         {
             var frm = new CreateArticleForm(this.Presenter.GetArticleSelected());
             frm.ShowDialog();
-            MessageBox.Show("Se ha actualizado el artículo");
+            MessageBox.Show(Presenter.GetStatus());
             Presenter.LoadArticles();
-
-            //var article = Articles.ToArray()[SelectedRow];
-            //Presenter.EditArticle(article.Id);
         }
 
-        private void btnDelete2_Click(object sender, EventArgs e)
+        private void btnDelete_Click(object sender, EventArgs e)
         {
-            Presenter.DeleteArticle();
-            MessageBox.Show("Se ha eliminado el artículo");
-            Presenter.LoadArticles();
+            try
+            {
+                Presenter.DeleteArticle();
+                var status = Presenter.GetStatus();
+                if (!string.IsNullOrEmpty(status))
+                {
+                    MessageBox.Show(status);
+                }
+                Presenter.LoadArticles();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex);
+            }
         }
     }
 }

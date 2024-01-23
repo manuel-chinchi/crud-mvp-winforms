@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace PresentationLayer.Presenters
 {
@@ -22,24 +21,6 @@ namespace PresentationLayer.Presenters
             _service = service;
         }
 
-        public void LoadArticleFromEdit(Article article)
-        {
-            _view.Id = article.Id.ToString();
-            _view.NameA = article.Name;
-            _view.Description = article.Description;
-            _view.Stock = article.Stock.ToString();
-        }
-
-        public void AddArticle(Article article)
-        {
-            _service.CreateArticle(article.Name, article.Description, article.Stock.ToString());
-        }
-
-        public void ActivateEditMode()
-        {
-            _view.IsEditMode = true;
-        }
-
         public void SaveArticle()
         {
             _service.CreateArticle(_view.NameA, _view.Description, _view.Stock.ToString());
@@ -51,5 +32,22 @@ namespace PresentationLayer.Presenters
             _service.UpdateArticle(_view.NameA, _view.Description, _view.Stock.ToString(), _view.Id.ToString());
             _view.Close();
         }
+
+        public void LoadArticleFromEdit(Article article)
+        {
+            _view.Id = article.Id.ToString();
+            _view.NameA = article.Name;
+            _view.Description = article.Description;
+            _view.Stock = article.Stock.ToString();
+        }
+
+        public void ActivateEditMode()
+        {
+            _view.IsEditMode = true;
+        }
+
+        public string GetError() { return _view.MsgError; }
+
+        public string GetStatus() { return _view.MsgStatus; }
     }
 }

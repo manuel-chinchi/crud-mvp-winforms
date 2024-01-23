@@ -9,16 +9,16 @@ namespace PresentationLayer.Views
 {
     public interface ICreateArticleView
     {
-        //Article article { get; set; }
         string Id { get; set; }
         string NameA { get; set; }
         string Description { get; set; }
         string Stock { get; set; }
 
         bool IsEditMode { get; set; }
-
-        void Close();
+        string MsgError { get; set; }
+        string MsgStatus { get; set; }
 
         Presenters.CreateArticlePresenter Presenter { get; set; }
+        void Close();
     }
 }

@@ -39,8 +39,8 @@ namespace PresentationLayer.Views
             this.colDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.btnEdit2 = new System.Windows.Forms.Button();
-            this.btnDelete2 = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.grpFilters = new System.Windows.Forms.GroupBox();
             this.chkDescription = new System.Windows.Forms.CheckBox();
             this.chkName = new System.Windows.Forms.CheckBox();
@@ -148,25 +148,25 @@ namespace PresentationLayer.Views
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // btnEdit2
+            // btnEdit
             // 
-            this.btnEdit2.Location = new System.Drawing.Point(728, 118);
-            this.btnEdit2.Name = "btnEdit2";
-            this.btnEdit2.Size = new System.Drawing.Size(150, 46);
-            this.btnEdit2.TabIndex = 39;
-            this.btnEdit2.Text = "Edit";
-            this.btnEdit2.UseVisualStyleBackColor = true;
-            this.btnEdit2.Click += new System.EventHandler(this.btnEdit2_Click);
+            this.btnEdit.Location = new System.Drawing.Point(728, 118);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(150, 46);
+            this.btnEdit.TabIndex = 39;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
-            // btnDelete2
+            // btnDelete
             // 
-            this.btnDelete2.Location = new System.Drawing.Point(728, 170);
-            this.btnDelete2.Name = "btnDelete2";
-            this.btnDelete2.Size = new System.Drawing.Size(150, 46);
-            this.btnDelete2.TabIndex = 40;
-            this.btnDelete2.Text = "Delete";
-            this.btnDelete2.UseVisualStyleBackColor = true;
-            this.btnDelete2.Click += new System.EventHandler(this.btnDelete2_Click);
+            this.btnDelete.Location = new System.Drawing.Point(728, 170);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(150, 46);
+            this.btnDelete.TabIndex = 40;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // grpFilters
             // 
@@ -225,8 +225,8 @@ namespace PresentationLayer.Views
             this.Controls.Add(this.grpFilters);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.btnDelete2);
-            this.Controls.Add(this.btnEdit2);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnShowAll);
             this.Controls.Add(this.dgvArticles);
@@ -250,8 +250,8 @@ namespace PresentationLayer.Views
         private System.Windows.Forms.DataGridViewTextBoxColumn colDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStock;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnEdit2;
-        private System.Windows.Forms.Button btnDelete2;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.GroupBox grpFilters;
         private System.Windows.Forms.CheckBox chkDescription;
         private System.Windows.Forms.CheckBox chkName;
