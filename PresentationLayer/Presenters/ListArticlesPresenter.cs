@@ -1,6 +1,5 @@
 ﻿using BussinesLayer.Services;
 using EntityLayer.Models;
-using PresentationLayer.Forms;
 using PresentationLayer.Views;
 using System;
 using System.Collections.Generic;
@@ -16,6 +15,7 @@ namespace PresentationLayer.Presenters
         IListArticlesView _view { get; set; }
         IArticleService<IEnumerable<Article>> _service { get; set; }
 
+
         public ListArticlesPresenter(IListArticlesView view, IArticleService<IEnumerable<Article>> service)
         {
             _view = view;
@@ -23,26 +23,14 @@ namespace PresentationLayer.Presenters
             _service = service;
         }
 
-        //public void AddArticle(Article article)
-        //{
-        //    var frm = new CreateArticleForm();
-        //    frm.ShowDialog();
-        //}
-
-        //public void EditArticle(int id)
-        //{
-        //    var frm = new CreateArticleForm(true);
-        //    frm.ShowDialog();
-        //}
-
-        public void DeleteArticle()//ok
+        public void DeleteArticle()
         {
             var article = _view.Articles.ToList()[_view.ArticleSelected];
             _service.DeleteArticle(article.Id.ToString());
-            //_view.Articles = _service.GetArticles();
+            _view.MsgStatus = "Se ha eliminado el artículo";
         }
 
-        public void LoadArticles()//ok
+        public void LoadArticles()
         {
             _view.Articles = _service.GetArticles();
         }
@@ -51,5 +39,27 @@ namespace PresentationLayer.Presenters
         {
             return _view.Articles.ToArray()[_view.ArticleSelected];
         }
+
+        public void SearchArticle()
+        {
+            var result = _service.SearchArticle(Convert.ToInt32(_view.IncludeName), Convert.ToInt32(_view.IncludeDescription), _view.Search);
+            _view.MsgError = "";
+
+            if (_view.IncludeName == false && _view.IncludeDescription == false)
+            {
+                _view.MsgError = "Por favor seleccione un filtro de busqueda";
+                return;
+            }
+            else if ((_view.IncludeName || _view.IncludeDescription) && result.Count() == 0)
+            {
+                _view.MsgError = "Nos se encontraron resultados";
+            }
+
+            _view.Articles = result;
+        }
+
+        public string GetError() { return _view.MsgError; }
+
+        public string GetStatus() { return _view.MsgStatus; }
     }
 }

@@ -15,8 +15,6 @@ namespace PresentationLayer.Forms
 {
     public partial class ListArticlesForm : Form
     {
-        public CreateArticleForm _createArticleForm { get; } = new CreateArticleForm();
-
         public ListArticlesForm()
         {
             InitializeComponent();

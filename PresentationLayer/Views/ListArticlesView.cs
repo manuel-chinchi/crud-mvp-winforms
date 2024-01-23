@@ -44,81 +44,48 @@ namespace PresentationLayer.Views
             get => dgvArticles.CurrentCell.RowIndex;
         }
         public ListArticlesPresenter Presenter { get; set; }
+        public bool IncludeName
+        {
+            get => Convert.ToBoolean(chkName.CheckState);
+            set { chkName.CheckState = (CheckState)Convert.ToInt32(value); }
+        }
+        public bool IncludeDescription
+        {
+            get => Convert.ToBoolean(chkDescription.CheckState);
+            set { chkDescription.CheckState = (CheckState)Convert.ToInt32(value); }
+        }
+        public string Search
+        {
+            get => txtSearch.Text;
+            set { txtSearch.Text = value; }
+        }
 
-        private IArticleService<IEnumerable<Article>> _articleService = new ArticleService();
-        private string id;
-        private bool isEditMode = false;
+        public string MsgError { get; set; }
+        public string MsgStatus { get; set; }
 
         public ListArticlesView()
         {
             InitializeComponent();
 
-            Presenter = new ListArticlesPresenter(this, _articleService);
+            Presenter = new ListArticlesPresenter(this, new ArticleService());
         }
 
         private void ListArticlesView_Load(object sender, EventArgs e)
         {
-            //ShowArticles();
             Presenter.LoadArticles();
-        }
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            if (isEditMode == false)
-            {
-                try
-                {
-                    _articleService.CreateArticle(txtName.Text, txtDescription.Text, txtStock.Text);
-                    MessageBox.Show("Se ha agregado el articulo");
-                    ShowArticles();
-                    ClearForm();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex);
-                }
-            }
-            else
-            {
-                try
-                {
-                    _articleService.UpdateArticle(txtName.Text, txtDescription.Text, txtStock.Text, id);
-                    MessageBox.Show("Se edito el articulo");
-                    ShowArticles();
-                    ClearForm();
-                    isEditMode = false;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex);
-                }
-            }
-        }
-
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            if (dgvArticles.SelectedRows.Count == 1)
-            {
-                isEditMode = true;
-                txtName.Text = dgvArticles.CurrentRow.Cells["colName"].Value.ToString();
-                txtDescription.Text = dgvArticles.CurrentRow.Cells["colDescription"].Value.ToString();
-                txtStock.Text = dgvArticles.CurrentRow.Cells["colStock"].Value.ToString();
-                id = dgvArticles.CurrentRow.Cells["colId"].Value.ToString();
-            }
-            else
-            {
-                MessageBox.Show("Seleccione una sola fila");
-            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             try
             {
-                string id = dgvArticles.CurrentRow.Cells["colId"].Value.ToString();
-                _articleService.DeleteArticle(id);
-                MessageBox.Show("Se ha eliminado el articulo");
-                ShowArticles();
+                Presenter.DeleteArticle();
+                var status = Presenter.GetStatus();
+                if (!string.IsNullOrEmpty(status))
+                {
+                    MessageBox.Show(status);
+                }
+                Presenter.LoadArticles();
             }
             catch (Exception ex)
             {
@@ -128,7 +95,6 @@ namespace PresentationLayer.Views
 
         private void btnShowAll_Click(object sender, EventArgs e)
         {
-            //ShowArticles();
             Presenter.LoadArticles();
         }
 
@@ -136,8 +102,12 @@ namespace PresentationLayer.Views
         {
             try
             {
-                ArticleService articleService = new ArticleService();
-                dgvArticles.DataSource = articleService.SearchArticle(((int)chkName.CheckState), ((int)chkDescription.CheckState), txtSearch.Text);
+                Presenter.SearchArticle();
+                var error = Presenter.GetError();
+                if (!string.IsNullOrEmpty(error))
+                {
+                    MessageBox.Show(error);
+                }
             }
             catch (Exception ex)
             {
@@ -145,31 +115,20 @@ namespace PresentationLayer.Views
             }
         }
 
-        #region Methods
-
-        private void ShowArticles()
-        {
-            //var articleService = new ArticleService();
-            //dgvArticles.DataSource = articleService.GetArticles();
-            Presenter.LoadArticles();
-        }
-
-        private void ClearForm()
-        {
-            txtName.Clear();
-            txtDescription.Clear();
-            txtStock.Clear();
-        }
-
-        #endregion
-
         private void txtSearch_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyData == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
+                // ting!!! >:c
                 e.Handled = true;
                 e.SuppressKeyPress = true;
-                btnSearch_Click(sender, e);
+
+                Presenter.SearchArticle();
+                var error = Presenter.GetError();
+                if (!string.IsNullOrEmpty(error))
+                {
+                    MessageBox.Show(error);
+                }
             }
         }
 

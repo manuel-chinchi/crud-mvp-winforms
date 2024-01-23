@@ -10,9 +10,6 @@ using System.Windows.Forms;
 
 namespace PresentationLayer.Presenters
 {
-    /// <summary>
-    /// Se instancia desde la vista
-    /// </summary>
     public class CreateArticlePresenter
     {
         ICreateArticleView _view { get; set; }
@@ -43,7 +40,6 @@ namespace PresentationLayer.Presenters
             _view.IsEditMode = true;
         }
 
-        // USAR ESTOS
         public void SaveArticle()
         {
             _service.CreateArticle(_view.NameA, _view.Description, _view.Stock.ToString());
