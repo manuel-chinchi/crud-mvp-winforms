@@ -15,7 +15,10 @@ namespace DataLayer.Repositories
     {
         // FIXME: System.Configuration reference not found
         //https://stackoverflow.com/questions/4431034/configurationmanager-not-found
-        private static string _connectionString = ConfigurationManager.ConnectionStrings["MicrosoftDataBase"].ConnectionString;
+        //private static string _connectionString = ConfigurationManager.ConnectionStrings["MicrosoftDataBase"].ConnectionString;
+        //FIXME: Usar esta conexión para evitar el error "Error al crear el componente 'ListArticleView'"
+        // por alguna razón no puede tomar la connexión desde App.Config usando ConfigurationManager en tiempo de diseño
+        private static string _connectionString = "Server=(localdb)\\MSSQLLocalDB; DataBase=crud_mvp_winforms; Integrated Security=true";
 
         public IEnumerable<Article> GetArticles()
         {
