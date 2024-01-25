@@ -15,7 +15,7 @@ namespace DataLayer.Repositories
     {
         // FIXME: System.Configuration reference not found
         //https://stackoverflow.com/questions/4431034/configurationmanager-not-found
-        private readonly string _connectionString = ConfigurationManager.ConnectionStrings["MicrosoftDataBase"].ConnectionString;
+        private static string _connectionString = ConfigurationManager.ConnectionStrings["MicrosoftDataBase"].ConnectionString;
 
         public IEnumerable<Article> GetArticles()
         {
