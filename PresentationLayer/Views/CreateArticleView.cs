@@ -1,4 +1,5 @@
 ﻿using BussinesLayer.Services;
+using EntityLayer.Models;
 using PresentationLayer.Presenters;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,11 @@ namespace PresentationLayer.Views
         {
             get => txtStock.Text; set => txtStock.Text = value;
         }
+        public string Category
+        {
+            get => cmbCategories.SelectedItem.ToString(); 
+            set => cmbCategories.SelectedItem = value;
+        }
 
         public CreateArticlePresenter Presenter { get; set; }
 
@@ -36,12 +42,47 @@ namespace PresentationLayer.Views
         }
         public string MsgError { get; set; }
         public string MsgStatus { get; set; }
+        public IEnumerable<Category> Categories
+        {
+            get
+            {
+                var bs = (BindingSource)cmbCategories.DataSource;
+                var list = (IEnumerable<Category>)bs.DataSource;
+                return list;
+            }
+            set
+            {
+                var bs = new BindingSource();
+                bs.DataSource = new SortableBindingList<Category>(value.ToList());
+                //bs.DataSource = value.ToList();
+                cmbCategories.DataSource = bs;
+            }
+        }
+        public int CategorySelected
+        {
+            get => cmbCategories.SelectedIndex;
+            set
+            {
+                cmbCategories.SelectedIndex = value;
+            }
+        }
 
         public CreateArticleView()
         {
             InitializeComponent();
 
-            Presenter = new CreateArticlePresenter(this, new ArticleService());
+            Presenter = new CreateArticlePresenter(this, new ArticleService(), new CategoryService());
+        }
+
+        private void CreateArticleView_Load(object sender, EventArgs e)
+        {
+            if (this.IsEditMode == true)
+            {
+            }
+            else
+            {
+                Presenter.LoadCategories();
+            }
         }
 
         private void btnAccept_Click(object sender, EventArgs e)
@@ -72,5 +113,6 @@ namespace PresentationLayer.Views
         {
             ((Form)this.TopLevelControl).Close();
         }
+
     }
 }

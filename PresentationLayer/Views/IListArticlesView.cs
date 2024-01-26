@@ -16,7 +16,6 @@ namespace PresentationLayer.Views
         string Search { get; set; }
         string MsgError { get; set; }
         string MsgStatus { get; set; }
-
         IEnumerable<Article> Articles { get; set; }
         ListArticlesPresenter Presenter { get; set; }
     }

@@ -12,25 +12,38 @@ namespace PresentationLayer.Presenters
     public class CreateArticlePresenter
     {
         ICreateArticleView _view { get; set; }
-        IArticleService<IEnumerable<Article>> _service { get; set; }
+        IArticleService<IEnumerable<Article>> _articleService { get; set; }
+        ICategoryService<IEnumerable<Category>> _categoryService { get; set; }
 
         public CreateArticlePresenter(ICreateArticleView view, IArticleService<IEnumerable<Article>> service)
         {
             _view = view;
             _view.Presenter = this;
-            _service = service;
+            _articleService = service;
+            _view.Category = "";
+        }
+
+        public CreateArticlePresenter(ICreateArticleView view, IArticleService<IEnumerable<Article>> articleService, ICategoryService<IEnumerable<Category>> categoryService)
+        {
+            _view = view;
+            _view.Presenter = this;
+            _articleService = articleService;
+            _categoryService = categoryService;
+            _view.Categories = _categoryService.GetCategories();
         }
 
         public void SaveArticle()
         {
-            _service.CreateArticle(_view.NameA, _view.Description, _view.Stock.ToString(), "1");
+            var category = _view.Categories.ToArray()[_view.CategorySelected];
+            _articleService.CreateArticle(_view.NameA, _view.Description, _view.Stock.ToString(), category.Id.ToString());
             _view.MsgStatus = "Se ha agregado el artículo";
             _view.Close();
         }
 
         public void UpdateArticle()
         {
-            _service.UpdateArticle(_view.NameA, _view.Description, _view.Stock.ToString(), _view.Id.ToString(), "1");
+            var category = _view.Categories.ToArray()[_view.CategorySelected];
+            _articleService.UpdateArticle(_view.NameA, _view.Description, _view.Stock.ToString(), _view.Id.ToString(), category.Id.ToString());
             _view.MsgStatus = "Se ha actualizado el artículo";
             _view.Close();
         }
@@ -41,6 +54,12 @@ namespace PresentationLayer.Presenters
             _view.NameA = article.Name;
             _view.Description = article.Description;
             _view.Stock = article.Stock.ToString();
+            _view.CategorySelected = _view.Categories.ToList().FindIndex(c => c.Id == Convert.ToInt32(article.CategoryId));
+        }
+
+        public void LoadCategories()
+        {
+            _view.Categories = _categoryService.GetCategories();
         }
 
         public void ActivateEditMode()

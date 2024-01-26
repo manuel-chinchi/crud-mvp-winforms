@@ -38,6 +38,8 @@ namespace PresentationLayer.Views
             this.btnAccept = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.cmbCategories = new System.Windows.Forms.ComboBox();
+            this.lblCategories = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblStock
@@ -97,7 +99,7 @@ namespace PresentationLayer.Views
             // btnAccept
             // 
             this.btnAccept.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAccept.Location = new System.Drawing.Point(6, 271);
+            this.btnAccept.Location = new System.Drawing.Point(6, 332);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(317, 39);
             this.btnAccept.TabIndex = 37;
@@ -108,7 +110,7 @@ namespace PresentationLayer.Views
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(6, 336);
+            this.btnCancel.Location = new System.Drawing.Point(6, 397);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(317, 39);
             this.btnCancel.TabIndex = 38;
@@ -126,11 +128,33 @@ namespace PresentationLayer.Views
             this.lblTitle.TabIndex = 39;
             this.lblTitle.Text = "ARTICLE DATA";
             // 
+            // cmbCategories
+            // 
+            this.cmbCategories.DisplayMember = "Name";
+            this.cmbCategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCategories.FormattingEnabled = true;
+            this.cmbCategories.Location = new System.Drawing.Point(6, 265);
+            this.cmbCategories.Name = "cmbCategories";
+            this.cmbCategories.Size = new System.Drawing.Size(317, 28);
+            this.cmbCategories.TabIndex = 40;
+            // 
+            // lblCategories
+            // 
+            this.lblCategories.AutoSize = true;
+            this.lblCategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCategories.Location = new System.Drawing.Point(3, 242);
+            this.lblCategories.Name = "lblCategories";
+            this.lblCategories.Size = new System.Drawing.Size(76, 20);
+            this.lblCategories.TabIndex = 41;
+            this.lblCategories.Text = "Category";
+            // 
             // CreateArticleView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
+            this.Controls.Add(this.lblCategories);
+            this.Controls.Add(this.cmbCategories);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAccept);
@@ -141,7 +165,8 @@ namespace PresentationLayer.Views
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.txtName);
             this.Name = "CreateArticleView";
-            this.Size = new System.Drawing.Size(328, 382);
+            this.Size = new System.Drawing.Size(328, 445);
+            this.Load += new System.EventHandler(this.CreateArticleView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -158,5 +183,7 @@ namespace PresentationLayer.Views
         private System.Windows.Forms.Button btnAccept;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.ComboBox cmbCategories;
+        private System.Windows.Forms.Label lblCategories;
     }
 }

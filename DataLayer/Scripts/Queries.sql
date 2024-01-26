@@ -88,8 +88,9 @@ GO
 
 CREATE PROCEDURE GetArticles
 AS
-SELECT *
-FROM Articles
+SELECT a.*, c.Name as CategoryName
+FROM Articles a, Categories c
+WHERE a.CategoryId = c.Id
 GO
 
 
@@ -124,9 +125,9 @@ CREATE PROCEDURE SearchArticle
     @Search VARCHAR(100)
 AS
 SELECT
-    *
+    a.*, c.Name CategoryName
 FROM
-    Articles a
+    Articles a, Categories c
 WHERE
     (
         (@IncludeName = 1 AND a.Name LIKE '%' + @Search + '%')
@@ -135,6 +136,8 @@ WHERE
     )
     AND
     @Search <> ''
+    AND
+    a.CategoryId = c.Id
 GO
 
 
