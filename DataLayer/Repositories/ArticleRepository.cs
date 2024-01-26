@@ -31,7 +31,7 @@ namespace DataLayer.Repositories
             return result;
         }
 
-        public void CreateArticle(string name, string description, string stock)
+        public void CreateArticle(string name, string description, string stock, string categoryId)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
@@ -42,7 +42,8 @@ namespace DataLayer.Repositories
                     {
                         Name = name,
                         Description = description,
-                        Stock = stock
+                        Stock = stock,
+                        CategoryId = categoryId
                     },
                     null,
                     null,
@@ -51,7 +52,7 @@ namespace DataLayer.Repositories
             }
         }
 
-        public void UpdateArticle(string name, string description, string stock, string id)
+        public void UpdateArticle(string name, string description, string stock, string id, string categoryId)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
@@ -63,7 +64,8 @@ namespace DataLayer.Repositories
                         Name = name,
                         Description = description,
                         Stock = stock,
-                        Id = id
+                        Id = id,
+                        CategoryId = categoryId
                     }, null, null,
                     CommandType.StoredProcedure
                     );

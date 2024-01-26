@@ -20,14 +20,14 @@ namespace BussinesLayer.Services
             return _articleRepository.GetArticles().ToList();
         }
 
-        public void CreateArticle(string name, string description, string stock)
+        public void CreateArticle(string name, string description, string stock, string categoryId)
         {
-            _articleRepository.CreateArticle(name, description, stock);
+            _articleRepository.CreateArticle(name, description, stock, categoryId);
         }
 
-        public void UpdateArticle(string name, string description, string stock, string id)
+        public void UpdateArticle(string name, string description, string stock, string id, string categoryId)
         {
-            _articleRepository.UpdateArticle(name, description, stock, id);
+            _articleRepository.UpdateArticle(name, description, stock, id, categoryId);
         }
 
         public void DeleteArticle(string id)
