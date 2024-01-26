@@ -10,10 +10,8 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Repositories
 {
-    public class CategoryRepository : ICategoryRepository<IEnumerable<Category>>
+    public class CategoryRepository : BaseRepository, ICategoryRepository<IEnumerable<Category>>
     {
-        private static string _connectionString = "Server=(localdb)\\MSSQLLocalDB; DataBase=crud_mvp_winforms; Integrated Security=true";
-
         public void CreateCategory(string name)
         {
             using (var connection = new SqlConnection(_connectionString))
