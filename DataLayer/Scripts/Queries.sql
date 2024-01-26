@@ -16,6 +16,18 @@ CREATE TABLE Articles (
     Stock INT
     )
 
+CREATE TABLE Categories (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL,
+    DateCreated DATETIME
+)
+INSERT INTO Categories
+VALUES
+    ('Otro', sysdatetime()),
+    ('Pantalones', sysdatetime()),
+    ('Camisas', sysdatetime())
+GO
+
 -- ######################################################################################
 -- LOAD DATASETS IN DB
 -- ######################################################################################
@@ -35,6 +47,13 @@ VALUES
 	('Medias', 'tipo soquetes p/mujer', 400)
 GO
 
+INSERT INTO Categories
+VALUES
+    ('Otro'),
+    ('Pantalones'),
+    ('Camisas'),
+    ('Medias'),
+GO
 
 -- ######################################################################################
 -- CREATE STORE PROCEDURES
@@ -44,13 +63,17 @@ GO
 CREATE PROCEDURE InsertArticle 
     @Name NVARCHAR(100),
     @Description NVARCHAR(100),
-    @Stock INT
+    @Stock INT,
+    @CategoryId INT
 AS
 INSERT INTO Articles
 VALUES (
     @Name,
     @Description,
-    @Stock
+    @Stock,
+    @CategoryId,
+    SYSDATETIME(),
+    NULL
     )
 GO
 
@@ -82,12 +105,15 @@ CREATE PROCEDURE UpdateArticle
     @Name NVARCHAR(100),
     @Description NVARCHAR(100),
     @Stock INT,
-    @Id INT
+    @Id INT,
+    @CategoryId INT
 AS
 UPDATE Articles
 SET Name = @Name,
     Description = @Description,
-    Stock = @Stock
+    Stock = @Stock,
+    CategoryId = @CategoryId,
+    DateUpdated = SYSDATETIME()
 WHERE Id = @Id
 GO
 
@@ -110,3 +136,43 @@ WHERE
     AND
     @Search <> ''
 GO
+
+
+-- ######################################################################################
+-- CREATE STORE PROCEDURES
+-- ######################################################################################
+
+CREATE PROCEDURE InsertCategory
+    @Name VARCHAR(100)
+AS
+INSERT INTO Categories
+VALUES (
+    @Name,
+    SYSDATETIME()
+    )
+GO
+
+
+CREATE PROCEDURE GetCategories
+AS
+    SELECT * FROM Categories
+GO
+
+
+CREATE PROCEDURE DeleteCategory
+    @Id INT
+AS
+    DELETE FROM Categories WHERE Id = @Id
+GO
+
+
+-- ######################################################################################
+-- CREATE FOREIGN KEY Articles.CategoryId AND DateCreated,DateUpdated PROPERTIES
+-- ######################################################################################
+
+ALTER TABLE Articles ADD CategoryId INT NOT NULL DEFAULT (1)
+--ALTER TABLE Articles DROP COLUMN CategoryId
+ALTER TABLE Articles ADD FOREIGN KEY (CategoryId) REFERENCES Categories(Id)
+
+ALTER TABLE Articles ADD DateCreated DATETIME NOT NULL DEFAULT GETDATE()
+ALTER TABLE Articles ADD DateUpdated DATETIME DEFAULT NULL
