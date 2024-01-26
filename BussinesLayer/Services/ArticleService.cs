@@ -10,13 +10,10 @@ namespace BussinesLayer.Services
 {
     public class ArticleService : IArticleService<IEnumerable<Article>>
     {
-        private IArticleRepository<IEnumerable<Article>> _articleRepository = new ArticleRepository();
+        private readonly IArticleRepository<IEnumerable<Article>> _articleRepository = new ArticleRepository();
 
         public IEnumerable<Article> GetArticles()
         {
-            //var result = _articleRepository.GetArticles().ToList();
-            //var sortable = new SortableBindingList<Article>(result);
-            //return sortable;
             return _articleRepository.GetArticles().ToList();
         }
 
@@ -37,9 +34,6 @@ namespace BussinesLayer.Services
 
         public IEnumerable<Article> SearchArticle(int includeName, int includeDescription, string search)
         {
-            //var result = _articleRepository.SearchArticle(includeName, includeDescription, search).ToList();
-            //var sortable = new SortableBindingList<Article>(result);
-            //return sortable;
             return _articleRepository.SearchArticle(includeName, includeDescription, search).ToList();
         }
     }
