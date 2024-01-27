@@ -34,6 +34,7 @@ namespace PresentationLayer.Presenters
 
         public void SaveArticle()
         {
+            // TODO: mmm.. check this ¿_view.CategoryId property missing?
             var category = _view.Categories.ToArray()[_view.CategorySelected];
             _articleService.CreateArticle(_view.NameA, _view.Description, _view.Stock.ToString(), category.Id.ToString());
             _view.MsgStatus = "Se ha agregado el artículo";

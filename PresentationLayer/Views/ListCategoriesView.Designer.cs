@@ -30,10 +30,11 @@ namespace PresentationLayer.Views
         private void InitializeComponent()
         {
             this.dgvCategories = new System.Windows.Forms.DataGridView();
-            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colArticlesRelated = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategories)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,7 +47,8 @@ namespace PresentationLayer.Views
             this.dgvCategories.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCategories.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colId,
-            this.colName});
+            this.colName,
+            this.colArticlesRelated});
             this.dgvCategories.Location = new System.Drawing.Point(3, 55);
             this.dgvCategories.Name = "dgvCategories";
             this.dgvCategories.ReadOnly = true;
@@ -54,24 +56,6 @@ namespace PresentationLayer.Views
             this.dgvCategories.RowTemplate.Height = 24;
             this.dgvCategories.Size = new System.Drawing.Size(600, 342);
             this.dgvCategories.TabIndex = 0;
-            // 
-            // colId
-            // 
-            this.colId.DataPropertyName = "Id";
-            this.colId.HeaderText = "id";
-            this.colId.MinimumWidth = 6;
-            this.colId.Name = "colId";
-            this.colId.ReadOnly = true;
-            this.colId.Width = 125;
-            // 
-            // colName
-            // 
-            this.colName.DataPropertyName = "Name";
-            this.colName.HeaderText = "Name";
-            this.colName.MinimumWidth = 6;
-            this.colName.Name = "colName";
-            this.colName.ReadOnly = true;
-            this.colName.Width = 125;
             // 
             // btnAdd
             // 
@@ -93,6 +77,33 @@ namespace PresentationLayer.Views
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // colId
+            // 
+            this.colId.DataPropertyName = "Id";
+            this.colId.HeaderText = "id";
+            this.colId.MinimumWidth = 6;
+            this.colId.Name = "colId";
+            this.colId.ReadOnly = true;
+            this.colId.Width = 125;
+            // 
+            // colName
+            // 
+            this.colName.DataPropertyName = "Name";
+            this.colName.HeaderText = "Name";
+            this.colName.MinimumWidth = 6;
+            this.colName.Name = "colName";
+            this.colName.ReadOnly = true;
+            this.colName.Width = 125;
+            // 
+            // colArticlesRelated
+            // 
+            this.colArticlesRelated.DataPropertyName = "ArticlesRelated";
+            this.colArticlesRelated.HeaderText = "Articles related";
+            this.colArticlesRelated.MinimumWidth = 6;
+            this.colArticlesRelated.Name = "colArticlesRelated";
+            this.colArticlesRelated.ReadOnly = true;
+            this.colArticlesRelated.Width = 150;
+            // 
             // ListCategoriesView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -111,9 +122,10 @@ namespace PresentationLayer.Views
         #endregion
 
         private System.Windows.Forms.DataGridView dgvCategories;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colName;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colArticlesRelated;
     }
 }

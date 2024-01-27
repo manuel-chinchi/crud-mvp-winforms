@@ -158,7 +158,15 @@ GO
 
 CREATE PROCEDURE GetCategories
 AS
-    SELECT * FROM Categories
+SELECT c.*, ISNULL(sub.ArticlesRelated, 0) AS ArticlesRelated
+FROM Categories c
+LEFT JOIN
+(
+    SELECT CategoryId, COUNT(*) AS ArticlesRelated
+    FROM Articles
+    GROUP BY CategoryId
+) AS sub
+ON c.Id = sub.CategoryId;
 GO
 
 

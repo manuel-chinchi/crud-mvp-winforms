@@ -13,5 +13,6 @@ namespace EntityLayer.Models
         public string Name { get; set; }
         [Browsable(false)]
         public DateTime DateCreated { get; set; }
+        public int ArticlesRelated { get; set; }
     }
 }
