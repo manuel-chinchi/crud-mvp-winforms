@@ -22,7 +22,7 @@ namespace PresentationLayer.Forms
 
         private void ListArticlesForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            //Application.Exit();
         }
     }
 }

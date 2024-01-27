@@ -26,7 +26,8 @@ namespace PresentationLayer.Views
 
         private void btnCategories_Click(object sender, EventArgs e)
         {
-            // TODO: Categories create, delete actions (view, form)
+            var frm = new ListCategoriesForm();
+            frm.ShowDialog();
         }
     }
 }
