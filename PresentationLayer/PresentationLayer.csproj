@@ -83,6 +83,7 @@
       <DependentUpon>ListArticlesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Presenters\CreateArticlePresenter.cs" />
+    <Compile Include="Presenters\CreateCategoryPresenter.cs" />
     <Compile Include="Presenters\ListArticlesPresenter.cs" />
     <Compile Include="Presenters\ListCategoriesPresenter.cs" />
     <Compile Include="Program.cs" />
@@ -94,6 +95,7 @@
       <DependentUpon>CreateCategoryView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ICreateArticleView.cs" />
+    <Compile Include="Views\ICreateCategoryView.cs" />
     <Compile Include="Views\IListArticlesView.cs" />
     <Compile Include="Views\IListCategoriesView.cs" />
     <Compile Include="Views\ListArticlesView.cs">

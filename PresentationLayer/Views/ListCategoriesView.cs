@@ -54,6 +54,7 @@ namespace PresentationLayer.Views
         {
             var frm = new CreateCategoryForm();
             frm.ShowDialog();
+            Presenter.LoadCategories();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
