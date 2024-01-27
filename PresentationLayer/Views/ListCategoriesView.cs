@@ -1,5 +1,6 @@
 ﻿using BussinesLayer.Services;
 using EntityLayer.Models;
+using PresentationLayer.Forms;
 using PresentationLayer.Presenters;
 using System;
 using System.Collections.Generic;
@@ -51,7 +52,8 @@ namespace PresentationLayer.Views
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            // TODO: create Category form with input fields for create category action
+            var frm = new CreateCategoryForm();
+            frm.ShowDialog();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
