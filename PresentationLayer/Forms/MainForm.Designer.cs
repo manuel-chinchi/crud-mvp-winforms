@@ -1,7 +1,7 @@
 ﻿
 namespace PresentationLayer.Forms
 {
-    partial class BaseForm
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,13 +31,13 @@ namespace PresentationLayer.Forms
         {
             this.SuspendLayout();
             // 
-            // BaseForm
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(302, 193);
-            this.Name = "BaseForm";
-            this.Text = "BaseForm";
+            this.Name = "MainForm";
+            this.Text = "MainForm";
             this.ResumeLayout(false);
 
         }

@@ -48,11 +48,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\BaseForm.cs">
+    <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\BaseForm.Designer.cs">
-      <DependentUpon>BaseForm.cs</DependentUpon>
+    <Compile Include="Forms\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\CreateArticleForm.cs">
       <SubType>Form</SubType>
@@ -84,8 +84,8 @@
     <Compile Include="Views\CreateArticleView.Designer.cs">
       <DependentUpon>CreateArticleView.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Forms\BaseForm.resx">
-      <DependentUpon>BaseForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CreateArticleForm.resx">
       <DependentUpon>CreateArticleForm.cs</DependentUpon>
