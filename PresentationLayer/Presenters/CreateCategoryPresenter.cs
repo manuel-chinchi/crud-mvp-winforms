@@ -17,6 +17,7 @@ namespace PresentationLayer.Presenters
         public CreateCategoryPresenter(ICreateCategoryView view, ICategoryService<IEnumerable<Category>> service)
         {
             _view = view;
+            //_view.Presenter = this;
             _service = service;
         }
 
