@@ -24,7 +24,7 @@ namespace PresentationLayer.Views
         public CreateCategoryPresenter Presenter { get; set; }
         public bool StatusResult
         {
-            get 
+            get
             {
                 var result = false;
                 if (((Form)this.TopLevelControl).DialogResult == DialogResult.OK)
@@ -33,7 +33,7 @@ namespace PresentationLayer.Views
                 }
                 return result;
             }
-            set 
+            set
             {
                 if (value)
                 {
