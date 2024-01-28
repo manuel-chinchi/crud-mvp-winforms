@@ -10,7 +10,7 @@ namespace PresentationLayer.Views
 {
     public interface IListCategoriesView
     {
-        int CategorySelected { get; }
+        int ItemSelected { get; }
         string MsgError { get; set; }
         string MsgStatus { get; set; }
         IEnumerable<Category> Categories { get; set; }

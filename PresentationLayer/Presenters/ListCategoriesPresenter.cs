@@ -27,7 +27,7 @@ namespace PresentationLayer.Presenters
 
         public void DeleteCategory()
         {
-            var category = _view.Categories.ToArray()[_view.CategorySelected];
+            var category = _view.Categories.ToArray()[_view.ItemSelected];
             _view.MsgStatus = "Se ha eliminado la categoría";
             _service.DeleteCategory(category.Id.ToString());
         }

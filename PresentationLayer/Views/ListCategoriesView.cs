@@ -39,7 +39,7 @@ namespace PresentationLayer.Views
         }
         public string MsgError { get; set; }
         public string MsgStatus { get; set; }
-        public int CategorySelected
+        public int ItemSelected
         {
             get => dgvCategories.CurrentCell.RowIndex;
         }
@@ -62,7 +62,7 @@ namespace PresentationLayer.Views
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            var category = this.Categories.ToArray()[this.CategorySelected];
+            var category = this.Categories.ToArray()[this.ItemSelected];
             var result = MessageBox.Show($"¿Desea eliminar la categoría '{category.Name},id={category.Id}'?", "Alerta", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {

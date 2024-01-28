@@ -10,7 +10,7 @@ namespace PresentationLayer.Views
 {
     public interface IListArticlesView
     {
-        int ArticleSelected { get; }
+        int ItemSelected { get; }
         bool IncludeName { get; set; }
         bool IncludeDescription { get; set; }
         string Search { get; set; }

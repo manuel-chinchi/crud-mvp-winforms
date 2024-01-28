@@ -23,7 +23,7 @@ namespace PresentationLayer.Presenters
 
         public void DeleteArticle()
         {
-            var article = _view.Articles.ToList()[_view.ArticleSelected];
+            var article = _view.Articles.ToList()[_view.ItemSelected];
             _view.MsgStatus = "Se ha eliminado el artículo";
             _service.DeleteArticle(article.Id.ToString());
         }
@@ -37,7 +37,7 @@ namespace PresentationLayer.Presenters
 
         public Article GetArticleSelected()
         {
-            return _view.Articles.ToArray()[_view.ArticleSelected];
+            return _view.Articles.ToArray()[_view.ItemSelected];
         }
 
         public void SearchArticle()

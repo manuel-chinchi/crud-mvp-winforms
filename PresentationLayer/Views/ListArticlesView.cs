@@ -17,7 +17,7 @@ namespace PresentationLayer.Views
 {
     public partial class ListArticlesView : UserControl, IListArticlesView
     {
-        public int ArticleSelected
+        public int ItemSelected
         {
             get => dgvArticles.CurrentCell.RowIndex;
         }
@@ -136,7 +136,7 @@ namespace PresentationLayer.Views
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            var article = Articles.ToArray()[ArticleSelected];
+            var article = Articles.ToArray()[ItemSelected];
             var result = MessageBox.Show($"¿Desea eliminar el artículo? '{article.Name}, id={article.Id}'", "Alerta", MessageBoxButtons.YesNo);
 
             if (result == DialogResult.Yes)
