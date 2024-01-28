@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace PresentationLayer.Presenters
 {
@@ -38,7 +39,7 @@ namespace PresentationLayer.Presenters
             var category = _view.Categories.ToArray()[_view.CategorySelected];
             _articleService.CreateArticle(_view.NameA, _view.Description, _view.Stock.ToString(), category.Id.ToString());
             _view.MsgStatus = "Se ha agregado el artículo";
-            _view.Close();
+            _view.StatusResult = true;
         }
 
         public void UpdateArticle()
@@ -46,7 +47,7 @@ namespace PresentationLayer.Presenters
             var category = _view.Categories.ToArray()[_view.CategorySelected];
             _articleService.UpdateArticle(_view.NameA, _view.Description, _view.Stock.ToString(), _view.Id.ToString(), category.Id.ToString());
             _view.MsgStatus = "Se ha actualizado el artículo";
-            _view.Close();
+            _view.StatusResult = true;
         }
 
         public void LoadArticleFromEdit(Article article)

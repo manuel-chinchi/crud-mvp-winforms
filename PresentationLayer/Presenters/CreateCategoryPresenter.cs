@@ -25,6 +25,7 @@ namespace PresentationLayer.Presenters
         {
             _service.CreateCategory(_view.NameC);
             _view.MsgStatus = "Se ha creado la categoría";
+            _view.StatusResult = true;
         }
     }
 }

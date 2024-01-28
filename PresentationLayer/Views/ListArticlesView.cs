@@ -116,16 +116,22 @@ namespace PresentationLayer.Views
         private void btnAdd_Click(object sender, EventArgs e)
         {
             var frm = new CreateArticleForm();
-            frm.ShowDialog();
-            Presenter.LoadArticles();
+            var result = frm.ShowDialog();
+            if (result != DialogResult.Cancel)
+            {
+                Presenter.LoadArticles();
+            }
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
             // passing a model automatically activates the editor mode
             var frm = new CreateArticleForm(this.Presenter.GetArticleSelected());
-            frm.ShowDialog();
-            Presenter.LoadArticles();
+            var result = frm.ShowDialog();
+            if (result != DialogResult.Cancel)
+            {
+                Presenter.LoadArticles();
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

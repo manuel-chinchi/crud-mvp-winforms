@@ -22,8 +22,26 @@ namespace PresentationLayer.Views
         public string MsgError { get; set; }
         public string MsgStatus { get; set; }
         public CreateCategoryPresenter Presenter { get; set; }
+        public bool StatusResult
+        {
+            get 
+            {
+                var result = false;
+                if (((Form)this.TopLevelControl).DialogResult == DialogResult.OK)
+                {
+                    result = true;
+                }
+                return result;
+            }
+            set 
+            {
+                if (value)
+                {
+                    ((Form)this.TopLevelControl).DialogResult = DialogResult.OK;
+                }
+            }
+        }
 
-        
         public CreateCategoryView()
         {
             InitializeComponent();

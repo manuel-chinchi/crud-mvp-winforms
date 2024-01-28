@@ -66,6 +66,23 @@ namespace PresentationLayer.Views
                 cmbCategories.SelectedIndex = value;
             }
         }
+        public bool StatusResult
+        {
+            get {
+                var result = false;
+                if (((Form)this.TopLevelControl).DialogResult == DialogResult.OK)
+                {
+                    result = true;
+                }
+                return result;
+            }
+            set {
+                if (value)
+                {
+                    ((Form)this.TopLevelControl).DialogResult = DialogResult.OK;
+                }
+            }
+        }
 
         public CreateArticleView()
         {
@@ -97,11 +114,11 @@ namespace PresentationLayer.Views
                 Presenter.SaveArticle();
             }
 
-            var status = Presenter.GetStatus();
-            if (!string.IsNullOrEmpty(status))
+            if (!string.IsNullOrEmpty(MsgStatus))
             {
-                MessageBox.Show(status);
+                MessageBox.Show(MsgStatus);
             }
+            this.Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

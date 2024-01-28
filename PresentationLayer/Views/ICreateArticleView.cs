@@ -18,6 +18,7 @@ namespace PresentationLayer.Views
         bool IsEditMode { get; set; }
         string MsgError { get; set; }
         string MsgStatus { get; set; }
+        bool StatusResult { get; set; }
 
         IEnumerable<Category> Categories { get; set; }
         int CategorySelected { get; set; }

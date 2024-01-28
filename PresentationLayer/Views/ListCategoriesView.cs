@@ -53,8 +53,11 @@ namespace PresentationLayer.Views
         private void btnAdd_Click(object sender, EventArgs e)
         {
             var frm = new CreateCategoryForm();
-            frm.ShowDialog();
-            Presenter.LoadCategories();
+            var result = frm.ShowDialog();
+            if (result != DialogResult.Cancel)
+            {
+                Presenter.LoadCategories();
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
