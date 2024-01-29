@@ -58,7 +58,7 @@ namespace PresentationLayer.Views
                 cmbCategories.DataSource = bs;
             }
         }
-        public int CategorySelected
+        public int ItemSelected
         {
             get => cmbCategories.SelectedIndex;
             set

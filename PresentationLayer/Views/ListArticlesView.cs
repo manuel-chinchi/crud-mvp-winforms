@@ -126,7 +126,8 @@ namespace PresentationLayer.Views
         private void btnEdit_Click(object sender, EventArgs e)
         {
             // passing a model automatically activates the editor mode
-            var frm = new CreateArticleForm(this.Presenter.GetArticleSelected());
+            var a = this.Presenter.GetArticleSelected();
+            var frm = new CreateArticleForm(a);
             var result = frm.ShowDialog();
             if (result != DialogResult.Cancel)
             {

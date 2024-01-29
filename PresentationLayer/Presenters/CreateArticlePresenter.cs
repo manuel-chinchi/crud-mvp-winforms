@@ -35,7 +35,7 @@ namespace PresentationLayer.Presenters
         public void SaveArticle()
         {
             // TODO: mmm.. check this ¿_view.CategoryId property missing?
-            var category = _view.Categories.ToArray()[_view.CategorySelected];
+            var category = _view.Categories.ToArray()[_view.ItemSelected];
             _articleService.CreateArticle(_view.NameA, _view.Description, _view.Stock.ToString(), category.Id.ToString());
             _view.MsgStatus = "Se ha agregado el artículo";
             _view.StatusResult = true;
@@ -43,7 +43,7 @@ namespace PresentationLayer.Presenters
 
         public void UpdateArticle()
         {
-            var category = _view.Categories.ToArray()[_view.CategorySelected];
+            var category = _view.Categories.ToArray()[_view.ItemSelected];
             _articleService.UpdateArticle(_view.NameA, _view.Description, _view.Stock.ToString(), _view.Id.ToString(), category.Id.ToString());
             _view.MsgStatus = "Se ha actualizado el artículo";
             _view.StatusResult = true;
@@ -55,7 +55,7 @@ namespace PresentationLayer.Presenters
             _view.NameA = article.Name;
             _view.Description = article.Description;
             _view.Stock = article.Stock.ToString();
-            _view.CategorySelected = _view.Categories.ToList().FindIndex(c => c.Id == Convert.ToInt32(article.CategoryId));
+            _view.ItemSelected = _view.Categories.ToList().FindIndex(c => c.Id == Convert.ToInt32(article.CategoryId));
         }
 
         public void LoadCategories()

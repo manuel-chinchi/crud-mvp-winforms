@@ -21,7 +21,7 @@ namespace PresentationLayer.Views
         bool StatusResult { get; set; }
 
         IEnumerable<Category> Categories { get; set; }
-        int CategorySelected { get; set; }
+        int ItemSelected { get; set; }
         CreateArticlePresenter Presenter { get; set; }
         void Close();
     }
