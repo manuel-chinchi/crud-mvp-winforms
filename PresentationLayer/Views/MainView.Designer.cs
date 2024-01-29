@@ -32,6 +32,7 @@ namespace PresentationLayer.Views
             this.btnArticles = new System.Windows.Forms.Button();
             this.btnCategories = new System.Windows.Forms.Button();
             this.lblMenu = new System.Windows.Forms.Label();
+            this.btnReports = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnArticles
@@ -72,10 +73,24 @@ namespace PresentationLayer.Views
             this.lblMenu.Text = "Menu";
             this.lblMenu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btnReports
+            // 
+            this.btnReports.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReports.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReports.Location = new System.Drawing.Point(0, 165);
+            this.btnReports.Name = "btnReports";
+            this.btnReports.Size = new System.Drawing.Size(256, 50);
+            this.btnReports.TabIndex = 3;
+            this.btnReports.Text = "Reports";
+            this.btnReports.UseVisualStyleBackColor = true;
+            this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnReports);
             this.Controls.Add(this.lblMenu);
             this.Controls.Add(this.btnCategories);
             this.Controls.Add(this.btnArticles);
@@ -90,5 +105,6 @@ namespace PresentationLayer.Views
         private System.Windows.Forms.Button btnArticles;
         private System.Windows.Forms.Button btnCategories;
         private System.Windows.Forms.Label lblMenu;
+        private System.Windows.Forms.Button btnReports;
     }
 }

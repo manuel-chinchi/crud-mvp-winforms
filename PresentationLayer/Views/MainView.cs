@@ -29,5 +29,10 @@ namespace PresentationLayer.Views
             var frm = new ListCategoriesForm();
             frm.ShowDialog();
         }
+
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+            // TODO: implement report form here
+        }
     }
 }

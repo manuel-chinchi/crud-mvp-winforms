@@ -34,16 +34,17 @@ namespace PresentationLayer.Forms
             // 
             // mainView1
             // 
-            this.mainView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainView1.Dock = System.Windows.Forms.DockStyle.Top;
             this.mainView1.Location = new System.Drawing.Point(0, 0);
             this.mainView1.Name = "mainView1";
-            this.mainView1.Size = new System.Drawing.Size(302, 193);
+            this.mainView1.Size = new System.Drawing.Size(302, 250);
             this.mainView1.TabIndex = 0;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(302, 193);
             this.Controls.Add(this.mainView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
