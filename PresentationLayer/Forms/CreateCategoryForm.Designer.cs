@@ -35,7 +35,10 @@ namespace PresentationLayer.Forms
             // createCategoryView1
             // 
             this.createCategoryView1.Location = new System.Drawing.Point(0, 0);
+            this.createCategoryView1.MsgError = null;
+            this.createCategoryView1.MsgStatus = null;
             this.createCategoryView1.Name = "createCategoryView1";
+            this.createCategoryView1.NameC = "";
             this.createCategoryView1.Size = new System.Drawing.Size(330, 247);
             this.createCategoryView1.TabIndex = 0;
             // 
@@ -52,7 +55,7 @@ namespace PresentationLayer.Forms
             this.Name = "CreateCategoryForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CreateCategoryForm";
+            this.Text = "CreateCategory";
             this.ResumeLayout(false);
 
         }
