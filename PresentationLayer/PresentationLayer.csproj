@@ -100,6 +100,12 @@
     <Compile Include="Forms\ListArticlesForm.Designer.cs">
       <DependentUpon>ListArticlesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReportForm.Designer.cs">
+      <DependentUpon>ReportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presenters\CreateArticlePresenter.cs" />
     <Compile Include="Presenters\CreateCategoryPresenter.cs" />
     <Compile Include="Presenters\ListArticlesPresenter.cs" />
@@ -141,6 +147,12 @@
     <Compile Include="Views\MainView.Designer.cs">
       <DependentUpon>MainView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ReportView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\ReportView.Designer.cs">
+      <DependentUpon>ReportView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\CreateCategoryForm.resx">
       <DependentUpon>CreateCategoryForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -155,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ListArticlesForm.resx">
       <DependentUpon>ListArticlesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReportForm.resx">
+      <DependentUpon>ReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -180,6 +195,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ReportView.resx">
+      <DependentUpon>ReportView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="packages.config" />
