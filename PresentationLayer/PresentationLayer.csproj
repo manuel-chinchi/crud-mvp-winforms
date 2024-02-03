@@ -181,6 +181,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reports\ArticlesReport.rdlc" />
     <EmbeddedResource Include="Views\CreateCategoryView.resx">
       <DependentUpon>CreateCategoryView.cs</DependentUpon>
     </EmbeddedResource>
