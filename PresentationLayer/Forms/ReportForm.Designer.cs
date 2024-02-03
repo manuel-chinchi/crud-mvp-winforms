@@ -37,7 +37,7 @@ namespace PresentationLayer.Forms
             this.rvReport.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rvReport.Location = new System.Drawing.Point(0, 0);
             this.rvReport.Name = "rvReport";
-            this.rvReport.Size = new System.Drawing.Size(789, 849);
+            this.rvReport.Size = new System.Drawing.Size(828, 949);
             this.rvReport.TabIndex = 0;
             // 
             // ReportForm
@@ -45,7 +45,7 @@ namespace PresentationLayer.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(789, 849);
+            this.ClientSize = new System.Drawing.Size(828, 949);
             this.Controls.Add(this.rvReport);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;

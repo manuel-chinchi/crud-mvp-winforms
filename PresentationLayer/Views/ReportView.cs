@@ -41,6 +41,9 @@ namespace PresentationLayer.Views
             //reportViewer1.LocalReport.SetParameters(parms);
             //reportViewer1.RefreshReport();
 
+            //REF: https://stackoverflow.com/questions/37276185/how-to-get-the-table-at-the-center-of-reportviewer-in-my-form
+            rvReport.SetDisplayMode(DisplayMode.PrintLayout);
+            //rvReport.ZoomMode = ZoomMode.PageWidth;
 
             // FIX: data source not showing loaded data
             rvReport.LocalReport.DataSources.Clear(); 
