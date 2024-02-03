@@ -6,16 +6,16 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>2.07667cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.5cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>3.62183cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>2.1825cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.5cm</Width>
@@ -23,7 +23,7 @@
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.6cm</Height>
+              <Height>0.727cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -208,13 +208,12 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.6cm</Height>
+              <Height>0.727cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -263,7 +262,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Center</TextAlign>
+                            <TextAlign>Left</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -405,10 +404,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>dsArticles</DataSetName>
-        <Top>1.81187cm</Top>
+        <Top>1.87537cm</Top>
         <Left>2.005cm</Left>
-        <Height>1.2cm</Height>
-        <Width>12.5cm</Width>
+        <Height>1.454cm</Height>
+        <Width>12.881cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
