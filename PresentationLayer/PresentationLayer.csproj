@@ -106,12 +106,6 @@
     <Compile Include="Forms\ReportForm.Designer.cs">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\TempForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\TempForm.Designer.cs">
-      <DependentUpon>TempForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Presenters\CreateArticlePresenter.cs" />
     <Compile Include="Presenters\CreateCategoryPresenter.cs" />
     <Compile Include="Presenters\ListArticlesPresenter.cs" />
@@ -176,9 +170,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ReportForm.resx">
       <DependentUpon>ReportForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\TempForm.resx">
-      <DependentUpon>TempForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
