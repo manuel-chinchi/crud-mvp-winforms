@@ -1,7 +1,7 @@
 ﻿
 namespace PresentationLayer.Forms
 {
-    partial class ReportForm
+    partial class TempForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,37 +29,31 @@ namespace PresentationLayer.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.rvReport = new PresentationLayer.Views.ReportView();
+            this.reportView1 = new PresentationLayer.Views.ReportView();
             this.SuspendLayout();
             // 
-            // rvReport
+            // reportView1
             // 
-            this.rvReport.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rvReport.Location = new System.Drawing.Point(0, 0);
-            this.rvReport.Name = "rvReport";
-            this.rvReport.Size = new System.Drawing.Size(789, 849);
-            this.rvReport.TabIndex = 0;
+            this.reportView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reportView1.Location = new System.Drawing.Point(0, 0);
+            this.reportView1.Name = "reportView1";
+            this.reportView1.Size = new System.Drawing.Size(848, 555);
+            this.reportView1.TabIndex = 0;
             // 
-            // ReportForm
+            // TempForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(789, 849);
-            this.Controls.Add(this.rvReport);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "ReportForm";
-            this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Report";
+            this.ClientSize = new System.Drawing.Size(848, 555);
+            this.Controls.Add(this.reportView1);
+            this.Name = "TempForm";
+            this.Text = "TempForm";
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Views.ReportView rvReport;
+        private Views.ReportView reportView1;
     }
 }
