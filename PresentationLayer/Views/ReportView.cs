@@ -13,10 +13,19 @@ using System.Windows.Forms;
 
 namespace PresentationLayer.Views
 {
+    enum ReportSelected
+    {
+        ArticlesReport = 0,
+        CategoriesReport
+    }
+
     public partial class ReportView : UserControl
     {
         IArticleService<IEnumerable<Article>> articleService { get; set; } = new ArticleService();
         ICategoryService<IEnumerable<Category>> categoryService { get; set; } = new CategoryService();
+
+        const string ARTICLESREPORT_RESX = "PresentationLayer.Reports.ArticlesReport.rdlc";
+        const string CATEGORIESREPORT_RESX = "PresentationLayer.Reports.CategoriesReport.rdlc";
 
         public ReportView()
         {
@@ -33,6 +42,9 @@ namespace PresentationLayer.Views
 
         private void LoadDataReport()
         {
+            cboReport_SelectedIndexChanged(this.cboReport, null);
+            return;
+
             var articles = articleService.GetArticles();
             var parms = new List<ReportParameter>();
             string dataSourceName = rvReport.LocalReport.DataSources[0].Name;
@@ -49,7 +61,7 @@ namespace PresentationLayer.Views
                 rvReport.LocalReport.ReportEmbeddedResource = "PresentationLayer.Reports.CategoriesReport.rdlc";
                 var categories = categoryService.GetCategories();
                 rvReport.SetDisplayMode(DisplayMode.PrintLayout);
-                
+
                 rvReport.LocalReport.DataSources.Clear();
 
                 rvReport.LocalReport.DataSources.Add(new ReportDataSource("dsCategories", categories));
@@ -62,10 +74,51 @@ namespace PresentationLayer.Views
             //rvReport.ZoomMode = ZoomMode.PageWidth;
 
             // FIX: data source not showing loaded data
-            rvReport.LocalReport.DataSources.Clear(); 
+            rvReport.LocalReport.DataSources.Clear();
 
             rvReport.LocalReport.DataSources.Add(new ReportDataSource(dataSourceName, articles));
             rvReport.LocalReport.SetParameters(parms);
+            rvReport.RefreshReport();
+        }
+
+        private void cboReport_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var index = cboReport.SelectedIndex;
+            rvReport.Reset();
+
+            switch (index)
+            {
+                case (int)ReportSelected.ArticlesReport:
+                    {
+                        var paramS = new List<ReportParameter>();
+                        var articles = articleService.GetArticles();
+                        rvReport.LocalReport.ReportEmbeddedResource = ARTICLESREPORT_RESX;
+                        // FIX: data source not showing loaded data
+                        rvReport.LocalReport.DataSources.Clear();
+                        rvReport.LocalReport.DataSources.Add(new ReportDataSource("dsArticles", articles));
+                        rvReport.LocalReport.SetParameters(new List<ReportParameter>(paramS));
+                        //rvReport.RefreshReport();
+                    }
+                    break;
+
+                case (int)ReportSelected.CategoriesReport:
+                    {
+                        var paramS = new List<ReportParameter>();
+                        var categories = categoryService.GetCategories();
+                        rvReport.LocalReport.ReportEmbeddedResource = CATEGORIESREPORT_RESX;
+                        // FIX: data source not showing loaded data
+                        rvReport.LocalReport.DataSources.Clear();
+                        rvReport.LocalReport.DataSources.Add(new ReportDataSource("dsCategories", categories));
+                        rvReport.LocalReport.SetParameters(new List<ReportParameter>(paramS));
+                        //rvReport.RefreshReport();
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            //REF: https://stackoverflow.com/questions/37276185/how-to-get-the-table-at-the-center-of-reportviewer-in-my-form
+            rvReport.SetDisplayMode(DisplayMode.PrintLayout);
             rvReport.RefreshReport();
         }
     }
