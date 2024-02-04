@@ -75,6 +75,7 @@ namespace PresentationLayer.Views
             this.cboReport.Name = "cboReport";
             this.cboReport.Size = new System.Drawing.Size(244, 28);
             this.cboReport.TabIndex = 1;
+            this.cboReport.Text = "ArticlesReport.rdlc";
             // 
             // rvReport
             // 
