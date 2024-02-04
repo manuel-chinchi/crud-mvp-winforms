@@ -32,15 +32,12 @@ namespace PresentationLayer.Views
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.rvReport = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.ArticleBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.ArticleBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // rvReport
             // 
             this.rvReport.Dock = System.Windows.Forms.DockStyle.Fill;
             reportDataSource1.Name = "dsArticles";
-            reportDataSource1.Value = this.ArticleBindingSource;
             this.rvReport.LocalReport.DataSources.Add(reportDataSource1);
             this.rvReport.LocalReport.ReportEmbeddedResource = "PresentationLayer.Reports.ArticlesReport.rdlc";
             this.rvReport.Location = new System.Drawing.Point(0, 0);
@@ -48,10 +45,6 @@ namespace PresentationLayer.Views
             this.rvReport.ServerReport.BearerToken = null;
             this.rvReport.Size = new System.Drawing.Size(500, 700);
             this.rvReport.TabIndex = 0;
-            // 
-            // ArticleBindingSource
-            // 
-            this.ArticleBindingSource.DataSource = typeof(EntityLayer.Models.Article);
             // 
             // ReportView
             // 
@@ -61,7 +54,6 @@ namespace PresentationLayer.Views
             this.Name = "ReportView";
             this.Size = new System.Drawing.Size(500, 700);
             this.Load += new System.EventHandler(this.ReportView_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.ArticleBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -69,6 +61,5 @@ namespace PresentationLayer.Views
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer rvReport;
-        private System.Windows.Forms.BindingSource ArticleBindingSource;
     }
 }
