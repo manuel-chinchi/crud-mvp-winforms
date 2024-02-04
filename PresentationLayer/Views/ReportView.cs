@@ -26,10 +26,9 @@ namespace PresentationLayer.Views
         private void ReportView_Load(object sender, EventArgs e)
         {
             //FIX: No se puede establecer la directiva de seguridad en MultiDomain despues de cargar ensamblados que no son GAC en AppDomain (Exc de HRESULT: 0x8013101C) en ReportForm.cs
-            if (!DesignMode)
-            {
-                LoadDataReport();
-            }
+            if (DesignMode) return;
+
+            LoadDataReport();
         }
 
         private void LoadDataReport()
