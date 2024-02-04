@@ -182,6 +182,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Reports\ArticlesReport.rdlc" />
+    <EmbeddedResource Include="Reports\CategoriesReport.rdlc" />
     <EmbeddedResource Include="Views\CreateCategoryView.resx">
       <DependentUpon>CreateCategoryView.cs</DependentUpon>
     </EmbeddedResource>
@@ -202,6 +203,7 @@
     </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="Data\EntityLayer.Models.Article.datasource" />
+    <None Include="Data\EntityLayer.Models.Category.datasource" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
