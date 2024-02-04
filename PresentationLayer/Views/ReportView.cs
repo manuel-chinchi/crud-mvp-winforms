@@ -43,42 +43,6 @@ namespace PresentationLayer.Views
         private void LoadDataReport()
         {
             cboReport_SelectedIndexChanged(this.cboReport, null);
-            return;
-
-            var articles = articleService.GetArticles();
-            var parms = new List<ReportParameter>();
-            string dataSourceName = rvReport.LocalReport.DataSources[0].Name;
-
-            //reportViewer1.LocalReport.DataSources.Add(rds);
-            //reportViewer1.LocalReport.SetParameters(parms);
-            //reportViewer1.RefreshReport();
-
-            //if (rvReport.LocalReport.ReportPath==null)
-            if (1 == 2)
-            {
-                var rootPath = AppDomain.CurrentDomain.BaseDirectory;
-                //rvReport.LocalReport.ReportPath = $"PresentationLayer/Reports/CategoriesReport.rdlc";
-                rvReport.LocalReport.ReportEmbeddedResource = "PresentationLayer.Reports.CategoriesReport.rdlc";
-                var categories = categoryService.GetCategories();
-                rvReport.SetDisplayMode(DisplayMode.PrintLayout);
-
-                rvReport.LocalReport.DataSources.Clear();
-
-                rvReport.LocalReport.DataSources.Add(new ReportDataSource("dsCategories", categories));
-                rvReport.RefreshReport();
-                return;
-            }
-
-            //REF: https://stackoverflow.com/questions/37276185/how-to-get-the-table-at-the-center-of-reportviewer-in-my-form
-            rvReport.SetDisplayMode(DisplayMode.PrintLayout);
-            //rvReport.ZoomMode = ZoomMode.PageWidth;
-
-            // FIX: data source not showing loaded data
-            rvReport.LocalReport.DataSources.Clear();
-
-            rvReport.LocalReport.DataSources.Add(new ReportDataSource(dataSourceName, articles));
-            rvReport.LocalReport.SetParameters(parms);
-            rvReport.RefreshReport();
         }
 
         private void cboReport_SelectedIndexChanged(object sender, EventArgs e)
