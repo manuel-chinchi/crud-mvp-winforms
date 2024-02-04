@@ -421,7 +421,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Lista de artículos</Value>
+                <Value>Article list</Value>
                 <Style>
                   <FontSize>12pt</FontSize>
                   <FontWeight>Bold</FontWeight>
@@ -457,11 +457,13 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Fecha:</Value>
+                <Value>Date:</Value>
                 <Style />
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
@@ -517,7 +519,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Hora:</Value>
+                <Value>Time:</Value>
                 <Style />
               </TextRun>
             </TextRuns>
