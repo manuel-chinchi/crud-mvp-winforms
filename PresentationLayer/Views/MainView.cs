@@ -32,7 +32,8 @@ namespace PresentationLayer.Views
 
         private void btnReports_Click(object sender, EventArgs e)
         {
-            // TODO: implement report form here
+            var frm = new ReportForm();
+            frm.ShowDialog();
         }
     }
 }
