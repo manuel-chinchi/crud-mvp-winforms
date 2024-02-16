@@ -47,6 +47,8 @@ namespace PresentationLayer.Views
 
         private void ListCategoriesView_Load(object sender, EventArgs e)
         {
+            if (DesignMode) return; // FIX: No showing ListCategoriesForm in design mode
+
             Presenter.LoadCategories();
         }
 

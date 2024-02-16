@@ -71,6 +71,8 @@ namespace PresentationLayer.Views
 
         private void ListArticlesView_Load(object sender, EventArgs e)
         {
+            if (DesignMode) return; // FIX: No showing ListArticleForm in design mode
+
             Presenter.LoadArticles();
         }
 
