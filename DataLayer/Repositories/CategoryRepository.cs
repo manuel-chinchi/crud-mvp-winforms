@@ -32,6 +32,8 @@ namespace DataLayer.Repositories
 
         public void DeleteCategory(string id)
         {
+            // FIX: Lanza System.Data.SqlClient.SqlException cuando se intenta eliminar
+            // categorias con al menos 1 articulo relacionados
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.Open();

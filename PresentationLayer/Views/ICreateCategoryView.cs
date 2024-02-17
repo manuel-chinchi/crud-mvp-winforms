@@ -10,11 +10,13 @@ namespace PresentationLayer.Views
     public interface ICreateCategoryView
     {
         string NameC { get; set; }
-        string MsgError { get; set; }
+        string Error { get; set; }
         string MsgStatus { get; set; }
         bool StatusResult { get; set; }
+        bool ShowError { get; set; }
 
         CreateCategoryPresenter Presenter { get; set; }
         void Close();
+        event EventHandler AcceptClick;
     }
 }

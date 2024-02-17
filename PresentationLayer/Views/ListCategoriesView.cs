@@ -19,7 +19,8 @@ namespace PresentationLayer.Views
         public ListCategoriesView()
         {
             InitializeComponent();
-            Presenter = new ListCategoriesPresenter(this, new CategoryService());
+            //Presenter = new ListCategoriesPresenter(this, new CategoryService());
+            Presenter = new ListCategoriesPresenter(this);
         }
 
         public IEnumerable<Category> Categories
@@ -37,13 +38,24 @@ namespace PresentationLayer.Views
                 dgvCategories.DataSource = bs;
             }
         }
-        public string MsgError { get; set; }
+        public string Error { get; set; }
         public string MsgStatus { get; set; }
         public int ItemSelected
         {
             get => dgvCategories.CurrentCell.RowIndex;
         }
         public ListCategoriesPresenter Presenter { get; set; }
+        public bool ShowError
+        {
+            get { return lblError.Visible; }
+            set
+            {
+                lblError.Text = Error;
+                lblError.Visible = value;
+            }
+        }
+
+        public event EventHandler DeleteClick;
 
         private void ListCategoriesView_Load(object sender, EventArgs e)
         {
@@ -62,17 +74,19 @@ namespace PresentationLayer.Views
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            var category = this.Categories.ToArray()[this.ItemSelected];
-            var result = MessageBox.Show($"¿Desea eliminar la categoría '{category.Name},id={category.Id}'?", "Alerta", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
-            {
-                Presenter.DeleteCategory();
-                if (!string.IsNullOrEmpty(MsgStatus))
-                {
-                    MessageBox.Show(MsgStatus);
-                }
-                Presenter.LoadCategories();
-            }
+            DeleteClick?.Invoke(this, EventArgs.Empty);
+
+            //var category = this.Categories.ToArray()[this.ItemSelected];
+            //var result = MessageBox.Show($"¿Desea eliminar la categoría '{category.Name},id={category.Id}'?", "Alerta", MessageBoxButtons.YesNo);
+            //if (result == DialogResult.Yes)
+            //{
+            //    Presenter.DeleteCategory();
+            //    if (!string.IsNullOrEmpty(MsgStatus))
+            //    {
+            //        MessageBox.Show(MsgStatus);
+            //    }
+            //    Presenter.LoadCategories();
+            //}
         }
     }
 }

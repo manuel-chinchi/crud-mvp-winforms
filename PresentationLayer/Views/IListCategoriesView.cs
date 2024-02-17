@@ -11,9 +11,12 @@ namespace PresentationLayer.Views
     public interface IListCategoriesView
     {
         int ItemSelected { get; }
-        string MsgError { get; set; }
+        string Error { get; set; }
+        bool ShowError { get; set; }
         string MsgStatus { get; set; }
         IEnumerable<Category> Categories { get; set; }
         ListCategoriesPresenter Presenter { get; set; }
+
+        event EventHandler DeleteClick;
     }
 }

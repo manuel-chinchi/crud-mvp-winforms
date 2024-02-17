@@ -21,6 +21,29 @@ namespace PresentationLayer.Presenters
             _service = service;
         }
 
+        public CreateCategoryPresenter(ICreateCategoryView view)
+        {
+            _view = view;
+            _view.AcceptClick += _view_SaveClick;
+            _view.Presenter = this;
+            _service = new CategoryService();
+        }
+
+        private void _view_SaveClick(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(_view.NameC))
+            {
+                _service.CreateCategory(_view.NameC);
+                _view.MsgStatus = "Se ha creado la categoría";
+                _view.StatusResult = true;
+            }
+            else
+            {
+                _view.Error = "El campo nombre no puede ser vacío";
+                _view.ShowError = true;
+            }
+        }
+
         public void SaveCategory()
         {
             _service.CreateCategory(_view.NameC);

@@ -15,11 +15,11 @@ namespace PresentationLayer.Views
 {
     public partial class CreateCategoryView : UserControl, ICreateCategoryView
     {
-        public string NameC
+        string ICreateCategoryView.NameC
         {
             get => txtName.Text; set { txtName.Text = value; }
         }
-        public string MsgError { get; set; }
+        public string Error { get; set; }
         public string MsgStatus { get; set; }
         public CreateCategoryPresenter Presenter { get; set; }
         public bool StatusResult
@@ -42,21 +42,38 @@ namespace PresentationLayer.Views
             }
         }
 
+        public bool ShowError 
+        {
+            get { return this.lblError.Visible; }
+            set 
+            {
+                lblError.Visible = value;
+                lblError.Text = Error;
+            }
+        }
+
         public CreateCategoryView()
         {
             InitializeComponent();
 
-            Presenter = new CreateCategoryPresenter(this, new CategoryService());
+            //Presenter = new CreateCategoryPresenter(this, new CategoryService());
+            Presenter = new CreateCategoryPresenter(this);
         }
+
+        public event EventHandler AcceptClick;
 
         private void btnAccept_Click(object sender, EventArgs e)
         {
-            Presenter.SaveCategory();
-            if (string.IsNullOrEmpty(this.MsgStatus))
-            {
-                MessageBox.Show(this.MsgStatus);
-            }
-            Close();
+            AcceptClick?.Invoke(this, EventArgs.Empty);
+
+            //btnAccept.Click += delegate { AcceptClick.Invoke(this, EventArgs.Empty); };
+
+            //Presenter.SaveCategory();
+            //if (string.IsNullOrEmpty(this.MsgStatus))
+            //{
+            //    MessageBox.Show(this.MsgStatus);
+            //}
+            //Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
