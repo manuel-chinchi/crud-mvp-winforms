@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PresentationLayer.Views
 {
-    public interface ICreateArticleView
+    public interface ICreateArticleView : IBaseView
     {
         string Id { get; set; }
         string NameA { get; set; }
@@ -16,10 +16,6 @@ namespace PresentationLayer.Views
         string Stock { get; set; }
         string Category { get; set; }
         bool IsEditMode { get; set; }
-        string Error { get; set; }
-        string Success { get; set; }
-        bool ShowSuccess { get; set; }
-        bool ShowError { get; set; }
 
         IEnumerable<Category> Categories { get; set; }
         int ItemSelected { get; set; }
