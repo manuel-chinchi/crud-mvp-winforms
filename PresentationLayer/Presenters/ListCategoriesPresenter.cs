@@ -58,7 +58,7 @@ namespace PresentationLayer.Presenters
             }
             else
             {
-                _view.Error = $"No se puede borrar la categoría '{category.Name}' ya que tiene artículos relacionados";
+                _view.Error = $"No se puede borrar la categoría '{category.Name}' porque tiene artículos relacionados";
                 _view.ShowError = true;
             }
         }
