@@ -24,6 +24,7 @@ namespace PresentationLayer.Views
         public CreateCategoryPresenter Presenter { get; set; }
         
         public bool ShowSuccess { get; set; }
+
         // OLD LOGIC
         //public bool ShowSuccess
         //{
@@ -47,12 +48,29 @@ namespace PresentationLayer.Views
 
         public bool ShowError 
         {
-            get { return this.lblError.Visible; }
+            get { return this.lblResult.Visible; }
             set 
             {
-                lblError.Visible = value;
-                lblError.Text = Error;
+                if (value==true)
+                {
+                    lblResult.Text = Error;
+                    lblResult.ForeColor = Color.Red;
+                    ShowResult(5);
+                }
             }
+        }
+
+        private void ShowResult(int interval = 5)
+        {
+            lblResult.Visible = true;
+            var timer = new Timer();
+            timer.Interval = interval*1000;
+            timer.Tick += (s, e) =>
+            {
+                lblResult.Hide();
+                timer.Stop();
+            };
+            timer.Start();
         }
 
         public CreateCategoryView()

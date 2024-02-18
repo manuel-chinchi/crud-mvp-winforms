@@ -37,15 +37,6 @@ namespace PresentationLayer.Presenters
 
         private void _view_AcceptClick(object sender, EventArgs e)
         {
-            //if (!string.IsNullOrEmpty(_view.NameC))
-            //{
-            //    _service.CreateCategory(_view.NameC);
-            //    _view.Success = "asasa";
-            //    // CUANDO AGREGO _view.ShowSuccess=true EL FORMULARIO SE CIERRA AUTOMATICAMENTE
-            //    //LUEGO, ¿QUE PUEDE ESTAR PASANDO?
-            //    _view.ShowSuccess = true; 
-            //}
-
             if (!string.IsNullOrEmpty(_view.NameC))
             {
                 _service.CreateCategory(_view.NameC);

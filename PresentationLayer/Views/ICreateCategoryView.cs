@@ -7,19 +7,16 @@ using System.Threading.Tasks;
 
 namespace PresentationLayer.Views
 {
-    public interface ICreateCategoryView
+    public interface ICreateCategoryView : IBaseView
     {
         string NameC { get; set; }
-        string Error { get; set; }
-        string Success { get; set; }
-        bool ShowSuccess { get; set; }
-        bool ShowError { get; set; }
-
         CreateCategoryPresenter Presenter { get; set; }
+
+        event EventHandler AcceptClick;
+        event EventHandler CancelClick;
+
         // TODO: Show y Close deberían ir en IBaseView?
         void ShowView();
         void CloseView();
-        event EventHandler AcceptClick;
-        event EventHandler CancelClick;
     }
 }

@@ -34,7 +34,7 @@ namespace PresentationLayer.Views
             this.txtName = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnAccept = new System.Windows.Forms.Button();
-            this.lblError = new System.Windows.Forms.Label();
+            this.lblResult = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -93,23 +93,23 @@ namespace PresentationLayer.Views
             this.btnAccept.UseVisualStyleBackColor = true;
             this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
-            // lblError
+            // lblResult
             // 
-            this.lblError.AutoSize = true;
-            this.lblError.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblError.ForeColor = System.Drawing.Color.Red;
-            this.lblError.Location = new System.Drawing.Point(4, 102);
-            this.lblError.Name = "lblError";
-            this.lblError.Size = new System.Drawing.Size(45, 20);
-            this.lblError.TabIndex = 45;
-            this.lblError.Text = "error";
-            this.lblError.Visible = false;
+            this.lblResult.AutoSize = true;
+            this.lblResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResult.ForeColor = System.Drawing.Color.Goldenrod;
+            this.lblResult.Location = new System.Drawing.Point(4, 102);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Size = new System.Drawing.Size(51, 20);
+            this.lblResult.TabIndex = 45;
+            this.lblResult.Text = "result";
+            this.lblResult.Visible = false;
             // 
             // CreateCategoryView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.lblError);
+            this.Controls.Add(this.lblResult);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.lblName);
@@ -129,6 +129,6 @@ namespace PresentationLayer.Views
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnAccept;
-        private System.Windows.Forms.Label lblError;
+        private System.Windows.Forms.Label lblResult;
     }
 }
