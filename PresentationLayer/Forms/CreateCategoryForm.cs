@@ -16,5 +16,7 @@ namespace PresentationLayer.Forms
         {
             InitializeComponent();
         }
+        
+        public object GetView() { return this.createCategoryView1;  }
     }
 }

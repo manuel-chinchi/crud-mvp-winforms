@@ -11,8 +11,8 @@ namespace PresentationLayer.Views
     {
         string NameC { get; set; }
         string Error { get; set; }
-        string MsgStatus { get; set; }
-        bool StatusResult { get; set; }
+        string Success { get; set; }
+        bool ShowSuccess { get; set; }
         bool ShowError { get; set; }
 
         CreateCategoryPresenter Presenter { get; set; }

@@ -24,18 +24,18 @@ namespace PresentationLayer.Presenters
         public CreateCategoryPresenter(ICreateCategoryView view)
         {
             _view = view;
-            _view.AcceptClick += _view_SaveClick;
+            _view.AcceptClick += _view_AcceptClick;
             _view.Presenter = this;
             _service = new CategoryService();
         }
 
-        private void _view_SaveClick(object sender, EventArgs e)
+        private void _view_AcceptClick(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(_view.NameC))
             {
                 _service.CreateCategory(_view.NameC);
-                _view.MsgStatus = "Se ha creado la categoría";
-                _view.StatusResult = true;
+                _view.Success = $"Se ha creado la categoría '{_view.NameC}'";
+                _view.ShowSuccess = true;
             }
             else
             {
@@ -47,8 +47,8 @@ namespace PresentationLayer.Presenters
         public void SaveCategory()
         {
             _service.CreateCategory(_view.NameC);
-            _view.MsgStatus = "Se ha creado la categoría";
-            _view.StatusResult = true;
+            _view.Success = "Se ha creado la categoría";
+            _view.ShowSuccess = true;
         }
     }
 }

@@ -61,7 +61,7 @@ namespace PresentationLayer.Forms
             new EntityLayer.Models.SortableBindingList<EntityLayer.Models.Category>().Add(category5);
             this.listCategoriesView1.Location = new System.Drawing.Point(0, 0);
             this.listCategoriesView1.Error = null;
-            this.listCategoriesView1.MsgStatus = null;
+            this.listCategoriesView1.Success = null;
             this.listCategoriesView1.Name = "listCategoriesView1";
             this.listCategoriesView1.Size = new System.Drawing.Size(764, 400);
             this.listCategoriesView1.TabIndex = 0;

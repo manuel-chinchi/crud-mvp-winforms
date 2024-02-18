@@ -36,7 +36,7 @@ namespace PresentationLayer.Forms
             // 
             this.createCategoryView1.Location = new System.Drawing.Point(0, 0);
             this.createCategoryView1.Error = null;
-            this.createCategoryView1.MsgStatus = null;
+            this.createCategoryView1.Success = null;
             this.createCategoryView1.Name = "createCategoryView1";
             this.createCategoryView1.Name = "";
             this.createCategoryView1.Size = new System.Drawing.Size(330, 247);

@@ -20,9 +20,9 @@ namespace PresentationLayer.Views
             get => txtName.Text; set { txtName.Text = value; }
         }
         public string Error { get; set; }
-        public string MsgStatus { get; set; }
+        public string Success { get; set; }
         public CreateCategoryPresenter Presenter { get; set; }
-        public bool StatusResult
+        public bool ShowSuccess
         {
             get
             {

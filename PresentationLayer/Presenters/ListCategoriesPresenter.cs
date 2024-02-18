@@ -33,14 +33,14 @@ namespace PresentationLayer.Presenters
             var category = _view.Categories.ToArray()[_view.ItemSelected];
             if (category.ArticlesRelated == 0)
             {
-                //var category = _view.Categories.ToArray()[_view.ItemSelected];
-                _view.MsgStatus = "Se ha eliminado la categoría";
                 _service.DeleteCategory(category.Id.ToString());
                 _view.Categories = _service.GetCategories();
+                _view.Success = $"Se ha eliminado la categoría '{category.Name}'";
+                _view.ShowSuccess = true;
             }
             else
             {
-                _view.Error = "No se puede borrar una categoría con artículos relacionados";
+                _view.Error = $"No se puede borrar la categoría '{category.Name}' ya que tiene artículos relacionados";
                 _view.ShowError = true;
             }
         }
@@ -53,7 +53,7 @@ namespace PresentationLayer.Presenters
         public void DeleteCategory()
         {
             var category = _view.Categories.ToArray()[_view.ItemSelected];
-            _view.MsgStatus = "Se ha eliminado la categoría";
+            _view.Success = "Se ha eliminado la categoría";
             _service.DeleteCategory(category.Id.ToString());
         }
     }

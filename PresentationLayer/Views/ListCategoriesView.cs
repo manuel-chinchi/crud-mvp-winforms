@@ -39,20 +39,50 @@ namespace PresentationLayer.Views
             }
         }
         public string Error { get; set; }
-        public string MsgStatus { get; set; }
+        public string Success { get; set; }
         public int ItemSelected
         {
             get => dgvCategories.CurrentCell.RowIndex;
         }
         public ListCategoriesPresenter Presenter { get; set; }
+
         public bool ShowError
         {
-            get { return lblError.Visible; }
+            get { return lblResult.Visible; }
             set
             {
-                lblError.Text = Error;
-                lblError.Visible = value;
+                if (value == true)
+                {
+                    lblResult.Text = Error;
+                    lblResult.ForeColor = Color.Red;
+                    this.ShowResult(5);
+                }
             }
+        }
+        public bool ShowSuccess
+        {
+            get {return lblResult.Visible;}
+            set
+            {
+                if (value==true)
+                {
+                    lblResult.Text = Success;
+                    lblResult.ForeColor = Color.Green;
+                    this.ShowResult(3);
+                }
+            }
+        }
+        private void ShowResult(int interval = 5)
+        {
+            lblResult.Visible = true;
+            var timer = new Timer();
+            timer.Interval = interval * 1000;
+            timer.Tick += (s, e) =>
+            {
+                lblResult.Hide();
+                timer.Stop();
+            };
+            timer.Start();
         }
 
         public event EventHandler DeleteClick;
@@ -69,6 +99,13 @@ namespace PresentationLayer.Views
             if (result != DialogResult.Cancel)
             {
                 Presenter.LoadCategories();
+            }
+
+            var view = (ICreateCategoryView)frm.GetView();
+            if (!string.IsNullOrEmpty(view.Success))
+            {
+                this.Success = view.Success;
+                this.ShowSuccess = true;
             }
         }
 
