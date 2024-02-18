@@ -41,8 +41,8 @@ namespace PresentationLayer.Views
         {
             get; set;
         }
-        public string MsgError { get; set; }
-        public string MsgStatus { get; set; }
+        public string Error { get; set; }
+        public string Success { get; set; }
         public IEnumerable<Category> Categories
         {
             get
@@ -67,7 +67,7 @@ namespace PresentationLayer.Views
                 cmbCategories.SelectedIndex = value;
             }
         }
-        public bool StatusResult
+        public bool ShowSuccess
         {
             get {
                 var result = false;
@@ -84,6 +84,8 @@ namespace PresentationLayer.Views
                 }
             }
         }
+
+        public bool ShowError { get; set; }
 
         public CreateArticleView()
         {

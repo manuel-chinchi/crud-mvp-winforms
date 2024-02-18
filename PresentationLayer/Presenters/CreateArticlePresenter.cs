@@ -58,16 +58,16 @@ namespace PresentationLayer.Presenters
             // TODO: mmm.. check this ¿_view.CategoryId property missing?
             var category = _view.Categories.ToArray()[_view.ItemSelected];
             _articleService.CreateArticle(_view.NameA, _view.Description, _view.Stock.ToString(), category.Id.ToString());
-            _view.MsgStatus = $"Se ha agregado el artículo '{_view.NameA}'";
-            _view.StatusResult = true;
+            _view.Success = $"Se ha agregado el artículo '{_view.NameA}'";
+            _view.ShowSuccess = true;
         }
 
         public void UpdateArticle()
         {
             var category = _view.Categories.ToArray()[_view.ItemSelected];
             _articleService.UpdateArticle(_view.NameA, _view.Description, _view.Stock.ToString(), _view.Id.ToString(), category.Id.ToString());
-            _view.MsgStatus = "Se ha actualizado el artículo";
-            _view.StatusResult = true;
+            _view.Success = "Se ha actualizado el artículo";
+            _view.ShowSuccess = true;
         }
 
         public void LoadArticleFromEdit(Article article)
@@ -89,9 +89,9 @@ namespace PresentationLayer.Presenters
             _view.IsEditMode = true;
         }
 
-        public string GetError() { return _view.MsgError; }
+        public string GetError() { return _view.Error; }
 
-        public string GetStatus() { return _view.MsgStatus; }
+        public string GetStatus() { return _view.Success; }
 
 
     }

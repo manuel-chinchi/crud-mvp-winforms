@@ -32,9 +32,9 @@ namespace PresentationLayer.Presenters
             _viewCreateArticle = (ICreateArticleView)(new CreateArticleForm()).GetView();
             _viewCreateArticle.ShowView();
 
-            if (!string.IsNullOrEmpty(_viewCreateArticle.MsgStatus))
+            if (!string.IsNullOrEmpty(_viewCreateArticle.Success))
             {
-                System.Windows.Forms.MessageBox.Show(_viewCreateArticle.MsgStatus); 
+                System.Windows.Forms.MessageBox.Show(_viewCreateArticle.Success); 
                 _view.Articles = _service.GetArticles();
             }
         }
