@@ -1,5 +1,6 @@
 ﻿using BussinesLayer.Services;
 using EntityLayer.Models;
+using PresentationLayer.Forms;
 using PresentationLayer.Presenters;
 using System;
 using System.Collections.Generic;
@@ -91,6 +92,9 @@ namespace PresentationLayer.Views
             Presenter = new CreateArticlePresenter(this, new ArticleService(), new CategoryService());
         }
 
+        public event EventHandler AcceptClick;
+        public event EventHandler CancelClick;
+
         private void CreateArticleView_Load(object sender, EventArgs e)
         {
             if (this.IsEditMode == true)
@@ -104,26 +108,29 @@ namespace PresentationLayer.Views
 
         private void btnAccept_Click(object sender, EventArgs e)
         {
-            if (IsEditMode == true)
-            {
-                Presenter.UpdateArticle();
-                IsEditMode = false;
-            }
-            else
-            {
-                Presenter.SaveArticle();
-            }
+            AcceptClick?.Invoke(this, EventArgs.Empty);
 
-            if (!string.IsNullOrEmpty(MsgStatus))
-            {
-                MessageBox.Show(MsgStatus);
-            }
-            this.Close();
+            //if (IsEditMode == true)
+            //{
+            //    Presenter.UpdateArticle();
+            //    IsEditMode = false;
+            //}
+            //else
+            //{
+            //    Presenter.SaveArticle();
+            //}
+
+            //if (!string.IsNullOrEmpty(MsgStatus))
+            //{
+            //    MessageBox.Show(MsgStatus);
+            //}
+            //this.Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            ((Form)this.TopLevelControl).Close();
+            CancelClick?.Invoke(this, EventArgs.Empty);
+            //((Form)this.TopLevelControl).Close();
         }
 
         public void Close()
@@ -131,5 +138,15 @@ namespace PresentationLayer.Views
             ((Form)this.TopLevelControl).Close();
         }
 
+        public void ShowView()
+        {
+            CreateArticleForm frm = (CreateArticleForm)this.ParentForm;
+            frm.ShowDialog();
+        }
+
+        public void CloseView()
+        {
+            ((CreateArticleForm)this.TopLevelControl).Close();
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using BussinesLayer.Services;
 using EntityLayer.Models;
+using PresentationLayer.Forms;
 using PresentationLayer.Views;
 using System;
 using System.Collections.Generic;
@@ -12,13 +13,30 @@ namespace PresentationLayer.Presenters
     public class ListArticlesPresenter
     {
         IListArticlesView _view { get; set; }
+        ICreateArticleView _viewCreateArticle { get; set; }
         IArticleService<IEnumerable<Article>> _service { get; set; }
 
         public ListArticlesPresenter(IListArticlesView view, IArticleService<IEnumerable<Article>> service)
         {
             _view = view;
+            _view.AddClick += _view_AddClick;
             _view.Presenter = this;
             _service = service;
+        }
+
+        private void _view_AddClick(object sender, EventArgs e)
+        {
+            //var frm = new CreateArticleForm();
+            //frm.ShowDialog();
+
+            _viewCreateArticle = (ICreateArticleView)(new CreateArticleForm()).GetView();
+            _viewCreateArticle.ShowView();
+
+            if (!string.IsNullOrEmpty(_viewCreateArticle.MsgStatus))
+            {
+                System.Windows.Forms.MessageBox.Show(_viewCreateArticle.MsgStatus); 
+                _view.Articles = _service.GetArticles();
+            }
         }
 
         public void DeleteArticle()

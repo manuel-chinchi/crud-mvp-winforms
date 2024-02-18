@@ -18,5 +18,10 @@ namespace PresentationLayer.Views
         string MsgStatus { get; set; }
         IEnumerable<Article> Articles { get; set; }
         ListArticlesPresenter Presenter { get; set; }
+
+        event EventHandler AddClick;
+        event EventHandler EditClick;
+        event EventHandler DeleteClick;
+        event EventHandler SearchAllClick;
     }
 }

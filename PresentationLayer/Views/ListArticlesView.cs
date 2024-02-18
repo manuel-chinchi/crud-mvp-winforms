@@ -69,6 +69,11 @@ namespace PresentationLayer.Views
             Presenter = new ListArticlesPresenter(this, new ArticleService());
         }
 
+        public event EventHandler AddClick;
+        public event EventHandler EditClick;
+        public event EventHandler DeleteClick;
+        public event EventHandler SearchAllClick;
+
         private void ListArticlesView_Load(object sender, EventArgs e)
         {
             Presenter.LoadArticles();
@@ -115,12 +120,14 @@ namespace PresentationLayer.Views
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var frm = new CreateArticleForm();
-            var result = frm.ShowDialog();
-            if (result != DialogResult.Cancel)
-            {
-                Presenter.LoadArticles();
-            }
+            AddClick?.Invoke(this, EventArgs.Empty);
+
+            //var frm = new CreateArticleForm();
+            //var result = frm.ShowDialog();
+            //if (result != DialogResult.Cancel)
+            //{
+            //    Presenter.LoadArticles();
+            //}
         }
 
         private void btnEdit_Click(object sender, EventArgs e)

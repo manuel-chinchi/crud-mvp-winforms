@@ -30,6 +30,27 @@ namespace PresentationLayer.Presenters
             _articleService = articleService;
             _categoryService = categoryService;
             _view.Categories = _categoryService.GetCategories();
+
+            _view.AcceptClick += _view_AcceptClick;
+            _view.CancelClick += _view_CancelClick;
+        }
+
+        private void _view_CancelClick(object sender, EventArgs e)
+        {
+            _view.CloseView();
+        }
+
+        private void _view_AcceptClick(object sender, EventArgs e)
+        {
+            if (_view.IsEditMode)
+            {
+                this.UpdateArticle();
+                _view.IsEditMode = false;
+            }
+            else
+            {
+                this.SaveArticle();
+            }
         }
 
         public void SaveArticle()
@@ -37,7 +58,7 @@ namespace PresentationLayer.Presenters
             // TODO: mmm.. check this ¿_view.CategoryId property missing?
             var category = _view.Categories.ToArray()[_view.ItemSelected];
             _articleService.CreateArticle(_view.NameA, _view.Description, _view.Stock.ToString(), category.Id.ToString());
-            _view.MsgStatus = "Se ha agregado el artículo";
+            _view.MsgStatus = $"Se ha agregado el artículo '{_view.NameA}'";
             _view.StatusResult = true;
         }
 

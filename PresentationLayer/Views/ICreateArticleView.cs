@@ -24,5 +24,10 @@ namespace PresentationLayer.Views
         int ItemSelected { get; set; }
         CreateArticlePresenter Presenter { get; set; }
         void Close();
+        void CloseView();
+        void ShowView();
+
+        event EventHandler AcceptClick;
+        event EventHandler CancelClick;
     }
 }

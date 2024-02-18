@@ -24,5 +24,7 @@ namespace PresentationLayer.Forms
                 this.createArticleView1.Presenter.ActivateEditMode();
             }
         }
+
+        public object GetView() { return this.createArticleView1; }
     }
 }
