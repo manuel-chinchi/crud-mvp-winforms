@@ -86,6 +86,7 @@ namespace PresentationLayer.Views
         }
 
         public event EventHandler DeleteClick;
+        public event EventHandler AddClick;
 
         private void ListCategoriesView_Load(object sender, EventArgs e)
         {
@@ -93,6 +94,26 @@ namespace PresentationLayer.Views
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
+        {
+            AddClick?.Invoke(this, e);
+
+            //var frm = new CreateCategoryForm();
+            //var result = frm.ShowDialog();
+            //if (result != DialogResult.Cancel)
+            //{
+            //    Presenter.LoadCategories();
+            //}
+
+            //var view = (ICreateCategoryView)frm.GetView();
+            //if (!string.IsNullOrEmpty(view.Success))
+            //{
+            //    this.Success = view.Success;
+            //    this.ShowSuccess = true;
+            //}
+        }
+
+        // ??
+        public void AddCategory()
         {
             var frm = new CreateCategoryForm();
             var result = frm.ShowDialog();

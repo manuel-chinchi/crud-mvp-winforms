@@ -16,7 +16,9 @@ namespace PresentationLayer.Views
         bool ShowError { get; set; }
 
         CreateCategoryPresenter Presenter { get; set; }
-        void Close();
+        // TODO: Show y Close deberían ir en IBaseView?
+        void ShowView();
+        void CloseView();
         event EventHandler AcceptClick;
         event EventHandler CancelClick;
     }

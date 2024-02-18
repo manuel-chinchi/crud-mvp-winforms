@@ -22,25 +22,28 @@ namespace PresentationLayer.Views
         public string Error { get; set; }
         public string Success { get; set; }
         public CreateCategoryPresenter Presenter { get; set; }
-        public bool ShowSuccess
-        {
-            get
-            {
-                var result = false;
-                if (((Form)this.TopLevelControl).DialogResult == DialogResult.OK)
-                {
-                    result = true;
-                }
-                return result;
-            }
-            set
-            {
-                if (value)
-                {
-                    ((Form)this.TopLevelControl).DialogResult = DialogResult.OK;
-                }
-            }
-        }
+        
+        public bool ShowSuccess { get; set; }
+        // OLD LOGIC
+        //public bool ShowSuccess
+        //{
+        //    get
+        //    {
+        //        var result = false;
+        //        if (((Form)this.TopLevelControl).DialogResult == DialogResult.OK)
+        //        {
+        //            result = true;
+        //        }
+        //        return result;
+        //    }
+        //    set
+        //    {
+        //        if (value)
+        //        {
+        //            ((Form)this.TopLevelControl).DialogResult = DialogResult.OK;
+        //        }
+        //    }
+        //}
 
         public bool ShowError 
         {
@@ -75,7 +78,7 @@ namespace PresentationLayer.Views
             //    MessageBox.Show(this.MsgStatus);
             //}
             //Close();
-        }
+        } // HASTA ACA DEBERÍA LLEGAR LA ACCION CLICK DEL BOTON 'ACCEPT'
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -83,9 +86,22 @@ namespace PresentationLayer.Views
             //((Form)this.TopLevelControl).Close();
         }
 
-        public void Close()
+        public void CloseView()
         {
-            ((Form)this.TopLevelControl).Close();
+            //((Form)this.TopLevelControl).Close();
+            ((CreateCategoryForm)this.TopLevelControl).Close();
+
+            // Si se usa Form como vista usar así:
+            //this.Close();
+        }
+
+        public void ShowView()
+        {
+            CreateCategoryForm frm = (CreateCategoryForm)this.ParentForm;
+            frm.ShowDialog();
+
+            // Si se usa Form como vista usar así:
+            //this.ShowDialog();
         }
     }
 }

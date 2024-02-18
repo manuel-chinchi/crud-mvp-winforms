@@ -8,16 +8,13 @@ using System.Threading.Tasks;
 
 namespace PresentationLayer.Views
 {
-    public interface IListCategoriesView
+    public interface IListCategoriesView : IBaseView
     {
         int ItemSelected { get; }
-        string Error { get; set; }
-        bool ShowError { get; set; }
-        string Success { get; set; }
-        bool ShowSuccess { get; set; }
         IEnumerable<Category> Categories { get; set; }
         ListCategoriesPresenter Presenter { get; set; }
 
         event EventHandler DeleteClick;
+        event EventHandler AddClick;
     }
 }

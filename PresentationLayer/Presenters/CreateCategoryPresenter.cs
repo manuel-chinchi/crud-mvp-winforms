@@ -32,20 +32,30 @@ namespace PresentationLayer.Presenters
 
         private void _view_CancelClick(object sender, EventArgs e)
         {
-            _view.Close();
+            _view.CloseView();
         }
 
         private void _view_AcceptClick(object sender, EventArgs e)
         {
+            //if (!string.IsNullOrEmpty(_view.NameC))
+            //{
+            //    _service.CreateCategory(_view.NameC);
+            //    _view.Success = "asasa";
+            //    // CUANDO AGREGO _view.ShowSuccess=true EL FORMULARIO SE CIERRA AUTOMATICAMENTE
+            //    //LUEGO, ¿QUE PUEDE ESTAR PASANDO?
+            //    _view.ShowSuccess = true; 
+            //}
+
             if (!string.IsNullOrEmpty(_view.NameC))
             {
                 _service.CreateCategory(_view.NameC);
                 _view.Success = $"Se ha creado la categoría '{_view.NameC}'";
                 _view.ShowSuccess = true;
+                _view.CloseView();
             }
             else
             {
-                _view.Error = "El campo nombre no puede ser vacío";
+                _view.Error = "El campo 'Nombre' no puede ser vacío";
                 _view.ShowError = true;
             }
         }

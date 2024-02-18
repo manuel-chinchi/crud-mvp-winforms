@@ -1,5 +1,6 @@
 ﻿using BussinesLayer.Services;
 using EntityLayer.Models;
+using PresentationLayer.Forms;
 using PresentationLayer.Views;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace PresentationLayer.Presenters
     public class ListCategoriesPresenter
     {
         IListCategoriesView _view { get; set; }
+        ICreateCategoryView _viewCreateCategory { get; set; }
         ICategoryService<IEnumerable<Category>> _service { get; set; }
 
         public ListCategoriesPresenter(IListCategoriesView view, ICategoryService<IEnumerable<Category>> service)
@@ -23,9 +25,25 @@ namespace PresentationLayer.Presenters
         public ListCategoriesPresenter(IListCategoriesView view)
         {
             _view = view;
+            //_viewCreateCategory = (ICreateCategoryView)(new CreateCategoryForm()).GetView();
             _view.DeleteClick += _view_DeleteClick;
+            _view.AddClick += _view_AddClick;
             _view.Presenter = this;
             _service = new CategoryService();
+        }
+
+        private void _view_AddClick(object sender, EventArgs e)
+        {
+            // TODO: Revisar como mejorar esto. 
+            _viewCreateCategory = (ICreateCategoryView)new CreateCategoryForm().GetView();
+            _viewCreateCategory.ShowView();
+
+            if (!string.IsNullOrEmpty(_viewCreateCategory.Success))
+            {
+                _view.Success = _viewCreateCategory.Success;
+                _view.ShowSuccess = _viewCreateCategory.ShowSuccess;
+                _view.Categories = _service.GetCategories(); // refresh datagridview categories
+            }
         }
 
         private void _view_DeleteClick(object sender, EventArgs e)

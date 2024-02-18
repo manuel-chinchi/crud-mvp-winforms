@@ -120,6 +120,7 @@
     <Compile Include="Views\CreateCategoryView.Designer.cs">
       <DependentUpon>CreateCategoryView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\IBaseView.cs" />
     <Compile Include="Views\ICreateArticleView.cs" />
     <Compile Include="Views\ICreateCategoryView.cs" />
     <Compile Include="Views\IListArticlesView.cs" />
