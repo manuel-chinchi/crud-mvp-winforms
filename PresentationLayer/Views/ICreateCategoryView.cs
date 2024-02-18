@@ -18,5 +18,6 @@ namespace PresentationLayer.Views
         CreateCategoryPresenter Presenter { get; set; }
         void Close();
         event EventHandler AcceptClick;
+        event EventHandler CancelClick;
     }
 }

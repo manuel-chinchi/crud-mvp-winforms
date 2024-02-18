@@ -25,8 +25,14 @@ namespace PresentationLayer.Presenters
         {
             _view = view;
             _view.AcceptClick += _view_AcceptClick;
+            _view.CancelClick += _view_CancelClick;
             _view.Presenter = this;
             _service = new CategoryService();
+        }
+
+        private void _view_CancelClick(object sender, EventArgs e)
+        {
+            _view.Close();
         }
 
         private void _view_AcceptClick(object sender, EventArgs e)

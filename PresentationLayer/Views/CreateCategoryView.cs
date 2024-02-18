@@ -61,6 +61,7 @@ namespace PresentationLayer.Views
         }
 
         public event EventHandler AcceptClick;
+        public event EventHandler CancelClick;
 
         private void btnAccept_Click(object sender, EventArgs e)
         {
@@ -78,7 +79,8 @@ namespace PresentationLayer.Views
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            ((Form)this.TopLevelControl).Close();
+            CancelClick?.Invoke(this, EventArgs.Empty);
+            //((Form)this.TopLevelControl).Close();
         }
 
         public void Close()
