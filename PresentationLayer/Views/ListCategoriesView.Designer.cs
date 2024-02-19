@@ -109,7 +109,7 @@ namespace PresentationLayer.Views
             // 
             // lblResult
             // 
-            this.lblResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblResult.ForeColor = System.Drawing.Color.Goldenrod;
             this.lblResult.Location = new System.Drawing.Point(609, 156);
             this.lblResult.Name = "lblResult";

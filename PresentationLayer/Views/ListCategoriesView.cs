@@ -71,6 +71,8 @@ namespace PresentationLayer.Views
         public event EventHandler AddClick;
         public event EventHandler ViewLoad;
 
+        private Timer timer;
+
         public ListCategoriesView()
         {
             InitializeComponent();
@@ -95,7 +97,13 @@ namespace PresentationLayer.Views
         private void ShowResult(int interval = 5)
         {
             lblResult.Visible = true;
-            var timer = new Timer();
+            
+            if (timer != null && timer.Enabled)
+            {
+                timer.Stop();
+            }
+
+            timer = new Timer();
             timer.Interval = interval * 1000;
             timer.Tick += (s, e) =>
             {

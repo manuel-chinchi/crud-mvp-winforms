@@ -96,11 +96,11 @@ namespace PresentationLayer.Views
             // lblResult
             // 
             this.lblResult.AutoSize = true;
-            this.lblResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblResult.ForeColor = System.Drawing.Color.Goldenrod;
             this.lblResult.Location = new System.Drawing.Point(4, 102);
             this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(51, 20);
+            this.lblResult.Size = new System.Drawing.Size(50, 18);
             this.lblResult.TabIndex = 45;
             this.lblResult.Text = "result";
             this.lblResult.Visible = false;

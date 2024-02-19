@@ -101,6 +101,8 @@ namespace PresentationLayer.Views
         public event EventHandler SearchClick;
         public event EventHandler ShowAllClick;
 
+        private Timer timer;
+
         public ListArticlesView()
         {
             InitializeComponent();
@@ -152,7 +154,13 @@ namespace PresentationLayer.Views
         private void ShowResult(int interval = 5)
         {
             lblResult.Visible = true;
-            var timer = new Timer();
+
+            if (timer != null && timer.Enabled)
+            {
+                timer.Stop();
+            }
+
+            timer = new Timer();
             timer.Interval = interval * 1000;
             timer.Tick += (s, e) =>
             {
