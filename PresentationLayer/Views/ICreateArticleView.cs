@@ -16,11 +16,10 @@ namespace PresentationLayer.Views
         string Stock { get; set; }
         string Category { get; set; }
         bool IsEditMode { get; set; }
-
-        IEnumerable<Category> Categories { get; set; }
         int ItemSelected { get; set; }
+        IEnumerable<Category> Categories { get; set; }
         CreateArticlePresenter Presenter { get; set; }
-        void Close();
+
         void CloseView();
         void ShowView();
 

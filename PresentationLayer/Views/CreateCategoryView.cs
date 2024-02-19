@@ -15,15 +15,31 @@ namespace PresentationLayer.Views
 {
     public partial class CreateCategoryView : UserControl, ICreateCategoryView
     {
-        string ICreateCategoryView.NameC
+        public string NameC
         {
-            get => txtName.Text; set { txtName.Text = value; }
+            get { return txtName.Text; } 
+            set { txtName.Text = value; }
         }
+ 
+        public CreateCategoryPresenter Presenter { get; set; }
+
+        // IBaseView
         public string Error { get; set; }
         public string Success { get; set; }
-        public CreateCategoryPresenter Presenter { get; set; }
-        
         public bool ShowSuccess { get; set; }
+        public bool ShowError 
+        {
+            get { return this.lblResult.Visible; }
+            set 
+            {
+                if (value==true)
+                {
+                    lblResult.Text = Error;
+                    lblResult.ForeColor = Color.Red;
+                    ShowResult(5);
+                }
+            }
+        }
 
         // OLD LOGIC
         //public bool ShowSuccess
@@ -46,32 +62,8 @@ namespace PresentationLayer.Views
         //    }
         //}
 
-        public bool ShowError 
-        {
-            get { return this.lblResult.Visible; }
-            set 
-            {
-                if (value==true)
-                {
-                    lblResult.Text = Error;
-                    lblResult.ForeColor = Color.Red;
-                    ShowResult(5);
-                }
-            }
-        }
-
-        private void ShowResult(int interval = 5)
-        {
-            lblResult.Visible = true;
-            var timer = new Timer();
-            timer.Interval = interval*1000;
-            timer.Tick += (s, e) =>
-            {
-                lblResult.Hide();
-                timer.Stop();
-            };
-            timer.Start();
-        }
+        public event EventHandler AcceptClick;
+        public event EventHandler CancelClick;
 
         public CreateCategoryView()
         {
@@ -79,29 +71,6 @@ namespace PresentationLayer.Views
 
             //Presenter = new CreateCategoryPresenter(this, new CategoryService());
             Presenter = new CreateCategoryPresenter(this);
-        }
-
-        public event EventHandler AcceptClick;
-        public event EventHandler CancelClick;
-
-        private void btnAccept_Click(object sender, EventArgs e)
-        {
-            AcceptClick?.Invoke(this, EventArgs.Empty);
-
-            //btnAccept.Click += delegate { AcceptClick.Invoke(this, EventArgs.Empty); };
-
-            //Presenter.SaveCategory();
-            //if (string.IsNullOrEmpty(this.MsgStatus))
-            //{
-            //    MessageBox.Show(this.MsgStatus);
-            //}
-            //Close();
-        } // HASTA ACA DEBERÍA LLEGAR LA ACCION CLICK DEL BOTON 'ACCEPT'
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            CancelClick?.Invoke(this, EventArgs.Empty);
-            //((Form)this.TopLevelControl).Close();
         }
 
         public void CloseView()
@@ -120,6 +89,39 @@ namespace PresentationLayer.Views
 
             // Si se usa Form como vista usar así:
             //this.ShowDialog();
+        }
+
+        private void ShowResult(int interval = 5)
+        {
+            lblResult.Visible = true;
+            var timer = new Timer();
+            timer.Interval = interval*1000;
+            timer.Tick += (s, e) =>
+            {
+                lblResult.Hide();
+                timer.Stop();
+            };
+            timer.Start();
+        }
+
+        private void btnAccept_Click(object sender, EventArgs e)
+        {
+            AcceptClick?.Invoke(this, EventArgs.Empty);
+
+            //btnAccept.Click += delegate { AcceptClick.Invoke(this, EventArgs.Empty); };
+
+            //Presenter.SaveCategory();
+            //if (string.IsNullOrEmpty(this.MsgStatus))
+            //{
+            //    MessageBox.Show(this.MsgStatus);
+            //}
+            //Close();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            CancelClick?.Invoke(this, EventArgs.Empty);
+            //((Form)this.TopLevelControl).Close();
         }
     }
 }

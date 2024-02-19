@@ -19,25 +19,27 @@ namespace PresentationLayer.Views
     {
         public int ItemSelected
         {
-            get => dgvArticles.CurrentCell.RowIndex;
+            get { return dgvArticles.CurrentCell.RowIndex; }
         }
+
         public bool IncludeName
         {
-            get => Convert.ToBoolean(chkName.CheckState);
+            get { return Convert.ToBoolean(chkName.CheckState); }
             set { chkName.CheckState = (CheckState)Convert.ToInt32(value); }
         }
+
         public bool IncludeDescription
         {
-            get => Convert.ToBoolean(chkDescription.CheckState);
+            get { return Convert.ToBoolean(chkDescription.CheckState); }
             set { chkDescription.CheckState = (CheckState)Convert.ToInt32(value); }
         }
+
         public string Search
         {
-            get => txtSearch.Text;
+            get { return txtSearch.Text; }
             set { txtSearch.Text = value; }
         }
-        public string Error { get; set; }
-        public string Success { get; set; }
+
         public IEnumerable<Article> Articles
         {
             get
@@ -60,9 +62,19 @@ namespace PresentationLayer.Views
                 dgvArticles.DataSource = bs;
             }
         }
+
         public ListArticlesPresenter Presenter { get; set; }
+        
+        // IBaseView
+        public string Error { get; set; }
+        public string Success { get; set; }
         public bool ShowError { get; set; }
         public bool ShowSuccess { get; set; }
+
+        public event EventHandler AddClick;
+        public event EventHandler EditClick;
+        public event EventHandler DeleteClick;
+        public event EventHandler SearchAllClick;
 
         public ListArticlesView()
         {
@@ -70,11 +82,6 @@ namespace PresentationLayer.Views
 
             Presenter = new ListArticlesPresenter(this, new ArticleService());
         }
-
-        public event EventHandler AddClick;
-        public event EventHandler EditClick;
-        public event EventHandler DeleteClick;
-        public event EventHandler SearchAllClick;
 
         private void ListArticlesView_Load(object sender, EventArgs e)
         {
@@ -110,7 +117,6 @@ namespace PresentationLayer.Views
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            // passing a model automatically activates the editor mode
             EditClick?.Invoke(this, EventArgs.Empty);
         }
 

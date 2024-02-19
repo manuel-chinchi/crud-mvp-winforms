@@ -67,9 +67,6 @@ namespace PresentationLayer.Presenters
 
         private void _view_AddClick(object sender, EventArgs e)
         {
-            //var frm = new CreateArticleForm();
-            //frm.ShowDialog();
-
             _viewCreateArticle = (ICreateArticleView)(new CreateArticleForm()).GetView();
             _viewCreateArticle.ShowView();
 
@@ -116,9 +113,5 @@ namespace PresentationLayer.Presenters
 
             _view.Articles = result;
         }
-
-        public string GetError() { return _view.Error; }
-
-        public string GetStatus() { return _view.Success; }
     }
 }

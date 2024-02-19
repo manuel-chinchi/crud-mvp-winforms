@@ -16,11 +16,9 @@ namespace PresentationLayer.Views
 {
     public partial class ListCategoriesView : UserControl, IListCategoriesView
     {
-        public ListCategoriesView()
+        public int ItemSelected
         {
-            InitializeComponent();
-            //Presenter = new ListCategoriesPresenter(this, new CategoryService());
-            Presenter = new ListCategoriesPresenter(this);
+            get { return dgvCategories.CurrentCell.RowIndex; }
         }
 
         public IEnumerable<Category> Categories
@@ -38,14 +36,12 @@ namespace PresentationLayer.Views
                 dgvCategories.DataSource = bs;
             }
         }
-        public string Error { get; set; }
-        public string Success { get; set; }
-        public int ItemSelected
-        {
-            get => dgvCategories.CurrentCell.RowIndex;
-        }
+
         public ListCategoriesPresenter Presenter { get; set; }
 
+        // IBaseView
+        public string Error { get; set; }
+        public string Success { get; set; }
         public bool ShowError
         {
             get { return lblResult.Visible; }
@@ -72,6 +68,32 @@ namespace PresentationLayer.Views
                 }
             }
         }
+
+        public event EventHandler DeleteClick;
+        public event EventHandler AddClick;
+
+        public ListCategoriesView()
+        {
+            InitializeComponent();
+            //Presenter = new ListCategoriesPresenter(this, new CategoryService());
+            Presenter = new ListCategoriesPresenter(this);
+        }
+
+        private void ListCategoriesView_Load(object sender, EventArgs e)
+        {
+            Presenter.LoadCategories();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            AddClick?.Invoke(this, e);
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DeleteClick?.Invoke(this, EventArgs.Empty);
+        }
+        
         private void ShowResult(int interval = 5)
         {
             lblResult.Visible = true;
@@ -83,68 +105,6 @@ namespace PresentationLayer.Views
                 timer.Stop();
             };
             timer.Start();
-        }
-
-        public event EventHandler DeleteClick;
-        public event EventHandler AddClick;
-
-        private void ListCategoriesView_Load(object sender, EventArgs e)
-        {
-            Presenter.LoadCategories();
-        }
-
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            AddClick?.Invoke(this, e);
-
-            //var frm = new CreateCategoryForm();
-            //var result = frm.ShowDialog();
-            //if (result != DialogResult.Cancel)
-            //{
-            //    Presenter.LoadCategories();
-            //}
-
-            //var view = (ICreateCategoryView)frm.GetView();
-            //if (!string.IsNullOrEmpty(view.Success))
-            //{
-            //    this.Success = view.Success;
-            //    this.ShowSuccess = true;
-            //}
-        }
-
-        // ??
-        public void AddCategory()
-        {
-            var frm = new CreateCategoryForm();
-            var result = frm.ShowDialog();
-            if (result != DialogResult.Cancel)
-            {
-                Presenter.LoadCategories();
-            }
-
-            var view = (ICreateCategoryView)frm.GetView();
-            if (!string.IsNullOrEmpty(view.Success))
-            {
-                this.Success = view.Success;
-                this.ShowSuccess = true;
-            }
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            DeleteClick?.Invoke(this, EventArgs.Empty);
-
-            //var category = this.Categories.ToArray()[this.ItemSelected];
-            //var result = MessageBox.Show($"¿Desea eliminar la categoría '{category.Name},id={category.Id}'?", "Alerta", MessageBoxButtons.YesNo);
-            //if (result == DialogResult.Yes)
-            //{
-            //    Presenter.DeleteCategory();
-            //    if (!string.IsNullOrEmpty(MsgStatus))
-            //    {
-            //        MessageBox.Show(MsgStatus);
-            //    }
-            //    Presenter.LoadCategories();
-            //}
         }
     }
 }
