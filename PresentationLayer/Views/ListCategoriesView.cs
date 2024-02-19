@@ -1,6 +1,4 @@
-﻿using BussinesLayer.Services;
-using EntityLayer.Models;
-using PresentationLayer.Forms;
+﻿using EntityLayer.Models;
 using PresentationLayer.Presenters;
 using System;
 using System.Collections.Generic;
@@ -57,10 +55,10 @@ namespace PresentationLayer.Views
         }
         public bool ShowSuccess
         {
-            get {return lblResult.Visible;}
+            get { return lblResult.Visible; }
             set
             {
-                if (value==true)
+                if (value == true)
                 {
                     lblResult.Text = Success;
                     lblResult.ForeColor = Color.Green;
@@ -76,7 +74,6 @@ namespace PresentationLayer.Views
         public ListCategoriesView()
         {
             InitializeComponent();
-            //Presenter = new ListCategoriesPresenter(this, new CategoryService());
             Presenter = new ListCategoriesPresenter(this);
         }
 
@@ -94,7 +91,7 @@ namespace PresentationLayer.Views
         {
             DeleteClick?.Invoke(this, EventArgs.Empty);
         }
-        
+
         private void ShowResult(int interval = 5)
         {
             lblResult.Visible = true;

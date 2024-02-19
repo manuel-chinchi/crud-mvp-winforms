@@ -1,5 +1,4 @@
-﻿using BussinesLayer.Services;
-using PresentationLayer.Forms;
+﻿using PresentationLayer.Forms;
 using PresentationLayer.Presenters;
 using System;
 using System.Collections.Generic;
@@ -17,22 +16,22 @@ namespace PresentationLayer.Views
     {
         public string NameC
         {
-            get { return txtName.Text; } 
+            get { return txtName.Text; }
             set { txtName.Text = value; }
         }
- 
+
         public CreateCategoryPresenter Presenter { get; set; }
 
         // IBaseView
         public string Error { get; set; }
         public string Success { get; set; }
         public bool ShowSuccess { get; set; }
-        public bool ShowError 
+        public bool ShowError
         {
             get { return this.lblResult.Visible; }
-            set 
+            set
             {
-                if (value==true)
+                if (value == true)
                 {
                     lblResult.Text = Error;
                     lblResult.ForeColor = Color.Red;
@@ -40,27 +39,6 @@ namespace PresentationLayer.Views
                 }
             }
         }
-
-        // OLD LOGIC
-        //public bool ShowSuccess
-        //{
-        //    get
-        //    {
-        //        var result = false;
-        //        if (((Form)this.TopLevelControl).DialogResult == DialogResult.OK)
-        //        {
-        //            result = true;
-        //        }
-        //        return result;
-        //    }
-        //    set
-        //    {
-        //        if (value)
-        //        {
-        //            ((Form)this.TopLevelControl).DialogResult = DialogResult.OK;
-        //        }
-        //    }
-        //}
 
         public event EventHandler AcceptClick;
         public event EventHandler CancelClick;
@@ -95,7 +73,7 @@ namespace PresentationLayer.Views
         {
             lblResult.Visible = true;
             var timer = new Timer();
-            timer.Interval = interval*1000;
+            timer.Interval = interval * 1000;
             timer.Tick += (s, e) =>
             {
                 lblResult.Hide();

@@ -39,7 +39,7 @@ namespace PresentationLayer.Views
         public string Category
         {
             get { return cmbCategories.SelectedItem.ToString(); }
-            set { cmbCategories.SelectedItem = value;}
+            set { cmbCategories.SelectedItem = value; }
         }
 
         public bool IsEditMode { get; set; }
@@ -81,7 +81,6 @@ namespace PresentationLayer.Views
         public CreateArticleView()
         {
             InitializeComponent();
-
             Presenter = new CreateArticlePresenter(this, new ArticleService(), new CategoryService());
         }
 

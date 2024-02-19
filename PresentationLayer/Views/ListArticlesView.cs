@@ -1,7 +1,5 @@
 ﻿using BussinesLayer.Services;
-using EntityLayer;
 using EntityLayer.Models;
-using PresentationLayer.Forms;
 using PresentationLayer.Presenters;
 using System;
 using System.Collections.Generic;
@@ -64,7 +62,7 @@ namespace PresentationLayer.Views
         }
 
         public ListArticlesPresenter Presenter { get; set; }
-        
+
         // IBaseView
         public string Error { get; set; }
         public string Success { get; set; }
@@ -80,7 +78,6 @@ namespace PresentationLayer.Views
         public ListArticlesView()
         {
             InitializeComponent();
-
             Presenter = new ListArticlesPresenter(this, new ArticleService());
         }
 
