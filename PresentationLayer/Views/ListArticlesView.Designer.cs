@@ -47,6 +47,7 @@ namespace PresentationLayer.Views
             this.chkName = new System.Windows.Forms.CheckBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.lblResult = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticles)).BeginInit();
             this.grpFilters.SuspendLayout();
             this.SuspendLayout();
@@ -233,10 +234,22 @@ namespace PresentationLayer.Views
             this.txtSearch.TabIndex = 41;
             this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
             // 
+            // lblResult
+            // 
+            this.lblResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResult.ForeColor = System.Drawing.Color.Goldenrod;
+            this.lblResult.Location = new System.Drawing.Point(728, 271);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Size = new System.Drawing.Size(150, 149);
+            this.lblResult.TabIndex = 44;
+            this.lblResult.Text = "result";
+            this.lblResult.Visible = false;
+            // 
             // ListArticlesView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblResult);
             this.Controls.Add(this.grpFilters);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearch);
@@ -273,5 +286,6 @@ namespace PresentationLayer.Views
         private System.Windows.Forms.DataGridViewTextBoxColumn colDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStock;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCategory;
+        private System.Windows.Forms.Label lblResult;
     }
 }

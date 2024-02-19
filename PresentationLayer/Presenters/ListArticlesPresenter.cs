@@ -36,10 +36,10 @@ namespace PresentationLayer.Presenters
         private void _view_SearchClick(object sender, EventArgs e)
         {
             this.SearchArticle();
-            if (!string.IsNullOrEmpty(_view.Error))
-            {
-                System.Windows.Forms.MessageBox.Show(_view.Error);
-            }
+            //if (!string.IsNullOrEmpty(_view.Error))
+            //{
+            //    System.Windows.Forms.MessageBox.Show(_view.Error);
+            //}
         }
 
         private void _view_DeleteClick(object sender, EventArgs e)
@@ -50,10 +50,6 @@ namespace PresentationLayer.Presenters
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
                 this.DeleteArticle();
-                if (!string.IsNullOrEmpty(_view.Success))
-                {
-                    System.Windows.Forms.MessageBox.Show(_view.Success);
-                }
             }
             this.LoadArticles();
         }
@@ -66,7 +62,8 @@ namespace PresentationLayer.Presenters
 
             if (!string.IsNullOrEmpty(_viewCreateArticle.Success))
             {
-                System.Windows.Forms.MessageBox.Show(_viewCreateArticle.Success);
+                _view.Success = _viewCreateArticle.Success;
+                _view.ShowSuccess = true;
                 _view.Articles = _service.GetArticles();
             }
         }
@@ -78,7 +75,8 @@ namespace PresentationLayer.Presenters
 
             if (!string.IsNullOrEmpty(_viewCreateArticle.Success))
             {
-                System.Windows.Forms.MessageBox.Show(_viewCreateArticle.Success); 
+                _view.Success = _viewCreateArticle.Success;
+                _view.ShowSuccess = true;
                 _view.Articles = _service.GetArticles();
             }
         }
@@ -87,6 +85,7 @@ namespace PresentationLayer.Presenters
         {
             var article = _view.Articles.ToList()[_view.ItemSelected];
             _view.Success = "Se ha eliminado el artículo";
+            _view.ShowSuccess = true;
             _service.DeleteArticle(article.Id.ToString());
         }
 
@@ -109,12 +108,19 @@ namespace PresentationLayer.Presenters
 
             if (_view.IncludeName == false && _view.IncludeDescription == false)
             {
-                _view.Error = "Por favor seleccione un filtro de busqueda";
+                _view.Warning = "Por favor seleccione un filtro de busqueda";
+                _view.ShowWarning = true;
                 return;
             }
             else if ((_view.IncludeName || _view.IncludeDescription) && result.Count() == 0)
             {
-                _view.Error = "Nos se encontraron resultados";
+                _view.Success = "Nos se encontraron resultados";
+                _view.ShowSuccess = true;
+            }
+            else
+            {
+                _view.Success = $"Se encontraron '{result.Count()}' resultados";
+                _view.ShowSuccess = true;
             }
 
             _view.Articles = result;

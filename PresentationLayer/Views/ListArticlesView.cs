@@ -66,8 +66,34 @@ namespace PresentationLayer.Views
         // IBaseView
         public string Error { get; set; }
         public string Success { get; set; }
+        public string Warning { get; set; }
         public bool ShowError { get; set; }
-        public bool ShowSuccess { get; set; }
+        public bool ShowSuccess
+        {
+            get { return lblResult.Visible; }
+            set
+            {
+                if (value == true)
+                {
+                    lblResult.Text = Success;
+                    lblResult.ForeColor = Color.Green;
+                    this.ShowResult();
+                }
+            }
+        }
+        public bool ShowWarning
+        {
+            get { return lblResult.Visible; }
+            set
+            {
+                if (value == true)
+                {
+                    lblResult.Text = Warning;
+                    lblResult.ForeColor = Color.Goldenrod;
+                    this.ShowResult();
+                }
+            }
+        }
 
         public event EventHandler AddClick;
         public event EventHandler EditClick;
@@ -121,6 +147,19 @@ namespace PresentationLayer.Views
         private void btnDelete_Click(object sender, EventArgs e)
         {
             DeleteClick?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void ShowResult(int interval = 5)
+        {
+            lblResult.Visible = true;
+            var timer = new Timer();
+            timer.Interval = interval * 1000;
+            timer.Tick += (s, e) =>
+            {
+                lblResult.Hide();
+                timer.Stop();
+            };
+            timer.Start();
         }
     }
 }

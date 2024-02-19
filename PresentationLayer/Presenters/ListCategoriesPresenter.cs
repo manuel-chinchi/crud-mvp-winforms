@@ -54,17 +54,22 @@ namespace PresentationLayer.Presenters
         private void _view_DeleteClick(object sender, EventArgs e)
         {
             var category = _view.Categories.ToArray()[_view.ItemSelected];
-            if (category.ArticlesRelated == 0)
+            var result = System.Windows.Forms.MessageBox.Show($"¿Desea eliminar la categoría '{category.Name}'?", "", System.Windows.Forms.MessageBoxButtons.YesNo);
+
+            if (result == System.Windows.Forms.DialogResult.Yes)
             {
-                _service.DeleteCategory(category.Id.ToString());
-                _view.Categories = _service.GetCategories();
-                _view.Success = $"Se ha eliminado la categoría '{category.Name}'";
-                _view.ShowSuccess = true;
-            }
-            else
-            {
-                _view.Error = $"No se puede borrar la categoría '{category.Name}' porque tiene artículos relacionados";
-                _view.ShowError = true;
+                if (category.ArticlesRelated == 0)
+                {
+                    _service.DeleteCategory(category.Id.ToString());
+                    _view.Categories = _service.GetCategories();
+                    _view.Success = $"Se ha eliminado la categoría '{category.Name}'";
+                    _view.ShowSuccess = true;
+                }
+                else
+                {
+                    _view.Error = $"No se puede borrar la categoría '{category.Name}' porque tiene artículos relacionados";
+                    _view.ShowError = true;
+                }
             }
         }
     }

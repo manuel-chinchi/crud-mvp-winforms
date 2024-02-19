@@ -22,5 +22,8 @@ namespace PresentationLayer.Views
         event EventHandler DeleteClick;
         event EventHandler SearchClick;
         event EventHandler ShowAllClick;
+
+        string Warning { get; set; }
+        bool ShowWarning { get; set; }
     }
 }
