@@ -177,8 +177,8 @@ namespace PresentationLayer.Forms
             this.listArticlesView1.IncludeDescription = false;
             this.listArticlesView1.IncludeName = false;
             this.listArticlesView1.Location = new System.Drawing.Point(0, 0);
-            this.listArticlesView1.MsgError = null;
-            this.listArticlesView1.MsgStatus = null;
+            this.listArticlesView1.Error = null;
+            this.listArticlesView1.Success = null;
             this.listArticlesView1.Name = "listArticlesView1";
             this.listArticlesView1.Search = "";
             this.listArticlesView1.Size = new System.Drawing.Size(883, 483);

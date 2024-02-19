@@ -36,8 +36,8 @@ namespace PresentationLayer.Views
             get => txtSearch.Text;
             set { txtSearch.Text = value; }
         }
-        public string MsgError { get; set; }
-        public string MsgStatus { get; set; }
+        public string Error { get; set; }
+        public string Success { get; set; }
         public IEnumerable<Article> Articles
         {
             get
@@ -48,7 +48,7 @@ namespace PresentationLayer.Views
             }
             set
             {
-                // no permite ordenacion
+                // TODO: Esta forma no permite ordenacion
                 //BindingSource bs = new BindingSource();
                 //bs.DataSource = new List<Article>();
                 //dgvArticles.DataSource = bs.DataSource;
@@ -86,19 +86,21 @@ namespace PresentationLayer.Views
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Presenter.SearchArticle();
-                var error = Presenter.GetError();
-                if (!string.IsNullOrEmpty(error))
-                {
-                    MessageBox.Show(error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex);
-            }
+            SearchAllClick?.Invoke(this, EventArgs.Empty);
+
+            //try
+            //{
+            //    Presenter.SearchArticle();
+            //    var error = Presenter.GetError();
+            //    if (!string.IsNullOrEmpty(error))
+            //    {
+            //        MessageBox.Show(error);
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Error: " + ex);
+            //}
         }
 
         private void txtSearch_KeyDown(object sender, KeyEventArgs e)
@@ -109,12 +111,13 @@ namespace PresentationLayer.Views
                 e.Handled = true;
                 e.SuppressKeyPress = true;
 
-                Presenter.SearchArticle();
-                var error = Presenter.GetError();
-                if (!string.IsNullOrEmpty(error))
-                {
-                    MessageBox.Show(error);
-                }
+                SearchAllClick?.Invoke(this, EventArgs.Empty);
+                //Presenter.SearchArticle();
+                //var error = Presenter.GetError();
+                //if (!string.IsNullOrEmpty(error))
+                //{
+                //    MessageBox.Show(error);
+                //}
             }
         }
 
@@ -133,30 +136,34 @@ namespace PresentationLayer.Views
         private void btnEdit_Click(object sender, EventArgs e)
         {
             // passing a model automatically activates the editor mode
-            var a = this.Presenter.GetArticleSelected();
-            var frm = new CreateArticleForm(a);
-            var result = frm.ShowDialog();
-            if (result != DialogResult.Cancel)
-            {
-                Presenter.LoadArticles();
-            }
+            EditClick?.Invoke(this, EventArgs.Empty);
+
+            //var a = this.Presenter.GetArticleSelected();
+            //var frm = new CreateArticleForm(a);
+            //var result = frm.ShowDialog();
+            //if (result != DialogResult.Cancel)
+            //{
+            //    Presenter.LoadArticles();
+            //}
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            var article = Articles.ToArray()[ItemSelected];
-            var result = MessageBox.Show($"¿Desea eliminar el artículo? '{article.Name}, id={article.Id}'", "Alerta", MessageBoxButtons.YesNo);
+            DeleteClick?.Invoke(this, EventArgs.Empty);
 
-            if (result == DialogResult.Yes)
-            {
-                Presenter.DeleteArticle();
-                var status = Presenter.GetStatus();
-                if (!string.IsNullOrEmpty(status))
-                {
-                    MessageBox.Show(status);
-                }
-                Presenter.LoadArticles();
-            }
+            //var article = Articles.ToArray()[ItemSelected];
+            //var result = MessageBox.Show($"¿Desea eliminar el artículo? '{article.Name}, id={article.Id}'", "Alerta", MessageBoxButtons.YesNo);
+
+            //if (result == DialogResult.Yes)
+            //{
+            //    Presenter.DeleteArticle();
+            //    var status = Presenter.GetStatus();
+            //    if (!string.IsNullOrEmpty(status))
+            //    {
+            //        MessageBox.Show(status);
+            //    }
+            //    Presenter.LoadArticles();
+            //}
         }
     }
 }

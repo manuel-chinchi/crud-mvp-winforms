@@ -14,8 +14,8 @@ namespace PresentationLayer.Views
         bool IncludeName { get; set; }
         bool IncludeDescription { get; set; }
         string Search { get; set; }
-        string MsgError { get; set; }
-        string MsgStatus { get; set; }
+        string Error { get; set; }
+        string Success { get; set; }
         IEnumerable<Article> Articles { get; set; }
         ListArticlesPresenter Presenter { get; set; }
 
