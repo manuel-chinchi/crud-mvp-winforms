@@ -2,7 +2,6 @@
 using EntityLayer.Models;
 using PresentationLayer.Forms;
 using PresentationLayer.Presenters;
-using PresentationLayer.Shared;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
