@@ -79,6 +79,11 @@ namespace PresentationLayer.Views
                     lblResult.ForeColor = Color.Green;
                     this.ShowResult();
                 }
+                else
+                {
+                    if (timer != null && timer.Enabled) timer.Stop();
+                    lblResult.Visible = value;
+                }
             }
         }
         public bool ShowWarning
@@ -151,7 +156,7 @@ namespace PresentationLayer.Views
             DeleteClick?.Invoke(this, EventArgs.Empty);
         }
 
-        private void ShowResult(int interval = 5)
+        private void ShowResult(int interval = 3)
         {
             lblResult.Visible = true;
 

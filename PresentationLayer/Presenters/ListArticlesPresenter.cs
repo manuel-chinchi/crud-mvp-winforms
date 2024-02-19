@@ -31,6 +31,7 @@ namespace PresentationLayer.Presenters
         private void _view_ShowAllClick(object sender, EventArgs e)
         {
             _view.Articles = _service.GetArticles();
+            _view.ShowSuccess = false;
         }
 
         private void _view_SearchClick(object sender, EventArgs e)

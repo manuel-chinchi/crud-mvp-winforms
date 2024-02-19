@@ -47,7 +47,7 @@ namespace PresentationLayer.Presenters
             {
                 _view.Categories = _categoryService.GetCategories();
                 _articleService.UpdateArticle(_view.NameA, _view.Description, _view.Stock.ToString(), _view.Id.ToString(), category.Id.ToString());
-                _view.Success = "Se ha actualizado el artículo";
+                _view.Success = $"Se ha actualizado el artículo 'id={_view.Id.ToString()}'";
                 _view.ShowSuccess = true;
                 _view.IsEditMode = false;
             }
