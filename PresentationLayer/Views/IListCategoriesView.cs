@@ -16,5 +16,6 @@ namespace PresentationLayer.Views
 
         event EventHandler DeleteClick;
         event EventHandler AddClick;
+        event EventHandler ViewLoad;
     }
 }

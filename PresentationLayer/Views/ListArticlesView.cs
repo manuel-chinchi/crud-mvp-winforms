@@ -74,7 +74,8 @@ namespace PresentationLayer.Views
         public event EventHandler AddClick;
         public event EventHandler EditClick;
         public event EventHandler DeleteClick;
-        public event EventHandler SearchAllClick;
+        public event EventHandler SearchClick;
+        public event EventHandler ShowAllClick;
 
         public ListArticlesView()
         {
@@ -85,17 +86,17 @@ namespace PresentationLayer.Views
 
         private void ListArticlesView_Load(object sender, EventArgs e)
         {
-            Presenter.LoadArticles();
+            ShowAllClick?.Invoke(this, EventArgs.Empty);
         }
 
         private void btnShowAll_Click(object sender, EventArgs e)
         {
-            Presenter.LoadArticles();
+            ShowAllClick?.Invoke(this, EventArgs.Empty);
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            SearchAllClick?.Invoke(this, EventArgs.Empty);
+            SearchClick?.Invoke(this, EventArgs.Empty);
         }
 
         private void txtSearch_KeyDown(object sender, KeyEventArgs e)
@@ -106,7 +107,7 @@ namespace PresentationLayer.Views
                 e.Handled = true;
                 e.SuppressKeyPress = true;
 
-                SearchAllClick?.Invoke(this, EventArgs.Empty);
+                SearchClick?.Invoke(this, EventArgs.Empty);
             }
         }
 

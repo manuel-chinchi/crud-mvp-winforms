@@ -71,6 +71,7 @@ namespace PresentationLayer.Views
 
         public event EventHandler DeleteClick;
         public event EventHandler AddClick;
+        public event EventHandler ViewLoad;
 
         public ListCategoriesView()
         {
@@ -81,7 +82,7 @@ namespace PresentationLayer.Views
 
         private void ListCategoriesView_Load(object sender, EventArgs e)
         {
-            Presenter.LoadCategories();
+            ViewLoad?.Invoke(this, EventArgs.Empty);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

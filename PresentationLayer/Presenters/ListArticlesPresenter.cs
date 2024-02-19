@@ -22,12 +22,18 @@ namespace PresentationLayer.Presenters
             _view.AddClick += _view_AddClick;
             _view.EditClick += _view_EditClick;
             _view.DeleteClick += _view_DeleteClick;
-            _view.SearchAllClick += _view_SearchAllClick;
+            _view.SearchClick += _view_SearchClick;
+            _view.ShowAllClick += _view_ShowAllClick;
             _view.Presenter = this;
             _service = service;
         }
 
-        private void _view_SearchAllClick(object sender, EventArgs e)
+        private void _view_ShowAllClick(object sender, EventArgs e)
+        {
+            _view.Articles = _service.GetArticles();
+        }
+
+        private void _view_SearchClick(object sender, EventArgs e)
         {
             this.SearchArticle();
             if (!string.IsNullOrEmpty(_view.Error))

@@ -20,6 +20,7 @@ namespace PresentationLayer.Views
         event EventHandler AddClick;
         event EventHandler EditClick;
         event EventHandler DeleteClick;
-        event EventHandler SearchAllClick;
+        event EventHandler SearchClick;
+        event EventHandler ShowAllClick;
     }
 }
