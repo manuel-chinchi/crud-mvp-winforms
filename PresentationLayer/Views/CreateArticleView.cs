@@ -2,6 +2,7 @@
 using EntityLayer.Models;
 using PresentationLayer.Forms;
 using PresentationLayer.Presenters;
+using PresentationLayer.Shared;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -72,11 +73,26 @@ namespace PresentationLayer.Views
         // IBaseView
         public string Error { get; set; }
         public string Success { get; set; }
-        public bool ShowError { get; set; }
+        public bool ShowError
+        {
+            get { return lblResult.Visible; }
+            set
+            {
+                if (value == true)
+                {
+                    lblResult.Text = Error;
+                    lblResult.ForeColor = Color.Red;
+                    this.ShowResult();
+                }
+            }
+        }
+
         public bool ShowSuccess { get; set; }
 
         public event EventHandler AcceptClick;
         public event EventHandler CancelClick;
+
+        private Timer timer;
 
         public CreateArticleView()
         {
@@ -93,6 +109,25 @@ namespace PresentationLayer.Views
         public void CloseView()
         {
             ((CreateArticleForm)this.TopLevelControl).Close();
+        }
+
+        private void ShowResult(int interval = 5)
+        {
+            lblResult.Visible = true;
+
+            if (timer != null && timer.Enabled)
+            {
+                timer.Stop();
+            }
+
+            timer = new Timer();
+            timer.Interval = interval * 1000;
+            timer.Tick += (s, e) =>
+            {
+                lblResult.Hide();
+                timer.Stop();
+            };
+            timer.Start();
         }
 
         private void CreateArticleView_Load(object sender, EventArgs e)

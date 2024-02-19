@@ -54,6 +54,12 @@ namespace PresentationLayer.Presenters
             else
             {
                 // TODO: mmm.. check this ¿_view.CategoryId property missing?
+                if (string.IsNullOrEmpty(_view.NameA))
+                {
+                    _view.Error = "El campo 'Nombre' no puede ser vacío";
+                    _view.ShowError = true;
+                    return;
+                }
                 _articleService.CreateArticle(_view.NameA, _view.Description, _view.Stock.ToString(), category.Id.ToString());
                 _view.Success = $"Se ha agregado el artículo '{_view.NameA}'";
                 _view.ShowSuccess = true;

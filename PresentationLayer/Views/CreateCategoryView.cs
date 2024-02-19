@@ -48,8 +48,6 @@ namespace PresentationLayer.Views
         public CreateCategoryView()
         {
             InitializeComponent();
-
-            //Presenter = new CreateCategoryPresenter(this, new CategoryService());
             Presenter = new CreateCategoryPresenter(this);
         }
 

@@ -40,6 +40,7 @@ namespace PresentationLayer.Views
             this.lblTitle = new System.Windows.Forms.Label();
             this.cmbCategories = new System.Windows.Forms.ComboBox();
             this.lblCategories = new System.Windows.Forms.Label();
+            this.lblResult = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblStock
@@ -148,11 +149,24 @@ namespace PresentationLayer.Views
             this.lblCategories.TabIndex = 41;
             this.lblCategories.Text = "Category";
             // 
+            // lblResult
+            // 
+            this.lblResult.AutoSize = true;
+            this.lblResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResult.ForeColor = System.Drawing.Color.Goldenrod;
+            this.lblResult.Location = new System.Drawing.Point(4, 296);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Size = new System.Drawing.Size(50, 18);
+            this.lblResult.TabIndex = 42;
+            this.lblResult.Text = "result";
+            this.lblResult.Visible = false;
+            // 
             // CreateArticleView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
+            this.Controls.Add(this.lblResult);
             this.Controls.Add(this.lblCategories);
             this.Controls.Add(this.cmbCategories);
             this.Controls.Add(this.lblTitle);
@@ -185,5 +199,6 @@ namespace PresentationLayer.Views
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.ComboBox cmbCategories;
         private System.Windows.Forms.Label lblCategories;
+        private System.Windows.Forms.Label lblResult;
     }
 }
