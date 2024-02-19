@@ -61,6 +61,8 @@ namespace PresentationLayer.Views
             }
         }
         public ListArticlesPresenter Presenter { get; set; }
+        public bool ShowError { get; set; }
+        public bool ShowSuccess { get; set; }
 
         public ListArticlesView()
         {
@@ -87,20 +89,6 @@ namespace PresentationLayer.Views
         private void btnSearch_Click(object sender, EventArgs e)
         {
             SearchAllClick?.Invoke(this, EventArgs.Empty);
-
-            //try
-            //{
-            //    Presenter.SearchArticle();
-            //    var error = Presenter.GetError();
-            //    if (!string.IsNullOrEmpty(error))
-            //    {
-            //        MessageBox.Show(error);
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Error: " + ex);
-            //}
         }
 
         private void txtSearch_KeyDown(object sender, KeyEventArgs e)
@@ -112,58 +100,23 @@ namespace PresentationLayer.Views
                 e.SuppressKeyPress = true;
 
                 SearchAllClick?.Invoke(this, EventArgs.Empty);
-                //Presenter.SearchArticle();
-                //var error = Presenter.GetError();
-                //if (!string.IsNullOrEmpty(error))
-                //{
-                //    MessageBox.Show(error);
-                //}
             }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             AddClick?.Invoke(this, EventArgs.Empty);
-
-            //var frm = new CreateArticleForm();
-            //var result = frm.ShowDialog();
-            //if (result != DialogResult.Cancel)
-            //{
-            //    Presenter.LoadArticles();
-            //}
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
             // passing a model automatically activates the editor mode
             EditClick?.Invoke(this, EventArgs.Empty);
-
-            //var a = this.Presenter.GetArticleSelected();
-            //var frm = new CreateArticleForm(a);
-            //var result = frm.ShowDialog();
-            //if (result != DialogResult.Cancel)
-            //{
-            //    Presenter.LoadArticles();
-            //}
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             DeleteClick?.Invoke(this, EventArgs.Empty);
-
-            //var article = Articles.ToArray()[ItemSelected];
-            //var result = MessageBox.Show($"¿Desea eliminar el artículo? '{article.Name}, id={article.Id}'", "Alerta", MessageBoxButtons.YesNo);
-
-            //if (result == DialogResult.Yes)
-            //{
-            //    Presenter.DeleteArticle();
-            //    var status = Presenter.GetStatus();
-            //    if (!string.IsNullOrEmpty(status))
-            //    {
-            //        MessageBox.Show(status);
-            //    }
-            //    Presenter.LoadArticles();
-            //}
         }
     }
 }

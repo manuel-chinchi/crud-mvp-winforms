@@ -42,32 +42,23 @@ namespace PresentationLayer.Presenters
 
         private void _view_AcceptClick(object sender, EventArgs e)
         {
+            var category = _view.Categories.ToArray()[_view.ItemSelected];
             if (_view.IsEditMode)
             {
-                this.UpdateArticle();
+                _view.Categories = _categoryService.GetCategories();
+                _articleService.UpdateArticle(_view.NameA, _view.Description, _view.Stock.ToString(), _view.Id.ToString(), category.Id.ToString());
+                _view.Success = "Se ha actualizado el artículo";
+                _view.ShowSuccess = true;
                 _view.IsEditMode = false;
             }
             else
             {
-                this.SaveArticle();
+                // TODO: mmm.. check this ¿_view.CategoryId property missing?
+                _articleService.CreateArticle(_view.NameA, _view.Description, _view.Stock.ToString(), category.Id.ToString());
+                _view.Success = $"Se ha agregado el artículo '{_view.NameA}'";
+                _view.ShowSuccess = true;
             }
-        }
-
-        public void SaveArticle()
-        {
-            // TODO: mmm.. check this ¿_view.CategoryId property missing?
-            var category = _view.Categories.ToArray()[_view.ItemSelected];
-            _articleService.CreateArticle(_view.NameA, _view.Description, _view.Stock.ToString(), category.Id.ToString());
-            _view.Success = $"Se ha agregado el artículo '{_view.NameA}'";
-            _view.ShowSuccess = true;
-        }
-
-        public void UpdateArticle()
-        {
-            var category = _view.Categories.ToArray()[_view.ItemSelected];
-            _articleService.UpdateArticle(_view.NameA, _view.Description, _view.Stock.ToString(), _view.Id.ToString(), category.Id.ToString());
-            _view.Success = "Se ha actualizado el artículo";
-            _view.ShowSuccess = true;
+            _view.CloseView();
         }
 
         public void LoadArticleFromEdit(Article article)
@@ -79,20 +70,9 @@ namespace PresentationLayer.Presenters
             _view.ItemSelected = _view.Categories.ToList().FindIndex(c => c.Id == Convert.ToInt32(article.CategoryId));
         }
 
-        public void LoadCategories()
-        {
-            _view.Categories = _categoryService.GetCategories();
-        }
-
         public void ActivateEditMode()
         {
             _view.IsEditMode = true;
         }
-
-        public string GetError() { return _view.Error; }
-
-        public string GetStatus() { return _view.Success; }
-
-
     }
 }

@@ -69,20 +69,21 @@ namespace PresentationLayer.Views
         }
         public bool ShowSuccess
         {
-            get {
-                var result = false;
-                if (((Form)this.TopLevelControl).DialogResult == DialogResult.OK)
-                {
-                    result = true;
-                }
-                return result;
-            }
-            set {
-                if (value)
-                {
-                    ((Form)this.TopLevelControl).DialogResult = DialogResult.OK;
-                }
-            }
+            get;set;
+            //get {
+            //    var result = false;
+            //    if (((Form)this.TopLevelControl).DialogResult == DialogResult.OK)
+            //    {
+            //        result = true;
+            //    }
+            //    return result;
+            //}
+            //set {
+            //    if (value)
+            //    {
+            //        ((Form)this.TopLevelControl).DialogResult = DialogResult.OK;
+            //    }
+            //}
         }
 
         public bool ShowError { get; set; }
@@ -99,13 +100,13 @@ namespace PresentationLayer.Views
 
         private void CreateArticleView_Load(object sender, EventArgs e)
         {
-            if (this.IsEditMode == true)
-            {
-            }
-            else
-            {
-                Presenter.LoadCategories();
-            }
+            //if (this.IsEditMode == true)
+            //{
+            //}
+            //else
+            //{
+            //    //Presenter.LoadCategories();
+            //}
         }
 
         private void btnAccept_Click(object sender, EventArgs e)

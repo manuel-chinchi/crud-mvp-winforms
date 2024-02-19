@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace PresentationLayer.Views
 {
-    public interface IListArticlesView
+    public interface IListArticlesView : IBaseView
     {
         int ItemSelected { get; }
         bool IncludeName { get; set; }
         bool IncludeDescription { get; set; }
         string Search { get; set; }
-        string Error { get; set; }
-        string Success { get; set; }
+        //string Error { get; set; }
+        //string Success { get; set; }
         IEnumerable<Article> Articles { get; set; }
         ListArticlesPresenter Presenter { get; set; }
 
