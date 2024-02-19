@@ -81,7 +81,8 @@ namespace PresentationLayer.Views
                 }
                 else
                 {
-                    if (timer != null && timer.Enabled) timer.Stop();
+                    if (timer != null && timer.Enabled) 
+                        timer.Stop();
                     lblResult.Visible = value;
                 }
             }
