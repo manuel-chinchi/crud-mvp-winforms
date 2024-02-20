@@ -20,17 +20,19 @@ namespace PresentationLayer.Presenters
             _view = view;
             _view.Presenter = this;
             _articleService = service;
-            _view.Category = "";
+
+            _view.AcceptClick += _view_AcceptClick;
+            _view.CancelClick += _view_CancelClick;
         }
 
         public CreateArticlePresenter(ICreateArticleView view, IArticleService<IEnumerable<Article>> articleService, ICategoryService<IEnumerable<Category>> categoryService)
         {
             _view = view;
-            //_view.Presenter = this;
+            _view.Presenter = this;
             _articleService = articleService;
             _categoryService = categoryService;
-            _view.Categories = _categoryService.GetCategories();
 
+            _view.Categories = _categoryService.GetCategories();
             _view.AcceptClick += _view_AcceptClick;
             _view.CancelClick += _view_CancelClick;
         }

@@ -19,13 +19,14 @@ namespace PresentationLayer.Presenters
         public ListArticlesPresenter(IListArticlesView view, IArticleService<IEnumerable<Article>> service)
         {
             _view = view;
+            _view.Presenter = this;
+            _service = service;
+            
             _view.AddClick += _view_AddClick;
             _view.EditClick += _view_EditClick;
             _view.DeleteClick += _view_DeleteClick;
             _view.SearchClick += _view_SearchClick;
             _view.ShowAllClick += _view_ShowAllClick;
-            _view.Presenter = this;
-            _service = service;
         }
 
         private void _view_ShowAllClick(object sender, EventArgs e)

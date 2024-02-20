@@ -17,17 +17,21 @@ namespace PresentationLayer.Presenters
         public CreateCategoryPresenter(ICreateCategoryView view, ICategoryService<IEnumerable<Category>> service)
         {
             _view = view;
-            //_view.Presenter = this;
+            _view.Presenter = this;
             _service = service;
+
+            _view.AcceptClick += _view_AcceptClick;
+            _view.CancelClick += _view_CancelClick;
         }
 
         public CreateCategoryPresenter(ICreateCategoryView view)
         {
             _view = view;
-            _view.AcceptClick += _view_AcceptClick;
-            _view.CancelClick += _view_CancelClick;
             _view.Presenter = this;
             _service = new CategoryService();
+
+            _view.AcceptClick += _view_AcceptClick;
+            _view.CancelClick += _view_CancelClick;
         }
 
         private void _view_CancelClick(object sender, EventArgs e)

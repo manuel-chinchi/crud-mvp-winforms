@@ -19,17 +19,23 @@ namespace PresentationLayer.Presenters
         public ListCategoriesPresenter(IListCategoriesView view, ICategoryService<IEnumerable<Category>> service)
         {
             _view = view;
+            _view.Presenter = this;
             _service = service;
+
+            _view.DeleteClick += _view_DeleteClick;
+            _view.AddClick += _view_AddClick;
+            _view.ViewLoad += _view_ViewLoad;
         }
 
         public ListCategoriesPresenter(IListCategoriesView view)
         {
             _view = view;
+            _view.Presenter = this;
+            _service = new CategoryService();
+            
             _view.DeleteClick += _view_DeleteClick;
             _view.AddClick += _view_AddClick;
             _view.ViewLoad += _view_ViewLoad;
-            _view.Presenter = this;
-            _service = new CategoryService();
         }
 
         private void _view_ViewLoad(object sender, EventArgs e)
