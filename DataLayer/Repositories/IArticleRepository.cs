@@ -7,15 +7,6 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Repositories
 {
-    //public interface IArticleRepository<T>
-    //{
-    //    T GetArticles();
-    //    void CreateArticle(string name, string description, string stock, string categoryId);
-    //    void UpdateArticle(string name, string description, string stock, string id, string categoryId);
-    //    void DeleteArticle(string id);
-    //    T SearchArticle(int includeName, int includeDescription, string search);
-    //}
-
     public interface IArticleRepository<T> : IBaseRepository<T>
     {
         IEnumerable<T> Search(Dictionary<string, object> filters);
