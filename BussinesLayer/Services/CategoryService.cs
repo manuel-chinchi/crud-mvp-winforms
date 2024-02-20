@@ -10,21 +10,22 @@ namespace BussinesLayer.Services
 {
     public class CategoryService : ICategoryService<IEnumerable<Category>>
     {
-        private readonly ICategoryRepository<IEnumerable<Category>> _categoryRepository = new CategoryRepository();
+        private readonly ICategoryRepository<Category> _categoryRepository = new CategoryRepository();
 
         public void CreateCategory(string name)
         {
-            _categoryRepository.CreateCategory(name);
+            _categoryRepository.Insert(new Category { Name = name });
         }
 
         public void DeleteCategory(string id)
         {
-            _categoryRepository.DeleteCategory(id);
+            id = string.IsNullOrEmpty(id) == true ? "0" : id;
+            _categoryRepository.Delete(Convert.ToInt32(id));
         }
 
         public IEnumerable<Category> GetCategories()
         {
-            return _categoryRepository.GetCategories();
+            return _categoryRepository.GetAll();
         }
     }
 }

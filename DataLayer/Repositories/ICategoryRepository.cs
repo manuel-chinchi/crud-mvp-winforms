@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Repositories
 {
-    public interface ICategoryRepository<T>
+    //public interface ICategoryRepository<T>
+    //{
+    //    T GetCategories();
+    //    void CreateCategory(string name);
+    //    void DeleteCategory(string id);
+    //}
+    public interface ICategoryRepository<T> : IBaseRepository<T>
     {
-        T GetCategories();
-        void CreateCategory(string name);
-        void DeleteCategory(string id);
     }
 }

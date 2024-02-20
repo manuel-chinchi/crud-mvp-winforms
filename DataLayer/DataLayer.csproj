@@ -50,6 +50,7 @@
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\IArticleRepository.cs" />
+    <Compile Include="Repositories\IBaseRepository.cs" />
     <Compile Include="Repositories\ICategoryRepository.cs" />
   </ItemGroup>
   <ItemGroup>

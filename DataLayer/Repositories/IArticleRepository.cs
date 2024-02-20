@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EntityLayer.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,12 +7,17 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Repositories
 {
-    public interface IArticleRepository<T>
+    //public interface IArticleRepository<T>
+    //{
+    //    T GetArticles();
+    //    void CreateArticle(string name, string description, string stock, string categoryId);
+    //    void UpdateArticle(string name, string description, string stock, string id, string categoryId);
+    //    void DeleteArticle(string id);
+    //    T SearchArticle(int includeName, int includeDescription, string search);
+    //}
+
+    public interface IArticleRepository<T> : IBaseRepository<T>
     {
-        T GetArticles();
-        void CreateArticle(string name, string description, string stock, string categoryId);
-        void UpdateArticle(string name, string description, string stock, string id, string categoryId);
-        void DeleteArticle(string id);
-        T SearchArticle(int includeName, int includeDescription, string search);
+        IEnumerable<T> Search(Dictionary<string, object> filters);
     }
 }
