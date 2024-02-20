@@ -10,58 +10,6 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Repositories
 {
-    //public class CategoryRepository : BaseRepository, ICategoryRepository<IEnumerable<Category>>
-    //{
-    //    public void CreateCategory(string name)
-    //    {
-    //        using (var connection = new SqlConnection(_connectionString))
-    //        {
-    //            connection.Open();
-    //            connection.Execute(
-    //                "InsertCategory",
-    //                new
-    //                {
-    //                    Name = name
-    //                },
-    //                null,
-    //                null,
-    //                CommandType.StoredProcedure
-    //                );
-    //        }
-    //    }
-
-    //    public void DeleteCategory(string id)
-    //    {
-    //        // FIX: Lanza System.Data.SqlClient.SqlException cuando se intenta eliminar
-    //        // categorias con al menos 1 articulo relacionados
-    //        using (var connection = new SqlConnection(_connectionString))
-    //        {
-    //            connection.Open();
-    //            connection.Execute(
-    //                "DeleteCategory",
-    //                new
-    //                {
-    //                    Id = id
-    //                },
-    //                null,
-    //                null,
-    //                CommandType.StoredProcedure
-    //                );
-    //        }
-    //    }
-
-    //    public IEnumerable<Category> GetCategories()
-    //    {
-    //        IEnumerable<Category> result;
-    //        using (var connection = new SqlConnection(_connectionString))
-    //        {
-    //            connection.Open();
-    //            result = connection.Query<Category>("GetCategories", CommandType.StoredProcedure);
-    //        }
-    //        return result;
-    //    }
-    //}
-
     public class CategoryRepository : BaseRepository, ICategoryRepository<Category>
     {
         // TODO Metodos no implementados de IBaseRepository
