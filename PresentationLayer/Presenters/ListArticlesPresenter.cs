@@ -86,9 +86,9 @@ namespace PresentationLayer.Presenters
         public void DeleteArticle()
         {
             var article = _viewList.Articles.ToList()[_viewList.ItemSelected];
+            _service.DeleteArticle(article.Id.ToString());
             _viewList.Success = "Se ha eliminado el artículo";
             _viewList.ShowSuccess = true;
-            _service.DeleteArticle(article.Id.ToString());
         }
 
         public void LoadArticles()

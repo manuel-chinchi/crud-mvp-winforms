@@ -44,7 +44,7 @@ namespace BussinesLayer.Services
 
         public void DeleteArticle(string id)
         {
-            id = !string.IsNullOrEmpty(id) ? "0" : id;
+            id = string.IsNullOrEmpty(id) == true ? "0" : id;
             _articleRepository.Delete(Convert.ToInt32(id));
         }
 
