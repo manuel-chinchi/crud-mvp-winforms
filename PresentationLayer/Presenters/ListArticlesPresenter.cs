@@ -12,27 +12,27 @@ namespace PresentationLayer.Presenters
 {
     public class ListArticlesPresenter
     {
-        IListArticlesView _view { get; set; }
-        ICreateArticleView _viewCreateArticle { get; set; }
+        IListArticlesView _viewList { get; set; }
+        ICreateArticleView _viewCreate { get; set; }
         IArticleService<IEnumerable<Article>> _service { get; set; }
 
         public ListArticlesPresenter(IListArticlesView view, IArticleService<IEnumerable<Article>> service)
         {
-            _view = view;
-            _view.Presenter = this;
+            _viewList = view;
+            _viewList.Presenter = this;
             _service = service;
             
-            _view.AddClick += _view_AddClick;
-            _view.EditClick += _view_EditClick;
-            _view.DeleteClick += _view_DeleteClick;
-            _view.SearchClick += _view_SearchClick;
-            _view.ShowAllClick += _view_ShowAllClick;
+            _viewList.AddClick += _view_AddClick;
+            _viewList.EditClick += _view_EditClick;
+            _viewList.DeleteClick += _view_DeleteClick;
+            _viewList.SearchClick += _view_SearchClick;
+            _viewList.ShowAllClick += _view_ShowAllClick;
         }
 
         private void _view_ShowAllClick(object sender, EventArgs e)
         {
-            _view.Articles = _service.GetArticles();
-            _view.ShowSuccess = false;
+            _viewList.Articles = _service.GetArticles();
+            _viewList.ShowSuccess = false;
         }
 
         private void _view_SearchClick(object sender, EventArgs e)
@@ -46,7 +46,7 @@ namespace PresentationLayer.Presenters
 
         private void _view_DeleteClick(object sender, EventArgs e)
         {
-            var article = _view.Articles.ToArray()[_view.ItemSelected];
+            var article = _viewList.Articles.ToArray()[_viewList.ItemSelected];
             var result = System.Windows.Forms.MessageBox.Show($"¿Desea eliminar el artículo {article.Name}?", "Alerta", System.Windows.Forms.MessageBoxButtons.YesNo);
 
             if (result == System.Windows.Forms.DialogResult.Yes)
@@ -58,74 +58,74 @@ namespace PresentationLayer.Presenters
 
         private void _view_EditClick(object sender, EventArgs e)
         {
-            var article = _view.Articles.ToArray()[_view.ItemSelected];
-            _viewCreateArticle = (ICreateArticleView)(new CreateArticleForm(article)).GetView();
-            _viewCreateArticle.ShowView();
+            var article = _viewList.Articles.ToArray()[_viewList.ItemSelected];
+            _viewCreate = (ICreateArticleView)(new CreateArticleForm(article)).GetView();
+            _viewCreate.ShowView();
 
-            if (!string.IsNullOrEmpty(_viewCreateArticle.Success))
+            if (!string.IsNullOrEmpty(_viewCreate.Success))
             {
-                _view.Success = _viewCreateArticle.Success;
-                _view.ShowSuccess = true;
-                _view.Articles = _service.GetArticles();
+                _viewList.Success = _viewCreate.Success;
+                _viewList.ShowSuccess = true;
+                _viewList.Articles = _service.GetArticles();
             }
         }
 
         private void _view_AddClick(object sender, EventArgs e)
         {
-            _viewCreateArticle = (ICreateArticleView)(new CreateArticleForm()).GetView();
-            _viewCreateArticle.ShowView();
+            _viewCreate = (ICreateArticleView)(new CreateArticleForm()).GetView();
+            _viewCreate.ShowView();
 
-            if (!string.IsNullOrEmpty(_viewCreateArticle.Success))
+            if (!string.IsNullOrEmpty(_viewCreate.Success))
             {
-                _view.Success = _viewCreateArticle.Success;
-                _view.ShowSuccess = true;
-                _view.Articles = _service.GetArticles();
+                _viewList.Success = _viewCreate.Success;
+                _viewList.ShowSuccess = true;
+                _viewList.Articles = _service.GetArticles();
             }
         }
 
         public void DeleteArticle()
         {
-            var article = _view.Articles.ToList()[_view.ItemSelected];
-            _view.Success = "Se ha eliminado el artículo";
-            _view.ShowSuccess = true;
+            var article = _viewList.Articles.ToList()[_viewList.ItemSelected];
+            _viewList.Success = "Se ha eliminado el artículo";
+            _viewList.ShowSuccess = true;
             _service.DeleteArticle(article.Id.ToString());
         }
 
         public void LoadArticles()
         {
-            _view.Articles = _service.GetArticles();
-            _view.IncludeName = false;
-            _view.IncludeDescription = false;
+            _viewList.Articles = _service.GetArticles();
+            _viewList.IncludeName = false;
+            _viewList.IncludeDescription = false;
         }
 
         public Article GetArticleSelected()
         {
-            return _view.Articles.ToArray()[_view.ItemSelected];
+            return _viewList.Articles.ToArray()[_viewList.ItemSelected];
         }
 
         public void SearchArticle()
         {
-            var result = _service.SearchArticle(Convert.ToInt32(_view.IncludeName), Convert.ToInt32(_view.IncludeDescription), _view.Search);
-            _view.Error = "";
+            var result = _service.SearchArticle(Convert.ToInt32(_viewList.IncludeName), Convert.ToInt32(_viewList.IncludeDescription), _viewList.Search);
+            _viewList.Error = "";
 
-            if (_view.IncludeName == false && _view.IncludeDescription == false)
+            if (_viewList.IncludeName == false && _viewList.IncludeDescription == false)
             {
-                _view.Warning = "Por favor seleccione un filtro de busqueda";
-                _view.ShowWarning = true;
+                _viewList.Warning = "Por favor seleccione un filtro de busqueda";
+                _viewList.ShowWarning = true;
                 return;
             }
-            else if ((_view.IncludeName || _view.IncludeDescription) && result.Count() == 0)
+            else if ((_viewList.IncludeName || _viewList.IncludeDescription) && result.Count() == 0)
             {
-                _view.Success = "Nos se encontraron resultados";
-                _view.ShowSuccess = true;
+                _viewList.Success = "Nos se encontraron resultados";
+                _viewList.ShowSuccess = true;
             }
             else
             {
-                _view.Success = $"Se encontraron '{result.Count()}' resultados";
-                _view.ShowSuccess = true;
+                _viewList.Success = $"Se encontraron '{result.Count()}' resultados";
+                _viewList.ShowSuccess = true;
             }
 
-            _view.Articles = result;
+            _viewList.Articles = result;
         }
     }
 }

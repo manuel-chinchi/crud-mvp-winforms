@@ -31,6 +31,7 @@ namespace PresentationLayer.Presenters
         public ReportPresenter(IReportView view, IArticleService<IEnumerable<Article>> articleService, ICategoryService<IEnumerable<Category>> categoryService)
         {
             _view = view;
+            _view.Presenter = this;
             _articleService = articleService;
             _categoryService = categoryService;
         }
