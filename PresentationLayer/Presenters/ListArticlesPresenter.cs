@@ -43,7 +43,7 @@ namespace PresentationLayer.Presenters
         private void _view_DeleteClick(object sender, EventArgs e)
         {
             var article = _viewList.Articles.ToArray()[_viewList.ItemSelected];
-            var result = System.Windows.Forms.MessageBox.Show($"¿Desea eliminar el artículo {article.Name}?", "Alerta", System.Windows.Forms.MessageBoxButtons.YesNo);
+            var result = System.Windows.Forms.MessageBox.Show($"¿Desea eliminar el artículo '{article.Name}'?", "Alerta", System.Windows.Forms.MessageBoxButtons.YesNo);
 
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
@@ -112,7 +112,7 @@ namespace PresentationLayer.Presenters
             }
             else if ((_viewList.IncludeName || _viewList.IncludeDescription) && result.Count() == 0)
             {
-                _viewList.Success = "Nos se encontraron resultados";
+                _viewList.Success = "No se encontraron resultados";
                 _viewList.ShowSuccess = true;
             }
             else
