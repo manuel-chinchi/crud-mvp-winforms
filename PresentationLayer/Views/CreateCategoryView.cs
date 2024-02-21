@@ -91,15 +91,6 @@ namespace PresentationLayer.Views
         private void btnAccept_Click(object sender, EventArgs e)
         {
             AcceptClick?.Invoke(this, EventArgs.Empty);
-
-            //btnAccept.Click += delegate { AcceptClick.Invoke(this, EventArgs.Empty); };
-
-            //Presenter.SaveCategory();
-            //if (string.IsNullOrEmpty(this.MsgStatus))
-            //{
-            //    MessageBox.Show(this.MsgStatus);
-            //}
-            //Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

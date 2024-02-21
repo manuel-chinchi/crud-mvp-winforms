@@ -15,7 +15,6 @@ namespace PresentationLayer.Views
         event EventHandler AcceptClick;
         event EventHandler CancelClick;
 
-        // TODO: Show y Close deberían ir en IBaseView?
         void ShowView();
         void CloseView();
     }

@@ -62,7 +62,6 @@ namespace PresentationLayer.Views
             {
                 var bs = new BindingSource();
                 bs.DataSource = new SortableBindingList<Category>(value.ToList());
-                //bs.DataSource = value.ToList();
                 cmbCategories.DataSource = bs;
             }
         }

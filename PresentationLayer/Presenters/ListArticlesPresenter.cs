@@ -38,10 +38,6 @@ namespace PresentationLayer.Presenters
         private void _view_SearchClick(object sender, EventArgs e)
         {
             this.SearchArticle();
-            //if (!string.IsNullOrEmpty(_view.Error))
-            //{
-            //    System.Windows.Forms.MessageBox.Show(_view.Error);
-            //}
         }
 
         private void _view_DeleteClick(object sender, EventArgs e)

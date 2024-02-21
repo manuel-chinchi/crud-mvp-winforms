@@ -52,7 +52,6 @@ namespace PresentationLayer.Views
                 //BindingSource bs = new BindingSource();
                 //bs.DataSource = new List<Article>();
                 //dgvArticles.DataSource = bs.DataSource;
-
                 //BindingSource bs = new BindingSource((IContainer)value.ToList());
 
                 var bs = new BindingSource();
