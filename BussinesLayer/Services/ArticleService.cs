@@ -35,6 +35,7 @@ namespace BussinesLayer.Services
             _articleRepository.Update(
                 new Article
                 {
+                    Id = Convert.ToInt32(id),
                     Name = name,
                     Description = description,
                     Stock = Convert.ToInt32(stock),
