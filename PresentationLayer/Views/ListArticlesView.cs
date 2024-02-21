@@ -57,6 +57,8 @@ namespace PresentationLayer.Views
                 var bs = new BindingSource();
                 bs.DataSource = new SortableBindingList<Article>(value.ToList());
                 dgvArticles.DataSource = bs;
+
+                dgvArticles.Columns["CategoryId"].Visible = false;
             }
         }
 
