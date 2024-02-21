@@ -44,6 +44,9 @@ namespace PresentationLayer.Views
                 case (int)ReportType.CategoriesReport:
                     Presenter.LoadReport(ReportConstants.CATEGORIESREPORT_RESX);
                     break;
+                case (int)ReportType.CategoriesReportV2:
+                    Presenter.LoadReport(ReportConstants.CATEGORIESREPORTV2_RESX);
+                    break;
             }
         }
 
@@ -53,7 +56,10 @@ namespace PresentationLayer.Views
             {
                 rvReport.LocalReport.ReportEmbeddedResource = report.ReportEmbeddedResource;
                 rvReport.LocalReport.DataSources.Clear();
-                rvReport.LocalReport.DataSources.Add(report.DataSources[0]);
+                for (int i = 0; i < report.DataSources.Count; i++)
+                {
+                    rvReport.LocalReport.DataSources.Add(report.DataSources[i]);
+                }
                 rvReport.LocalReport.SetParameters(new List<ReportParameter>());
             }
             //REF: https://stackoverflow.com/questions/37276185/how-to-get-the-table-at-the-center-of-reportviewer-in-my-form

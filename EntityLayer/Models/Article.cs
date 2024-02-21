@@ -18,7 +18,7 @@ namespace EntityLayer.Models
         [Browsable(false)]
         public DateTime? DateUpdated { get; set; }
         public string CategoryName { get; set; }
-        [Browsable(false)]
+        //[Browsable(false)]
         public string CategoryId { get; set; }
     }
 }

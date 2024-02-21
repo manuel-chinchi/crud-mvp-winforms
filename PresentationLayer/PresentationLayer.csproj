@@ -186,6 +186,7 @@
     </Compile>
     <EmbeddedResource Include="Reports\ArticlesReport.rdlc" />
     <EmbeddedResource Include="Reports\CategoriesReport.rdlc" />
+    <EmbeddedResource Include="Reports\CategoriesReportV2.rdlc" />
     <EmbeddedResource Include="Views\CreateCategoryView.resx">
       <DependentUpon>CreateCategoryView.cs</DependentUpon>
     </EmbeddedResource>

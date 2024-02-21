@@ -70,7 +70,8 @@ namespace PresentationLayer.Views
             this.cboReport.FormattingEnabled = true;
             this.cboReport.Items.AddRange(new object[] {
             "ArticlesReport.rdlc",
-            "CategoriesReport.rdlc"});
+            "CategoriesReport.rdlc",
+            "CategoriesReportV2.rdlc"});
             this.cboReport.Location = new System.Drawing.Point(253, 3);
             this.cboReport.Name = "cboReport";
             this.cboReport.Size = new System.Drawing.Size(244, 28);
