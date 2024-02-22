@@ -29,7 +29,7 @@ namespace PresentationLayer.Views
         /// </summary>
         private void InitializeComponent()
         {
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblChooseReport = new System.Windows.Forms.Label();
             this.cboReport = new System.Windows.Forms.ComboBox();
@@ -68,11 +68,6 @@ namespace PresentationLayer.Views
             this.cboReport.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cboReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboReport.FormattingEnabled = true;
-            this.cboReport.Items.AddRange(new object[] {
-            "ArticlesReport.rdlc",
-            "ArticlesReportV2.rdlc",
-            "CategoriesReport.rdlc",
-            "CategoriesReportV2.rdlc"});
             this.cboReport.Location = new System.Drawing.Point(253, 3);
             this.cboReport.Name = "cboReport";
             this.cboReport.Size = new System.Drawing.Size(244, 28);
@@ -84,9 +79,9 @@ namespace PresentationLayer.Views
             // 
             this.rvReport.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rvReport.DocumentMapWidth = 91;
-            reportDataSource1.Name = "dsArticles";
-            reportDataSource1.Value = null;
-            this.rvReport.LocalReport.DataSources.Add(reportDataSource1);
+            reportDataSource2.Name = "dsArticles";
+            reportDataSource2.Value = null;
+            this.rvReport.LocalReport.DataSources.Add(reportDataSource2);
             this.rvReport.LocalReport.ReportEmbeddedResource = "PresentationLayer.Reports.ArticlesReport.rdlc";
             this.rvReport.Location = new System.Drawing.Point(0, 0);
             this.rvReport.Name = "rvReport";

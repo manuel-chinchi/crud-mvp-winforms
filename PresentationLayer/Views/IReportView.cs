@@ -10,7 +10,11 @@ namespace PresentationLayer.Views
 {
     public interface IReportView
     {
+        object ItemSelected { get; set; }
+        IEnumerable<string> Reports { get; set; }
         void ShowReport(LocalReport report);
         ReportPresenter Presenter { get; set; }
+
+        event EventHandler SelectReport;
     }
 }

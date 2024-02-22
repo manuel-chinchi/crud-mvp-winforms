@@ -36,41 +36,52 @@ namespace PresentationLayer.Presenters
         {
             _view = view;
             _view.Presenter = this;
+
+            _view.SelectReport += _view_SelectReport;
             _articleService = articleService;
             _categoryService = categoryService;
+
+            IEnumerable<string> items = new List<string>()
+            {
+                "ArticlesReport.rdlc",
+                "ArticlesReportV2.rdlc",
+                "CategoriesReport.rdlc",
+                "CategoriesReportV2.rdlc"
+            };
+            _view.Reports = items;
+            _view.ItemSelected = items.ToArray()[1];
+            _view_SelectReport(1, EventArgs.Empty);
         }
 
-        public void LoadReport(string reportResx)
+        private void _view_SelectReport(object sender, EventArgs e)
         {
-            // Add your custom reports here and define in ReportType enum
+            int selectIndex = (int)sender;
             LocalReport lr = new LocalReport();
-            switch (reportResx)
+
+            switch (selectIndex)
             {
-                case ReportConstants.ARTICLESREPORT_RESX:
+                case (int)ReportType.ArticlesReport:
                     {
                         var articles = _articleService.GetArticles();
                         lr.ReportEmbeddedResource = ReportConstants.ARTICLESREPORT_RESX;
                         lr.DataSources.Add(new ReportDataSource("dsArticles", articles));
                     }
                     break;
-
-                case ReportConstants.ARTICLESREPORTV2_RESX:
+                case (int)ReportType.ArticlesReportV2:
                     {
                         var articles = _articleService.GetArticles();
                         lr.ReportEmbeddedResource = ReportConstants.ARTICLESREPORTV2_RESX;
                         lr.DataSources.Add(new ReportDataSource("dsArticles", articles));
                     }
                     break;
-
-                case ReportConstants.CATEGORIESREPORT_RESX:
+                case (int)ReportType.CategoriesReport:
                     {
                         var categories = _categoryService.GetCategories();
                         lr.ReportEmbeddedResource = ReportConstants.CATEGORIESREPORT_RESX;
                         lr.DataSources.Add(new ReportDataSource("dsCategories", categories));
                     }
                     break;
-
-                case ReportConstants.CATEGORIESREPORTV2_RESX:
+                case (int)ReportType.CategoriesReportV2:
                     {
                         var categories = _categoryService.GetCategories();
                         var articles = _articleService.GetArticles();

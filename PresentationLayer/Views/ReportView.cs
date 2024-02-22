@@ -16,7 +16,31 @@ namespace PresentationLayer.Views
 {
     public partial class ReportView : UserControl, IReportView
     {
+        public IEnumerable<string> Reports
+        {
+            get
+            {
+                var bs = (BindingSource)cboReport.DataSource;
+                var list = (IEnumerable<string>)bs.DataSource;
+                return list;
+            }
+            set
+            {
+                var bs = new BindingSource();
+                bs.DataSource = new SortableBindingList<string>(value.ToList());
+                cboReport.DataSource = bs;
+            }
+        }
+
         public ReportPresenter Presenter { get; set; }
+
+        public object ItemSelected
+        {
+            get { return cboReport.SelectedItem; }
+            set { cboReport.SelectedItem = value; }
+        }
+
+        public event EventHandler SelectReport;
 
         public ReportView()
         {
@@ -29,28 +53,11 @@ namespace PresentationLayer.Views
         {
             //FIX: No se puede establecer la directiva de seguridad en MultiDomain despues de cargar ensamblados que no son GAC en AppDomain (Exc de HRESULT: 0x8013101C) en ReportForm.cs
             if (DesignMode) return;
-
-            Presenter.LoadReport(ReportConstants.ARTICLESREPORT_RESX);
         }
 
         private void cboReport_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var index = cboReport.SelectedIndex;
-            switch (index)
-            {
-                case (int)ReportType.ArticlesReport:
-                    Presenter.LoadReport(ReportConstants.ARTICLESREPORT_RESX);
-                    break;
-                case (int)ReportType.ArticlesReportV2:
-                    Presenter.LoadReport(ReportConstants.ARTICLESREPORTV2_RESX);
-                    break;
-                case (int)ReportType.CategoriesReport:
-                    Presenter.LoadReport(ReportConstants.CATEGORIESREPORT_RESX);
-                    break;
-                case (int)ReportType.CategoriesReportV2:
-                    Presenter.LoadReport(ReportConstants.CATEGORIESREPORTV2_RESX);
-                    break;
-            }
+            SelectReport?.Invoke(cboReport.SelectedIndex, EventArgs.Empty);
         }
 
         public void ShowReport(LocalReport report)
