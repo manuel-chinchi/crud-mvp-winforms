@@ -41,6 +41,9 @@ namespace PresentationLayer.Views
                 case (int)ReportType.ArticlesReport:
                     Presenter.LoadReport(ReportConstants.ARTICLESREPORT_RESX);
                     break;
+                case (int)ReportType.ArticlesReportV2:
+                    Presenter.LoadReport(ReportConstants.ARTICLESREPORTV2_RESX);
+                    break;
                 case (int)ReportType.CategoriesReport:
                     Presenter.LoadReport(ReportConstants.CATEGORIESREPORT_RESX);
                     break;

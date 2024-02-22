@@ -13,6 +13,7 @@ namespace PresentationLayer.Presenters
     public enum ReportType
     {
         ArticlesReport = 0,
+        ArticlesReportV2,
         CategoriesReport,
         CategoriesReportV2
     }
@@ -20,6 +21,7 @@ namespace PresentationLayer.Presenters
     public class ReportConstants
     {
         public const string ARTICLESREPORT_RESX = "PresentationLayer.Reports.ArticlesReport.rdlc";
+        public const string ARTICLESREPORTV2_RESX = "PresentationLayer.Reports.ArticlesReportV2.rdlc";
         public const string CATEGORIESREPORT_RESX = "PresentationLayer.Reports.CategoriesReport.rdlc";
         public const string CATEGORIESREPORTV2_RESX = "PresentationLayer.Reports.CategoriesReportV2.rdlc";
     }
@@ -48,6 +50,14 @@ namespace PresentationLayer.Presenters
                     {
                         var articles = _articleService.GetArticles();
                         lr.ReportEmbeddedResource = ReportConstants.ARTICLESREPORT_RESX;
+                        lr.DataSources.Add(new ReportDataSource("dsArticles", articles));
+                    }
+                    break;
+
+                case ReportConstants.ARTICLESREPORTV2_RESX:
+                    {
+                        var articles = _articleService.GetArticles();
+                        lr.ReportEmbeddedResource = ReportConstants.ARTICLESREPORTV2_RESX;
                         lr.DataSources.Add(new ReportDataSource("dsArticles", articles));
                     }
                     break;
