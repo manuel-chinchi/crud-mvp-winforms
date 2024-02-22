@@ -48,9 +48,10 @@ namespace PresentationLayer.Presenters
                 "CategoriesReport.rdlc",
                 "CategoriesReportV2.rdlc"
             };
+            int itemSelect = 3;
             _view.Reports = items;
-            _view.ItemSelected = items.ToArray()[1];
-            _view_SelectReport(1, EventArgs.Empty);
+            _view.ItemSelected = items.ToArray()[itemSelect];
+            _view_SelectReport(itemSelect, EventArgs.Empty);
         }
 
         private void _view_SelectReport(object sender, EventArgs e)
