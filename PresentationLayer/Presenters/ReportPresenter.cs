@@ -48,7 +48,7 @@ namespace PresentationLayer.Presenters
                 "CategoriesReport.rdlc",
                 "CategoriesReportV2.rdlc"
             };
-            int itemSelect = 3;
+            int itemSelect = 1;
             _view.Reports = items;
             _view.ItemSelected = items.ToArray()[itemSelect];
             _view_SelectReport(itemSelect, EventArgs.Empty);
@@ -56,10 +56,10 @@ namespace PresentationLayer.Presenters
 
         private void _view_SelectReport(object sender, EventArgs e)
         {
-            int selectIndex = (int)sender;
+            int index = _view.Reports.ToList().IndexOf((string)_view.ItemSelected);
             LocalReport lr = new LocalReport();
 
-            switch (selectIndex)
+            switch (index)
             {
                 case (int)ReportType.ArticlesReport:
                     {
