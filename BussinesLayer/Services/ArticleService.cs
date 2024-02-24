@@ -1,4 +1,6 @@
-﻿using DataLayer.Repositories;
+﻿using BussinesLayer.Services.Contracts;
+using DataLayer.Repositories;
+using DataLayer.Repositories.Contracts;
 using EntityLayer.Models;
 using System;
 using System.Collections.Generic;

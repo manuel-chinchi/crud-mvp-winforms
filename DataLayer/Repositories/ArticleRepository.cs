@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using DataLayer.Repositories.Contracts;
 using EntityLayer.Models;
 using System;
 using System.Collections.Generic;

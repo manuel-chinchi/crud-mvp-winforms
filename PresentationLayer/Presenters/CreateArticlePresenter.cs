@@ -1,6 +1,6 @@
-﻿using BussinesLayer.Services;
+﻿using BussinesLayer.Services.Contracts;
 using EntityLayer.Models;
-using PresentationLayer.Views;
+using PresentationLayer.Views.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;

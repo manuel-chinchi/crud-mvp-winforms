@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BussinesLayer.Services
+namespace BussinesLayer.Services.Contracts
 {
     public interface ICategoryService<T>
     {

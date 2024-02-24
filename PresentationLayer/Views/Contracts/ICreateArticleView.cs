@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PresentationLayer.Views
+namespace PresentationLayer.Views.Contracts
 {
     public interface ICreateArticleView : IBaseView
     {

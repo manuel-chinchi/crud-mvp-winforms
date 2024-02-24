@@ -120,12 +120,12 @@
     <Compile Include="Views\CreateCategoryView.Designer.cs">
       <DependentUpon>CreateCategoryView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\IBaseView.cs" />
-    <Compile Include="Views\ICreateArticleView.cs" />
-    <Compile Include="Views\ICreateCategoryView.cs" />
-    <Compile Include="Views\IListArticlesView.cs" />
-    <Compile Include="Views\IListCategoriesView.cs" />
-    <Compile Include="Views\IReportView.cs" />
+    <Compile Include="Views\Contracts\IBaseView.cs" />
+    <Compile Include="Views\Contracts\ICreateArticleView.cs" />
+    <Compile Include="Views\Contracts\ICreateCategoryView.cs" />
+    <Compile Include="Views\Contracts\IListArticlesView.cs" />
+    <Compile Include="Views\Contracts\IListCategoriesView.cs" />
+    <Compile Include="Views\Contracts\IReportView.cs" />
     <Compile Include="Views\ListArticlesView.cs">
       <SubType>UserControl</SubType>
     </Compile>

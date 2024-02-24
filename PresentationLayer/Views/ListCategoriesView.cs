@@ -1,5 +1,6 @@
 ﻿using EntityLayer.Models;
 using PresentationLayer.Presenters;
+using PresentationLayer.Views.Contracts;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

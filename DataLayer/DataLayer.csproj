@@ -49,9 +49,9 @@
     <Compile Include="Repositories\ArticleRepository.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
-    <Compile Include="Repositories\IArticleRepository.cs" />
-    <Compile Include="Repositories\IBaseRepository.cs" />
-    <Compile Include="Repositories\ICategoryRepository.cs" />
+    <Compile Include="Repositories\Contracts\IArticleRepository.cs" />
+    <Compile Include="Repositories\Contracts\IBaseRepository.cs" />
+    <Compile Include="Repositories\Contracts\ICategoryRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EntityLayer\EntityLayer.csproj">
