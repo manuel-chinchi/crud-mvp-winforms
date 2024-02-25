@@ -1,4 +1,5 @@
-﻿using BussinesLayer.Services.Contracts;
+﻿using BussinesLayer.Services;
+using BussinesLayer.Services.Contracts;
 using EntityLayer.Models;
 using PresentationLayer.Forms;
 using PresentationLayer.Views.Contracts;
@@ -22,6 +23,19 @@ namespace PresentationLayer.Presenters
             _viewList.Presenter = this;
             _service = service;
             
+            _viewList.AddClick += _view_AddClick;
+            _viewList.EditClick += _view_EditClick;
+            _viewList.DeleteClick += _view_DeleteClick;
+            _viewList.SearchClick += _view_SearchClick;
+            _viewList.ShowAllClick += _view_ShowAllClick;
+        }
+
+        public ListArticlesPresenter(IListArticlesView view)
+        {
+            _viewList = view;
+            _viewList.Presenter = this;
+            _service = new ArticleService();
+
             _viewList.AddClick += _view_AddClick;
             _viewList.EditClick += _view_EditClick;
             _viewList.DeleteClick += _view_DeleteClick;
