@@ -1,4 +1,5 @@
-﻿using BussinesLayer.Services.Contracts;
+﻿using BussinesLayer.Services;
+using BussinesLayer.Services.Contracts;
 using EntityLayer.Models;
 using PresentationLayer.Views.Contracts;
 using System;
@@ -31,6 +32,18 @@ namespace PresentationLayer.Presenters
             _view.Presenter = this;
             _articleService = articleService;
             _categoryService = categoryService;
+
+            _view.Categories = _categoryService.GetCategories();
+            _view.AcceptClick += _view_AcceptClick;
+            _view.CancelClick += _view_CancelClick;
+        }
+
+        public CreateArticlePresenter(ICreateArticleView view)
+        {
+            _view = view;
+            _view.Presenter = this;
+            _articleService = new ArticleService();
+            _categoryService = new CategoryService();
 
             _view.Categories = _categoryService.GetCategories();
             _view.AcceptClick += _view_AcceptClick;
