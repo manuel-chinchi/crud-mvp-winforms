@@ -10,7 +10,7 @@ namespace PresentationLayer.Views.Contracts
 {
     public interface IListCategoriesView : IBaseView
     {
-        int ItemSelected { get; }
+        int ItemSelected { get; set; }
         IEnumerable<Category> Categories { get; set; }
         ListCategoriesPresenter Presenter { get; set; }
 

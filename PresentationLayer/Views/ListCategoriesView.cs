@@ -15,9 +15,18 @@ namespace PresentationLayer.Views
 {
     public partial class ListCategoriesView : UserControl, IListCategoriesView
     {
+        private int _itemSelected;
         public int ItemSelected
         {
             get { return dgvCategories.CurrentCell.RowIndex; }
+            set
+            {
+                if (value >= 0 && value < dgvCategories.RowCount)
+                {
+                    dgvCategories.CurrentCell = dgvCategories.Rows[value].Cells[0];
+                    _itemSelected = value;
+                }
+            }
         }
 
         public IEnumerable<Category> Categories
