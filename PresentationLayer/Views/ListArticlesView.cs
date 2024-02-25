@@ -16,9 +16,18 @@ namespace PresentationLayer.Views
 {
     public partial class ListArticlesView : UserControl, IListArticlesView
     {
+        private int _itemSelected;
         public int ItemSelected
         {
             get { return dgvArticles.CurrentCell.RowIndex; }
+            set
+            {
+                if (value >= 0 && value <= dgvArticles.RowCount)
+                {
+                    dgvArticles.CurrentCell = dgvArticles.Rows[value].Cells[0];
+                    _itemSelected = value;
+                }
+            }
         }
 
         public bool IncludeName

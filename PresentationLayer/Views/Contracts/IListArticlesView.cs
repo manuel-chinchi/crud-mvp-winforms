@@ -10,7 +10,7 @@ namespace PresentationLayer.Views.Contracts
 {
     public interface IListArticlesView : IBaseView
     {
-        int ItemSelected { get; }
+        int ItemSelected { get; set; }
         bool IncludeName { get; set; }
         bool IncludeDescription { get; set; }
         string Search { get; set; }
