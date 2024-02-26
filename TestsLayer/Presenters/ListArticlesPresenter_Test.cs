@@ -22,10 +22,10 @@ namespace TestsLayer.Presenters
             var view = new ListArticlesView_Test();
             var presenter = new ListArticlesPresenter(view, _service);
 
-            //view.Search();
+            view.Load();
             view.ItemSelected = 0;
             view.Delete();
-            Assert.AreEqual("Se ha borrado el artículo 'Art1'", view.Success);
+            Assert.AreEqual("Se ha eliminado el artículo 'Art1'", view.Success);
         }
 
         [TestMethod]
@@ -35,7 +35,7 @@ namespace TestsLayer.Presenters
             var presenter = new ListArticlesPresenter(view, _service);
 
             //view.Show();
-            view.Search = "e";
+            view.Search = "Art1";
             view.SearchItem();
             Assert.AreEqual("Por favor seleccione un filtro de busqueda", view.Warning);
         }
@@ -75,8 +75,10 @@ namespace TestsLayer.Presenters
         public event EventHandler DeleteClick;
         public event EventHandler SearchClick;
         public event EventHandler ShowAllClick;
+        public event EventHandler ViewLoad;
 
         public void SearchItem() => SearchClick?.Invoke(this, EventArgs.Empty);
         public void Delete() => DeleteClick?.Invoke(this, EventArgs.Empty);
+        public void Load() => ViewLoad?.Invoke(this, EventArgs.Empty);
     }
 }

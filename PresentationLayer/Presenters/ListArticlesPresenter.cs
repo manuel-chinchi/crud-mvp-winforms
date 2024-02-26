@@ -47,7 +47,7 @@ namespace PresentationLayer.Presenters
 
         private void _viewList_ViewLoad(object sender, EventArgs e)
         {
-            //_viewList.Articles = _service.GetArticles();
+            _viewList.Articles = _service.GetArticles();
         }
 
         private void _view_ShowAllClick(object sender, EventArgs e)
