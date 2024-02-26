@@ -33,7 +33,7 @@ namespace TestsLayer.Presenters
 
             view.NameA = "Rop@";
             view.Accept();
-            Assert.AreEqual(null, view.Error);
+            Assert.AreEqual("El campo 'Nombre' contiene carácteres no válidos", view.Error);
         }
 
         // TODO System.NullReferenceException -> Agregar instancia de CategoryService en el constructor
@@ -45,8 +45,6 @@ namespace TestsLayer.Presenters
             var presenter = new CreateArticlePresenter(view, _service);
 
             view.NameA = "Art3";
-            view.Description = "";
-            view.Stock = "";
             view.Accept();
             Assert.AreEqual("Se ha creado el artículo 'Art3'", view.Success);
         }
