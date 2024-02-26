@@ -14,8 +14,6 @@ namespace TestsLayer.Presenters
     {
         private readonly ArticleService_2_Test _service = new ArticleService_2_Test();
 
-        // TODO Cambiar mensaje para que coincida con la prueba
-        // TODO investigar Sistem.ArgumentNullException
         [TestMethod]
         public void ArticleDeleted_Success()
         {

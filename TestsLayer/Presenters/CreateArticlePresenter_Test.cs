@@ -36,8 +36,6 @@ namespace TestsLayer.Presenters
             Assert.AreEqual("El campo 'Nombre' contiene carácteres no válidos", view.Error);
         }
 
-        // TODO System.NullReferenceException -> Agregar instancia de CategoryService en el constructor
-        // TODO cambiar el mensaje a "Se ha creado el artículo 'x'" para que concida con el de categorias
         [TestMethod]
         public void ArticleNameValid_Success()
         {

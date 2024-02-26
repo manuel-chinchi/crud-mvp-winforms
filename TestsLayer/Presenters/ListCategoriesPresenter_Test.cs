@@ -28,7 +28,6 @@ namespace TestsLayer.Presenters
             Assert.AreEqual("No se puede borrar la categoría 'Cat1' porque tiene artículos relacionados", view.Error);
         }
 
-        // required input 'Yes' on popup
         [TestMethod]
         public void CategoryDeleted_Success()
         {
