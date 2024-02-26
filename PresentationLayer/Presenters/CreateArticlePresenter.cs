@@ -21,7 +21,9 @@ namespace PresentationLayer.Presenters
             _view = view;
             _view.Presenter = this;
             _articleService = service;
+            _categoryService = new CategoryService();
 
+            _view.Categories = _categoryService.GetCategories();
             _view.AcceptClick += _view_AcceptClick;
             _view.CancelClick += _view_CancelClick;
         }
@@ -76,7 +78,7 @@ namespace PresentationLayer.Presenters
                     return;
                 }
                 _articleService.CreateArticle(_view.NameA, _view.Description, _view.Stock.ToString(), category.Id.ToString());
-                _view.Success = $"Se ha agregado el artículo '{_view.NameA}'";
+                _view.Success = $"Se ha creado el artículo '{_view.NameA}'";
                 _view.ShowSuccess = true;
             }
             _view.CloseView();

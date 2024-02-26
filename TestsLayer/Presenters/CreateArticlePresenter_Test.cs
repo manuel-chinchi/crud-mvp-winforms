@@ -45,6 +45,7 @@ namespace TestsLayer.Presenters
             var presenter = new CreateArticlePresenter(view, _service);
 
             view.NameA = "Art3";
+            view.Stock = "0";
             view.Accept();
             Assert.AreEqual("Se ha creado el artículo 'Art3'", view.Success);
         }
