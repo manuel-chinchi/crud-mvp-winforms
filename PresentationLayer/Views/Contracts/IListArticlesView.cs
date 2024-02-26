@@ -22,6 +22,7 @@ namespace PresentationLayer.Views.Contracts
         event EventHandler DeleteClick;
         event EventHandler SearchClick;
         event EventHandler ShowAllClick;
+        event EventHandler ViewLoad;
 
         string Warning { get; set; }
         bool ShowWarning { get; set; }

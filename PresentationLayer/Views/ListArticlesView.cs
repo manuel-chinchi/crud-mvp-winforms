@@ -50,6 +50,8 @@ namespace PresentationLayer.Views
 
         public IEnumerable<Article> Articles
         {
+            // TODO Aca ocurre el error, hay que cargar los articulos en el constructor
+            // del presentador o en el evento on 'Load' de la vista
             get
             {
                 var bs = (BindingSource)dgvArticles.DataSource;
@@ -117,6 +119,7 @@ namespace PresentationLayer.Views
         public event EventHandler DeleteClick;
         public event EventHandler SearchClick;
         public event EventHandler ShowAllClick;
+        public event EventHandler ViewLoad;
 
         private Timer timer;
 
@@ -128,7 +131,7 @@ namespace PresentationLayer.Views
 
         private void ListArticlesView_Load(object sender, EventArgs e)
         {
-            ShowAllClick?.Invoke(this, EventArgs.Empty);
+            ViewLoad?.Invoke(this, EventArgs.Empty);
         }
 
         private void btnShowAll_Click(object sender, EventArgs e)

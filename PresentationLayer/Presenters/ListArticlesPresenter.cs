@@ -28,6 +28,7 @@ namespace PresentationLayer.Presenters
             _viewList.DeleteClick += _view_DeleteClick;
             _viewList.SearchClick += _view_SearchClick;
             _viewList.ShowAllClick += _view_ShowAllClick;
+            _viewList.ViewLoad += _viewList_ViewLoad;
         }
 
         public ListArticlesPresenter(IListArticlesView view)
@@ -41,6 +42,12 @@ namespace PresentationLayer.Presenters
             _viewList.DeleteClick += _view_DeleteClick;
             _viewList.SearchClick += _view_SearchClick;
             _viewList.ShowAllClick += _view_ShowAllClick;
+            _viewList.ViewLoad += _viewList_ViewLoad;
+        }
+
+        private void _viewList_ViewLoad(object sender, EventArgs e)
+        {
+            //_viewList.Articles = _service.GetArticles();
         }
 
         private void _view_ShowAllClick(object sender, EventArgs e)
@@ -62,6 +69,8 @@ namespace PresentationLayer.Presenters
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
                 this.DeleteArticle();
+                _viewList.Success = $"Se ha eliminado el artículo '{article.Name}'";
+                _viewList.ShowSuccess = true;
             }
             this.LoadArticles();
         }
