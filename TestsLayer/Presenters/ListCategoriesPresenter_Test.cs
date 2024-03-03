@@ -71,5 +71,15 @@ namespace TestsLayer.Presenters
 
         public void Show() => ViewLoad?.Invoke(this, EventArgs.Empty);
         public void Delete() => DeleteClick?.Invoke(this, EventArgs.Empty);
+
+        public void ShowView()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CloseView()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
