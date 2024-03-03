@@ -1,7 +1,6 @@
 ﻿using BussinesLayer.Services;
 using BussinesLayer.Services.Contracts;
 using EntityLayer.Models;
-using PresentationLayer.Forms;
 using PresentationLayer.Views;
 using PresentationLayer.Views.Contracts;
 using System;
@@ -81,7 +80,6 @@ namespace PresentationLayer.Presenters
         private void _viewList_EditClick(object sender, EventArgs e)
         {
             var article = _viewList.Articles.ToArray()[_viewList.ItemSelected];
-            _viewCreate = (IArticleCreateView)(new CreateArticleForm(article)).GetView();
             _viewCreate.ShowView();
 
             if (!string.IsNullOrEmpty(_viewCreate.Success))
