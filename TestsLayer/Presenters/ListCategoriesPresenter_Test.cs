@@ -25,7 +25,7 @@ namespace TestsLayer.Presenters
             view.Show();
             view.ItemSelected = 0;
             view.Delete();
-            Assert.AreEqual("No se puede borrar la categoría 'Cat1' porque tiene artículos relacionados", view.Error);
+            Assert.AreEqual("Cannot delete category 'Cat1' because it has related articles", view.Error);
         }
 
         [TestMethod]
@@ -37,7 +37,7 @@ namespace TestsLayer.Presenters
             view.Show();
             view.ItemSelected = 1;
             view.Delete();
-            Assert.AreEqual("Se ha eliminado la categoría 'Cat2'", view.Success);
+            Assert.AreEqual("The category 'Cat2' has been removed", view.Success);
         }
     }
 

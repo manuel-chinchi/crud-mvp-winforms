@@ -22,7 +22,7 @@ namespace TestsLayer.Presenters
 
             view.NameA = "";
             view.Accept();
-            Assert.AreEqual("El campo 'Nombre' no puede ser vacío", view.Error);
+            Assert.AreEqual("The 'Name' field cannot be empty", view.Error);
         }
 
         // TODO System.NullReferenceException -> Agregar instancia de CategoryService en el constructor
@@ -46,7 +46,7 @@ namespace TestsLayer.Presenters
             view.NameA = "Art3";
             view.Stock = "0";
             view.Accept();
-            Assert.AreEqual("Se ha creado el artículo 'Art3'", view.Success);
+            Assert.AreEqual("The article 'Art3' has been created", view.Success);
         }
     }
 

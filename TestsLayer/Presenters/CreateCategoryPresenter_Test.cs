@@ -22,7 +22,7 @@ namespace TestsLayer.Presenters
 
             view.NameC = "";
             view.Accept();
-            Assert.AreEqual(expected: "El campo 'Nombre' no puede ser vacío", actual: view.Error);
+            Assert.AreEqual(expected: "The 'Name' field cannot be empty", actual: view.Error);
         }
 
         // TODO Agregar validacion para evitar caracteres no validos
@@ -58,7 +58,7 @@ namespace TestsLayer.Presenters
 
             view.NameC = "Cat2";
             view.Accept();
-            Assert.AreEqual("Se ha creado la categoría 'Cat2'", view.Success);
+            Assert.AreEqual("The category 'Cat2' has been created", view.Success);
         }
     }
 

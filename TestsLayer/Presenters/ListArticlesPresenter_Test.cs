@@ -23,7 +23,7 @@ namespace TestsLayer.Presenters
             view.Load();
             view.ItemSelected = 0;
             view.Delete();
-            Assert.AreEqual("Se ha eliminado el artículo 'Art1'", view.Success);
+            Assert.AreEqual("The article 'Art1' has been removed", view.Success);
         }
 
         [TestMethod]
@@ -35,7 +35,7 @@ namespace TestsLayer.Presenters
             //view.Show();
             view.Search = "Art1";
             view.SearchItem();
-            Assert.AreEqual("Por favor seleccione un filtro de busqueda", view.Warning);
+            Assert.AreEqual("Please select a search filter", view.Warning);
         }
     }
 
