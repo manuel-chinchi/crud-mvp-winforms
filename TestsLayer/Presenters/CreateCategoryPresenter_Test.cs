@@ -18,7 +18,7 @@ namespace TestsLayer.Presenters
         public void CategoryNameIsEmpty_Error()
         {
             var view = new CreateCategoryView_Test();
-            var presenter = new CreateCategoryPresenter(view, _service);
+            var presenter = new CategoryCreatePresenter(view, _service);
 
             view.NameC = "";
             view.Accept();
@@ -30,7 +30,7 @@ namespace TestsLayer.Presenters
         public void CategoryNameIsNotValid_Error()
         {
             var view = new CreateCategoryView_Test();
-            var presenter = new CreateCategoryPresenter(view, _service);
+            var presenter = new CategoryCreatePresenter(view, _service);
 
             view.NameC = "Rop@";
             view.Accept();
@@ -43,7 +43,7 @@ namespace TestsLayer.Presenters
         {
             var view = new CreateCategoryView_Test();
             var service = new CategoryService_Test();
-            var presenter = new CreateCategoryPresenter(view, service);
+            var presenter = new CategoryCreatePresenter(view, service);
 
             view.NameC = "Cat1";
             view.Accept();
@@ -54,7 +54,7 @@ namespace TestsLayer.Presenters
         public void CategoryNameValid_Success()
         {
             var view = new CreateCategoryView_Test();
-            var presenter = new CreateCategoryPresenter(view, _service);
+            var presenter = new CategoryCreatePresenter(view, _service);
 
             view.NameC = "Cat2";
             view.Accept();
@@ -76,13 +76,13 @@ namespace TestsLayer.Presenters
         }
     }
 
-    public class CreateCategoryView_Test : ICreateCategoryView
+    public class CreateCategoryView_Test : ICategoryCreateView
     {
         public string NameC { get; set; }
         public string Error { get; set; }
         public string Success { get; set; }
         public bool ShowSuccess { get; set; }
-        public CreateCategoryPresenter Presenter { get; set; }
+        public CategoryCreatePresenter Presenter { get; set; }
         public bool ShowError { get; set; }
 
         public event EventHandler AcceptClick;

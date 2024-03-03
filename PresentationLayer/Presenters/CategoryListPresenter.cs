@@ -11,13 +11,13 @@ using System.Threading.Tasks;
 
 namespace PresentationLayer.Presenters
 {
-    public class ListCategoriesPresenter
+    public class CategoryListPresenter
     {
-        IListCategoriesView _viewList { get; set; }
-        ICreateCategoryView _viewCreate { get; set; }
+        ICategoryListView _viewList { get; set; }
+        ICategoryCreateView _viewCreate { get; set; }
         ICategoryService<IEnumerable<Category>> _service { get; set; }
 
-        public ListCategoriesPresenter(IListCategoriesView view, ICategoryService<IEnumerable<Category>> service)
+        public CategoryListPresenter(ICategoryListView view, ICategoryService<IEnumerable<Category>> service)
         {
             _viewList = view;
             _viewList.Presenter = this;
@@ -28,7 +28,7 @@ namespace PresentationLayer.Presenters
             _viewList.ViewLoad += _view_ViewLoad;
         }
 
-        public ListCategoriesPresenter(IListCategoriesView view)
+        public CategoryListPresenter(ICategoryListView view)
         {
             _viewList = view;
             _viewList.Presenter = this;
@@ -47,7 +47,7 @@ namespace PresentationLayer.Presenters
         private void _view_AddClick(object sender, EventArgs e)
         {
             // TODO: Revisar como mejorar esto. 
-            _viewCreate = (ICreateCategoryView)new CreateCategoryForm().GetView();
+            _viewCreate = (ICategoryCreateView)new CreateCategoryForm().GetView();
             _viewCreate.ShowView();
 
             if (!string.IsNullOrEmpty(_viewCreate.Success))

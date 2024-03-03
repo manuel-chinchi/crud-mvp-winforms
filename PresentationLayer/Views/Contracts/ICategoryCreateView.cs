@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace PresentationLayer.Views.Contracts
 {
-    public interface ICreateCategoryView : IBaseView
+    public interface ICategoryCreateView : IBaseView
     {
         string NameC { get; set; }
-        CreateCategoryPresenter Presenter { get; set; }
+        CategoryCreatePresenter Presenter { get; set; }
 
         event EventHandler AcceptClick;
         event EventHandler CancelClick;

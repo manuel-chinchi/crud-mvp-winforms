@@ -20,7 +20,7 @@ namespace TestsLayer.Presenters
         public void CategoryToDeleteHasRelatedArticles_Error()
         {
             var view = new ListCategoriesView_Test();
-            var presenter = new ListCategoriesPresenter(view, _service);
+            var presenter = new CategoryListPresenter(view, _service);
 
             view.Show();
             view.ItemSelected = 0;
@@ -32,7 +32,7 @@ namespace TestsLayer.Presenters
         public void CategoryDeleted_Success()
         {
             var view = new ListCategoriesView_Test();
-            var presenter = new ListCategoriesPresenter(view, _service);
+            var presenter = new CategoryListPresenter(view, _service);
 
             view.Show();
             view.ItemSelected = 1;
@@ -55,11 +55,11 @@ namespace TestsLayer.Presenters
         }
     }
 
-    public class ListCategoriesView_Test : IListCategoriesView
+    public class ListCategoriesView_Test : ICategoryListView
     {
         public int ItemSelected { get; set; }
         public IEnumerable<Category> Categories { get; set; }
-        public ListCategoriesPresenter Presenter { get; set; }
+        public CategoryListPresenter Presenter { get; set; }
         public string Error { get; set; }
         public bool ShowError { get; set; }
         public string Success { get; set; }

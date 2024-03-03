@@ -10,13 +10,13 @@ using System.Threading.Tasks;
 
 namespace PresentationLayer.Presenters
 {
-    public class CreateArticlePresenter
+    public class ArticleCreatePresenter
     {
-        ICreateArticleView _view { get; set; }
+        IArticleCreateView _view { get; set; }
         IArticleService<IEnumerable<Article>> _articleService { get; set; }
         ICategoryService<IEnumerable<Category>> _categoryService { get; set; }
 
-        public CreateArticlePresenter(ICreateArticleView view, IArticleService<IEnumerable<Article>> service)
+        public ArticleCreatePresenter(IArticleCreateView view, IArticleService<IEnumerable<Article>> service)
         {
             _view = view;
             _view.Presenter = this;
@@ -28,7 +28,7 @@ namespace PresentationLayer.Presenters
             _view.CancelClick += _view_CancelClick;
         }
 
-        public CreateArticlePresenter(ICreateArticleView view, IArticleService<IEnumerable<Article>> articleService, ICategoryService<IEnumerable<Category>> categoryService)
+        public ArticleCreatePresenter(IArticleCreateView view, IArticleService<IEnumerable<Article>> articleService, ICategoryService<IEnumerable<Category>> categoryService)
         {
             _view = view;
             _view.Presenter = this;
@@ -40,7 +40,7 @@ namespace PresentationLayer.Presenters
             _view.CancelClick += _view_CancelClick;
         }
 
-        public CreateArticlePresenter(ICreateArticleView view)
+        public ArticleCreatePresenter(IArticleCreateView view)
         {
             _view = view;
             _view.Presenter = this;

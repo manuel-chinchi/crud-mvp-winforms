@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace PresentationLayer.Presenters
 {
-    public class CreateCategoryPresenter
+    public class CategoryCreatePresenter
     {
-        ICreateCategoryView _view { get; set; }
+        ICategoryCreateView _view { get; set; }
         ICategoryService<IEnumerable<Category>> _service { get; set; }
         
-        public CreateCategoryPresenter(ICreateCategoryView view, ICategoryService<IEnumerable<Category>> service)
+        public CategoryCreatePresenter(ICategoryCreateView view, ICategoryService<IEnumerable<Category>> service)
         {
             _view = view;
             _view.Presenter = this;
@@ -25,7 +25,7 @@ namespace PresentationLayer.Presenters
             _view.CancelClick += _view_CancelClick;
         }
 
-        public CreateCategoryPresenter(ICreateCategoryView view)
+        public CategoryCreatePresenter(ICategoryCreateView view)
         {
             _view = view;
             _view.Presenter = this;

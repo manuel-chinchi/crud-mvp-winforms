@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace PresentationLayer.Views.Contracts
 {
-    public interface IListArticlesView : IBaseView
+    public interface IArticleListView : IBaseView
     {
         int ItemSelected { get; set; }
         bool IncludeName { get; set; }
         bool IncludeDescription { get; set; }
         string Search { get; set; }
         IEnumerable<Article> Articles { get; set; }
-        ListArticlesPresenter Presenter { get; set; }
+        ArticleListPresenter Presenter { get; set; }
 
         event EventHandler AddClick;
         event EventHandler EditClick;

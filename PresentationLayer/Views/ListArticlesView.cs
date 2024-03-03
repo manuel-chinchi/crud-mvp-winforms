@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace PresentationLayer.Views
 {
-    public partial class ListArticlesView : UserControl, IListArticlesView
+    public partial class ListArticlesView : UserControl, IArticleListView
     {
         private int _itemSelected;
         public int ItemSelected
@@ -74,7 +74,7 @@ namespace PresentationLayer.Views
             }
         }
 
-        public ListArticlesPresenter Presenter { get; set; }
+        public ArticleListPresenter Presenter { get; set; }
 
         // IBaseView
         public string Error { get; set; }
@@ -126,7 +126,7 @@ namespace PresentationLayer.Views
         public ListArticlesView()
         {
             InitializeComponent();
-            Presenter = new ListArticlesPresenter(this, new ArticleService());
+            Presenter = new ArticleListPresenter(this, new ArticleService());
         }
 
         private void ListArticlesView_Load(object sender, EventArgs e)

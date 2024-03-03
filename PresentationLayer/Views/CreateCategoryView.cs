@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace PresentationLayer.Views
 {
-    public partial class CreateCategoryView : UserControl, ICreateCategoryView
+    public partial class CreateCategoryView : UserControl, ICategoryCreateView
     {
         public string NameC
         {
@@ -21,7 +21,7 @@ namespace PresentationLayer.Views
             set { txtName.Text = value; }
         }
 
-        public CreateCategoryPresenter Presenter { get; set; }
+        public CategoryCreatePresenter Presenter { get; set; }
 
         // IBaseView
         public string Error { get; set; }
@@ -49,7 +49,7 @@ namespace PresentationLayer.Views
         public CreateCategoryView()
         {
             InitializeComponent();
-            Presenter = new CreateCategoryPresenter(this);
+            Presenter = new CategoryCreatePresenter(this);
         }
 
         public void CloseView()

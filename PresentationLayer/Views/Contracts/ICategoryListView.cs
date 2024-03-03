@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace PresentationLayer.Views.Contracts
 {
-    public interface IListCategoriesView : IBaseView
+    public interface ICategoryListView : IBaseView
     {
         int ItemSelected { get; set; }
         IEnumerable<Category> Categories { get; set; }
-        ListCategoriesPresenter Presenter { get; set; }
+        CategoryListPresenter Presenter { get; set; }
 
         event EventHandler DeleteClick;
         event EventHandler AddClick;

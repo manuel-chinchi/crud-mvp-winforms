@@ -106,10 +106,10 @@
     <Compile Include="Forms\ReportForm.Designer.cs">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presenters\CreateArticlePresenter.cs" />
-    <Compile Include="Presenters\CreateCategoryPresenter.cs" />
-    <Compile Include="Presenters\ListArticlesPresenter.cs" />
-    <Compile Include="Presenters\ListCategoriesPresenter.cs" />
+    <Compile Include="Presenters\ArticleCreatePresenter.cs" />
+    <Compile Include="Presenters\CategoryCreatePresenter.cs" />
+    <Compile Include="Presenters\ArticleListPresenter.cs" />
+    <Compile Include="Presenters\CategoryListPresenter.cs" />
     <Compile Include="Presenters\ReportPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -121,10 +121,10 @@
       <DependentUpon>CreateCategoryView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Contracts\IBaseView.cs" />
-    <Compile Include="Views\Contracts\ICreateArticleView.cs" />
-    <Compile Include="Views\Contracts\ICreateCategoryView.cs" />
-    <Compile Include="Views\Contracts\IListArticlesView.cs" />
-    <Compile Include="Views\Contracts\IListCategoriesView.cs" />
+    <Compile Include="Views\Contracts\IArticleCreateView.cs" />
+    <Compile Include="Views\Contracts\ICategoryCreateView.cs" />
+    <Compile Include="Views\Contracts\IArticleListView.cs" />
+    <Compile Include="Views\Contracts\ICategoryListView.cs" />
     <Compile Include="Views\Contracts\IReportView.cs" />
     <Compile Include="Views\ListArticlesView.cs">
       <SubType>UserControl</SubType>

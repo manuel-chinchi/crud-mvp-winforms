@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace PresentationLayer.Views
 {
-    public partial class CreateArticleView : UserControl, ICreateArticleView
+    public partial class CreateArticleView : UserControl, IArticleCreateView
     {
         public string Id { get; set; }
 
@@ -67,7 +67,7 @@ namespace PresentationLayer.Views
             }
         }
 
-        public CreateArticlePresenter Presenter { get; set; }
+        public ArticleCreatePresenter Presenter { get; set; }
 
         // IBaseView
         public string Error { get; set; }
@@ -96,7 +96,7 @@ namespace PresentationLayer.Views
         public CreateArticleView()
         {
             InitializeComponent();
-            Presenter = new CreateArticlePresenter(this, new ArticleService(), new CategoryService());
+            Presenter = new ArticleCreatePresenter(this, new ArticleService(), new CategoryService());
         }
 
         public void ShowView()

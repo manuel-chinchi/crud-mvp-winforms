@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace PresentationLayer.Views
 {
-    public partial class ListCategoriesView : UserControl, IListCategoriesView
+    public partial class ListCategoriesView : UserControl, ICategoryListView
     {
         private int _itemSelected;
         public int ItemSelected
@@ -45,7 +45,7 @@ namespace PresentationLayer.Views
             }
         }
 
-        public ListCategoriesPresenter Presenter { get; set; }
+        public CategoryListPresenter Presenter { get; set; }
 
         // IBaseView
         public string Error { get; set; }
@@ -86,7 +86,7 @@ namespace PresentationLayer.Views
         public ListCategoriesView()
         {
             InitializeComponent();
-            Presenter = new ListCategoriesPresenter(this);
+            Presenter = new CategoryListPresenter(this);
         }
 
         private void ListCategoriesView_Load(object sender, EventArgs e)

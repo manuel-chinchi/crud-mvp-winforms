@@ -11,13 +11,13 @@ using System.Threading.Tasks;
 
 namespace PresentationLayer.Presenters
 {
-    public class ListArticlesPresenter
+    public class ArticleListPresenter
     {
-        IListArticlesView _viewList { get; set; }
-        ICreateArticleView _viewCreate { get; set; }
+        IArticleListView _viewList { get; set; }
+        IArticleCreateView _viewCreate { get; set; }
         IArticleService<IEnumerable<Article>> _service { get; set; }
 
-        public ListArticlesPresenter(IListArticlesView view, IArticleService<IEnumerable<Article>> service)
+        public ArticleListPresenter(IArticleListView view, IArticleService<IEnumerable<Article>> service)
         {
             _viewList = view;
             _viewList.Presenter = this;
@@ -31,7 +31,7 @@ namespace PresentationLayer.Presenters
             _viewList.ViewLoad += _viewList_ViewLoad;
         }
 
-        public ListArticlesPresenter(IListArticlesView view)
+        public ArticleListPresenter(IArticleListView view)
         {
             _viewList = view;
             _viewList.Presenter = this;
@@ -78,7 +78,7 @@ namespace PresentationLayer.Presenters
         private void _view_EditClick(object sender, EventArgs e)
         {
             var article = _viewList.Articles.ToArray()[_viewList.ItemSelected];
-            _viewCreate = (ICreateArticleView)(new CreateArticleForm(article)).GetView();
+            _viewCreate = (IArticleCreateView)(new CreateArticleForm(article)).GetView();
             _viewCreate.ShowView();
 
             if (!string.IsNullOrEmpty(_viewCreate.Success))
@@ -91,7 +91,7 @@ namespace PresentationLayer.Presenters
 
         private void _view_AddClick(object sender, EventArgs e)
         {
-            _viewCreate = (ICreateArticleView)(new CreateArticleForm()).GetView();
+            _viewCreate = (IArticleCreateView)(new CreateArticleForm()).GetView();
             _viewCreate.ShowView();
 
             if (!string.IsNullOrEmpty(_viewCreate.Success))

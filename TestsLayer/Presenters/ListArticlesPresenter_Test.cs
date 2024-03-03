@@ -18,7 +18,7 @@ namespace TestsLayer.Presenters
         public void ArticleDeleted_Success()
         {
             var view = new ListArticlesView_Test();
-            var presenter = new ListArticlesPresenter(view, _service);
+            var presenter = new ArticleListPresenter(view, _service);
 
             view.Load();
             view.ItemSelected = 0;
@@ -30,7 +30,7 @@ namespace TestsLayer.Presenters
         public void ArticleSearchNoResults_Warning()
         {
             var view = new ListArticlesView_Test();
-            var presenter = new ListArticlesPresenter(view, _service);
+            var presenter = new ArticleListPresenter(view, _service);
 
             //view.Show();
             view.Search = "Art1";
@@ -53,14 +53,14 @@ namespace TestsLayer.Presenters
         public void UpdateArticle(string name, string description, string stock, string id, string categoryId) { }
     }
 
-    class ListArticlesView_Test : IListArticlesView
+    class ListArticlesView_Test : IArticleListView
     {
         public int ItemSelected { get; set; }
         public bool IncludeName { get; set; }
         public bool IncludeDescription { get; set; }
         public string Search { get; set; }
         public IEnumerable<Article> Articles { get; set; }
-        public ListArticlesPresenter Presenter { get; set; }
+        public ArticleListPresenter Presenter { get; set; }
         public string Warning { get; set; }
         public bool ShowWarning { get; set; }
         public string Error { get; set; }
