@@ -34,7 +34,7 @@ namespace PresentationLayer.Presenters
             _viewMain.Presenter = this;
             _viewArticleList = new ArticleListView();
             _viewCategoryList = new CategoryListView();
-            _viewReports = new ReportView();
+            _viewReports = new ReportView2();
 
             _viewMain.ArticlesClick += _viewMain_ArticlesClick;
             _viewMain.CategoriesClick += _viewMain_CategoriesClick;
