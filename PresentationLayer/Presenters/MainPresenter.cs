@@ -10,49 +10,50 @@ namespace PresentationLayer.Presenters
 {
     public class MainPresenter
     {
-        IMainView _mainView;
-        IArticleListView _articleListView;
-        ICategoryListView _categoryListView;
-        IReportView _reportsView;
+        IMainView _viewMain;
+        IArticleListView _viewArticleList;
+        ICategoryListView _viewCategoryList;
+        IReportView _viewReports;
 
-        public MainPresenter(IMainView mainView, IArticleListView articleListView, ICategoryListView categoryListView, IReportView reportsView)
+        public MainPresenter(IMainView view, IArticleListView viewArticleList, ICategoryListView viewCategoryList, IReportView viewReports)
         {
-            _mainView = mainView;
-            _mainView.Presenter = this;
-            _articleListView = articleListView;
-            _categoryListView = categoryListView;
-            _reportsView = reportsView;
+            _viewMain = view;
+            _viewMain.Presenter = this;
+            _viewArticleList = viewArticleList;
+            _viewCategoryList = viewCategoryList;
+            _viewReports = viewReports;
 
-            _mainView.ArticlesClick += _mainView_ArticlesClick;
-            _mainView.CategoriesClick += _mainView_CategoriesClick;
-            _mainView.ReportsClick += _mainView_ReportsClick;
+            _viewMain.ArticlesClick += _viewMain_ArticlesClick;
+            _viewMain.CategoriesClick += _viewMain_CategoriesClick;
+            _viewMain.ReportsClick += _viewMain_ReportsClick;
         }
 
         public MainPresenter(IMainView view)
         {
-            _mainView = view;
-            _mainView.Presenter = this;
-            _articleListView = new ArticleListView();
-            _categoryListView = new CategoryListView();
-            _reportsView = new ReportView();
+            _viewMain = view;
+            _viewMain.Presenter = this;
+            _viewArticleList = new ArticleListView();
+            _viewCategoryList = new CategoryListView();
+            _viewReports = new ReportView();
 
-            _mainView.ArticlesClick += _mainView_ArticlesClick;
-            _mainView.CategoriesClick += _mainView_CategoriesClick;
-            _mainView.ReportsClick += _mainView_ReportsClick;
+            _viewMain.ArticlesClick += _viewMain_ArticlesClick;
+            _viewMain.CategoriesClick += _viewMain_CategoriesClick;
+            _viewMain.ReportsClick += _viewMain_ReportsClick;
         }
 
-        private void _mainView_ArticlesClick(object sender, EventArgs e)
+        private void _viewMain_ArticlesClick(object sender, EventArgs e)
         {
-            _articleListView.ShowView();
+            _viewArticleList.ShowView();
         }
 
-        private void _mainView_CategoriesClick(object sender, EventArgs e)
+        private void _viewMain_CategoriesClick(object sender, EventArgs e)
         {
-            _categoryListView.ShowView();
+            _viewCategoryList.ShowView();
         }
 
-        private void _mainView_ReportsClick(object sender, EventArgs e)
+        private void _viewMain_ReportsClick(object sender, EventArgs e)
         {
+            _viewReports.ShowView();
         }
     }
 }

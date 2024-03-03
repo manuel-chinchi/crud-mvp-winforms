@@ -12,90 +12,90 @@ namespace PresentationLayer.Presenters
 {
     public class ArticleCreatePresenter
     {
-        IArticleCreateView _view { get; set; }
+        IArticleCreateView _viewCreate { get; set; }
         IArticleService<IEnumerable<Article>> _articleService { get; set; }
         ICategoryService<IEnumerable<Category>> _categoryService { get; set; }
 
         public ArticleCreatePresenter(IArticleCreateView view, IArticleService<IEnumerable<Article>> service)
         {
-            _view = view;
-            _view.Presenter = this;
+            _viewCreate = view;
+            _viewCreate.Presenter = this;
             _articleService = service;
             _categoryService = new CategoryService();
 
-            _view.Categories = _categoryService.GetCategories();
-            _view.AcceptClick += _view_AcceptClick;
-            _view.CancelClick += _view_CancelClick;
+            _viewCreate.Categories = _categoryService.GetCategories();
+            _viewCreate.AcceptClick += _viewCreate_AcceptClick;
+            _viewCreate.CancelClick += _viewCreate_CancelClick;
         }
 
         public ArticleCreatePresenter(IArticleCreateView view, IArticleService<IEnumerable<Article>> articleService, ICategoryService<IEnumerable<Category>> categoryService)
         {
-            _view = view;
-            _view.Presenter = this;
+            _viewCreate = view;
+            _viewCreate.Presenter = this;
             _articleService = articleService;
             _categoryService = categoryService;
 
-            _view.Categories = _categoryService.GetCategories();
-            _view.AcceptClick += _view_AcceptClick;
-            _view.CancelClick += _view_CancelClick;
+            _viewCreate.Categories = _categoryService.GetCategories();
+            _viewCreate.AcceptClick += _viewCreate_AcceptClick;
+            _viewCreate.CancelClick += _viewCreate_CancelClick;
         }
 
         public ArticleCreatePresenter(IArticleCreateView view)
         {
-            _view = view;
-            _view.Presenter = this;
+            _viewCreate = view;
+            _viewCreate.Presenter = this;
             _articleService = new ArticleService();
             _categoryService = new CategoryService();
 
-            _view.Categories = _categoryService.GetCategories();
-            _view.AcceptClick += _view_AcceptClick;
-            _view.CancelClick += _view_CancelClick;
+            _viewCreate.Categories = _categoryService.GetCategories();
+            _viewCreate.AcceptClick += _viewCreate_AcceptClick;
+            _viewCreate.CancelClick += _viewCreate_CancelClick;
         }
 
-        private void _view_CancelClick(object sender, EventArgs e)
+        private void _viewCreate_CancelClick(object sender, EventArgs e)
         {
-            _view.CloseView();
+            _viewCreate.CloseView();
         }
 
-        private void _view_AcceptClick(object sender, EventArgs e)
+        private void _viewCreate_AcceptClick(object sender, EventArgs e)
         {
-            var category = _view.Categories.ToArray()[_view.ItemSelected];
-            if (_view.IsEditMode)
+            var category = _viewCreate.Categories.ToArray()[_viewCreate.ItemSelected];
+            if (_viewCreate.IsEditMode)
             {
-                _view.Categories = _categoryService.GetCategories();
-                _articleService.UpdateArticle(_view.NameA, _view.Description, _view.Stock.ToString(), _view.Id.ToString(), category.Id.ToString());
-                _view.Success = $"Se ha actualizado el artículo 'id={_view.Id.ToString()}'";
-                _view.ShowSuccess = true;
-                _view.IsEditMode = false;
+                _viewCreate.Categories = _categoryService.GetCategories();
+                _articleService.UpdateArticle(_viewCreate.NameA, _viewCreate.Description, _viewCreate.Stock.ToString(), _viewCreate.Id.ToString(), category.Id.ToString());
+                _viewCreate.Success = $"Se ha actualizado el artículo 'id={_viewCreate.Id.ToString()}'";
+                _viewCreate.ShowSuccess = true;
+                _viewCreate.IsEditMode = false;
             }
             else
             {
                 // TODO: mmm.. check this ¿_view.CategoryId property missing?
-                if (string.IsNullOrEmpty(_view.NameA))
+                if (string.IsNullOrEmpty(_viewCreate.NameA))
                 {
-                    _view.Error = "El campo 'Nombre' no puede ser vacío";
-                    _view.ShowError = true;
+                    _viewCreate.Error = "El campo 'Nombre' no puede ser vacío";
+                    _viewCreate.ShowError = true;
                     return;
                 }
-                _articleService.CreateArticle(_view.NameA, _view.Description, _view.Stock.ToString(), category.Id.ToString());
-                _view.Success = $"Se ha creado el artículo '{_view.NameA}'";
-                _view.ShowSuccess = true;
+                _articleService.CreateArticle(_viewCreate.NameA, _viewCreate.Description, _viewCreate.Stock.ToString(), category.Id.ToString());
+                _viewCreate.Success = $"Se ha creado el artículo '{_viewCreate.NameA}'";
+                _viewCreate.ShowSuccess = true;
             }
-            _view.CloseView();
+            _viewCreate.CloseView();
         }
 
         public void LoadArticleFromEdit(Article article)
         {
-            _view.Id = article.Id.ToString();
-            _view.NameA = article.Name;
-            _view.Description = article.Description;
-            _view.Stock = article.Stock.ToString();
-            _view.ItemSelected = _view.Categories.ToList().FindIndex(c => c.Id == Convert.ToInt32(article.CategoryId));
+            _viewCreate.Id = article.Id.ToString();
+            _viewCreate.NameA = article.Name;
+            _viewCreate.Description = article.Description;
+            _viewCreate.Stock = article.Stock.ToString();
+            _viewCreate.ItemSelected = _viewCreate.Categories.ToList().FindIndex(c => c.Id == Convert.ToInt32(article.CategoryId));
         }
 
         public void ActivateEditMode()
         {
-            _view.IsEditMode = true;
+            _viewCreate.IsEditMode = true;
         }
     }
 }

@@ -25,11 +25,11 @@ namespace PresentationLayer.Presenters
             _viewCreate = new ArticleCreateView();
             _service = service;
             
-            _viewList.AddClick += _view_AddClick;
-            _viewList.EditClick += _view_EditClick;
-            _viewList.DeleteClick += _view_DeleteClick;
-            _viewList.SearchClick += _view_SearchClick;
-            _viewList.ShowAllClick += _view_ShowAllClick;
+            _viewList.AddClick += _viewList_AddClick;
+            _viewList.EditClick += _viewList_EditClick;
+            _viewList.DeleteClick += _viewList_DeleteClick;
+            _viewList.SearchClick += _viewList_SearchClick;
+            _viewList.ShowAllClick += _viewList_ShowAllClick;
             _viewList.ViewLoad += _viewList_ViewLoad;
         }
 
@@ -40,11 +40,11 @@ namespace PresentationLayer.Presenters
             _viewCreate = new ArticleCreateView();
             _service = new ArticleService();
 
-            _viewList.AddClick += _view_AddClick;
-            _viewList.EditClick += _view_EditClick;
-            _viewList.DeleteClick += _view_DeleteClick;
-            _viewList.SearchClick += _view_SearchClick;
-            _viewList.ShowAllClick += _view_ShowAllClick;
+            _viewList.AddClick += _viewList_AddClick;
+            _viewList.EditClick += _viewList_EditClick;
+            _viewList.DeleteClick += _viewList_DeleteClick;
+            _viewList.SearchClick += _viewList_SearchClick;
+            _viewList.ShowAllClick += _viewList_ShowAllClick;
             _viewList.ViewLoad += _viewList_ViewLoad;
         }
 
@@ -53,18 +53,18 @@ namespace PresentationLayer.Presenters
             _viewList.Articles = _service.GetArticles();
         }
 
-        private void _view_ShowAllClick(object sender, EventArgs e)
+        private void _viewList_ShowAllClick(object sender, EventArgs e)
         {
             _viewList.Articles = _service.GetArticles();
             _viewList.ShowSuccess = false;
         }
 
-        private void _view_SearchClick(object sender, EventArgs e)
+        private void _viewList_SearchClick(object sender, EventArgs e)
         {
             this.SearchArticle();
         }
 
-        private void _view_DeleteClick(object sender, EventArgs e)
+        private void _viewList_DeleteClick(object sender, EventArgs e)
         {
             var article = _viewList.Articles.ToArray()[_viewList.ItemSelected];
             var result = System.Windows.Forms.MessageBox.Show($"¿Desea eliminar el artículo '{article.Name}'?", "Alerta", System.Windows.Forms.MessageBoxButtons.YesNo);
@@ -78,7 +78,7 @@ namespace PresentationLayer.Presenters
             this.LoadArticles();
         }
 
-        private void _view_EditClick(object sender, EventArgs e)
+        private void _viewList_EditClick(object sender, EventArgs e)
         {
             var article = _viewList.Articles.ToArray()[_viewList.ItemSelected];
             _viewCreate = (IArticleCreateView)(new CreateArticleForm(article)).GetView();
@@ -92,7 +92,7 @@ namespace PresentationLayer.Presenters
             }
         }
 
-        private void _view_AddClick(object sender, EventArgs e)
+        private void _viewList_AddClick(object sender, EventArgs e)
         {
             //_viewCreate = (IArticleCreateView)(new CreateArticleForm()).GetView();
             _viewCreate.ShowView();
