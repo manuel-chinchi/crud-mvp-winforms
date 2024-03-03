@@ -1,5 +1,4 @@
-﻿using BussinesLayer.Services;
-using EntityLayer.Models;
+﻿using EntityLayer.Models;
 using PresentationLayer.Presenters;
 using PresentationLayer.Views.Contracts;
 using System;
@@ -14,12 +13,12 @@ using System.Windows.Forms;
 
 namespace PresentationLayer.Views
 {
-    public partial class ListArticlesView : UserControl, IArticleListView
+    public partial class ArticleListView : Form, IArticleListView
     {
         private int _itemSelected;
         public int ItemSelected
         {
-            get { return dgvArticles.CurrentCell.RowIndex; }
+            get { return dgvArticles.CurrentRow.Index; }
             set
             {
                 if (value >= 0 && value <= dgvArticles.RowCount)
@@ -29,29 +28,23 @@ namespace PresentationLayer.Views
                 }
             }
         }
-
         public bool IncludeName
         {
             get { return Convert.ToBoolean(chkName.CheckState); }
             set { chkName.CheckState = (CheckState)Convert.ToInt32(value); }
         }
-
         public bool IncludeDescription
         {
             get { return Convert.ToBoolean(chkDescription.CheckState); }
             set { chkDescription.CheckState = (CheckState)Convert.ToInt32(value); }
         }
-
         public string Search
         {
             get { return txtSearch.Text; }
             set { txtSearch.Text = value; }
         }
-
         public IEnumerable<Article> Articles
         {
-            // TODO Aca ocurre el error, hay que cargar los articulos en el constructor
-            // del presentador o en el evento on 'Load' de la vista
             get
             {
                 var bs = (BindingSource)dgvArticles.DataSource;
@@ -60,46 +53,14 @@ namespace PresentationLayer.Views
             }
             set
             {
-                // TODO: Esta forma no permite ordenacion
-                //BindingSource bs = new BindingSource();
-                //bs.DataSource = new List<Article>();
-                //dgvArticles.DataSource = bs.DataSource;
-                //BindingSource bs = new BindingSource((IContainer)value.ToList());
-
                 var bs = new BindingSource();
                 bs.DataSource = new SortableBindingList<Article>(value.ToList());
                 dgvArticles.DataSource = bs;
-
                 dgvArticles.Columns["CategoryId"].Visible = false;
             }
         }
-
         public ArticleListPresenter Presenter { get; set; }
-
-        // IBaseView
-        public string Error { get; set; }
-        public string Success { get; set; }
         public string Warning { get; set; }
-        public bool ShowError { get; set; }
-        public bool ShowSuccess
-        {
-            get { return lblResult.Visible; }
-            set
-            {
-                if (value == true)
-                {
-                    lblResult.Text = Success;
-                    lblResult.ForeColor = Color.Green;
-                    this.ShowResult();
-                }
-                else
-                {
-                    if (timer != null && timer.Enabled)
-                        timer.Stop();
-                    lblResult.Visible = value;
-                }
-            }
-        }
         public bool ShowWarning
         {
             get { return lblResult.Visible; }
@@ -113,6 +74,28 @@ namespace PresentationLayer.Views
                 }
             }
         }
+        public string Error { get; set; }
+        public bool ShowError { get; set; }
+        public string Success { get; set; }
+        public bool ShowSuccess
+        {
+            get { return lblResult.Visible; }
+            set
+            {
+                if (value == true)
+                {
+                    lblResult.Text = Success;
+                    lblResult.ForeColor = Color.Green;
+                    this.ShowResult();
+                }
+                else
+                {
+                    if (_timer != null && _timer.Enabled)
+                        _timer.Stop();
+                    lblResult.Visible = value;
+                }
+            }
+        }
 
         public event EventHandler AddClick;
         public event EventHandler EditClick;
@@ -121,73 +104,71 @@ namespace PresentationLayer.Views
         public event EventHandler ShowAllClick;
         public event EventHandler ViewLoad;
 
-        private Timer timer;
+        private Timer _timer;
 
-        public ListArticlesView()
+        public ArticleListView()
         {
             InitializeComponent();
-            Presenter = new ArticleListPresenter(this, new ArticleService());
+            BindingEvents();
+            Presenter = new ArticleListPresenter(this);
         }
 
-        private void ListArticlesView_Load(object sender, EventArgs e)
+        private void BindingEvents()
         {
-            ViewLoad?.Invoke(this, EventArgs.Empty);
-        }
-
-        private void btnShowAll_Click(object sender, EventArgs e)
-        {
-            ShowAllClick?.Invoke(this, EventArgs.Empty);
-        }
-
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            SearchClick?.Invoke(this, EventArgs.Empty);
-        }
-
-        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
+            btnAdd.Click += delegate { AddClick?.Invoke(this, EventArgs.Empty); };
+            btnEdit.Click += delegate { EditClick?.Invoke(this, EventArgs.Empty); };
+            btnDelete.Click += delegate { DeleteClick?.Invoke(this, EventArgs.Empty); };
+            btnShowAll.Click += delegate { ShowAllClick?.Invoke(this, EventArgs.Empty); };
+            btnSearch.Click += delegate { SearchClick?.Invoke(this, EventArgs.Empty); };
+            this.Load += delegate { ViewLoad?.Invoke(this, EventArgs.Empty); };
+            txtSearch.KeyDown += (s, e) =>
             {
-                // ting!!! >:c
-                e.Handled = true;
-                e.SuppressKeyPress = true;
+                if (e.KeyCode == Keys.Enter)
+                {
+                    e.Handled = true;
+                    e.SuppressKeyPress = true;
 
-                SearchClick?.Invoke(this, EventArgs.Empty);
-            }
+                    SearchClick?.Invoke(this, EventArgs.Empty);
+                }
+            };
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        public void CloseView()
         {
-            AddClick?.Invoke(this, EventArgs.Empty);
+            this.Close();
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
+        public void ShowView()
         {
-            EditClick?.Invoke(this, EventArgs.Empty);
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            DeleteClick?.Invoke(this, EventArgs.Empty);
+            this.ShowDialog();
         }
 
         private void ShowResult(int interval = 3)
         {
             lblResult.Visible = true;
 
-            if (timer != null && timer.Enabled)
+            if (_timer != null && _timer.Enabled)
             {
-                timer.Stop();
+                _timer.Stop();
             }
 
-            timer = new Timer();
-            timer.Interval = interval * 1000;
-            timer.Tick += (s, e) =>
+            _timer = new Timer();
+            _timer.Interval = interval * 1000;
+            _timer.Tick += (s, e) =>
             {
                 lblResult.Hide();
-                timer.Stop();
+                _timer.Stop();
             };
-            timer.Start();
+            _timer.Start();
         }
+
+        #region UI Settings
+
+        private void pnlSearchContainer_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtSearch.Focus();
+        }
+
+        #endregion
     }
 }

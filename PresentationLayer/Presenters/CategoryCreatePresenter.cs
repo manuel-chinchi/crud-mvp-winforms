@@ -12,55 +12,55 @@ namespace PresentationLayer.Presenters
 {
     public class CategoryCreatePresenter
     {
-        ICategoryCreateView _view { get; set; }
+        ICategoryCreateView _viewCreate { get; set; }
         ICategoryService<IEnumerable<Category>> _service { get; set; }
         
         public CategoryCreatePresenter(ICategoryCreateView view, ICategoryService<IEnumerable<Category>> service)
         {
-            _view = view;
-            _view.Presenter = this;
+            _viewCreate = view;
+            _viewCreate.Presenter = this;
             _service = service;
 
-            _view.AcceptClick += _view_AcceptClick;
-            _view.CancelClick += _view_CancelClick;
+            _viewCreate.AcceptClick += _viewCreate_AcceptClick;
+            _viewCreate.CancelClick += _viewCreate_CancelClick;
         }
 
         public CategoryCreatePresenter(ICategoryCreateView view)
         {
-            _view = view;
-            _view.Presenter = this;
+            _viewCreate = view;
+            _viewCreate.Presenter = this;
             _service = new CategoryService();
 
-            _view.AcceptClick += _view_AcceptClick;
-            _view.CancelClick += _view_CancelClick;
+            _viewCreate.AcceptClick += _viewCreate_AcceptClick;
+            _viewCreate.CancelClick += _viewCreate_CancelClick;
         }
 
-        private void _view_CancelClick(object sender, EventArgs e)
+        private void _viewCreate_CancelClick(object sender, EventArgs e)
         {
-            _view.CloseView();
+            _viewCreate.CloseView();
         }
 
-        private void _view_AcceptClick(object sender, EventArgs e)
+        private void _viewCreate_AcceptClick(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(_view.NameC))
+            if (!string.IsNullOrEmpty(_viewCreate.NameC))
             {
-                _service.CreateCategory(_view.NameC);
-                _view.Success = $"Se ha creado la categoría '{_view.NameC}'";
-                _view.ShowSuccess = true;
-                _view.CloseView();
+                _service.CreateCategory(_viewCreate.NameC);
+                _viewCreate.Success = $"Se ha creado la categoría '{_viewCreate.NameC}'";
+                _viewCreate.ShowSuccess = true;
+                _viewCreate.CloseView();
             }
             else
             {
-                _view.Error = "El campo 'Nombre' no puede ser vacío";
-                _view.ShowError = true;
+                _viewCreate.Error = "El campo 'Nombre' no puede ser vacío";
+                _viewCreate.ShowError = true;
             }
         }
 
         public void SaveCategory()
         {
-            _service.CreateCategory(_view.NameC);
-            _view.Success = "Se ha creado la categoría";
-            _view.ShowSuccess = true;
+            _service.CreateCategory(_viewCreate.NameC);
+            _viewCreate.Success = "Se ha creado la categoría";
+            _viewCreate.ShowSuccess = true;
         }
     }
 }

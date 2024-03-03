@@ -3,15 +3,15 @@ namespace PresentationLayer.Views
 {
     partial class ReportView
     {
-        /// <summary> 
-        /// Variable del diseñador necesaria.
+        /// <summary>
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
-        /// Limpiar los recursos que se estén usando.
+        /// <summary>
+        /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">true si los recursos administrados se deben desechar; false en caso contrario.</param>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -21,92 +21,105 @@ namespace PresentationLayer.Views
             base.Dispose(disposing);
         }
 
-        #region Código generado por el Diseñador de componentes
+        #region Windows Form Designer generated code
 
-        /// <summary> 
-        /// Método necesario para admitir el Diseñador. No se puede modificar
-        /// el contenido de este método con el editor de código.
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblChooseReport = new System.Windows.Forms.Label();
+            this.tlpBottom = new System.Windows.Forms.TableLayoutPanel();
             this.cboReport = new System.Windows.Forms.ComboBox();
-            this.rvReport = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.lblChooseReport = new System.Windows.Forms.Label();
+            this.pnlBody = new System.Windows.Forms.Panel();
+            this.rpvReport = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.tlpBottom.SuspendLayout();
+            this.pnlBody.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tableLayoutPanel1
+            // tlpBottom
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.lblChooseReport, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.cboReport, 1, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 665);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(500, 35);
-            this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // lblChooseReport
-            // 
-            this.lblChooseReport.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblChooseReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblChooseReport.Location = new System.Drawing.Point(3, 0);
-            this.lblChooseReport.Name = "lblChooseReport";
-            this.lblChooseReport.Size = new System.Drawing.Size(244, 35);
-            this.lblChooseReport.TabIndex = 0;
-            this.lblChooseReport.Text = "Choose report:";
-            this.lblChooseReport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tlpBottom.ColumnCount = 2;
+            this.tlpBottom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpBottom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpBottom.Controls.Add(this.cboReport, 0, 0);
+            this.tlpBottom.Controls.Add(this.lblChooseReport, 0, 0);
+            this.tlpBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tlpBottom.Location = new System.Drawing.Point(0, 868);
+            this.tlpBottom.Name = "tlpBottom";
+            this.tlpBottom.RowCount = 1;
+            this.tlpBottom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpBottom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tlpBottom.Size = new System.Drawing.Size(803, 35);
+            this.tlpBottom.TabIndex = 0;
             // 
             // cboReport
             // 
             this.cboReport.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cboReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboReport.FormattingEnabled = true;
-            this.cboReport.Location = new System.Drawing.Point(253, 3);
+            this.cboReport.Location = new System.Drawing.Point(404, 3);
             this.cboReport.Name = "cboReport";
-            this.cboReport.Size = new System.Drawing.Size(244, 28);
-            this.cboReport.TabIndex = 1;
+            this.cboReport.Size = new System.Drawing.Size(396, 26);
+            this.cboReport.TabIndex = 2;
             this.cboReport.Text = "ArticlesReport.rdlc";
-            this.cboReport.SelectedIndexChanged += new System.EventHandler(this.cboReport_SelectedIndexChanged);
             // 
-            // rvReport
+            // lblChooseReport
             // 
-            this.rvReport.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rvReport.DocumentMapWidth = 91;
-            reportDataSource2.Name = "dsArticles";
-            reportDataSource2.Value = null;
-            this.rvReport.LocalReport.DataSources.Add(reportDataSource2);
-            this.rvReport.LocalReport.ReportEmbeddedResource = "PresentationLayer.Reports.ArticlesReport.rdlc";
-            this.rvReport.Location = new System.Drawing.Point(0, 0);
-            this.rvReport.Name = "rvReport";
-            this.rvReport.ServerReport.BearerToken = null;
-            this.rvReport.Size = new System.Drawing.Size(500, 665);
-            this.rvReport.TabIndex = 2;
+            this.lblChooseReport.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblChooseReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblChooseReport.Location = new System.Drawing.Point(3, 0);
+            this.lblChooseReport.Name = "lblChooseReport";
+            this.lblChooseReport.Size = new System.Drawing.Size(395, 35);
+            this.lblChooseReport.TabIndex = 1;
+            this.lblChooseReport.Text = "Choose report:";
+            this.lblChooseReport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // ReportView
+            // pnlBody
+            // 
+            this.pnlBody.Controls.Add(this.rpvReport);
+            this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlBody.Location = new System.Drawing.Point(0, 0);
+            this.pnlBody.Name = "pnlBody";
+            this.pnlBody.Size = new System.Drawing.Size(803, 868);
+            this.pnlBody.TabIndex = 1;
+            // 
+            // rpvReport
+            // 
+            this.rpvReport.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rpvReport.Location = new System.Drawing.Point(0, 0);
+            this.rpvReport.Name = "rpvReport";
+            this.rpvReport.ServerReport.BearerToken = null;
+            this.rpvReport.Size = new System.Drawing.Size(803, 868);
+            this.rpvReport.TabIndex = 0;
+            // 
+            // ReportView2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.rvReport);
-            this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "ReportView";
-            this.Size = new System.Drawing.Size(500, 700);
-            this.Load += new System.EventHandler(this.ReportView_Load);
-            this.tableLayoutPanel1.ResumeLayout(false);
+            this.ClientSize = new System.Drawing.Size(803, 903);
+            this.Controls.Add(this.pnlBody);
+            this.Controls.Add(this.tlpBottom);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "ReportView2";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "ReportView2";
+            this.tlpBottom.ResumeLayout(false);
+            this.pnlBody.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+
+        private System.Windows.Forms.TableLayoutPanel tlpBottom;
+        private System.Windows.Forms.Panel pnlBody;
+        private Microsoft.Reporting.WinForms.ReportViewer rpvReport;
         private System.Windows.Forms.Label lblChooseReport;
         private System.Windows.Forms.ComboBox cboReport;
-        private Microsoft.Reporting.WinForms.ReportViewer rvReport;
     }
 }

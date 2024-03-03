@@ -26,5 +26,8 @@ namespace PresentationLayer.Views.Contracts
 
         string Warning { get; set; }
         bool ShowWarning { get; set; }
+
+        void ShowView();
+        void CloseView();
     }
 }

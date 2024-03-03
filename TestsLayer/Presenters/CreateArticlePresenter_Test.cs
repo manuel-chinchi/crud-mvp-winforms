@@ -2,6 +2,7 @@
 using EntityLayer.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PresentationLayer.Presenters;
+using PresentationLayer.Views;
 using PresentationLayer.Views.Contracts;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace TestsLayer.Presenters
         public void ArticleNameIsEmpty_Error()
         {
             var view = new CreateArticleView_Test();
-            var presenter = new CreateArticlePresenter(view);
+            var presenter = new ArticleCreatePresenter(view);
 
             view.NameA = "";
             view.Accept();
@@ -29,7 +30,7 @@ namespace TestsLayer.Presenters
         public void ArticleNameIsNotValid_Error()
         {
             var view = new CreateArticleView_Test();
-            var presenter = new CreateArticlePresenter(view, _service);
+            var presenter = new ArticleCreatePresenter(view, _service);
 
             view.NameA = "Rop@";
             view.Accept();
@@ -40,7 +41,7 @@ namespace TestsLayer.Presenters
         public void ArticleNameValid_Success()
         {
             var view = new CreateArticleView_Test();
-            var presenter = new CreateArticlePresenter(view, _service);
+            var presenter = new ArticleCreatePresenter(view, _service);
 
             view.NameA = "Art3";
             view.Stock = "0";
@@ -65,7 +66,7 @@ namespace TestsLayer.Presenters
         public void UpdateArticle(string name, string description, string stock, string id, string categoryId) { }
     }
 
-    public class CreateArticleView_Test : ICreateArticleView
+    public class CreateArticleView_Test : IArticleCreateView
     {
         public string Id { get; set; }
         public string NameA { get;set; }
@@ -75,7 +76,7 @@ namespace TestsLayer.Presenters
         public bool IsEditMode { get; set; }
         public int ItemSelected { get;set; }
         public IEnumerable<Category> Categories { get;set; }
-        public CreateArticlePresenter Presenter { get;set; }
+        public ArticleCreatePresenter Presenter { get;set; }
         public string Error { get;set; }
         public bool ShowError { get;set; }
         public string Success { get;set; }

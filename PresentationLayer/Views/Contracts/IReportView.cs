@@ -16,5 +16,8 @@ namespace PresentationLayer.Views.Contracts
         ReportPresenter Presenter { get; set; }
 
         event EventHandler SelectReport;
+
+        void ShowView();
+        void CloseView();
     }
 }

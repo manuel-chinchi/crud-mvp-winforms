@@ -15,8 +15,13 @@ using System.Windows.Forms;
 
 namespace PresentationLayer.Views
 {
-    public partial class ReportView : UserControl, IReportView
+    public partial class ReportView : Form, IReportView
     {
+        public object ItemSelected
+        {
+            get { return cboReport.SelectedItem; }
+            set { cboReport.SelectedItem = value; }
+        }
         public IEnumerable<string> Reports
         {
             get
@@ -32,50 +37,48 @@ namespace PresentationLayer.Views
                 cboReport.DataSource = bs;
             }
         }
-
         public ReportPresenter Presenter { get; set; }
 
-        public object ItemSelected
-        {
-            get { return cboReport.SelectedItem; }
-            set { cboReport.SelectedItem = value; }
-        }
-
         public event EventHandler SelectReport;
+
+
+        public void ShowReport(LocalReport report)
+        {
+            rpvReport.Reset();
+            {
+                rpvReport.LocalReport.ReportEmbeddedResource = report.ReportEmbeddedResource;
+                rpvReport.LocalReport.DataSources.Clear();
+                for (int i = 0; i < report.DataSources.Count; i++)
+                {
+                    rpvReport.LocalReport.DataSources.Add(report.DataSources[i]);
+                }
+                rpvReport.LocalReport.SetParameters(new List<ReportParameter>());
+            }
+            //REF: https://stackoverflow.com/questions/37276185/how-to-get-the-table-at-the-center-of-reportviewer-in-my-form
+            rpvReport.SetDisplayMode(DisplayMode.PrintLayout);
+            rpvReport.RefreshReport();
+        }
 
         public ReportView()
         {
             InitializeComponent();
-
+            BindingEvents();
             Presenter = new ReportPresenter(this, new ArticleService(), new CategoryService());
         }
 
-        private void ReportView_Load(object sender, EventArgs e)
+        private void BindingEvents()
         {
-            //FIX: No se puede establecer la directiva de seguridad en MultiDomain despues de cargar ensamblados que no son GAC en AppDomain (Exc de HRESULT: 0x8013101C) en ReportForm.cs
-            if (DesignMode) return;
+            cboReport.SelectedIndexChanged += delegate { SelectReport?.Invoke(this, EventArgs.Empty); };
         }
 
-        private void cboReport_SelectedIndexChanged(object sender, EventArgs e)
+        public void ShowView()
         {
-            SelectReport?.Invoke(cboReport.SelectedIndex, EventArgs.Empty);
+            this.ShowDialog();
         }
 
-        public void ShowReport(LocalReport report)
+        public void CloseView()
         {
-            rvReport.Reset();
-            {
-                rvReport.LocalReport.ReportEmbeddedResource = report.ReportEmbeddedResource;
-                rvReport.LocalReport.DataSources.Clear();
-                for (int i = 0; i < report.DataSources.Count; i++)
-                {
-                    rvReport.LocalReport.DataSources.Add(report.DataSources[i]);
-                }
-                rvReport.LocalReport.SetParameters(new List<ReportParameter>());
-            }
-            //REF: https://stackoverflow.com/questions/37276185/how-to-get-the-table-at-the-center-of-reportviewer-in-my-form
-            rvReport.SetDisplayMode(DisplayMode.PrintLayout);
-            rvReport.RefreshReport();
+            this.Close();
         }
     }
 }

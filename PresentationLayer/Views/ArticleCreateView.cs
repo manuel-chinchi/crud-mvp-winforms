@@ -1,6 +1,4 @@
-﻿using BussinesLayer.Services;
-using EntityLayer.Models;
-using PresentationLayer.Forms;
+﻿using EntityLayer.Models;
 using PresentationLayer.Presenters;
 using PresentationLayer.Views.Contracts;
 using System;
@@ -15,42 +13,35 @@ using System.Windows.Forms;
 
 namespace PresentationLayer.Views
 {
-    public partial class CreateArticleView : UserControl, IArticleCreateView
+    public partial class ArticleCreateView : Form, IArticleCreateView
     {
         public string Id { get; set; }
-
         public string NameA
         {
             get { return txtName.Text; }
             set { txtName.Text = value; }
         }
-
         public string Description
         {
             get { return txtDescription.Text; }
             set { txtDescription.Text = value; }
         }
-
         public string Stock
         {
             get { return txtStock.Text; }
             set { txtStock.Text = value; }
         }
-
         public string Category
         {
             get { return cmbCategories.SelectedItem.ToString(); }
             set { cmbCategories.SelectedItem = value; }
         }
-
         public bool IsEditMode { get; set; }
-
         public int ItemSelected
         {
             get { return cmbCategories.SelectedIndex; }
             set { cmbCategories.SelectedIndex = value; }
         }
-
         public IEnumerable<Category> Categories
         {
             get
@@ -66,12 +57,8 @@ namespace PresentationLayer.Views
                 cmbCategories.DataSource = bs;
             }
         }
-
         public ArticleCreatePresenter Presenter { get; set; }
-
-        // IBaseView
         public string Error { get; set; }
-        public string Success { get; set; }
         public bool ShowError
         {
             get { return lblResult.Visible; }
@@ -85,63 +72,54 @@ namespace PresentationLayer.Views
                 }
             }
         }
-
+        public string Success { get; set; }
         public bool ShowSuccess { get; set; }
 
         public event EventHandler AcceptClick;
         public event EventHandler CancelClick;
 
-        private Timer timer;
+        private Timer _timer;
 
-        public CreateArticleView()
+        public ArticleCreateView()
         {
             InitializeComponent();
-            Presenter = new ArticleCreatePresenter(this, new ArticleService(), new CategoryService());
+            BindingEvents();
+            Presenter = new ArticleCreatePresenter(this);
         }
 
         public void ShowView()
         {
-            CreateArticleForm frm = (CreateArticleForm)this.ParentForm;
-            frm.ShowDialog();
+            this.ShowDialog();
         }
 
         public void CloseView()
         {
-            ((CreateArticleForm)this.TopLevelControl).Close();
+            this.Close();
+        }
+
+        private void BindingEvents()
+        {
+            btnAccept.Click += delegate { AcceptClick?.Invoke(this, EventArgs.Empty); };
+            btnCancel.Click += delegate { CancelClick?.Invoke(this, EventArgs.Empty); };
         }
 
         private void ShowResult(int interval = 5)
         {
             lblResult.Visible = true;
 
-            if (timer != null && timer.Enabled)
+            if (_timer != null && _timer.Enabled)
             {
-                timer.Stop();
+                _timer.Stop();
             }
 
-            timer = new Timer();
-            timer.Interval = interval * 1000;
-            timer.Tick += (s, e) =>
+            _timer = new Timer();
+            _timer.Interval = interval * 1000;
+            _timer.Tick += (s, e) =>
             {
                 lblResult.Hide();
-                timer.Stop();
+                _timer.Stop();
             };
-            timer.Start();
-        }
-
-        private void CreateArticleView_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void btnAccept_Click(object sender, EventArgs e)
-        {
-            AcceptClick?.Invoke(this, EventArgs.Empty);
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            CancelClick?.Invoke(this, EventArgs.Empty);
-            //((Form)this.TopLevelControl).Close();
+            _timer.Start();
         }
     }
 }

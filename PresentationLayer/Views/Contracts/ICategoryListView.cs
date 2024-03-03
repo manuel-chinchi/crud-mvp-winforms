@@ -17,5 +17,8 @@ namespace PresentationLayer.Views.Contracts
         event EventHandler DeleteClick;
         event EventHandler AddClick;
         event EventHandler ViewLoad;
+
+        void ShowView();
+        void CloseView();
     }
 }

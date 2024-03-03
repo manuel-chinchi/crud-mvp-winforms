@@ -1,5 +1,4 @@
-﻿using PresentationLayer.Forms;
-using PresentationLayer.Presenters;
+﻿using PresentationLayer.Presenters;
 using PresentationLayer.Views.Contracts;
 using System;
 using System.Collections.Generic;
@@ -13,20 +12,16 @@ using System.Windows.Forms;
 
 namespace PresentationLayer.Views
 {
-    public partial class CreateCategoryView : UserControl, ICategoryCreateView
+    public partial class CategoryCreateView : Form, ICategoryCreateView
     {
+
         public string NameC
         {
             get { return txtName.Text; }
             set { txtName.Text = value; }
         }
-
         public CategoryCreatePresenter Presenter { get; set; }
-
-        // IBaseView
         public string Error { get; set; }
-        public string Success { get; set; }
-        public bool ShowSuccess { get; set; }
         public bool ShowError
         {
             get { return this.lblResult.Visible; }
@@ -36,68 +31,58 @@ namespace PresentationLayer.Views
                 {
                     lblResult.Text = Error;
                     lblResult.ForeColor = Color.Red;
-                    ShowResult(5);
+                    this.ShowResult(5);
                 }
             }
         }
+        public string Success { get; set; }
+        public bool ShowSuccess { get; set; }
 
         public event EventHandler AcceptClick;
         public event EventHandler CancelClick;
 
-        private Timer timer;
+        private Timer _timer;
 
-        public CreateCategoryView()
+        public CategoryCreateView()
         {
             InitializeComponent();
+            BindingEvents();
             Presenter = new CategoryCreatePresenter(this);
+        }
+
+        private void BindingEvents()
+        {
+            btnAccept.Click += delegate { AcceptClick?.Invoke(this, EventArgs.Empty); };
+            btnCancel.Click += delegate { CancelClick?.Invoke(this, EventArgs.Empty); };
         }
 
         public void CloseView()
         {
-            //((Form)this.TopLevelControl).Close();
-            ((CreateCategoryForm)this.TopLevelControl).Close();
-
-            // Si se usa Form como vista usar así:
-            //this.Close();
+            this.Close();
         }
 
         public void ShowView()
         {
-            CreateCategoryForm frm = (CreateCategoryForm)this.ParentForm;
-            frm.ShowDialog();
-
-            // Si se usa Form como vista usar así:
-            //this.ShowDialog();
+            this.ShowDialog();
         }
 
         private void ShowResult(int interval = 5)
         {
             lblResult.Visible = true;
 
-            if (timer != null && timer.Enabled)
+            if (_timer != null && _timer.Enabled)
             {
-                timer.Stop();
+                _timer.Stop();
             }
 
-            timer = new Timer();
-            timer.Interval = interval * 1000;
-            timer.Tick += (s, e) =>
+            _timer = new Timer();
+            _timer.Interval = interval * 1000;
+            _timer.Tick += (s, e) =>
             {
                 lblResult.Hide();
-                timer.Stop();
+                _timer.Stop();
             };
-            timer.Start();
-        }
-
-        private void btnAccept_Click(object sender, EventArgs e)
-        {
-            AcceptClick?.Invoke(this, EventArgs.Empty);
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            CancelClick?.Invoke(this, EventArgs.Empty);
-            //((Form)this.TopLevelControl).Close();
+            _timer.Start();
         }
     }
 }
