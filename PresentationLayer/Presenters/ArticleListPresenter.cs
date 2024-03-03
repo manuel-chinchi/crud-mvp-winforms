@@ -2,6 +2,7 @@
 using BussinesLayer.Services.Contracts;
 using EntityLayer.Models;
 using PresentationLayer.Forms;
+using PresentationLayer.Views;
 using PresentationLayer.Views.Contracts;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,7 @@ namespace PresentationLayer.Presenters
         {
             _viewList = view;
             _viewList.Presenter = this;
+            _viewCreate = new ArticleCreateView();
             _service = service;
             
             _viewList.AddClick += _view_AddClick;
@@ -35,6 +37,7 @@ namespace PresentationLayer.Presenters
         {
             _viewList = view;
             _viewList.Presenter = this;
+            _viewCreate = new ArticleCreateView();
             _service = new ArticleService();
 
             _viewList.AddClick += _view_AddClick;
@@ -91,7 +94,7 @@ namespace PresentationLayer.Presenters
 
         private void _view_AddClick(object sender, EventArgs e)
         {
-            _viewCreate = (IArticleCreateView)(new CreateArticleForm()).GetView();
+            //_viewCreate = (IArticleCreateView)(new CreateArticleForm()).GetView();
             _viewCreate.ShowView();
 
             if (!string.IsNullOrEmpty(_viewCreate.Success))

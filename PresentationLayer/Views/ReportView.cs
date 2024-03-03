@@ -77,5 +77,15 @@ namespace PresentationLayer.Views
             rvReport.SetDisplayMode(DisplayMode.PrintLayout);
             rvReport.RefreshReport();
         }
+
+        public void ShowView()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CloseView()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -2,6 +2,7 @@
 using BussinesLayer.Services.Contracts;
 using EntityLayer.Models;
 using PresentationLayer.Forms;
+using PresentationLayer.Views;
 using PresentationLayer.Views.Contracts;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,7 @@ namespace PresentationLayer.Presenters
         {
             _viewList = view;
             _viewList.Presenter = this;
+            _viewCreate = new CategoryCreateView();
             _service = service;
 
             _viewList.DeleteClick += _view_DeleteClick;
@@ -32,6 +34,7 @@ namespace PresentationLayer.Presenters
         {
             _viewList = view;
             _viewList.Presenter = this;
+            _viewCreate = new CategoryCreateView();
             _service = new CategoryService();
             
             _viewList.DeleteClick += _view_DeleteClick;
@@ -47,7 +50,7 @@ namespace PresentationLayer.Presenters
         private void _view_AddClick(object sender, EventArgs e)
         {
             // TODO: Revisar como mejorar esto. 
-            _viewCreate = (ICategoryCreateView)new CreateCategoryForm().GetView();
+            //_viewCreate = (ICategoryCreateView)new CreateCategoryForm().GetView();
             _viewCreate.ShowView();
 
             if (!string.IsNullOrEmpty(_viewCreate.Success))

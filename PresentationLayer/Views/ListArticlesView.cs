@@ -189,5 +189,15 @@ namespace PresentationLayer.Views
             };
             timer.Start();
         }
+
+        public void ShowView()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CloseView()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

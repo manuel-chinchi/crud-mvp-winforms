@@ -110,10 +110,36 @@
     <Compile Include="Presenters\CategoryCreatePresenter.cs" />
     <Compile Include="Presenters\ArticleListPresenter.cs" />
     <Compile Include="Presenters\CategoryListPresenter.cs" />
+    <Compile Include="Presenters\MainPresenter.cs" />
     <Compile Include="Presenters\ReportPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="Views\ArticleCreateView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ArticleCreateView.Designer.cs">
+      <DependentUpon>ArticleCreateView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ArticleListView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ArticleListView.Designer.cs">
+      <DependentUpon>ArticleListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CategoryCreateView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CategoryCreateView.Designer.cs">
+      <DependentUpon>CategoryCreateView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CategoryListView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CategoryListView.Designer.cs">
+      <DependentUpon>CategoryListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Contracts\IMainView.cs" />
     <Compile Include="Views\CreateCategoryView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -149,6 +175,12 @@
     </Compile>
     <Compile Include="Views\MainView.Designer.cs">
       <DependentUpon>MainView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainView2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\MainView2.Designer.cs">
+      <DependentUpon>MainView2.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ReportView.cs">
       <SubType>UserControl</SubType>
@@ -188,6 +220,18 @@
     <EmbeddedResource Include="Reports\ArticlesReportV2.rdlc" />
     <EmbeddedResource Include="Reports\CategoriesReport.rdlc" />
     <EmbeddedResource Include="Reports\CategoriesReportV2.rdlc" />
+    <EmbeddedResource Include="Views\ArticleCreateView.resx">
+      <DependentUpon>ArticleCreateView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ArticleListView.resx">
+      <DependentUpon>ArticleListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CategoryCreateView.resx">
+      <DependentUpon>CategoryCreateView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CategoryListView.resx">
+      <DependentUpon>CategoryListView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\CreateCategoryView.resx">
       <DependentUpon>CreateCategoryView.cs</DependentUpon>
     </EmbeddedResource>
@@ -202,6 +246,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MainView2.resx">
+      <DependentUpon>MainView2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ReportView.resx">
       <DependentUpon>ReportView.cs</DependentUpon>

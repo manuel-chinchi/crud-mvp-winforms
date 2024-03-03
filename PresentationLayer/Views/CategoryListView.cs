@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace PresentationLayer.Views
 {
-    public partial class ListCategoriesView : UserControl, ICategoryListView
+    public partial class CategoryListView : Form, ICategoryListView
     {
         private int _itemSelected;
         public int ItemSelected
@@ -28,7 +28,6 @@ namespace PresentationLayer.Views
                 }
             }
         }
-
         public IEnumerable<Category> Categories
         {
             get
@@ -44,12 +43,8 @@ namespace PresentationLayer.Views
                 dgvCategories.DataSource = bs;
             }
         }
-
         public CategoryListPresenter Presenter { get; set; }
-
-        // IBaseView
         public string Error { get; set; }
-        public string Success { get; set; }
         public bool ShowError
         {
             get { return lblResult.Visible; }
@@ -63,6 +58,7 @@ namespace PresentationLayer.Views
                 }
             }
         }
+        public string Success { get; set; }
         public bool ShowSuccess
         {
             get { return lblResult.Visible; }
@@ -81,57 +77,49 @@ namespace PresentationLayer.Views
         public event EventHandler AddClick;
         public event EventHandler ViewLoad;
 
-        private Timer timer;
+        private Timer _timer;
 
-        public ListCategoriesView()
+        public CategoryListView()
         {
             InitializeComponent();
+            BindingEvents();
             Presenter = new CategoryListPresenter(this);
         }
 
-        private void ListCategoriesView_Load(object sender, EventArgs e)
+        private void BindingEvents()
         {
-            ViewLoad?.Invoke(this, EventArgs.Empty);
+            btnAdd.Click += delegate { AddClick?.Invoke(this, EventArgs.Empty); };
+            btnDelete.Click += delegate { DeleteClick?.Invoke(this, EventArgs.Empty); };
+            this.Load += delegate { ViewLoad?.Invoke(this, EventArgs.Empty); };
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        public void CloseView()
         {
-            AddClick?.Invoke(this, e);
+            this.Close();
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        public void ShowView()
         {
-            DeleteClick?.Invoke(this, EventArgs.Empty);
+            this.ShowDialog();
         }
 
         private void ShowResult(int interval = 5)
         {
             lblResult.Visible = true;
-            
-            if (timer != null && timer.Enabled)
+
+            if (_timer != null && _timer.Enabled)
             {
-                timer.Stop();
+                _timer.Stop();
             }
 
-            timer = new Timer();
-            timer.Interval = interval * 1000;
-            timer.Tick += (s, e) =>
+            _timer = new Timer();
+            _timer.Interval = interval * 1000;
+            _timer.Tick += (s, e) =>
             {
                 lblResult.Hide();
-                timer.Stop();
+                _timer.Stop();
             };
-            timer.Start();
-        }
-
-        public void ShowView()
-        {
-            this.Show();
-        }
-
-        public void CloseView()
-        {
-            //throw new NotImplementedException();
-            Application.Exit();
+            _timer.Start();
         }
     }
 }
