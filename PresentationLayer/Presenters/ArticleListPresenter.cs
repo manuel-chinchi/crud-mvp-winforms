@@ -66,12 +66,12 @@ namespace PresentationLayer.Presenters
         private void _viewList_DeleteClick(object sender, EventArgs e)
         {
             var article = _viewList.Articles.ToArray()[_viewList.ItemSelected];
-            var result = System.Windows.Forms.MessageBox.Show($"¿Desea eliminar el artículo '{article.Name}'?", "Alerta", System.Windows.Forms.MessageBoxButtons.YesNo);
+            var result = System.Windows.Forms.MessageBox.Show($"Do you want to delete article '{article.Name}'?", "Alert", System.Windows.Forms.MessageBoxButtons.YesNo);
 
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
                 this.DeleteArticle();
-                _viewList.Success = $"Se ha eliminado el artículo '{article.Name}'";
+                _viewList.Success = $"The article '{article.Name}' has been removed";
                 _viewList.ShowSuccess = true;
             }
             this.LoadArticles();
@@ -108,7 +108,7 @@ namespace PresentationLayer.Presenters
         {
             var article = _viewList.Articles.ToList()[_viewList.ItemSelected];
             _service.DeleteArticle(article.Id.ToString());
-            _viewList.Success = "Se ha eliminado el artículo";
+            _viewList.Success = "Article has been removed";
             _viewList.ShowSuccess = true;
         }
 
@@ -131,18 +131,18 @@ namespace PresentationLayer.Presenters
 
             if (_viewList.IncludeName == false && _viewList.IncludeDescription == false)
             {
-                _viewList.Warning = "Por favor seleccione un filtro de busqueda";
+                _viewList.Warning = "Please select a search filter";
                 _viewList.ShowWarning = true;
                 return;
             }
             else if ((_viewList.IncludeName || _viewList.IncludeDescription) && result.Count() == 0)
             {
-                _viewList.Success = "No se encontraron resultados";
+                _viewList.Success = "No results found";
                 _viewList.ShowSuccess = true;
             }
             else
             {
-                _viewList.Success = $"Se encontraron '{result.Count()}' resultados";
+                _viewList.Success = $"'{result.Count()}' results found";
                 _viewList.ShowSuccess = true;
             }
 

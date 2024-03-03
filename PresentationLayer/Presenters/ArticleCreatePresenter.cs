@@ -64,7 +64,7 @@ namespace PresentationLayer.Presenters
             {
                 _viewCreate.Categories = _categoryService.GetCategories();
                 _articleService.UpdateArticle(_viewCreate.NameA, _viewCreate.Description, _viewCreate.Stock.ToString(), _viewCreate.Id.ToString(), category.Id.ToString());
-                _viewCreate.Success = $"Se ha actualizado el artículo 'id={_viewCreate.Id.ToString()}'";
+                _viewCreate.Success = $"'Article id={_viewCreate.Id.ToString()}' has been updated.";
                 _viewCreate.ShowSuccess = true;
                 _viewCreate.IsEditMode = false;
             }
@@ -73,12 +73,12 @@ namespace PresentationLayer.Presenters
                 // TODO: mmm.. check this ¿_view.CategoryId property missing?
                 if (string.IsNullOrEmpty(_viewCreate.NameA))
                 {
-                    _viewCreate.Error = "El campo 'Nombre' no puede ser vacío";
+                    _viewCreate.Error = "The 'Name' field cannot be empty";
                     _viewCreate.ShowError = true;
                     return;
                 }
                 _articleService.CreateArticle(_viewCreate.NameA, _viewCreate.Description, _viewCreate.Stock.ToString(), category.Id.ToString());
-                _viewCreate.Success = $"Se ha creado el artículo '{_viewCreate.NameA}'";
+                _viewCreate.Success = $"The article '{_viewCreate.NameA}' has been created";
                 _viewCreate.ShowSuccess = true;
             }
             _viewCreate.CloseView();

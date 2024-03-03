@@ -65,18 +65,18 @@ namespace PresentationLayer.Presenters
             var category = _viewList.Categories.ToArray()[_viewList.ItemSelected];
             if (category.ArticlesRelated == 0)
             {
-                var result = System.Windows.Forms.MessageBox.Show($"¿Desea eliminar la categoría '{category.Name}'?", "", System.Windows.Forms.MessageBoxButtons.YesNo);
+                var result = System.Windows.Forms.MessageBox.Show($"Do you want to delete the category '{category.Name}'?", "Alert", System.Windows.Forms.MessageBoxButtons.YesNo);
                 if (result == System.Windows.Forms.DialogResult.Yes)
                 {
                     _service.DeleteCategory(category.Id.ToString());
                     _viewList.Categories = _service.GetCategories();
-                    _viewList.Success = $"Se ha eliminado la categoría '{category.Name}'";
+                    _viewList.Success = $"The category '{category.Name}' has been removed";
                     _viewList.ShowSuccess = true;
                 }
             }
             else
             {
-                _viewList.Error = $"No se puede borrar la categoría '{category.Name}' porque tiene artículos relacionados";
+                _viewList.Error = $"Cannot delete category '{category.Name}' because it has related articles";
                 _viewList.ShowError = true;
             }
         }
