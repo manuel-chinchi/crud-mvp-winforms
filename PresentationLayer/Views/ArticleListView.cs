@@ -18,7 +18,7 @@ namespace PresentationLayer.Views
         private int _itemSelected;
         public int ItemSelected
         {
-            get { return dgvArticles.CurrentRow.Index; }
+            get { return dgvArticles.CurrentCell.RowIndex; }
             set
             {
                 if (value >= 0 && value <= dgvArticles.RowCount)

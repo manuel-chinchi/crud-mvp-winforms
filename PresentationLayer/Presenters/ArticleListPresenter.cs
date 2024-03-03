@@ -80,6 +80,7 @@ namespace PresentationLayer.Presenters
         private void _viewList_EditClick(object sender, EventArgs e)
         {
             var article = _viewList.Articles.ToArray()[_viewList.ItemSelected];
+            _viewCreate.Presenter.LoadArticleFromEdit(article);
             _viewCreate.ShowView();
 
             if (!string.IsNullOrEmpty(_viewCreate.Success))
