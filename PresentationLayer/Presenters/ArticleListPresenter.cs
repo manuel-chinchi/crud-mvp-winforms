@@ -21,7 +21,6 @@ namespace PresentationLayer.Presenters
         {
             _viewList = view;
             _viewList.Presenter = this;
-            _viewCreate = new ArticleCreateView();
             _service = service;
             
             _viewList.AddClick += _viewList_AddClick;
@@ -36,7 +35,6 @@ namespace PresentationLayer.Presenters
         {
             _viewList = view;
             _viewList.Presenter = this;
-            _viewCreate = new ArticleCreateView();
             _service = new ArticleService();
 
             _viewList.AddClick += _viewList_AddClick;
@@ -80,6 +78,7 @@ namespace PresentationLayer.Presenters
         private void _viewList_EditClick(object sender, EventArgs e)
         {
             var article = _viewList.Articles.ToArray()[_viewList.ItemSelected];
+            _viewCreate = new ArticleCreateView();
             _viewCreate.Presenter.LoadArticleFromEdit(article);
             _viewCreate.ShowView();
 
@@ -93,7 +92,7 @@ namespace PresentationLayer.Presenters
 
         private void _viewList_AddClick(object sender, EventArgs e)
         {
-            //_viewCreate = (IArticleCreateView)(new CreateArticleForm()).GetView();
+            _viewCreate = new ArticleCreateView();
             _viewCreate.ShowView();
 
             if (!string.IsNullOrEmpty(_viewCreate.Success))
