@@ -7,7 +7,7 @@
     <ProjectGuid>{DB7B8C94-0A5D-4723-9DBF-DC0D2191913E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>PresentationLayer</RootNamespace>
-    <AssemblyName>PresentationLayer</AssemblyName>
+    <AssemblyName>crud-mvp-winforms</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
