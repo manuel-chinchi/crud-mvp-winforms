@@ -94,7 +94,7 @@ namespace PresentationLayer.Views
             this.rpvReport.Size = new System.Drawing.Size(803, 868);
             this.rpvReport.TabIndex = 0;
             // 
-            // ReportView2
+            // ReportView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -104,10 +104,10 @@ namespace PresentationLayer.Views
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "ReportView2";
+            this.Name = "ReportView";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ReportView2";
+            this.Text = "ReportView";
             this.tlpBottom.ResumeLayout(false);
             this.pnlBody.ResumeLayout(false);
             this.ResumeLayout(false);
