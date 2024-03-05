@@ -1,7 +1,7 @@
 -- database schema for crud_mvp_winforms, 
 -- proyect repo https://github.com/manuel-chinchi/crud-mvp-winforms/tree/master
 
-USE [crud_mvp_winforms_3]
+USE [crud_mvp_winforms]
 GO
 
 -- ######################################################################################
