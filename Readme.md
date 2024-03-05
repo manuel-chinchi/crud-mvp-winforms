@@ -64,20 +64,20 @@ Solamente a fines técnicos, listo las herramientas usadas a los largo del desar
 ## Capturas
 
 <p align="center">
-    <img src="resources/screenshots/ArticleListView.PNG" alt="">
+    <img src="resources/screenshots/ArticleListView.png" alt="">
 </p>
 <p align="center">
-    <img src="resources/screenshots/ArticleCreateView.PNG" alt="">
+    <img src="resources/screenshots/ArticleCreateView.png" alt="">
 </p>
 <p align="center">
-    <img src="resources/screenshots/ReportView.PNG" alt="">
+    <img src="resources/screenshots/ReportView.png" alt="">
 </p>
 Validaciones
 <p align="center">
-    <img src="resources/screenshots/ErrorMessage-ArticleCreateView.PNG">
+    <img src="resources/screenshots/ErrorMessage-ArticleCreateView.png">
 </p>
 <p align="center">
-    <img src="resources/screenshots/SuccessMessage-ArticleListView.PNG">
+    <img src="resources/screenshots/SuccessMessage-ArticleListView.png">
 </p>
 
 ## Licencia
