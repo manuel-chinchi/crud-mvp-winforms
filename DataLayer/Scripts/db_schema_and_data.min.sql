@@ -1,7 +1,7 @@
 -- database schema for crud_mvp_winforms, 
 -- proyect repo https://github.com/manuel-chinchi/crud-mvp-winforms/tree/master
 
-USE [crud_mvp_winforms]
+USE [crud_mvp_winforms_3]
 GO
 
 -- ######################################################################################
@@ -158,11 +158,3 @@ AS
     ) AS sub
     ON c.Id = sub.CategoryId;
 GO
-
-use crud_mvp_winforms
-select * from Articles
-select * from Categories
-
-use crud_mvp_winforms
-
-drop procedure InsertArticle
