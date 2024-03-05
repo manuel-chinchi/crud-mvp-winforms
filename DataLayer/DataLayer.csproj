@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\db_schema_and_data.min.sql" />
+    <Content Include="Scripts\db_schema_and_data.v2.sql" />
     <Content Include="Scripts\Queries.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
