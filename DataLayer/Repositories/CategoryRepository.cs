@@ -13,9 +13,6 @@ namespace DataLayer.Repositories
 {
     public class CategoryRepository : BaseRepository, ICategoryRepository<Category>
     {
-        // TODO Metodos no implementados de IBaseRepository
-        // No hay problema ya que la capa de servicio se encarga de mostrar solo los metodos
-        // que estén implementados
         public Category GetById(int id)
         {
             throw new NotImplementedException();

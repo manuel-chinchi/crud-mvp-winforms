@@ -48,15 +48,13 @@ namespace PresentationLayer.Presenters
 
         private void _view_AddClick(object sender, EventArgs e)
         {
-            // TODO: Revisar como mejorar esto. 
-            //_viewCreate = (ICategoryCreateView)new CreateCategoryForm().GetView();
             _viewCreate.ShowView();
 
             if (!string.IsNullOrEmpty(_viewCreate.Success))
             {
                 _viewList.Success = _viewCreate.Success;
                 _viewList.ShowSuccess = _viewCreate.ShowSuccess;
-                _viewList.Categories = _service.GetCategories(); // refresh datagridview categories
+                _viewList.Categories = _service.GetCategories();
             }
         }
 

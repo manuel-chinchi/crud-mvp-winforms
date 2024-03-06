@@ -54,7 +54,6 @@ namespace PresentationLayer.Views
                 }
                 rpvReport.LocalReport.SetParameters(new List<ReportParameter>());
             }
-            //REF: https://stackoverflow.com/questions/37276185/how-to-get-the-table-at-the-center-of-reportviewer-in-my-form
             rpvReport.SetDisplayMode(DisplayMode.PrintLayout);
             rpvReport.RefreshReport();
         }

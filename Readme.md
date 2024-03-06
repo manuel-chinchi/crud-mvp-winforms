@@ -89,3 +89,9 @@ Validaciones
 
 ## Licencia
   GPL-3.0
+
+
+## Referencias útiles
+
+- [System.Configuration reference not found](https://stackoverflow.com/questions/4431034/configurationmanager-not-found)
+- [DataGridView using SortableBindingList](https://stackoverflow.com/questions/23661195/datagridview-using-sortablebindinglist)

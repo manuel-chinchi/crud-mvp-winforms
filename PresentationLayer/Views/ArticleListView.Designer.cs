@@ -83,7 +83,7 @@ namespace PresentationLayer.Views
             this.pnlHeaderOptions.Name = "pnlHeaderOptions";
             this.pnlHeaderOptions.Padding = new System.Windows.Forms.Padding(0, 5, 5, 0);
             this.pnlHeaderOptions.Size = new System.Drawing.Size(733, 50);
-            this.pnlHeaderOptions.TabIndex = 1;
+            this.pnlHeaderOptions.TabIndex = 50;
             // 
             // pnlSearchContainer
             // 
@@ -104,7 +104,7 @@ namespace PresentationLayer.Views
             this.txtSearch.Location = new System.Drawing.Point(8, 5);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(271, 20);
-            this.txtSearch.TabIndex = 5;
+            this.txtSearch.TabIndex = 6;
             // 
             // btnSearch
             // 
@@ -113,7 +113,7 @@ namespace PresentationLayer.Views
             this.btnSearch.Location = new System.Drawing.Point(0, 5);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(150, 45);
-            this.btnSearch.TabIndex = 4;
+            this.btnSearch.TabIndex = 5;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             // 
@@ -136,7 +136,7 @@ namespace PresentationLayer.Views
             this.chkDescription.Location = new System.Drawing.Point(156, 14);
             this.chkDescription.Name = "chkDescription";
             this.chkDescription.Size = new System.Drawing.Size(101, 21);
-            this.chkDescription.TabIndex = 7;
+            this.chkDescription.TabIndex = 8;
             this.chkDescription.Text = "Description";
             this.chkDescription.UseVisualStyleBackColor = true;
             // 
@@ -146,7 +146,7 @@ namespace PresentationLayer.Views
             this.chkName.Location = new System.Drawing.Point(68, 14);
             this.chkName.Name = "chkName";
             this.chkName.Size = new System.Drawing.Size(67, 21);
-            this.chkName.TabIndex = 6;
+            this.chkName.TabIndex = 7;
             this.chkName.Text = "Name";
             this.chkName.UseVisualStyleBackColor = true;
             // 
@@ -156,7 +156,7 @@ namespace PresentationLayer.Views
             this.pnlHeaderLogo.Location = new System.Drawing.Point(0, 0);
             this.pnlHeaderLogo.Name = "pnlHeaderLogo";
             this.pnlHeaderLogo.Size = new System.Drawing.Size(150, 50);
-            this.pnlHeaderLogo.TabIndex = 0;
+            this.pnlHeaderLogo.TabIndex = 10;
             // 
             // pnlLeft
             // 
@@ -191,7 +191,7 @@ namespace PresentationLayer.Views
             this.btnShowAll.Location = new System.Drawing.Point(5, 155);
             this.btnShowAll.Name = "btnShowAll";
             this.btnShowAll.Size = new System.Drawing.Size(140, 50);
-            this.btnShowAll.TabIndex = 3;
+            this.btnShowAll.TabIndex = 4;
             this.btnShowAll.Text = "Show all";
             this.btnShowAll.UseVisualStyleBackColor = true;
             // 
@@ -202,7 +202,7 @@ namespace PresentationLayer.Views
             this.btnDelete.Location = new System.Drawing.Point(5, 105);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(140, 50);
-            this.btnDelete.TabIndex = 2;
+            this.btnDelete.TabIndex = 3;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             // 
@@ -213,7 +213,7 @@ namespace PresentationLayer.Views
             this.btnEdit.Location = new System.Drawing.Point(5, 55);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(140, 50);
-            this.btnEdit.TabIndex = 1;
+            this.btnEdit.TabIndex = 2;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
             // 
@@ -224,7 +224,7 @@ namespace PresentationLayer.Views
             this.btnAdd.Location = new System.Drawing.Point(5, 5);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(140, 50);
-            this.btnAdd.TabIndex = 0;
+            this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             // 
@@ -281,7 +281,7 @@ namespace PresentationLayer.Views
             this.dgvArticles.RowTemplate.Height = 24;
             this.dgvArticles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvArticles.Size = new System.Drawing.Size(728, 444);
-            this.dgvArticles.TabIndex = 23;
+            this.dgvArticles.TabIndex = 20;
             // 
             // colId
             // 
