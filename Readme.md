@@ -64,7 +64,7 @@ Solamente a fines técnicos, listo las herramientas usadas a los largo del desar
 ## Diagrama de clases
 
 <p align="center">
-    <img src="resources/ClassDiagram.PNG">
+    <img src="resources/ClassDiagram.png">
 </p>
 
 
