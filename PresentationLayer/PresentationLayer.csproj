@@ -155,6 +155,7 @@
       <DependentUpon>ReportView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
+    <None Include="ClassDiagram.cd" />
     <None Include="Data\EntityLayer.Models.Article.datasource" />
     <None Include="Data\EntityLayer.Models.Category.datasource" />
     <None Include="packages.config" />

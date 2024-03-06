@@ -61,6 +61,13 @@ Solamente a fines técnicos, listo las herramientas usadas a los largo del desar
 * Sublime Text
 * Greenshot (capturas de pantalla)
 
+## Diagrama de clases
+
+<p align="center">
+    <img src="resources/ClassDiagram.PNG">
+</p>
+
+
 ## Capturas
 
 <p align="center">

@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="           PRESENTERS">
+    <Position X="5.949" Y="8.707" Height="0.333" Width="1.7" />
+  </Comment>
+  <Comment CommentText="VIEWS">
+    <Position X="5.998" Y="0.768" Height="0.357" Width="1.434" />
+  </Comment>
+  <Comment CommentText="           MODELS">
+    <Position X="6.076" Y="13.773" Height="0.344" Width="1.523" />
+  </Comment>
+  <Class Name="PresentationLayer.Presenters.ArticleCreatePresenter">
+    <Position X="5" Y="9.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAAAAICAAAAAwAAAAAEAAAAAA=</HashCode>
+      <FileName>Presenters\ArticleCreatePresenter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PresentationLayer.Presenters.ArticleListPresenter">
+    <Position X="2.75" Y="9.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAACAAAAAABQAAAEAAACQAEIAgwAAAAAgAAAAAA=</HashCode>
+      <FileName>Presenters\ArticleListPresenter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PresentationLayer.Presenters.CategoryCreatePresenter">
+    <Position X="9.5" Y="9.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAAAAAAACAAAAAgBAAAAEAAAAAA=</HashCode>
+      <FileName>Presenters\CategoryCreatePresenter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PresentationLayer.Presenters.CategoryListPresenter">
+    <Position X="7.25" Y="9.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAQAAAAAAADAAAAAAgAAAAAAAABAAA=</HashCode>
+      <FileName>Presenters\CategoryListPresenter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PresentationLayer.Presenters.MainPresenter">
+    <Position X="0.5" Y="9.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAgAABABAAAAAAgAAAAAAAAIAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Presenters\MainPresenter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PresentationLayer.Presenters.ReportPresenter">
+    <Position X="12" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAAAgIAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>Presenters\ReportPresenter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EntityLayer.Models.Article">
+    <Position X="5.25" Y="14.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="EntityLayer.Models.Category">
+    <Position X="7" Y="14.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Interface Name="PresentationLayer.Views.Contracts.IArticleCreateView">
+    <Position X="6" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAACAIAAAAAgAEAACQAAAAACgAAAEAAAIAAAAAAACQA=</HashCode>
+      <FileName>Views\Contracts\IArticleCreateView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PresentationLayer.Views.Contracts.IArticleListView">
+    <Position X="10.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAEIAAAAAQAADQAAEBACAAAAgAAAoAAAAAAwACA=</HashCode>
+      <FileName>Views\Contracts\IArticleListView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PresentationLayer.Views.Contracts.IBaseView">
+    <Position X="6" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAASAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Contracts\IBaseView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PresentationLayer.Views.Contracts.ICategoryCreateView">
+    <Position X="1.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAEAAAQAAAAACAAAAAAAAIAAAAAAAAgA=</HashCode>
+      <FileName>Views\Contracts\ICategoryCreateView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PresentationLayer.Views.Contracts.ICategoryListView">
+    <Position X="3.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAACQAAAAACAAAAEAAAoAAAAAAAACA=</HashCode>
+      <FileName>Views\Contracts\ICategoryListView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PresentationLayer.Views.Contracts.IMainView">
+    <Position X="8.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAgAAAAAACAAIAAAAAAAAAA=</HashCode>
+      <FileName>Views\Contracts\IMainView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
