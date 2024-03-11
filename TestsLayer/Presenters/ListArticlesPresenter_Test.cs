@@ -37,6 +37,16 @@ namespace TestsLayer.Presenters
             view.SearchItem();
             Assert.AreEqual("Please select a search filter", view.Warning);
         }
+
+        [TestMethod]
+        public void ArticleLoadList_Success()
+        {
+            var view = new ListArticlesView_Test();
+            var presenter = new ArticleListPresenter(view, _service);
+
+            view.Load();
+            Assert.AreEqual(2, view.Articles.Count());
+        }
     }
 
     public class ArticleService_2_Test : IArticleService<IEnumerable<Article>>

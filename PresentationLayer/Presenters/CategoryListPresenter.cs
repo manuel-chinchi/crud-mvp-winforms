@@ -21,7 +21,8 @@ namespace PresentationLayer.Presenters
         {
             _viewList = view;
             _viewList.Presenter = this;
-            _viewCreate = new CategoryCreateView();
+            // TODO review
+            //_viewCreate = new CategoryCreateView();
             _service = service;
 
             _viewList.DeleteClick += _view_DeleteClick;
@@ -33,7 +34,8 @@ namespace PresentationLayer.Presenters
         {
             _viewList = view;
             _viewList.Presenter = this;
-            _viewCreate = new CategoryCreateView();
+            // TODO review
+            //_viewCreate = new CategoryCreateView();
             _service = new CategoryService();
             
             _viewList.DeleteClick += _view_DeleteClick;
@@ -48,6 +50,7 @@ namespace PresentationLayer.Presenters
 
         private void _view_AddClick(object sender, EventArgs e)
         {
+            _viewCreate = new CategoryCreateView();
             _viewCreate.ShowView();
 
             if (!string.IsNullOrEmpty(_viewCreate.Success))
