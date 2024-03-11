@@ -1,0 +1,6 @@
+﻿:: Ejecutar la siguiente sentencia para ejecutar las pruebas y guardar los resultados en 
+:: el archivo .trx
+
+vstest.console.exe "C:\Users\manue\downloads\crud-mvp-winforms\TestsLayer\bin\Debug\TestsLayer.dll" --logger:trx --resultsdirectory:"C:\Users\manue\downloads\crud-mvp-winforms\TestsLayer\Results\"
+
+:: Start-Process -FilePath '.\TestsLayer\Scripts\run_tests.cmd'
