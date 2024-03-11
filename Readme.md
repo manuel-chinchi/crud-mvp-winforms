@@ -95,3 +95,7 @@ Validaciones
 
 - [System.Configuration reference not found](https://stackoverflow.com/questions/4431034/configurationmanager-not-found)
 - [DataGridView using SortableBindingList](https://stackoverflow.com/questions/23661195/datagridview-using-sortablebindinglist)
+
+- MSTests utils
+  - [Documentacion MS](https://learn.microsoft.com/en-us/visualstudio/test/vstest-console-options?view=vs-2022)
+  - [Sample Export](https://stackoverflow.com/questions/56958300/how-do-i-save-test-results-from-test-explorer-in-visual-studio-2017)
