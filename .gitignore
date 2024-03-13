@@ -135,3 +135,5 @@ _NCrunch*
 *.txt
 /notas
 *.bmp
+
+*.vs
