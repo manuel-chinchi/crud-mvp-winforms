@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Scripts\run_tests.cmd" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BussinesLayer\BussinesLayer.csproj">
@@ -74,9 +75,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Results\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Scripts\run_tests.txt" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
