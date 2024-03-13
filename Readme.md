@@ -52,12 +52,13 @@ Ademá, la aplicación se encuentra separada en cinco capas (proyectos) para su 
 
 ## Entorno de desarollo
 
-Solamente a fines técnicos, listo las herramientas usadas a los largo del desarrollo.
-
-* Visual Studio 2019  
-  Extensiones:  
-  * Diseñador de informes RDLC de Microsoft para Visual Studio v15.3.1
-  * Git Diff Margin v3.12.1 (by Laurent Kempé)
+* Visual Studio IDE 2019
+  * Configuración
+    * Cascadia Code ExtraLight (fuente)
+  * Extensiones
+    * Diseñador de informes RDLC de Microsoft para Visual Studio v15.3.1
+    * Git Diff Margin v3.12.1 (by Laurent Kempé)
+    * PowerShell Tools for Visual Studio v2024.1.0 (by Ironman Software)
 * Sublime Text
 * Greenshot (capturas de pantalla)
 
@@ -99,3 +100,6 @@ Validaciones
 - MSTests utils
   - [Documentacion MS](https://learn.microsoft.com/en-us/visualstudio/test/vstest-console-options?view=vs-2022)
   - [Sample Export](https://stackoverflow.com/questions/56958300/how-do-i-save-test-results-from-test-explorer-in-visual-studio-2017)
+
+- Others
+  - https://www.youtube.com/watch?v=LULI64meTUs
