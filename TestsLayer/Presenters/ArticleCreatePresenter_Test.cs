@@ -10,14 +10,14 @@ using System.Collections.Generic;
 namespace TestsLayer.Presenters
 {
     [TestClass]
-    public class CreateArticlePresenter_Test
+    public class ArticleCreatePresenter_Test
     {
         private readonly ArticleService_Test _service = new ArticleService_Test();
 
         [TestMethod]
         public void ArticleNameIsEmpty_Error()
         {
-            var view = new CreateArticleView_Test();
+            var view = new ArticleCreateView_Test();
             var presenter = new ArticleCreatePresenter(view);
 
             view.NameA = "";
@@ -29,7 +29,7 @@ namespace TestsLayer.Presenters
         [TestMethod]
         public void ArticleNameIsNotValid_Error()
         {
-            var view = new CreateArticleView_Test();
+            var view = new ArticleCreateView_Test();
             var presenter = new ArticleCreatePresenter(view, _service);
 
             view.NameA = "Rop@";
@@ -40,7 +40,7 @@ namespace TestsLayer.Presenters
         [TestMethod]
         public void ArticleNameValid_Success()
         {
-            var view = new CreateArticleView_Test();
+            var view = new ArticleCreateView_Test();
             var presenter = new ArticleCreatePresenter(view, _service);
 
             view.NameA = "Art3";
@@ -66,7 +66,7 @@ namespace TestsLayer.Presenters
         public void UpdateArticle(string name, string description, string stock, string id, string categoryId) { }
     }
 
-    public class CreateArticleView_Test : IArticleCreateView
+    public class ArticleCreateView_Test : IArticleCreateView
     {
         public string Id { get; set; }
         public string NameA { get;set; }

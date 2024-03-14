@@ -10,14 +10,14 @@ using System.Linq;
 namespace TestsLayer.Presenters
 {
     [TestClass]
-    public class ListArticlesPresenter_Test
+    public class ArticleListPresenter_Test
     {
         private readonly ArticleService_2_Test _service = new ArticleService_2_Test();
 
         [TestMethod]
         public void ArticleDeleted_Success()
         {
-            var view = new ListArticlesView_Test();
+            var view = new ArticleListView_Test();
             var presenter = new ArticleListPresenter(view, _service);
 
             view.Load();
@@ -29,7 +29,7 @@ namespace TestsLayer.Presenters
         [TestMethod]
         public void ArticleSearchNoResults_Warning()
         {
-            var view = new ListArticlesView_Test();
+            var view = new ArticleListView_Test();
             var presenter = new ArticleListPresenter(view, _service);
 
             //view.Show();
@@ -41,7 +41,7 @@ namespace TestsLayer.Presenters
         [TestMethod]
         public void ArticleLoadList_Success()
         {
-            var view = new ListArticlesView_Test();
+            var view = new ArticleListView_Test();
             var presenter = new ArticleListPresenter(view, _service);
 
             view.Load();
@@ -63,7 +63,7 @@ namespace TestsLayer.Presenters
         public void UpdateArticle(string name, string description, string stock, string id, string categoryId) { }
     }
 
-    class ListArticlesView_Test : IArticleListView
+    class ArticleListView_Test : IArticleListView
     {
         public int ItemSelected { get; set; }
         public bool IncludeName { get; set; }

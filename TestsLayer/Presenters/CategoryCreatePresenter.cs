@@ -10,15 +10,15 @@ using System.Linq;
 namespace TestsLayer.Presenters
 {
     [TestClass]
-    public class CreateCategoryPresenter_Test
+    public class CategoryCreatePresenter
     {
         private readonly CategoryService_Test _service = new CategoryService_Test();
 
         [TestMethod]
         public void CategoryNameIsEmpty_Error()
         {
-            var view = new CreateCategoryView_Test();
-            var presenter = new CategoryCreatePresenter(view, _service);
+            var view = new CategoryCreateView_Test();
+            var presenter = new PresentationLayer.Presenters.CategoryCreatePresenter(view, _service);
 
             view.NameC = "";
             view.Accept();
@@ -29,8 +29,8 @@ namespace TestsLayer.Presenters
         [TestMethod]
         public void CategoryNameIsNotValid_Error()
         {
-            var view = new CreateCategoryView_Test();
-            var presenter = new CategoryCreatePresenter(view, _service);
+            var view = new CategoryCreateView_Test();
+            var presenter = new PresentationLayer.Presenters.CategoryCreatePresenter(view, _service);
 
             view.NameC = "Rop@";
             view.Accept();
@@ -41,9 +41,9 @@ namespace TestsLayer.Presenters
         [TestMethod]
         public void CategoryNameAlreadyExists_Error()
         {
-            var view = new CreateCategoryView_Test();
+            var view = new CategoryCreateView_Test();
             var service = new CategoryService_Test();
-            var presenter = new CategoryCreatePresenter(view, service);
+            var presenter = new PresentationLayer.Presenters.CategoryCreatePresenter(view, service);
 
             view.NameC = "Cat1";
             view.Accept();
@@ -53,8 +53,8 @@ namespace TestsLayer.Presenters
         [TestMethod]
         public void CategoryNameValid_Success()
         {
-            var view = new CreateCategoryView_Test();
-            var presenter = new CategoryCreatePresenter(view, _service);
+            var view = new CategoryCreateView_Test();
+            var presenter = new PresentationLayer.Presenters.CategoryCreatePresenter(view, _service);
 
             view.NameC = "Cat2";
             view.Accept();
@@ -76,13 +76,13 @@ namespace TestsLayer.Presenters
         }
     }
 
-    public class CreateCategoryView_Test : ICategoryCreateView
+    public class CategoryCreateView_Test : ICategoryCreateView
     {
         public string NameC { get; set; }
         public string Error { get; set; }
         public string Success { get; set; }
         public bool ShowSuccess { get; set; }
-        public CategoryCreatePresenter Presenter { get; set; }
+        public PresentationLayer.Presenters.CategoryCreatePresenter Presenter { get; set; }
         public bool ShowError { get; set; }
 
         public event EventHandler AcceptClick;

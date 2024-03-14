@@ -49,10 +49,10 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Presenters\ListCategoriesPresenter_Test.cs" />
-    <Compile Include="Presenters\CreateCategoryPresenter_Test.cs" />
-    <Compile Include="Presenters\CreateArticlePresenter_Test.cs" />
-    <Compile Include="Presenters\ListArticlesPresenter_Test.cs" />
+    <Compile Include="Presenters\CategoryListPresenter_Test.cs" />
+    <Compile Include="Presenters\CategoryCreatePresenter.cs" />
+    <Compile Include="Presenters\ArticleCreatePresenter_Test.cs" />
+    <Compile Include="Presenters\ArticleListPresenter_Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
