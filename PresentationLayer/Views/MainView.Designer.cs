@@ -33,6 +33,7 @@ namespace PresentationLayer.Views
             this.btnArticles = new System.Windows.Forms.Button();
             this.btnCategories = new System.Windows.Forms.Button();
             this.btnReports = new System.Windows.Forms.Button();
+            this.llbAbout = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // label1
@@ -76,22 +77,35 @@ namespace PresentationLayer.Views
             this.btnReports.Text = "Reports";
             this.btnReports.UseVisualStyleBackColor = true;
             // 
-            // MainView2
+            // llbAbout
+            // 
+            this.llbAbout.AutoSize = true;
+            this.llbAbout.LinkColor = System.Drawing.Color.DodgerBlue;
+            this.llbAbout.Location = new System.Drawing.Point(0, 227);
+            this.llbAbout.Name = "llbAbout";
+            this.llbAbout.Size = new System.Drawing.Size(45, 17);
+            this.llbAbout.TabIndex = 4;
+            this.llbAbout.TabStop = true;
+            this.llbAbout.Text = "About";
+            // 
+            // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(252, 253);
+            this.Controls.Add(this.llbAbout);
             this.Controls.Add(this.btnReports);
             this.Controls.Add(this.btnCategories);
             this.Controls.Add(this.btnArticles);
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "MainView2";
+            this.Name = "MainView";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MenuView";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -101,5 +115,6 @@ namespace PresentationLayer.Views
         private System.Windows.Forms.Button btnArticles;
         private System.Windows.Forms.Button btnCategories;
         private System.Windows.Forms.Button btnReports;
+        private System.Windows.Forms.LinkLabel llbAbout;
     }
 }
