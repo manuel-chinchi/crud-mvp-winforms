@@ -19,7 +19,7 @@ Para poder ejecutar el programa se requiere tener instalado los siguientes compo
 
 Una vez instalados seguir los siguientes pasos para probar la aplicación.
 
-1. Descargar la última versión del proyecto compilado [desde aquí]() y descomprimir
+1. Descargar la última versión del proyecto compilado [desde aquí](https://github.com/manuel-chinchi/crud-mvp-winforms/releases) y descomprimir
 en algún directorio.
 2. Abrir el script `db_squema_and_data.min.sql` desde SSMS y ejecutarlo
 para crear la base de datos.
