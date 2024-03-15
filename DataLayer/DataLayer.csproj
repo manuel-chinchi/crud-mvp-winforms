@@ -52,6 +52,7 @@
     <Compile Include="Repositories\Contracts\IArticleRepository.cs" />
     <Compile Include="Repositories\Contracts\IBaseRepository.cs" />
     <Compile Include="Repositories\Contracts\ICategoryRepository.cs" />
+    <Compile Include="Repositories\StoredProcedures_SQLite.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EntityLayer\EntityLayer.csproj">

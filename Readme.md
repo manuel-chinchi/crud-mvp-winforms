@@ -1,4 +1,4 @@
-# Crud MVP WinForms
+# Crud MVP WinForms v1.0 (release SQLite portable)
 
 Sistema básico con operaciones CRUD hecha en .Net Framework 4.5 y SQL Server.
 
@@ -47,8 +47,6 @@ Ademá, la aplicación se encuentra separada en cinco capas (proyectos) para su 
  - **BussinesLayer**: La capa que contiene los servicios de la aplicación. 
  - **PresentationLayer**: Capa de presentación, se encarga de mostrar las vistas
    e interactuar con los modelos. 
- - **TestLayer**: Es una capa adicional que contiene algunas pruebas relacionadas a la capa
- de *BussinesLayer*.
 
 ## Entorno de desarollo
 

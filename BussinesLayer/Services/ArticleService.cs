@@ -1,6 +1,8 @@
 ﻿using BussinesLayer.Services.Contracts;
 using DataLayer.Repositories;
 using DataLayer.Repositories.Contracts;
+using DataLayer_SQLite.Repositories;
+using DataLayer_SQLite.Repositories.Contracts;
 using EntityLayer.Models;
 using System;
 using System.Collections.Generic;
@@ -12,11 +14,11 @@ namespace BussinesLayer.Services
 {
     public class ArticleService : IArticleService<IEnumerable<Article>>
     {
-        private readonly IArticleRepository<Article> _articleRepository = new ArticleRepository();
+        private readonly IArticleRepository_SQLite<Article> _articleRepository = new ArticleRepository_SQLite();
 
         public IEnumerable<Article> GetArticles()
         {
-            return _articleRepository.GetAll();
+            return _articleRepository.GetAll().ToList();
         }
 
         public void CreateArticle(string name, string description, string stock, string categoryId)

@@ -52,6 +52,10 @@
       <Project>{b5795f0b-8114-455c-8dcc-d2f8be567a1e}</Project>
       <Name>DataLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DataLayer_SQLite\DataLayer_SQLite.csproj">
+      <Project>{8357dbd0-5f3c-4b07-a1ec-01f2538e7c08}</Project>
+      <Name>DataLayer_SQLite</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EntityLayer\EntityLayer.csproj">
       <Project>{B280E43E-8705-4247-A4B3-04A1C02D5657}</Project>
       <Name>EntityLayer</Name>
