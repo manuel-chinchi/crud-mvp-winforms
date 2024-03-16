@@ -23,7 +23,7 @@ namespace DataLayer_SQLite.Repositories
             {
 
                 connection.Open();
-                var cmd = new SQLiteCommand(StoredProcedures_SQLite.SP_INSERTARTICLE);
+                var cmd = new SQLiteCommand(StoredProcedures_SQLite.SP_INSERTARTICLE, connection);
 
                 var dateCreated = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
 
@@ -31,7 +31,7 @@ namespace DataLayer_SQLite.Repositories
                 cmd.Parameters.AddWithValue("@Description", entity.Description);
                 cmd.Parameters.AddWithValue("@Stock", entity.Stock);
                 cmd.Parameters.AddWithValue("@CategoryId", entity.CategoryId);
-                cmd.Parameters.AddWithValue("@DateCreated", entity.DateCreated);
+                cmd.Parameters.AddWithValue("@DateCreated", dateCreated);
                 cmd.Parameters.AddWithValue("@DateUpdated", null);
 
                 cmd.ExecuteReader();

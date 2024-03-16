@@ -43,7 +43,7 @@ namespace DataLayer.Repositories
         public const string SP_INSERTARTICLE = @"
         INSERT INTO Articles (Name, Description, Stock, DateCreated, DateUpdated, CategoryId)
         VALUES
-            (@Name, @Description, @Stock, @CategoryId, @DateCreated, @DateUpdated)
+            (@Name, @Description, @Stock, @DateCreated, @DateUpdated, @CategoryId)
         ";
         public const string SP_UPDATEARTICLE = @"
         UPDATE Articles

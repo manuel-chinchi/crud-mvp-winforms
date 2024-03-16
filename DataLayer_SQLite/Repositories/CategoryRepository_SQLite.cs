@@ -44,7 +44,7 @@ namespace DataLayer_SQLite.Repositories
             using (var connection = new SQLiteConnection(_connectionString))
             {
                 connection.Open();
-                var cmd = new SQLiteCommand(StoredProcedures_SQLite.SP_DELTECATEGORY);
+                var cmd = new SQLiteCommand(StoredProcedures_SQLite.SP_DELTECATEGORY, connection);
 
                 cmd.Parameters.AddWithValue("@Id", id);
 
