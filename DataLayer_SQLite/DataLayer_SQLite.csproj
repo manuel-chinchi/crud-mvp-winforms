@@ -73,8 +73,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Repositories\Scripts\db_schema_and_data_sqlite.min.sql" />
-    <Content Include="Repositories\Scripts\db_schema_and_data_sqlite.sql" />
+    <Content Include="Scripts\db_schema_and_data_sqlite.min.sql" />
+    <Content Include="Scripts\db_schema_and_data_sqlite.sql" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
