@@ -30,7 +30,7 @@ conexión a para que apunte a su base de datos local.
 **ADICIONAL**
 
 *Si quiere probar la aplicación solamente sin tener que crear o configurar una
-base de datos SQL Server puede descargar ~~[desde aquí]()~~ una versión portable
+base de datos SQL Server puede descargar [desde aquí](https://github.com/manuel-chinchi/crud-mvp-winforms/releases/tag/v1.0.1) una versión portable
 que usa SQLite.*
 
 ## Arquitectura de la aplicación
