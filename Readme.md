@@ -72,20 +72,20 @@ Ademá, la aplicación se encuentra separada en cinco capas (proyectos) para su 
 ## Capturas
 
 <p align="center">
-    <img src="resources/screenshots/ArticleListView.png" alt="">
+    <img src="resources/screenshots/ArticleListView.png" alt="" width="708">
 </p>
 <p align="center">
-    <img src="resources/screenshots/ArticleCreateView.png" alt="">
+    <img src="resources/screenshots/ArticleCreateView.png" alt="" width="269">
 </p>
 <p align="center">
-    <img src="resources/screenshots/ReportView.png" alt="">
+    <img src="resources/screenshots/ReportView.png" alt="" width="644">
 </p>
 Validaciones
 <p align="center">
-    <img src="resources/screenshots/ErrorMessage-ArticleCreateView.png">
+    <img src="resources/screenshots/ErrorMessage-ArticleCreateView.png" width="269">
 </p>
 <p align="center">
-    <img src="resources/screenshots/SuccessMessage-ArticleListView.png">
+    <img src="resources/screenshots/SuccessMessage-ArticleListView.png" width="708">
 </p>
 
 ## Licencia
