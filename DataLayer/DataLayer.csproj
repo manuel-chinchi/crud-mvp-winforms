@@ -70,9 +70,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Repositories\SQLite\App_Data\crud_mvp_winforms.db">
+    <Content Include="Repositories\SQLite\App_Data\crud_mvp_winforms.db">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Repositories\SQLite\Readme.txt" />
