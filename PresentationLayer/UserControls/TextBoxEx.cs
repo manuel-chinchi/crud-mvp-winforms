@@ -24,11 +24,37 @@ namespace PresentationLayer.UserControls
         {
             InitializeComponent();
             SetupCustomProperties();
+            SetupCutomEvents();
         }
 
         private void SetupCustomProperties()
         {
             // TODO agregar propiedades de inicio aquí
+        }
+
+        private void SetupCutomEvents()
+        {
+            this.DoubleClick += TextBoxEx_DoubleClick;
+            lblPaddingLeft.DoubleClick += TextBoxEx_DoubleClick;
+            lblPaddingTop.DoubleClick += TextBoxEx_DoubleClick;
+            lblPaddingRight.DoubleClick += TextBoxEx_DoubleClick;
+            lblPaddingBottom.DoubleClick += TextBoxEx_DoubleClick;
+
+            this.Click += TextBoxEx_Click;
+            lblPaddingLeft.Click += TextBoxEx_Click;
+            lblPaddingTop.Click += TextBoxEx_Click;
+            lblPaddingRight.Click += TextBoxEx_Click;
+            lblPaddingBottom.Click += TextBoxEx_Click;
+        }
+
+        private void TextBoxEx_DoubleClick(object sender, EventArgs e)
+        {
+            txtTextBox.SelectAll();
+        }
+
+        private void TextBoxEx_Click(object sender, EventArgs e)
+        {
+            txtTextBox.Select(0, 0);
         }
 
         #region Paddings
