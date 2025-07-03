@@ -36,8 +36,8 @@ namespace PresentationLayer.Views
             this.txtName = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
             this.pnlBottom = new System.Windows.Forms.Panel();
-            this.btnAccept = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.btnAccept = new System.Windows.Forms.Button();
             this.pnlHeader.SuspendLayout();
             this.pnlBody.SuspendLayout();
             this.pnlBottom.SuspendLayout();
@@ -80,9 +80,9 @@ namespace PresentationLayer.Views
             this.lblResult.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblResult.ForeColor = System.Drawing.Color.Goldenrod;
-            this.lblResult.Location = new System.Drawing.Point(0, 50);
+            this.lblResult.Location = new System.Drawing.Point(0, 45);
             this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(324, 64);
+            this.lblResult.Size = new System.Drawing.Size(324, 69);
             this.lblResult.TabIndex = 46;
             this.lblResult.Text = "result";
             this.lblResult.Visible = false;
@@ -90,16 +90,16 @@ namespace PresentationLayer.Views
             // txtName
             // 
             this.txtName.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtName.Location = new System.Drawing.Point(0, 23);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(324, 27);
+            this.txtName.Size = new System.Drawing.Size(324, 22);
             this.txtName.TabIndex = 43;
             // 
             // lblName
             // 
             this.lblName.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.Location = new System.Drawing.Point(0, 0);
             this.lblName.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.lblName.Name = "lblName";
@@ -117,27 +117,27 @@ namespace PresentationLayer.Views
             this.pnlBottom.Size = new System.Drawing.Size(324, 90);
             this.pnlBottom.TabIndex = 2;
             // 
-            // btnAccept
-            // 
-            this.btnAccept.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAccept.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAccept.Location = new System.Drawing.Point(0, 0);
-            this.btnAccept.Name = "btnAccept";
-            this.btnAccept.Size = new System.Drawing.Size(324, 40);
-            this.btnAccept.TabIndex = 0;
-            this.btnAccept.Text = "Accept";
-            this.btnAccept.UseVisualStyleBackColor = true;
-            // 
             // btnCancel
             // 
             this.btnCancel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.Location = new System.Drawing.Point(0, 50);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(324, 40);
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            // 
+            // btnAccept
+            // 
+            this.btnAccept.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAccept.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAccept.Location = new System.Drawing.Point(0, 0);
+            this.btnAccept.Name = "btnAccept";
+            this.btnAccept.Size = new System.Drawing.Size(324, 40);
+            this.btnAccept.TabIndex = 0;
+            this.btnAccept.Text = "Accept";
+            this.btnAccept.UseVisualStyleBackColor = true;
             // 
             // CategoryCreateView
             // 

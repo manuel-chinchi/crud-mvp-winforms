@@ -79,6 +79,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="UserControls\TextBoxEx.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\TextBoxEx.Designer.cs">
+      <DependentUpon>TextBoxEx.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\ArticleCreateView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +142,9 @@
     <EmbeddedResource Include="Reports\ArticlesReportV2.rdlc" />
     <EmbeddedResource Include="Reports\CategoriesReport.rdlc" />
     <EmbeddedResource Include="Reports\CategoriesReportV2.rdlc" />
+    <EmbeddedResource Include="UserControls\TextBoxEx.resx">
+      <DependentUpon>TextBoxEx.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\ArticleCreateView.resx">
       <DependentUpon>ArticleCreateView.cs</DependentUpon>
     </EmbeddedResource>
@@ -183,6 +192,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Docs\GUI.txt" />
     <Content Include="Reports\CustomCode\Functions.vb" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
@@ -198,5 +208,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

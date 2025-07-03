@@ -91,9 +91,9 @@ namespace PresentationLayer.Views
             this.lblResult.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblResult.ForeColor = System.Drawing.Color.Goldenrod;
-            this.lblResult.Location = new System.Drawing.Point(0, 198);
+            this.lblResult.Location = new System.Drawing.Point(0, 179);
             this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(324, 73);
+            this.lblResult.Size = new System.Drawing.Size(324, 92);
             this.lblResult.TabIndex = 44;
             this.lblResult.Text = "result";
             this.lblResult.Visible = false;
@@ -102,18 +102,18 @@ namespace PresentationLayer.Views
             // 
             this.cmbCategories.DisplayMember = "Name";
             this.cmbCategories.Dock = System.Windows.Forms.DockStyle.Top;
-            this.cmbCategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCategories.FormattingEnabled = true;
-            this.cmbCategories.Location = new System.Drawing.Point(0, 170);
+            this.cmbCategories.Location = new System.Drawing.Point(0, 155);
             this.cmbCategories.Name = "cmbCategories";
-            this.cmbCategories.Size = new System.Drawing.Size(324, 28);
+            this.cmbCategories.Size = new System.Drawing.Size(324, 24);
             this.cmbCategories.TabIndex = 42;
             // 
             // lblCategories
             // 
             this.lblCategories.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblCategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategories.Location = new System.Drawing.Point(0, 150);
+            this.lblCategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCategories.Location = new System.Drawing.Point(0, 135);
             this.lblCategories.Name = "lblCategories";
             this.lblCategories.Size = new System.Drawing.Size(324, 20);
             this.lblCategories.TabIndex = 43;
@@ -122,17 +122,17 @@ namespace PresentationLayer.Views
             // txtStock
             // 
             this.txtStock.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStock.Location = new System.Drawing.Point(0, 123);
+            this.txtStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStock.Location = new System.Drawing.Point(0, 113);
             this.txtStock.Name = "txtStock";
-            this.txtStock.Size = new System.Drawing.Size(324, 27);
+            this.txtStock.Size = new System.Drawing.Size(324, 22);
             this.txtStock.TabIndex = 5;
             // 
             // lblStock
             // 
             this.lblStock.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStock.Location = new System.Drawing.Point(0, 100);
+            this.lblStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStock.Location = new System.Drawing.Point(0, 90);
             this.lblStock.Name = "lblStock";
             this.lblStock.Size = new System.Drawing.Size(324, 23);
             this.lblStock.TabIndex = 4;
@@ -141,17 +141,17 @@ namespace PresentationLayer.Views
             // txtDescription
             // 
             this.txtDescription.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescription.Location = new System.Drawing.Point(0, 73);
+            this.txtDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescription.Location = new System.Drawing.Point(0, 68);
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(324, 27);
+            this.txtDescription.Size = new System.Drawing.Size(324, 22);
             this.txtDescription.TabIndex = 3;
             // 
             // lblDescription
             // 
             this.lblDescription.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescription.Location = new System.Drawing.Point(0, 50);
+            this.lblDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescription.Location = new System.Drawing.Point(0, 45);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(324, 23);
             this.lblDescription.TabIndex = 2;
@@ -160,16 +160,16 @@ namespace PresentationLayer.Views
             // txtName
             // 
             this.txtName.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtName.Location = new System.Drawing.Point(0, 23);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(324, 27);
+            this.txtName.Size = new System.Drawing.Size(324, 22);
             this.txtName.TabIndex = 1;
             // 
             // lblName
             // 
             this.lblName.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.Location = new System.Drawing.Point(0, 0);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(324, 23);
@@ -189,7 +189,7 @@ namespace PresentationLayer.Views
             // btnCancel
             // 
             this.btnCancel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.Location = new System.Drawing.Point(0, 50);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(324, 40);
@@ -200,7 +200,7 @@ namespace PresentationLayer.Views
             // btnAccept
             // 
             this.btnAccept.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAccept.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAccept.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAccept.Location = new System.Drawing.Point(0, 0);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(324, 40);

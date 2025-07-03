@@ -40,8 +40,8 @@ namespace PresentationLayer.Views
         }
         public string Search
         {
-            get { return txtSearch.Text; }
-            set { txtSearch.Text = value; }
+            get { return ucTxtExSearch.Text; }
+            set { ucTxtExSearch.Text = value; }
         }
         public IEnumerable<Article> Articles
         {
@@ -121,7 +121,7 @@ namespace PresentationLayer.Views
             btnShowAll.Click += delegate { ShowAllClick?.Invoke(this, EventArgs.Empty); };
             btnSearch.Click += delegate { SearchClick?.Invoke(this, EventArgs.Empty); };
             this.Load += delegate { ViewLoad?.Invoke(this, EventArgs.Empty); };
-            txtSearch.KeyDown += (s, e) =>
+            ucTxtExSearch.TextBoxEx_KeyDown += (s, e) =>
             {
                 if (e.KeyCode == Keys.Enter)
                 {
@@ -166,7 +166,7 @@ namespace PresentationLayer.Views
 
         private void pnlSearchContainer_MouseClick(object sender, MouseEventArgs e)
         {
-            txtSearch.Focus();
+            ucTxtExSearch.Focus();
         }
 
         #endregion
