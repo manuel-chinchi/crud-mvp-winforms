@@ -29,18 +29,19 @@ namespace PresentationLayer.Views
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.pnlHeaderOptions = new System.Windows.Forms.Panel();
+            this.pnlFilters = new System.Windows.Forms.Panel();
+            this.grpFilters = new System.Windows.Forms.GroupBox();
+            this.chkDescription = new System.Windows.Forms.CheckBox();
+            this.chkName = new System.Windows.Forms.CheckBox();
             this.pnlBtnSearch = new System.Windows.Forms.Panel();
             this.btnSearch = new System.Windows.Forms.Button();
             this.pnlSearchContainer = new System.Windows.Forms.Panel();
             this.ucTxtExSearch = new PresentationLayer.UserControls.TextBoxEx();
-            this.grpFilters = new System.Windows.Forms.GroupBox();
-            this.chkDescription = new System.Windows.Forms.CheckBox();
-            this.chkName = new System.Windows.Forms.CheckBox();
             this.pnlHeaderLogo = new System.Windows.Forms.Panel();
             this.pnlLeft = new System.Windows.Forms.Panel();
             this.lblResult = new System.Windows.Forms.Label();
@@ -55,16 +56,15 @@ namespace PresentationLayer.Views
             this.colDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pnlFilters = new System.Windows.Forms.Panel();
             this.pnlHeader.SuspendLayout();
             this.pnlHeaderOptions.SuspendLayout();
+            this.pnlFilters.SuspendLayout();
+            this.grpFilters.SuspendLayout();
             this.pnlBtnSearch.SuspendLayout();
             this.pnlSearchContainer.SuspendLayout();
-            this.grpFilters.SuspendLayout();
             this.pnlLeft.SuspendLayout();
             this.pnlBody.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticles)).BeginInit();
-            this.pnlFilters.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlHeader
@@ -89,6 +89,51 @@ namespace PresentationLayer.Views
             this.pnlHeaderOptions.Size = new System.Drawing.Size(733, 50);
             this.pnlHeaderOptions.TabIndex = 50;
             // 
+            // pnlFilters
+            // 
+            this.pnlFilters.Controls.Add(this.grpFilters);
+            this.pnlFilters.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnlFilters.Location = new System.Drawing.Point(450, 3);
+            this.pnlFilters.Name = "pnlFilters";
+            this.pnlFilters.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.pnlFilters.Size = new System.Drawing.Size(278, 44);
+            this.pnlFilters.TabIndex = 50;
+            // 
+            // grpFilters
+            // 
+            this.grpFilters.Controls.Add(this.chkDescription);
+            this.grpFilters.Controls.Add(this.chkName);
+            this.grpFilters.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grpFilters.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpFilters.Location = new System.Drawing.Point(0, 0);
+            this.grpFilters.Name = "grpFilters";
+            this.grpFilters.Size = new System.Drawing.Size(278, 39);
+            this.grpFilters.TabIndex = 7;
+            this.grpFilters.TabStop = false;
+            this.grpFilters.Text = "Filters";
+            // 
+            // chkDescription
+            // 
+            this.chkDescription.AutoSize = true;
+            this.chkDescription.Location = new System.Drawing.Point(156, 14);
+            this.chkDescription.Name = "chkDescription";
+            this.chkDescription.Size = new System.Drawing.Size(101, 21);
+            this.chkDescription.TabIndex = 8;
+            this.chkDescription.Text = "Description";
+            this.chkDescription.UseVisualStyleBackColor = true;
+            // 
+            // chkName
+            // 
+            this.chkName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.chkName.AutoSize = true;
+            this.chkName.Location = new System.Drawing.Point(83, 14);
+            this.chkName.Name = "chkName";
+            this.chkName.Size = new System.Drawing.Size(67, 21);
+            this.chkName.TabIndex = 7;
+            this.chkName.Text = "Name";
+            this.chkName.UseVisualStyleBackColor = true;
+            // 
             // pnlBtnSearch
             // 
             this.pnlBtnSearch.Controls.Add(this.btnSearch);
@@ -106,7 +151,7 @@ namespace PresentationLayer.Views
             this.btnSearch.Location = new System.Drawing.Point(0, 5);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(149, 34);
-            this.btnSearch.TabIndex = 5;
+            this.btnSearch.TabIndex = 0;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             // 
@@ -141,42 +186,7 @@ namespace PresentationLayer.Views
             this.ucTxtExSearch.PaddingsColor = System.Drawing.SystemColors.Window;
             this.ucTxtExSearch.PaddingTop = 7;
             this.ucTxtExSearch.Size = new System.Drawing.Size(286, 32);
-            this.ucTxtExSearch.TabIndex = 0;
-            // 
-            // grpFilters
-            // 
-            this.grpFilters.Controls.Add(this.chkDescription);
-            this.grpFilters.Controls.Add(this.chkName);
-            this.grpFilters.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grpFilters.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpFilters.Location = new System.Drawing.Point(0, 0);
-            this.grpFilters.Name = "grpFilters";
-            this.grpFilters.Size = new System.Drawing.Size(278, 39);
-            this.grpFilters.TabIndex = 46;
-            this.grpFilters.TabStop = false;
-            this.grpFilters.Text = "Filters";
-            // 
-            // chkDescription
-            // 
-            this.chkDescription.AutoSize = true;
-            this.chkDescription.Location = new System.Drawing.Point(156, 14);
-            this.chkDescription.Name = "chkDescription";
-            this.chkDescription.Size = new System.Drawing.Size(101, 21);
-            this.chkDescription.TabIndex = 8;
-            this.chkDescription.Text = "Description";
-            this.chkDescription.UseVisualStyleBackColor = true;
-            // 
-            // chkName
-            // 
-            this.chkName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.chkName.AutoSize = true;
-            this.chkName.Location = new System.Drawing.Point(83, 14);
-            this.chkName.Name = "chkName";
-            this.chkName.Size = new System.Drawing.Size(67, 21);
-            this.chkName.TabIndex = 7;
-            this.chkName.Text = "Name";
-            this.chkName.UseVisualStyleBackColor = true;
+            this.ucTxtExSearch.TabIndex = 6;
             // 
             // pnlHeaderLogo
             // 
@@ -219,7 +229,7 @@ namespace PresentationLayer.Views
             this.btnShowAll.Location = new System.Drawing.Point(5, 125);
             this.btnShowAll.Name = "btnShowAll";
             this.btnShowAll.Size = new System.Drawing.Size(140, 40);
-            this.btnShowAll.TabIndex = 4;
+            this.btnShowAll.TabIndex = 11;
             this.btnShowAll.Text = "Show all";
             this.btnShowAll.UseVisualStyleBackColor = true;
             // 
@@ -230,7 +240,7 @@ namespace PresentationLayer.Views
             this.btnDelete.Location = new System.Drawing.Point(5, 85);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(140, 40);
-            this.btnDelete.TabIndex = 3;
+            this.btnDelete.TabIndex = 10;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             // 
@@ -241,7 +251,7 @@ namespace PresentationLayer.Views
             this.btnEdit.Location = new System.Drawing.Point(5, 45);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(140, 40);
-            this.btnEdit.TabIndex = 2;
+            this.btnEdit.TabIndex = 9;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
             // 
@@ -252,7 +262,7 @@ namespace PresentationLayer.Views
             this.btnAdd.Location = new System.Drawing.Point(5, 5);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(140, 40);
-            this.btnAdd.TabIndex = 1;
+            this.btnAdd.TabIndex = 8;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             // 
@@ -270,14 +280,14 @@ namespace PresentationLayer.Views
             // 
             this.dgvArticles.AllowUserToAddRows = false;
             this.dgvArticles.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvArticles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvArticles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvArticles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArticles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colId,
@@ -285,31 +295,31 @@ namespace PresentationLayer.Views
             this.colDescription,
             this.colStock,
             this.colCategory});
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvArticles.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvArticles.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvArticles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvArticles.Location = new System.Drawing.Point(4, 5);
             this.dgvArticles.Name = "dgvArticles";
             this.dgvArticles.ReadOnly = true;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvArticles.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvArticles.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvArticles.RowHeadersWidth = 51;
             this.dgvArticles.RowTemplate.Height = 24;
             this.dgvArticles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvArticles.Size = new System.Drawing.Size(724, 444);
-            this.dgvArticles.TabIndex = 20;
+            this.dgvArticles.TabIndex = 12;
             // 
             // colId
             // 
@@ -356,16 +366,6 @@ namespace PresentationLayer.Views
             this.colCategory.ReadOnly = true;
             this.colCategory.Width = 125;
             // 
-            // pnlFilters
-            // 
-            this.pnlFilters.Controls.Add(this.grpFilters);
-            this.pnlFilters.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlFilters.Location = new System.Drawing.Point(450, 3);
-            this.pnlFilters.Name = "pnlFilters";
-            this.pnlFilters.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
-            this.pnlFilters.Size = new System.Drawing.Size(278, 44);
-            this.pnlFilters.TabIndex = 50;
-            // 
             // ArticleListView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -383,14 +383,14 @@ namespace PresentationLayer.Views
             this.Text = "ArticleListView";
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeaderOptions.ResumeLayout(false);
-            this.pnlBtnSearch.ResumeLayout(false);
-            this.pnlSearchContainer.ResumeLayout(false);
+            this.pnlFilters.ResumeLayout(false);
             this.grpFilters.ResumeLayout(false);
             this.grpFilters.PerformLayout();
+            this.pnlBtnSearch.ResumeLayout(false);
+            this.pnlSearchContainer.ResumeLayout(false);
             this.pnlLeft.ResumeLayout(false);
             this.pnlBody.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticles)).EndInit();
-            this.pnlFilters.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

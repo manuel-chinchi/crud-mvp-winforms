@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace PresentationLayer.UserControls
 {
     /// <summary>
-    /// Clase tipo TextBox con paddings ajustables
+    /// La clase <c>TextBoxEx</c> imita un control <c>TextBox</c> con paddings ajustables.
     /// </summary>
     public partial class TextBoxEx : UserControl
     {
@@ -132,6 +132,7 @@ namespace PresentationLayer.UserControls
             get => txtTextBox.Font;
             set => txtTextBox.Font = value;
         }
+
         #endregion
 
         #region Border
@@ -189,14 +190,17 @@ namespace PresentationLayer.UserControls
                 //    this.Height - (_borderWidth * 2));
             }
         }
+
         #endregion
 
         #region Events
+
         public event KeyEventHandler TextBoxEx_KeyDown
         {
             add { txtTextBox.KeyDown += value; }
             remove { txtTextBox.KeyDown -= value; }
         }
+
         #endregion
     }
 }
