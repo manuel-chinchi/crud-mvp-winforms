@@ -96,6 +96,8 @@ Validaciones
 
 - [System.Configuration reference not found](https://stackoverflow.com/questions/4431034/configurationmanager-not-found)
 - [DataGridView using SortableBindingList](https://stackoverflow.com/questions/23661195/datagridview-using-sortablebindinglist)
+- [CheckBox in header of DataGridView for select all rows](https://stackoverflow.com/questions/8906575/checkbox-in-the-header-of-a-datagridview-in-any-column)
+- [Checkbox in header of DataGridView](https://stackoverflow.com/questions/8906575/checkbox-in-the-header-of-a-datagridview-in-any-column)
 
 - MSTests utils
   - [Documentacion MS](https://learn.microsoft.com/en-us/visualstudio/test/vstest-console-options?view=vs-2022)

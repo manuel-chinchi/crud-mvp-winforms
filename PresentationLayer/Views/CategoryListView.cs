@@ -121,5 +121,19 @@ namespace PresentationLayer.Views
             };
             _timer.Start();
         }
+
+        #region UI settings
+
+        private void dgvCategories_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                bool isSelect = (bool)dgvCategories.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                var row = dgvCategories.Rows[e.RowIndex];
+                row.DefaultCellStyle.BackColor = isSelect ? Color.Yellow : Color.White;
+            }
+        }
+
+        #endregion
     }
 }

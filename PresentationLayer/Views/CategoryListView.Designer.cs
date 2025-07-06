@@ -36,6 +36,7 @@ namespace PresentationLayer.Views
             this.btnAdd = new System.Windows.Forms.Button();
             this.pnlBody = new System.Windows.Forms.Panel();
             this.dgvCategories = new System.Windows.Forms.DataGridView();
+            this.RowsSelector = new PresentationLayer.UserControls.GridViewCheckBoxColumn();
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colArticlesRelated = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -114,18 +115,27 @@ namespace PresentationLayer.Views
             this.dgvCategories.AllowUserToDeleteRows = false;
             this.dgvCategories.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCategories.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.RowsSelector,
             this.colId,
             this.colName,
             this.colArticlesRelated});
             this.dgvCategories.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCategories.Location = new System.Drawing.Point(0, 5);
             this.dgvCategories.Name = "dgvCategories";
-            this.dgvCategories.ReadOnly = true;
+            this.dgvCategories.RowHeadersVisible = false;
             this.dgvCategories.RowHeadersWidth = 51;
             this.dgvCategories.RowTemplate.Height = 24;
             this.dgvCategories.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCategories.Size = new System.Drawing.Size(509, 421);
             this.dgvCategories.TabIndex = 1;
+            this.dgvCategories.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategories_CellValueChanged);
+            // 
+            // RowsSelector
+            // 
+            this.RowsSelector.HeaderText = "";
+            this.RowsSelector.MinimumWidth = 6;
+            this.RowsSelector.Name = "RowsSelector";
+            this.RowsSelector.Width = 50;
             // 
             // colId
             // 
@@ -185,6 +195,7 @@ namespace PresentationLayer.Views
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Label lblResult;
         private System.Windows.Forms.DataGridView dgvCategories;
+        private UserControls.GridViewCheckBoxColumn RowsSelector;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colArticlesRelated;

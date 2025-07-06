@@ -169,6 +169,18 @@ namespace PresentationLayer.Views
             ucTxtExSearch.Focus();
         }
 
+        private void dgvArticles_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                //var colIndex = dgvArticles.Columns["RowsSelector"].Index;
+                //bool isSelect = (bool)dgvArticles.Rows[e.RowIndex].Cells[colIndex].Value;
+                bool isSelect = (bool)dgvArticles.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                var row = dgvArticles.Rows[e.RowIndex];
+                row.DefaultCellStyle.BackColor = isSelect ? Color.Yellow : Color.White;
+            }
+        }
+
         #endregion
     }
 }

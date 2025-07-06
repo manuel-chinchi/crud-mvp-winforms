@@ -49,8 +49,9 @@ namespace PresentationLayer.Views
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.pnlBody = new System.Windows.Forms.Panel();
             this.dgvArticles = new System.Windows.Forms.DataGridView();
+            this.pnlBody = new System.Windows.Forms.Panel();
+            this.RowsSelector = new PresentationLayer.UserControls.GridViewCheckBoxColumn();
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,8 +64,8 @@ namespace PresentationLayer.Views
             this.pnlBtnSearch.SuspendLayout();
             this.pnlSearchContainer.SuspendLayout();
             this.pnlLeft.SuspendLayout();
-            this.pnlBody.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticles)).BeginInit();
+            this.pnlBody.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlHeader
@@ -206,7 +207,7 @@ namespace PresentationLayer.Views
             this.pnlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlLeft.Location = new System.Drawing.Point(0, 50);
             this.pnlLeft.Name = "pnlLeft";
-            this.pnlLeft.Padding = new System.Windows.Forms.Padding(5);
+            this.pnlLeft.Padding = new System.Windows.Forms.Padding(5, 4, 5, 5);
             this.pnlLeft.Size = new System.Drawing.Size(150, 454);
             this.pnlLeft.TabIndex = 60;
             // 
@@ -215,9 +216,9 @@ namespace PresentationLayer.Views
             this.lblResult.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblResult.ForeColor = System.Drawing.Color.Goldenrod;
-            this.lblResult.Location = new System.Drawing.Point(5, 165);
+            this.lblResult.Location = new System.Drawing.Point(5, 164);
             this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(140, 284);
+            this.lblResult.Size = new System.Drawing.Size(140, 285);
             this.lblResult.TabIndex = 45;
             this.lblResult.Text = "result";
             this.lblResult.Visible = false;
@@ -226,7 +227,7 @@ namespace PresentationLayer.Views
             // 
             this.btnShowAll.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnShowAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnShowAll.Location = new System.Drawing.Point(5, 125);
+            this.btnShowAll.Location = new System.Drawing.Point(5, 124);
             this.btnShowAll.Name = "btnShowAll";
             this.btnShowAll.Size = new System.Drawing.Size(140, 40);
             this.btnShowAll.TabIndex = 11;
@@ -237,7 +238,7 @@ namespace PresentationLayer.Views
             // 
             this.btnDelete.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(5, 85);
+            this.btnDelete.Location = new System.Drawing.Point(5, 84);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(140, 40);
             this.btnDelete.TabIndex = 10;
@@ -248,7 +249,7 @@ namespace PresentationLayer.Views
             // 
             this.btnEdit.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(5, 45);
+            this.btnEdit.Location = new System.Drawing.Point(5, 44);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(140, 40);
             this.btnEdit.TabIndex = 9;
@@ -259,22 +260,12 @@ namespace PresentationLayer.Views
             // 
             this.btnAdd.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(5, 5);
+            this.btnAdd.Location = new System.Drawing.Point(5, 4);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(140, 40);
             this.btnAdd.TabIndex = 8;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
-            // 
-            // pnlBody
-            // 
-            this.pnlBody.Controls.Add(this.dgvArticles);
-            this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlBody.Location = new System.Drawing.Point(150, 50);
-            this.pnlBody.Name = "pnlBody";
-            this.pnlBody.Padding = new System.Windows.Forms.Padding(4, 5, 5, 5);
-            this.pnlBody.Size = new System.Drawing.Size(733, 454);
-            this.pnlBody.TabIndex = 61;
             // 
             // dgvArticles
             // 
@@ -290,6 +281,7 @@ namespace PresentationLayer.Views
             this.dgvArticles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvArticles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArticles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.RowsSelector,
             this.colId,
             this.colName,
             this.colDescription,
@@ -306,7 +298,6 @@ namespace PresentationLayer.Views
             this.dgvArticles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvArticles.Location = new System.Drawing.Point(4, 5);
             this.dgvArticles.Name = "dgvArticles";
-            this.dgvArticles.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -315,11 +306,30 @@ namespace PresentationLayer.Views
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvArticles.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvArticles.RowHeadersVisible = false;
             this.dgvArticles.RowHeadersWidth = 51;
             this.dgvArticles.RowTemplate.Height = 24;
             this.dgvArticles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvArticles.Size = new System.Drawing.Size(724, 444);
             this.dgvArticles.TabIndex = 12;
+            this.dgvArticles.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArticles_CellValueChanged);
+            // 
+            // pnlBody
+            // 
+            this.pnlBody.Controls.Add(this.dgvArticles);
+            this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlBody.Location = new System.Drawing.Point(150, 50);
+            this.pnlBody.Name = "pnlBody";
+            this.pnlBody.Padding = new System.Windows.Forms.Padding(4, 5, 5, 5);
+            this.pnlBody.Size = new System.Drawing.Size(733, 454);
+            this.pnlBody.TabIndex = 61;
+            // 
+            // RowsSelector
+            // 
+            this.RowsSelector.HeaderText = "";
+            this.RowsSelector.MinimumWidth = 6;
+            this.RowsSelector.Name = "RowsSelector";
+            this.RowsSelector.Width = 50;
             // 
             // colId
             // 
@@ -389,8 +399,8 @@ namespace PresentationLayer.Views
             this.pnlBtnSearch.ResumeLayout(false);
             this.pnlSearchContainer.ResumeLayout(false);
             this.pnlLeft.ResumeLayout(false);
-            this.pnlBody.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticles)).EndInit();
+            this.pnlBody.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -404,11 +414,6 @@ namespace PresentationLayer.Views
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.DataGridView dgvArticles;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDescription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colStock;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCategory;
         private System.Windows.Forms.Label lblResult;
         private System.Windows.Forms.Panel pnlHeaderLogo;
         private System.Windows.Forms.Panel pnlHeaderOptions;
@@ -420,5 +425,11 @@ namespace PresentationLayer.Views
         private System.Windows.Forms.Panel pnlBtnSearch;
         private UserControls.TextBoxEx ucTxtExSearch;
         private System.Windows.Forms.Panel pnlFilters;
+        private UserControls.GridViewCheckBoxColumn RowsSelector;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colStock;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCategory;
     }
 }

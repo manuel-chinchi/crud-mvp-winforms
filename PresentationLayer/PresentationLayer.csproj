@@ -79,6 +79,10 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="UserControls\GridViewCheckBoxColumn.cs" />
+    <Compile Include="UserControls\GridViewCheckBoxColumn.Designer.cs">
+      <DependentUpon>GridViewCheckBoxColumn.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\TextBoxEx.cs">
       <SubType>UserControl</SubType>
     </Compile>
