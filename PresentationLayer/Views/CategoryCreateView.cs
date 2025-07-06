@@ -41,7 +41,7 @@ namespace PresentationLayer.Views
         public event EventHandler AcceptClick;
         public event EventHandler CancelClick;
 
-        private Timer _timer;
+        private Timer timer;
 
         public CategoryCreateView()
         {
@@ -70,19 +70,19 @@ namespace PresentationLayer.Views
         {
             lblResult.Visible = true;
 
-            if (_timer != null && _timer.Enabled)
+            if (timer != null && timer.Enabled)
             {
-                _timer.Stop();
+                timer.Stop();
             }
 
-            _timer = new Timer();
-            _timer.Interval = interval * 1000;
-            _timer.Tick += (s, e) =>
+            timer = new Timer();
+            timer.Interval = interval * 1000;
+            timer.Tick += (s, e) =>
             {
                 lblResult.Hide();
-                _timer.Stop();
+                timer.Stop();
             };
-            _timer.Start();
+            timer.Start();
         }
     }
 }
