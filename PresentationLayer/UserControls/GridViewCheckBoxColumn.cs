@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 /// <summary>
-/// Creditos a su autor original @nighil 
-/// Codigo original: https://stackoverflow.com/users/543047/
+/// Creditos a su autor @nighil 
+/// Fuente https://stackoverflow.com/users/543047/
 /// </summary>
 namespace PresentationLayer.UserControls
 {
