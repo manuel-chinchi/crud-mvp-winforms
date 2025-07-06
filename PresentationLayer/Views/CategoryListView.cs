@@ -15,7 +15,7 @@ namespace PresentationLayer.Views
 {
     public partial class CategoryListView : Form, ICategoryListView
     {
-        private int _itemSelected;
+        private int itemSelected;
         public int ItemSelected
         {
             get { return dgvCategories.CurrentCell.RowIndex; }
@@ -24,7 +24,7 @@ namespace PresentationLayer.Views
                 if (value >= 0 && value < dgvCategories.RowCount)
                 {
                     dgvCategories.CurrentCell = dgvCategories.Rows[value].Cells[0];
-                    _itemSelected = value;
+                    itemSelected = value;
                 }
             }
         }
@@ -77,7 +77,7 @@ namespace PresentationLayer.Views
         public event EventHandler AddClick;
         public event EventHandler ViewLoad;
 
-        private Timer _timer;
+        private Timer timer;
 
         public CategoryListView()
         {
@@ -107,19 +107,19 @@ namespace PresentationLayer.Views
         {
             lblResult.Visible = true;
 
-            if (_timer != null && _timer.Enabled)
+            if (timer != null && timer.Enabled)
             {
-                _timer.Stop();
+                timer.Stop();
             }
 
-            _timer = new Timer();
-            _timer.Interval = interval * 1000;
-            _timer.Tick += (s, e) =>
+            timer = new Timer();
+            timer.Interval = interval * 1000;
+            timer.Tick += (s, e) =>
             {
                 lblResult.Hide();
-                _timer.Stop();
+                timer.Stop();
             };
-            _timer.Start();
+            timer.Start();
         }
 
         #region UI settings

@@ -1,6 +1,6 @@
 # Crud MVP WinForms
 
-Sistema básico con operaciones CRUD hecha en .Net Framework 4.5 y SQL Server.
+Sistema básico con operaciones CRUD hecho en .Net Framework 4.5 y SQL Server.
 
 ## ¿De qué trata esta aplicación? 
 

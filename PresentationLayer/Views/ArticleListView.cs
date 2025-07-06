@@ -15,7 +15,7 @@ namespace PresentationLayer.Views
 {
     public partial class ArticleListView : Form, IArticleListView
     {
-        private int _itemSelected;
+        private int itemSelected;
         public int ItemSelected
         {
             get { return dgvArticles.CurrentCell.RowIndex; }
@@ -24,7 +24,7 @@ namespace PresentationLayer.Views
                 if (value >= 0 && value <= dgvArticles.RowCount)
                 {
                     dgvArticles.CurrentCell = dgvArticles.Rows[value].Cells[0];
-                    _itemSelected = value;
+                    itemSelected = value;
                 }
             }
         }
@@ -90,8 +90,8 @@ namespace PresentationLayer.Views
                 }
                 else
                 {
-                    if (_timer != null && _timer.Enabled)
-                        _timer.Stop();
+                    if (timer != null && timer.Enabled)
+                        timer.Stop();
                     lblResult.Visible = value;
                 }
             }
@@ -104,7 +104,7 @@ namespace PresentationLayer.Views
         public event EventHandler ShowAllClick;
         public event EventHandler ViewLoad;
 
-        private Timer _timer;
+        private Timer timer;
 
         public ArticleListView()
         {
@@ -147,19 +147,19 @@ namespace PresentationLayer.Views
         {
             lblResult.Visible = true;
 
-            if (_timer != null && _timer.Enabled)
+            if (timer != null && timer.Enabled)
             {
-                _timer.Stop();
+                timer.Stop();
             }
 
-            _timer = new Timer();
-            _timer.Interval = interval * 1000;
-            _timer.Tick += (s, e) =>
+            timer = new Timer();
+            timer.Interval = interval * 1000;
+            timer.Tick += (s, e) =>
             {
                 lblResult.Hide();
-                _timer.Stop();
+                timer.Stop();
             };
-            _timer.Start();
+            timer.Start();
         }
 
         #region UI Settings
