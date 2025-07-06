@@ -62,11 +62,13 @@ namespace DataLayer.Repositories
         public IEnumerable<Category> GetAll()
         {
             IEnumerable<Category> result = new List<Category>();
+
             using (var connection=new SqlConnection(_connectionString))
             {
                 connection.Open();
                 result = connection.Query<Category>("GetCategories", CommandType.StoredProcedure);
             }
+
             return result;
         }
     }

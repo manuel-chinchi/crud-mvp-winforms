@@ -9,6 +9,6 @@ namespace DataLayer.Repositories
 {
     public class BaseRepository
     {
-        protected static string _connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        protected readonly string _connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
     }
 }

@@ -83,17 +83,20 @@ namespace DataLayer.Repositories
         public IEnumerable<Article> GetAll()
         {
             IEnumerable<Article> result = new List<Article>();
+
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
                 result = connection.Query<Article>("GetArticles", CommandType.StoredProcedure);
             }
+
             return result;
         }
 
         public IEnumerable<Article> Search(Dictionary<string, object> filters)
         {
             IEnumerable<Article> result = new List<Article>();
+
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
@@ -111,6 +114,7 @@ namespace DataLayer.Repositories
                     CommandType.StoredProcedure
                 ).ToList();
             }
+
             return result;
         }
     }
