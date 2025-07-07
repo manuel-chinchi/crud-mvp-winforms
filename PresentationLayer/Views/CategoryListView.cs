@@ -15,19 +15,6 @@ namespace PresentationLayer.Views
 {
     public partial class CategoryListView : Form, ICategoryListView
     {
-        private int itemSelected;
-        public int ItemSelected
-        {
-            get { return dgvCategories.CurrentCell.RowIndex; }
-            set
-            {
-                if (value >= 0 && value < dgvCategories.RowCount)
-                {
-                    dgvCategories.CurrentCell = dgvCategories.Rows[value].Cells[0];
-                    itemSelected = value;
-                }
-            }
-        }
         public IEnumerable<Category> Categories
         {
             get
@@ -70,6 +57,24 @@ namespace PresentationLayer.Views
                     lblResult.ForeColor = Color.Green;
                     this.ShowResult(3);
                 }
+            }
+        }
+
+        private List<int> selectedIndices = new List<int>();
+        public List<int> SelectedIndices
+        {
+            get
+            {
+                selectedIndices.Clear();
+                foreach (DataGridViewRow row in dgvCategories.Rows)
+                {
+                    bool isSelected = (bool)(row.Cells["RowsSelector"].Value ?? false);
+                    if (isSelected)
+                    {
+                        selectedIndices.Add(row.Index);
+                    }
+                }
+                return selectedIndices;
             }
         }
 

@@ -15,25 +15,12 @@ namespace PresentationLayer.Views
 {
     public partial class ArticleListView : Form, IArticleListView
     {
-        private int itemSelected;
-        public int ItemSelected
-        {
-            get { return dgvArticles.CurrentCell.RowIndex; }
-            set
-            {
-                if (value >= 0 && value <= dgvArticles.RowCount)
-                {
-                    dgvArticles.CurrentCell = dgvArticles.Rows[value].Cells[0];
-                    itemSelected = value;
-                }
-            }
-        }
-        public bool IncludeName
+        public bool FilterIncludeName
         {
             get { return Convert.ToBoolean(chkName.CheckState); }
             set { chkName.CheckState = (CheckState)Convert.ToInt32(value); }
         }
-        public bool IncludeDescription
+        public bool FilterIncludeDescription
         {
             get { return Convert.ToBoolean(chkDescription.CheckState); }
             set { chkDescription.CheckState = (CheckState)Convert.ToInt32(value); }
@@ -94,6 +81,24 @@ namespace PresentationLayer.Views
                         timer.Stop();
                     lblResult.Visible = value;
                 }
+            }
+        }
+
+        private List<int> selectedIndices = new List<int>();
+        public List<int> SelectedIndices
+        {
+            get
+            {
+                selectedIndices.Clear();
+                foreach (DataGridViewRow row in dgvArticles.Rows)
+                {
+                    bool isSelected = (bool)(row.Cells["RowsSelector"].Value ?? false);
+                    if (isSelected)
+                    {
+                        selectedIndices.Add(row.Index);
+                    }
+                }
+                return selectedIndices;
             }
         }
 

@@ -63,23 +63,48 @@ namespace PresentationLayer.Presenters
 
         private void _view_DeleteClick(object sender, EventArgs e)
         {
-            var category = _viewList.Categories.ToArray()[_viewList.ItemSelected];
-            if (category.ArticlesRelated == 0)
+            var indices = _viewList.SelectedIndices;
+            var categories = _viewList.Categories.Where((item, index) => indices.Contains(index)).ToList();
+
+            if (categories.Count > 0)
             {
-                var result = System.Windows.Forms.MessageBox.Show($"Do you want to delete the category '{category.Name}'?", "Alert", System.Windows.Forms.MessageBoxButtons.YesNo);
+                // filtro solo las categorias que no tengan articulos relacionados
+                var filter = categories.Where(item => item.ArticlesRelated == 0).ToList();
+                if (filter.Count != categories.Count)
+                {
+                    System.Windows.Forms.MessageBox.Show("No se pueden borrar categorías con artículos relacionados");
+                    return;
+                }
+
+                var result = System.Windows.Forms.MessageBox.Show($"¿Desea eliminar los elementos seleccionados?", "Alert", System.Windows.Forms.MessageBoxButtons.YesNo);
+
                 if (result == System.Windows.Forms.DialogResult.Yes)
                 {
-                    _service.DeleteCategory(category.Id.ToString());
-                    _viewList.Categories = _service.GetCategories();
-                    _viewList.Success = $"The category '{category.Name}' has been removed";
+                    int count = categories.Count;
+
+                    DeleteCategories(categories);
+                    _viewList.Success = $"Se eliminaron {count} categorias";
                     _viewList.ShowSuccess = true;
+                    LoadCategories();
                 }
             }
             else
             {
-                _viewList.Error = $"Cannot delete category '{category.Name}' because it has related articles";
-                _viewList.ShowError = true;
+                System.Windows.Forms.MessageBox.Show($"Por favor seleccione al menos una categoría");
             }
+        }
+
+        private void DeleteCategories(List<Category> categories)
+        {
+            foreach (var category in categories)
+            {
+                _service.DeleteCategory(category.Id.ToString());
+            }
+        }
+
+        private void LoadCategories()
+        {
+            _viewList.Categories = _service.GetCategories();
         }
     }
 }
