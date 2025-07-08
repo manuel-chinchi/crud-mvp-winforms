@@ -59,7 +59,7 @@ namespace PresentationLayer.Presenters
         public void SaveCategory()
         {
             _service.CreateCategory(_viewCreate.NameC);
-            _viewCreate.Success = "Category created";
+            _viewCreate.Success = "Created category";
             _viewCreate.ShowSuccess = true;
         }
     }
