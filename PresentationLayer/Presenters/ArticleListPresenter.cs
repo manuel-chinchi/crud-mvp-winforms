@@ -68,7 +68,7 @@ namespace PresentationLayer.Presenters
 
             if (articles.Count > 0)
             {
-                var result = System.Windows.Forms.MessageBox.Show("¿Desea eliminar los elementos seleccionados?", "Alert", System.Windows.Forms.MessageBoxButtons.YesNo);
+                var result = System.Windows.Forms.MessageBox.Show("You want to delete the selected items?", "Alert", System.Windows.Forms.MessageBoxButtons.YesNo);
                 if (result == System.Windows.Forms.DialogResult.Yes)
                 {
                     int count = articles.Count;
@@ -76,7 +76,7 @@ namespace PresentationLayer.Presenters
                     {
                         _service.DeleteArticle(article.Id.ToString());
                     }
-                    _viewList.Success = $"Se eliminaron {count} artículos";
+                    _viewList.Success = $"{count} articles were deleted";
                     _viewList.ShowSuccess = true;
 
                     LoadArticles();
@@ -86,7 +86,7 @@ namespace PresentationLayer.Presenters
             }
             else
             {
-                System.Windows.Forms.MessageBox.Show("Seleccione al menos 1 artículo");
+                System.Windows.Forms.MessageBox.Show("Select an article");
             }
         }
 
@@ -111,7 +111,7 @@ namespace PresentationLayer.Presenters
             }
             else
             {
-                System.Windows.Forms.MessageBox.Show("Seleccione 1 artículo");
+                System.Windows.Forms.MessageBox.Show("Select an article");
             }
         }
 
@@ -140,7 +140,7 @@ namespace PresentationLayer.Presenters
 
             if (_viewList.FilterIncludeName == false && _viewList.FilterIncludeDescription == false)
             {
-                _viewList.Warning = "Please select a search filter";
+                _viewList.Warning = "Select a search filter";
                 _viewList.ShowWarning = true;
                 return;
             }
@@ -151,7 +151,7 @@ namespace PresentationLayer.Presenters
             }
             else
             {
-                _viewList.Success = $"'{result.Count()}' results found";
+                _viewList.Success = $"{result.Count()} results found";
                 _viewList.ShowSuccess = true;
             }
 

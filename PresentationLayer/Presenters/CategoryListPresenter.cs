@@ -72,25 +72,25 @@ namespace PresentationLayer.Presenters
                 var filter = categories.Where(item => item.ArticlesRelated == 0).ToList();
                 if (filter.Count != categories.Count)
                 {
-                    System.Windows.Forms.MessageBox.Show("No se pueden borrar categorías con artículos relacionados");
+                    System.Windows.Forms.MessageBox.Show("Categories that contain articles cannot be deleted");
                     return;
                 }
 
-                var result = System.Windows.Forms.MessageBox.Show($"¿Desea eliminar los elementos seleccionados?", "Alert", System.Windows.Forms.MessageBoxButtons.YesNo);
+                var result = System.Windows.Forms.MessageBox.Show($"You want to delete the selected items?", "Alert", System.Windows.Forms.MessageBoxButtons.YesNo);
 
                 if (result == System.Windows.Forms.DialogResult.Yes)
                 {
                     int count = categories.Count;
 
                     DeleteCategories(categories);
-                    _viewList.Success = $"Se eliminaron {count} categorias";
+                    _viewList.Success = $"{count} categories were deleted";
                     _viewList.ShowSuccess = true;
                     LoadCategories();
                 }
             }
             else
             {
-                System.Windows.Forms.MessageBox.Show($"Por favor seleccione al menos una categoría");
+                System.Windows.Forms.MessageBox.Show($"Select an category");
             }
         }
 
