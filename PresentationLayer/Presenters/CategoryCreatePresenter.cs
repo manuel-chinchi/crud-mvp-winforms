@@ -1,5 +1,7 @@
 ﻿using BussinesLayer.Services;
 using BussinesLayer.Services.Contracts;
+using Core.Services;
+using Core.Services.Contracts;
 using EntityLayer.Models;
 using PresentationLayer.Views.Contracts;
 using System;
@@ -14,7 +16,8 @@ namespace PresentationLayer.Presenters
     {
         ICategoryCreateView _viewCreate { get; set; }
         ICategoryService<IEnumerable<Category>> _service { get; set; }
-        
+        ILanguageService languageService { get; set; } = new LanguageService();
+
         public CategoryCreatePresenter(ICategoryCreateView view, ICategoryService<IEnumerable<Category>> service)
         {
             _viewCreate = view;
@@ -33,6 +36,8 @@ namespace PresentationLayer.Presenters
 
             _viewCreate.AcceptClick += _viewCreate_AcceptClick;
             _viewCreate.CancelClick += _viewCreate_CancelClick;
+
+            languageService.SetLanguage("en");
         }
 
         private void _viewCreate_CancelClick(object sender, EventArgs e)
@@ -45,12 +50,14 @@ namespace PresentationLayer.Presenters
             if (!string.IsNullOrEmpty(_viewCreate.NameC))
             {
                 _service.CreateCategory(_viewCreate.NameC);
+                // OkCaregoryCreated
                 _viewCreate.Success = $"The category '{_viewCreate.NameC}' has been created";
                 _viewCreate.ShowSuccess = true;
                 _viewCreate.CloseView();
             }
             else
             {
+                //  AlertInvalidNameField
                 _viewCreate.Error = "The 'Name' field cannot be empty";
                 _viewCreate.ShowError = true;
             }

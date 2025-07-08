@@ -132,16 +132,6 @@
     <Compile Include="Views\ReportView.Designer.cs">
       <DependentUpon>ReportView.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Reports\ArticlesReport.rdlc" />
     <EmbeddedResource Include="Reports\ArticlesReportV2.rdlc" />
     <EmbeddedResource Include="Reports\CategoriesReport.rdlc" />
@@ -189,6 +179,10 @@
     <ProjectReference Include="..\BussinesLayer\BussinesLayer.csproj">
       <Project>{ec85acbf-610c-4fa2-a01a-34b5387e3053}</Project>
       <Name>BussinesLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{F7385195-E150-48B0-9FC7-FF87720D6A0A}</Project>
+      <Name>Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\EntityLayer\EntityLayer.csproj">
       <Project>{b280e43e-8705-4247-a4b3-04a1c02d5657}</Project>

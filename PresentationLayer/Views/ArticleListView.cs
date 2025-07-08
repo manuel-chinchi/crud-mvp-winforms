@@ -1,4 +1,7 @@
-﻿using EntityLayer.Models;
+﻿using Core;
+using Core.Services;
+using Core.Services.Contracts;
+using EntityLayer.Models;
 using PresentationLayer.Presenters;
 using PresentationLayer.Views.Contracts;
 using System;
@@ -13,8 +16,10 @@ using System.Windows.Forms;
 
 namespace PresentationLayer.Views
 {
-    public partial class ArticleListView : Form, IArticleListView
+    public partial class ArticleListView : Form, IArticleListView, ISetupLanguageView
     {
+        ILanguageService languageService = new LanguageService();
+
         public bool FilterIncludeName
         {
             get { return Convert.ToBoolean(chkName.CheckState); }
@@ -187,5 +192,10 @@ namespace PresentationLayer.Views
         }
 
         #endregion
+
+        public void SetControlsLanguage()
+        {
+            // btnAny.Text = languageService.GetString(...[key]);
+        }
     }
 }

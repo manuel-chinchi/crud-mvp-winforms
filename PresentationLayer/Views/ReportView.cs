@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace PresentationLayer.Views
 {
-    public partial class ReportView : Form, IReportView
+    public partial class ReportView : Form, IReportView, ISetupLanguageView
     {
         public object ItemSelected
         {
@@ -78,6 +78,11 @@ namespace PresentationLayer.Views
         public void CloseView()
         {
             this.Close();
+        }
+
+        public void SetControlsLanguage()
+        {
+            // btnAny.Text = languageService.GetString(...[key]);
         }
     }
 }

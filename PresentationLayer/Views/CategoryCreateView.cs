@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace PresentationLayer.Views
 {
-    public partial class CategoryCreateView : Form, ICategoryCreateView
+    public partial class CategoryCreateView : Form, ICategoryCreateView, ISetupLanguageView
     {
 
         public string NameC
@@ -83,6 +83,11 @@ namespace PresentationLayer.Views
                 timer.Stop();
             };
             timer.Start();
+        }
+
+        public void SetControlsLanguage()
+        {
+            // btnAny.Text = languageService.GetString(...[key]);
         }
     }
 }

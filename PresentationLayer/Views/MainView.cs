@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace PresentationLayer.Views
 {
-    public partial class MainView : Form, IMainView
+    public partial class MainView : Form, IMainView, ISetupLanguageView
     {
         public string Error { get; set; }
         public bool ShowError { get;set; }
@@ -34,6 +34,11 @@ namespace PresentationLayer.Views
             llbAbout.Click += delegate { System.Diagnostics.Process.Start("https://github.com/manuel-chinchi/crud-mvp-winforms?tab=readme-ov-file#crud-mvp-winforms"); };
 
             Presenter = new MainPresenter(this);
+        }
+
+        public void SetControlsLanguage()
+        {
+            // btnAny.Text = languageService.GetString(...[key]);
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using BussinesLayer.Services;
 using BussinesLayer.Services.Contracts;
+using Core.Services;
+using Core.Services.Contracts;
 using EntityLayer.Models;
 using PresentationLayer.Views;
 using PresentationLayer.Views.Contracts;
@@ -16,6 +18,7 @@ namespace PresentationLayer.Presenters
         ICategoryListView _viewList { get; set; }
         ICategoryCreateView _viewCreate { get; set; }
         ICategoryService<IEnumerable<Category>> _service { get; set; }
+        ILanguageService languageService { get; set; } = new LanguageService();
 
         public CategoryListPresenter(ICategoryListView view, ICategoryService<IEnumerable<Category>> service)
         {
@@ -41,6 +44,8 @@ namespace PresentationLayer.Presenters
             _viewList.DeleteClick += _view_DeleteClick;
             _viewList.AddClick += _view_AddClick;
             _viewList.ViewLoad += _view_ViewLoad;
+
+            this.languageService.SetLanguage("en");
         }
 
         private void _view_ViewLoad(object sender, EventArgs e)
@@ -63,6 +68,7 @@ namespace PresentationLayer.Presenters
 
         private void _view_DeleteClick(object sender, EventArgs e)
         {
+            string msg="";
             var indices = _viewList.SelectedIndices;
             var categories = _viewList.Categories.Where((item, index) => indices.Contains(index)).ToList();
 
@@ -72,25 +78,33 @@ namespace PresentationLayer.Presenters
                 var filter = categories.Where(item => item.ArticlesRelated == 0).ToList();
                 if (filter.Count != categories.Count)
                 {
-                    System.Windows.Forms.MessageBox.Show("No se pueden borrar categorías con artículos relacionados");
+                    // AlertCategoryDeleted
+                    //msg = languageService.GetString(LanguageService.Messages.ErrorOnDeleteCategory) ?? "0";
+                    System.Windows.Forms.MessageBox.Show(msg);
                     return;
                 }
 
-                var result = System.Windows.Forms.MessageBox.Show($"¿Desea eliminar los elementos seleccionados?", "Alert", System.Windows.Forms.MessageBoxButtons.YesNo);
+                // AskDeleteSelectedItems
+                //msg = languageService.GetString(LanguageService.Messages.QuestionConfirmDeleteItem) ?? "0";
+                var result = System.Windows.Forms.MessageBox.Show(msg, "Alert", System.Windows.Forms.MessageBoxButtons.YesNo);
 
                 if (result == System.Windows.Forms.DialogResult.Yes)
                 {
                     int count = categories.Count;
 
                     DeleteCategories(categories);
-                    _viewList.Success = $"Se eliminaron {count} categorias";
+                    // OkCategoriesDeleted
+                    //msg = languageService.GetString(LanguageService.Messages.SuccessCategoriesDeleted) ?? "0";
+                    _viewList.Success = string.Format(msg, count);
                     _viewList.ShowSuccess = true;
                     LoadCategories();
                 }
             }
             else
             {
-                System.Windows.Forms.MessageBox.Show($"Por favor seleccione al menos una categoría");
+                // AlertSelectACategory
+                //msg = languageService.GetString(LanguageService.Messages.WarningSelectCategory) ?? "0";
+                System.Windows.Forms.MessageBox.Show(msg);
             }
         }
 

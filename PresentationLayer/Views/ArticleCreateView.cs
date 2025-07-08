@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace PresentationLayer.Views
 {
-    public partial class ArticleCreateView : Form, IArticleCreateView
+    public partial class ArticleCreateView : Form, IArticleCreateView, ISetupLanguageView
     {
         public string Id { get; set; }
         public string NameA
@@ -120,6 +120,11 @@ namespace PresentationLayer.Views
                 timer.Stop();
             };
             timer.Start();
+        }
+
+        public void SetControlsLanguage()
+        {
+            // btnAny.Text = languageService.GetString(...[key]);
         }
     }
 }

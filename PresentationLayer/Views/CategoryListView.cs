@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace PresentationLayer.Views
 {
-    public partial class CategoryListView : Form, ICategoryListView
+    public partial class CategoryListView : Form, ICategoryListView, ISetupLanguageView
     {
         public IEnumerable<Category> Categories
         {
@@ -137,6 +137,11 @@ namespace PresentationLayer.Views
                 var row = dgvCategories.Rows[e.RowIndex];
                 row.DefaultCellStyle.BackColor = isSelect ? Color.Yellow : Color.White;
             }
+        }
+
+        public void SetControlsLanguage()
+        {
+            // btnAny.Text = languageService.GetString(...[key]);
         }
 
         #endregion

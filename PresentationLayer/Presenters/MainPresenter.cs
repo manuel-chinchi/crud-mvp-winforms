@@ -1,4 +1,6 @@
-﻿using PresentationLayer.Views;
+﻿using Core.Services;
+using Core.Services.Contracts;
+using PresentationLayer.Views;
 using PresentationLayer.Views.Contracts;
 using System;
 using System.Collections.Generic;
@@ -14,6 +16,7 @@ namespace PresentationLayer.Presenters
         IArticleListView _viewArticleList;
         ICategoryListView _viewCategoryList;
         IReportView _viewReports;
+        ILanguageService languageService { get; set; } = new LanguageService();
 
         public MainPresenter(IMainView view, IArticleListView viewArticleList, ICategoryListView viewCategoryList, IReportView viewReports)
         {
@@ -39,6 +42,8 @@ namespace PresentationLayer.Presenters
             _viewMain.ArticlesClick += _viewMain_ArticlesClick;
             _viewMain.CategoriesClick += _viewMain_CategoriesClick;
             _viewMain.ReportsClick += _viewMain_ReportsClick;
+
+            this.languageService.SetLanguage("en");
         }
 
         private void _viewMain_ArticlesClick(object sender, EventArgs e)

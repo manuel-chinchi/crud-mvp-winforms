@@ -1,5 +1,7 @@
 ﻿using BussinesLayer.Services;
 using BussinesLayer.Services.Contracts;
+using Core.Services;
+using Core.Services.Contracts;
 using EntityLayer.Models;
 using PresentationLayer.Views;
 using PresentationLayer.Views.Contracts;
@@ -16,6 +18,7 @@ namespace PresentationLayer.Presenters
         IArticleListView _viewList { get; set; }
         IArticleCreateView _viewCreate { get; set; }
         IArticleService<IEnumerable<Article>> _service { get; set; }
+        ILanguageService languageService { get; set; } = new LanguageService();
 
         public ArticleListPresenter(IArticleListView view, IArticleService<IEnumerable<Article>> service)
         {
@@ -43,6 +46,8 @@ namespace PresentationLayer.Presenters
             _viewList.SearchClick += _viewList_SearchClick;
             _viewList.ShowAllClick += _viewList_ShowAllClick;
             _viewList.ViewLoad += _viewList_ViewLoad;
+
+            languageService.SetLanguage("en");
         }
 
         private void _viewList_ViewLoad(object sender, EventArgs e)
@@ -63,12 +68,15 @@ namespace PresentationLayer.Presenters
 
         private void _viewList_DeleteClick(object sender, EventArgs e)
         {
+            string msg="";
             var indices = _viewList.SelectedIndices;
             var articles = _viewList.Articles.Where((item, index) => indices.Contains(index)).ToList();
 
             if (articles.Count > 0)
             {
-                var result = System.Windows.Forms.MessageBox.Show("¿Desea eliminar los elementos seleccionados?", "Alert", System.Windows.Forms.MessageBoxButtons.YesNo);
+                // AskDeleteSelectedItems
+                //msg = languageService.GetString(LanguageService.Messages.QuestionConfirmDeleteItem);
+                var result = System.Windows.Forms.MessageBox.Show(msg, "Alert", System.Windows.Forms.MessageBoxButtons.YesNo);
                 if (result == System.Windows.Forms.DialogResult.Yes)
                 {
                     int count = articles.Count;
@@ -76,6 +84,7 @@ namespace PresentationLayer.Presenters
                     {
                         _service.DeleteArticle(article.Id.ToString());
                     }
+                    // OkArticlesDeleted
                     _viewList.Success = $"Se eliminaron {count} artículos";
                     _viewList.ShowSuccess = true;
 
@@ -86,6 +95,7 @@ namespace PresentationLayer.Presenters
             }
             else
             {
+                // AlertSelectOneArticle
                 System.Windows.Forms.MessageBox.Show("Seleccione al menos 1 artículo");
             }
         }
@@ -111,6 +121,7 @@ namespace PresentationLayer.Presenters
             }
             else
             {
+                // AlertSelectOneArticle
                 System.Windows.Forms.MessageBox.Show("Seleccione 1 artículo");
             }
         }
@@ -140,17 +151,23 @@ namespace PresentationLayer.Presenters
 
             if (_viewList.FilterIncludeName == false && _viewList.FilterIncludeDescription == false)
             {
+                // WarningSelectAFilter
+                // AlertSelectAFilter
                 _viewList.Warning = "Please select a search filter";
                 _viewList.ShowWarning = true;
                 return;
             }
             else if ((_viewList.FilterIncludeName || _viewList.FilterIncludeDescription) && result.Count() == 0)
             {
+                // ErrorNoResults
+                // OkNoFindResults
                 _viewList.Success = "No results found";
                 _viewList.ShowSuccess = true;
             }
             else
             {
+                // SuccessFilterResults
+                // OkCountFindResults
                 _viewList.Success = $"'{result.Count()}' results found";
                 _viewList.ShowSuccess = true;
             }
