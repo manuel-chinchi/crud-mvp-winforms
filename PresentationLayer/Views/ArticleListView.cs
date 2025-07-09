@@ -1,6 +1,7 @@
 ﻿using EntityLayer.Models;
 using PresentationLayer.Presenters;
 using PresentationLayer.Views.Contracts;
+using PresentationLayer.Views.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static PresentationLayer.Enums;
 
 namespace PresentationLayer.Views
 {
@@ -187,5 +189,10 @@ namespace PresentationLayer.Views
         }
 
         #endregion
+
+        public AlertResult Alert(string text, string title, Enums.AlertButtons buttons)
+        {
+            return ViewHelper.Alert(text, title, buttons);
+        }
     }
 }

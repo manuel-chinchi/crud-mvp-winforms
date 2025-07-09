@@ -65,11 +65,11 @@ namespace PresentationLayer.Presenters
         {
             var indices = _viewList.SelectedIndices;
             var articles = _viewList.Articles.Where((item, index) => indices.Contains(index)).ToList();
-
+            Enums.AlertResult result;
             if (articles.Count > 0)
             {
-                var result = System.Windows.Forms.MessageBox.Show("You want to delete the selected items?", "Alert", System.Windows.Forms.MessageBoxButtons.YesNo);
-                if (result == System.Windows.Forms.DialogResult.Yes)
+                result = _viewList.Alert("You want to delete the selected items?", "Alert", Enums.AlertButtons.YesNo);
+                if (result == Enums.AlertResult.Yes)
                 {
                     int count = articles.Count;
                     foreach (var article in articles)
@@ -86,7 +86,7 @@ namespace PresentationLayer.Presenters
             }
             else
             {
-                System.Windows.Forms.MessageBox.Show("Select an article");
+                _viewList.Alert("Select an article", "Info", Enums.AlertButtons.OK);
             }
         }
 
@@ -111,7 +111,7 @@ namespace PresentationLayer.Presenters
             }
             else
             {
-                System.Windows.Forms.MessageBox.Show("Select an article");
+                _viewList.Alert("Select an article", "Info", Enums.AlertButtons.OK);
             }
         }
 

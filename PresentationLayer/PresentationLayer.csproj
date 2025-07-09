@@ -70,6 +70,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums.cs" />
     <Compile Include="Presenters\ArticleCreatePresenter.cs" />
     <Compile Include="Presenters\CategoryCreatePresenter.cs" />
     <Compile Include="Presenters\ArticleListPresenter.cs" />
@@ -120,6 +121,7 @@
     <Compile Include="Views\Contracts\IArticleListView.cs" />
     <Compile Include="Views\Contracts\ICategoryListView.cs" />
     <Compile Include="Views\Contracts\IReportView.cs" />
+    <Compile Include="Views\Helpers\ViewHelper.cs" />
     <Compile Include="Views\MainView.cs">
       <SubType>Form</SubType>
     </Compile>

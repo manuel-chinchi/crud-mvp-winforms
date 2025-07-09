@@ -72,7 +72,7 @@ namespace PresentationLayer.Presenters
                 var filter = categories.Where(item => item.ArticlesRelated == 0).ToList();
                 if (filter.Count != categories.Count)
                 {
-                    System.Windows.Forms.MessageBox.Show("Categories that contain articles cannot be deleted");
+                    _viewList.Alert("Categories that contain articles cannot be deleted", "Info", Enums.AlertButtons.OK);
                     return;
                 }
 
@@ -90,7 +90,7 @@ namespace PresentationLayer.Presenters
             }
             else
             {
-                System.Windows.Forms.MessageBox.Show($"Select an category");
+                _viewList.Alert("Select an category", "Info", Enums.AlertButtons.OK);
             }
         }
 

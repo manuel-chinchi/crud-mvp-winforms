@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static PresentationLayer.Enums;
 
 namespace PresentationLayer.Views.Contracts
 {
@@ -12,5 +13,7 @@ namespace PresentationLayer.Views.Contracts
         bool ShowError { get; set; }
         string Success { get; set; }
         bool ShowSuccess { get; set; }
+
+        AlertResult Alert(string text, string title, AlertButtons buttons);
     }
 }

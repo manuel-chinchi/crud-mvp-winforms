@@ -35,5 +35,10 @@ namespace PresentationLayer.Views
 
             Presenter = new MainPresenter(this);
         }
+
+        public Enums.AlertResult Alert(string text, string title, Enums.AlertButtons buttons)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
