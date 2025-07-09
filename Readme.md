@@ -88,6 +88,13 @@ Validaciones
     <img src="resources/screenshots/SuccessMessage-ArticleListView.png" width="708">
 </p>
 
+## TODO
+
+- [ ] reemplazar mensajes internos de las vistas (ShowWarning, ShowError, 
+  ShowSuccess) por una vista tipo popup o descartar esas notificaciones 
+  directamente
+- [ ] agregar validaciones en las vistas tipo 'create' 
+
 ## Licencia
   GPL-3.0
 
@@ -98,6 +105,8 @@ Validaciones
 - [DataGridView using SortableBindingList](https://stackoverflow.com/questions/23661195/datagridview-using-sortablebindinglist)
 - [CheckBox in header of DataGridView for select all rows](https://stackoverflow.com/questions/8906575/checkbox-in-the-header-of-a-datagridview-in-any-column)
 - [Checkbox in header of DataGridView](https://stackoverflow.com/questions/8906575/checkbox-in-the-header-of-a-datagridview-in-any-column)
+- [Multiselect in Visual Studio IDE](https://stackoverflow.com/questions/16495727/multiple-select-in-visual-studio)
+- [Binding controls with resources files](https://stackoverflow.com/questions/1322484/c-how-to-bind-the-text-of-a-winforms-button-to-a-resource)
 
 - MSTests utils
   - [Documentacion MS](https://learn.microsoft.com/en-us/visualstudio/test/vstest-console-options?view=vs-2022)
@@ -105,3 +114,4 @@ Validaciones
 
 - Others
   - https://www.youtube.com/watch?v=LULI64meTUs
+ 

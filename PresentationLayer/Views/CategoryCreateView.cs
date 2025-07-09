@@ -1,5 +1,6 @@
 ﻿using PresentationLayer.Presenters;
 using PresentationLayer.Views.Contracts;
+using PresentationLayer.Views.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -83,6 +84,11 @@ namespace PresentationLayer.Views
                 timer.Stop();
             };
             timer.Start();
+        }
+
+        public Enums.AlertResult Alert(string text, string title, Enums.AlertButtons buttons)
+        {
+            return ViewHelper.Alert(text, title, buttons);
         }
     }
 }
