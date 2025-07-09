@@ -76,9 +76,9 @@ namespace PresentationLayer.Presenters
                     return;
                 }
 
-                var result = System.Windows.Forms.MessageBox.Show($"You want to delete the selected items?", "Alert", System.Windows.Forms.MessageBoxButtons.YesNo);
+                Enums.AlertResult result = _viewList.Alert("You want to delete the selected items?", "Alert", Enums.AlertButtons.YesNo);
 
-                if (result == System.Windows.Forms.DialogResult.Yes)
+                if (result == Enums.AlertResult.Yes)
                 {
                     int count = categories.Count;
 
