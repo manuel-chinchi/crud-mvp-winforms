@@ -88,6 +88,13 @@ Validaciones
     <img src="resources/screenshots/SuccessMessage-ArticleListView.png" width="708">
 </p>
 
+## TODO
+
+- [ ] reemplazar mensajes internos de las vistas (ShowWarning, ShowError, 
+  ShowSuccess) por una vista tipo popup o descartar esas notificaciones 
+  directamente
+- [ ] agregar validaciones en las vistas tipo 'create' 
+
 ## Licencia
   GPL-3.0
 
