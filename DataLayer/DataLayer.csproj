@@ -46,9 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\ArticleRepository.cs" />
-    <Compile Include="Repositories\BaseRepository.cs" />
-    <Compile Include="Repositories\CategoryRepository.cs" />
+    <Compile Include="Repositories\MSSQLServer\ArticleRepository.cs" />
+    <Compile Include="Repositories\MSSQLServer\BaseRepository.cs" />
+    <Compile Include="Repositories\MSSQLServer\CategoryRepository.cs" />
     <Compile Include="Repositories\Contracts\IArticleRepository.cs" />
     <Compile Include="Repositories\Contracts\IBaseRepository.cs" />
     <Compile Include="Repositories\Contracts\ICategoryRepository.cs" />
@@ -63,9 +63,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Scripts\db_schema_and_data.min.sql" />
-    <Content Include="Scripts\db_schema_and_data.v2.sql" />
-    <Content Include="Scripts\Queries.sql" />
+    <Content Include="Repositories\MSSQLServer\Scripts\db_schema_and_data.min.sql" />
+    <Content Include="Repositories\MSSQLServer\Scripts\db_schema_and_data.v2.sql" />
+    <Content Include="Repositories\MSSQLServer\Scripts\Queries.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
