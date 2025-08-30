@@ -70,7 +70,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Repositories\SQLite\App_Data\crud_mvp_winforms.db" />
+    <Content Include="Repositories\SQLite\App_Data\crud_mvp_winforms.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Repositories\MSSQLServer\Scripts\db_schema_and_data.min.sql" />
