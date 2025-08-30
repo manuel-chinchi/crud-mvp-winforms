@@ -9,6 +9,6 @@ namespace DataLayer.Repositories.MSSQLServer
 {
     public class BaseRepository
     {
-        protected readonly string _connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        protected readonly string _connectionString = ConfigurationManager.ConnectionStrings["cs_mssqlserver"].ConnectionString;
     }
 }
