@@ -1,8 +1,6 @@
 ﻿using BussinesLayer.Services.Contracts;
 using DataLayer.Repositories;
 using DataLayer.Repositories.Contracts;
-using DataLayer.Repositories.SQLite;
-//using DataLayer.Repositories.MSSQLServer;
 using EntityLayer.Models;
 using System;
 using System.Collections.Generic;
@@ -14,7 +12,12 @@ namespace BussinesLayer.Services
 {
     public class CategoryService : ICategoryService<IEnumerable<Category>>
     {
-        private readonly ICategoryRepository<Category> _categoryRepository = new CategoryRepository();
+        private readonly ICategoryRepository<Category> _categoryRepository;
+
+        public CategoryService()
+        {
+            _categoryRepository = RepositoryFactory.CreateCategoryRepository();
+        }
 
         public void CreateCategory(string name)
         {

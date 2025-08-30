@@ -1,8 +1,6 @@
 ﻿using BussinesLayer.Services.Contracts;
 using DataLayer.Repositories;
 using DataLayer.Repositories.Contracts;
-using DataLayer.Repositories.SQLite;
-//using DataLayer.Repositories.MSSQLServer;
 using EntityLayer.Models;
 using System;
 using System.Collections.Generic;
@@ -14,7 +12,12 @@ namespace BussinesLayer.Services
 {
     public class ArticleService : IArticleService<IEnumerable<Article>>
     {
-        private readonly IArticleRepository<Article> _articleRepository = new ArticleRepository();
+        private readonly IArticleRepository<Article> _articleRepository;
+
+        public ArticleService()
+        {
+            _articleRepository = RepositoryFactory.CreateArticleRepository();
+        }
 
         public IEnumerable<Article> GetArticles()
         {

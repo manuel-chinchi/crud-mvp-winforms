@@ -222,6 +222,6 @@
     <PostBuildEvent>xcopy /Y /E "$(SolutionDir)DataLayer\bin\$(ConfigurationName)\x86\SQLite.Interop.dll" "$(TargetDir)x86\"
 xcopy /Y /E "$(SolutionDir)DataLayer\bin\$(ConfigurationName)\x64\SQLite.Interop.dll" "$(TargetDir)x64\"
 
-xcopy /Y /E "$(SolutionDir)DataLayer\Repositories\SQLite\App_Data\crud_mvp_winforms.db" "$(TargetDir)\Repositories\SQLite\App_Data"</PostBuildEvent>
+xcopy /Y /E "$(SolutionDir)DataLayer\Repositories\Providers\SQLite\App_Data\crud_mvp_winforms.db" "$(TargetDir)\Repositories\Providers\SQLite\App_Data"</PostBuildEvent>
   </PropertyGroup>
 </Project>

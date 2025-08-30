@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataLayer.Repositories.MSSQLServer
+namespace DataLayer.Repositories.Providers.MSSQLServer
 {
     public class ArticleRepository : BaseRepository, IArticleRepository<Article>
     {

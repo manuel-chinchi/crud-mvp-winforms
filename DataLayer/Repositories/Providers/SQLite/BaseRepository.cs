@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataLayer.Repositories.SQLite
+namespace DataLayer.Repositories.Providers.SQLite
 {
     public class BaseRepository
     {
