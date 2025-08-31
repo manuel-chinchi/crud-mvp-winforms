@@ -1,13 +1,15 @@
 # Crud MVP WinForms
 
-Sistema básico con operaciones CRUD hecho en .Net Framework 4.5 y SQL Server.
+Aplicación tipo CRUD hecha en Winforms con patrón MVP (Modelo-Vista-Presentador)
 
 ## ¿De qué trata esta aplicación? 
 
-Este proyecto consiste en una pequeña aplicación de escritorio para sistemas Windows. La 
-cual permite el registro y actualización de Artículos y su agrupación por Categorías. Además
-tiene una sección de reportes donde se pueden visualizar los datos de manera clara y exportarlos
-a otros formatos.
+Este proyecto consiste en una pequeña aplicación de escritorio hecha en C# .Net Framework 4.5 
+y base de datos SQL Server (*). 
+La aplicación esta basada en un clásico sistema de inventario, para manejo y control de 
+artículos, categorías, proveedores, y todos los tipos comunes a este tipo de sistema.
+
+\(\*\) tabmién cuenta con una implementación SQLite configurable desde `App.config`
 
 ## ¿Cómo ejecutar la aplicación?
 
