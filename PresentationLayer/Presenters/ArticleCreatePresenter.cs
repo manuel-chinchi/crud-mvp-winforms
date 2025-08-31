@@ -70,9 +70,11 @@ namespace PresentationLayer.Presenters
                 _articleService.UpdateArticle(
                     new Article
                     {
+                        Id =  Convert.ToInt32(_viewCreate.Id),
                         Name = _viewCreate.NameA,
                         Description = _viewCreate.Description,
-                        Stock = Convert.ToInt32(_viewCreate.Stock)
+                        Stock = Convert.ToInt32(_viewCreate.Stock),
+                        CategoryId = category.Id.ToString()
                     });
                 //_viewCreate.Success = $"'Article id={_viewCreate.Id.ToString()}' has been updated.";
                 //_viewCreate.ShowSuccess = true;

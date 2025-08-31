@@ -25,7 +25,8 @@ namespace PresentationLayer.Presenters
         public const string CATEGORIESREPORT_RESX = "PresentationLayer.Reports.CategoriesReport.rdlc";
         public const string CATEGORIESREPORTV2_RESX = "PresentationLayer.Reports.CategoriesReportV2.rdlc";
     }
-
+    // TODO list
+    // 1.   si actualizan datos en vista Categories o Articles aqui no se actualizan. arreglar.s
     public class ReportPresenter
     {
         IReportView _view { get; set; }
