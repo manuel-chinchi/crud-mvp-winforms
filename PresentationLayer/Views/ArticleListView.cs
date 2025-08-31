@@ -17,6 +17,8 @@ namespace PresentationLayer.Views
 {
     // TODO [list]
     // 1.   cambiar colores de text de resultados al buscar/filtrar
+    // 2.   la fila seleccionada debería ser la que se escoja al querer
+    //      hacer una edicion. actualmente no se hace así
     public partial class ArticleListView : Form, IArticleListView
     {
         public bool FilterIncludeName
