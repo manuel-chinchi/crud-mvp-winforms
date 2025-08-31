@@ -14,6 +14,9 @@ using System.Windows.Forms;
 
 namespace PresentationLayer.Views
 {
+    // TODO list
+    // 1.   la fila seleccionada deberia ser la que se toma cuando uno
+    //      ejecuta la accion de editar.
     public partial class CategoryListView : Form, ICategoryListView
     {
         public IEnumerable<Category> Categories
