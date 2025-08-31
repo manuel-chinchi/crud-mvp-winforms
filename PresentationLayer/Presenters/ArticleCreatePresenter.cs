@@ -74,16 +74,16 @@ namespace PresentationLayer.Presenters
                         Description = _viewCreate.Description,
                         Stock = Convert.ToInt32(_viewCreate.Stock)
                     });
-                _viewCreate.Success = $"'Article id={_viewCreate.Id.ToString()}' has been updated.";
-                _viewCreate.ShowSuccess = true;
+                //_viewCreate.Success = $"'Article id={_viewCreate.Id.ToString()}' has been updated.";
+                //_viewCreate.ShowSuccess = true;
                 _viewCreate.IsEditMode = false;
             }
             else
             {
                 if (string.IsNullOrEmpty(_viewCreate.NameA))
                 {
-                    _viewCreate.Error = "The 'Name' field cannot be empty";
-                    _viewCreate.ShowError = true;
+                    //_viewCreate.Error = "The 'Name' field cannot be empty";
+                    //_viewCreate.ShowError = true;
                     return;
                 }
                 if (string.IsNullOrEmpty(_viewCreate.Stock))
@@ -98,8 +98,8 @@ namespace PresentationLayer.Presenters
                         Stock = Convert.ToInt32(_viewCreate.Stock, 10),
                         CategoryId = category.Id.ToString()
                     });
-                _viewCreate.Success = $"The article '{_viewCreate.NameA}' has been created";
-                _viewCreate.ShowSuccess = true;
+                //_viewCreate.Success = $"The article '{_viewCreate.NameA}' has been created";
+                //_viewCreate.ShowSuccess = true;
             }
             _viewCreate.CloseView();
         }

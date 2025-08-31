@@ -53,10 +53,10 @@ namespace PresentationLayer.Presenters
             _viewCreate = new CategoryCreateView();
             _viewCreate.ShowView();
 
-            if (!string.IsNullOrEmpty(_viewCreate.Success))
+            //if (!string.IsNullOrEmpty(_viewCreate.Success))
             {
-                _viewList.Success = _viewCreate.Success;
-                _viewList.ShowSuccess = _viewCreate.ShowSuccess;
+                //_viewList.Success = _viewCreate.Success;
+                //_viewList.ShowSuccess = _viewCreate.ShowSuccess;
                 _viewList.Categories = _service.GetCategories();
             }
         }
@@ -83,8 +83,8 @@ namespace PresentationLayer.Presenters
                     int count = categories.Count;
 
                     DeleteCategories(categories);
-                    _viewList.Success = $"{count} categories were deleted";
-                    _viewList.ShowSuccess = true;
+                    //_viewList.Success = $"{count} categories were deleted";
+                    //_viewList.ShowSuccess = true;
                     LoadCategories();
                 }
             }
