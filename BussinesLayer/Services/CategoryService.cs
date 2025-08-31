@@ -19,9 +19,9 @@ namespace BussinesLayer.Services
             _categoryRepository = RepositoryFactory.CreateCategoryRepository();
         }
 
-        public void CreateCategory(string name)
+        public void CreateCategory(Category category)
         {
-            _categoryRepository.Insert(new Category { Name = name });
+            _categoryRepository.Insert(category);
         }
 
         public void DeleteCategory(string id)

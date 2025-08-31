@@ -24,30 +24,14 @@ namespace BussinesLayer.Services
             return _articleRepository.GetAll();
         }
 
-        public void CreateArticle(string name, string description, string stock, string categoryId)
+        public void CreateArticle(Article article)
         {
-            stock = string.IsNullOrEmpty(stock) ? "0" : stock;
-            _articleRepository.Insert(
-                new Article()
-                {
-                    Name = name,
-                    Description = description,
-                    Stock = Convert.ToInt32(stock),
-                    CategoryId = categoryId
-                });
+            _articleRepository.Insert(article);
         }
 
-        public void UpdateArticle(string name, string description, string stock, string id, string categoryId)
+        public void UpdateArticle(Article article)
         {
-            _articleRepository.Update(
-                new Article
-                {
-                    Id = Convert.ToInt32(id),
-                    Name = name,
-                    Description = description,
-                    Stock = Convert.ToInt32(stock),
-                    CategoryId = categoryId
-                });
+            _articleRepository.Update(article);
         }
 
         public void DeleteArticle(string id)

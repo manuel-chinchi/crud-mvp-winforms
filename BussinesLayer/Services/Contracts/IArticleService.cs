@@ -9,8 +9,8 @@ namespace BussinesLayer.Services.Contracts
     public interface IArticleService<TEntity> where TEntity: class
     {
         IEnumerable<TEntity> GetArticles();
-        void CreateArticle(string name, string description, string stock, string categoryId);
-        void UpdateArticle(string name, string description, string stock, string id, string categoryId);
+        void CreateArticle(TEntity article);
+        void UpdateArticle(TEntity article);
         void DeleteArticle(string id);
         IEnumerable<TEntity> SearchArticle(int includeName, int includeDescription, string search);
     }

@@ -63,21 +63,41 @@ namespace PresentationLayer.Presenters
             if (_viewCreate.IsEditMode)
             {
                 _viewCreate.Categories = _categoryService.GetCategories();
-                _articleService.UpdateArticle(_viewCreate.NameA, _viewCreate.Description, _viewCreate.Stock.ToString(), _viewCreate.Id.ToString(), category.Id.ToString());
+                if (string.IsNullOrEmpty(_viewCreate.Stock))
+                {
+                    _viewCreate.Stock = "0";
+                }
+                _articleService.UpdateArticle(
+                    new Article
+                    {
+                        Name = _viewCreate.NameA,
+                        Description = _viewCreate.Description,
+                        Stock = Convert.ToInt32(_viewCreate.Stock)
+                    });
                 _viewCreate.Success = $"'Article id={_viewCreate.Id.ToString()}' has been updated.";
                 _viewCreate.ShowSuccess = true;
                 _viewCreate.IsEditMode = false;
             }
             else
             {
-                // TODO: mmm.. check this ¿_view.CategoryId property missing?
                 if (string.IsNullOrEmpty(_viewCreate.NameA))
                 {
                     _viewCreate.Error = "The 'Name' field cannot be empty";
                     _viewCreate.ShowError = true;
                     return;
                 }
-                _articleService.CreateArticle(_viewCreate.NameA, _viewCreate.Description, _viewCreate.Stock.ToString(), category.Id.ToString());
+                if (string.IsNullOrEmpty(_viewCreate.Stock))
+                {
+                    _viewCreate.Stock = "0";
+                }
+                _articleService.CreateArticle(
+                    new Article
+                    {
+                        Name = _viewCreate.NameA,
+                        Description = _viewCreate.Description,
+                        Stock = Convert.ToInt32(_viewCreate.Stock, 10),
+                        CategoryId = category.Id.ToString()
+                    });
                 _viewCreate.Success = $"The article '{_viewCreate.NameA}' has been created";
                 _viewCreate.ShowSuccess = true;
             }

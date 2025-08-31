@@ -9,7 +9,7 @@ namespace BussinesLayer.Services.Contracts
     public interface ICategoryService<TEntity> where TEntity : class
     {
         IEnumerable<TEntity> GetCategories();
-        void CreateCategory(string name);
+        void CreateCategory(TEntity category);
         void DeleteCategory(string id);
     }
 }
