@@ -12,7 +12,7 @@ namespace PresentationLayer.Views.Contracts
     {
         object ItemSelected { get; set; }
         IEnumerable<string> Reports { get; set; }
-        void ShowReport(LocalReport report);
+        void LoadReport(object localReport);
         ReportPresenter Presenter { get; set; }
 
         event EventHandler SelectReport;

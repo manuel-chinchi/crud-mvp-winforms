@@ -75,6 +75,7 @@
     <Compile Include="Presenters\CategoryCreatePresenter.cs" />
     <Compile Include="Presenters\ArticleListPresenter.cs" />
     <Compile Include="Presenters\CategoryListPresenter.cs" />
+    <Compile Include="Presenters\Helpers\ReportHelper.cs" />
     <Compile Include="Presenters\MainPresenter.cs" />
     <Compile Include="Presenters\ReportPresenter.cs" />
     <Compile Include="Program.cs" />

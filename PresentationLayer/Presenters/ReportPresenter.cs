@@ -1,6 +1,6 @@
 ﻿using BussinesLayer.Services.Contracts;
 using EntityLayer.Models;
-using Microsoft.Reporting.WinForms;
+using PresentationLayer.Presenters.Helpers;
 using PresentationLayer.Views.Contracts;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace PresentationLayer.Presenters
 {
-    public enum ReportType
+    public enum ReportResource
     {
         ArticlesReport = 0,
         ArticlesReportV2,
@@ -18,7 +18,7 @@ namespace PresentationLayer.Presenters
         CategoriesReportV2
     }
 
-    public class ReportConstants
+    public class ReportFiles
     {
         public const string ARTICLESREPORT_RESX = "PresentationLayer.Reports.ArticlesReport.rdlc";
         public const string ARTICLESREPORTV2_RESX = "PresentationLayer.Reports.ArticlesReportV2.rdlc";
@@ -58,42 +58,45 @@ namespace PresentationLayer.Presenters
         private void _view_SelectReport(object sender, EventArgs e)
         {
             int index = _view.Reports.ToList().IndexOf((string)_view.ItemSelected);
-            LocalReport lr = new LocalReport();
-
+            object lr = null;
             switch (index)
             {
-                case (int)ReportType.ArticlesReport:
+                case (int)ReportResource.ArticlesReport:
                     {
                         var articles = _articleService.GetArticles();
-                        lr.ReportEmbeddedResource = ReportConstants.ARTICLESREPORT_RESX;
-                        lr.DataSources.Add(new ReportDataSource("dsArticles", articles));
+                        lr = ReportHelper.CreateLocalReport(
+                            ReportFiles.ARTICLESREPORT_RESX,
+                           "dsArticles", articles);
                     }
                     break;
-                case (int)ReportType.ArticlesReportV2:
+                case (int)ReportResource.ArticlesReportV2:
                     {
                         var articles = _articleService.GetArticles();
-                        lr.ReportEmbeddedResource = ReportConstants.ARTICLESREPORTV2_RESX;
-                        lr.DataSources.Add(new ReportDataSource("dsArticles", articles));
+                        lr = ReportHelper.CreateLocalReport(
+                           ReportFiles.ARTICLESREPORTV2_RESX,
+                           "dsArticles", articles);
                     }
                     break;
-                case (int)ReportType.CategoriesReport:
+                case (int)ReportResource.CategoriesReport:
                     {
                         var categories = _categoryService.GetCategories();
-                        lr.ReportEmbeddedResource = ReportConstants.CATEGORIESREPORT_RESX;
-                        lr.DataSources.Add(new ReportDataSource("dsCategories", categories));
+                        lr = ReportHelper.CreateLocalReport(
+                           ReportFiles.CATEGORIESREPORT_RESX,
+                           "dsCategories",
+                           categories);
                     }
                     break;
-                case (int)ReportType.CategoriesReportV2:
+                case (int)ReportResource.CategoriesReportV2:
                     {
                         var categories = _categoryService.GetCategories();
                         var articles = _articleService.GetArticles();
-                        lr.ReportEmbeddedResource = ReportConstants.CATEGORIESREPORTV2_RESX;
-                        lr.DataSources.Add(new ReportDataSource("dsCategories", categories));
-                        lr.DataSources.Add(new ReportDataSource("dsArticles", articles));
+                        lr = ReportHelper.CreateLocalReport(ReportFiles.CATEGORIESREPORTV2_RESX);
+                        ReportHelper.AddDataSource(lr, "dsCategories", categories);
+                        ReportHelper.AddDataSource(lr, "dsArticles", articles);
                     }
                     break;
             }
-            _view.ShowReport(lr);
+            _view.LoadReport(lr);
         }
     }
 }
