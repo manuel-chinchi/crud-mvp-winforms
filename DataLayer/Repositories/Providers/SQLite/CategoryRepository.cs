@@ -11,7 +11,8 @@ namespace DataLayer.Repositories.Providers.SQLite
 {
     public class CategoryRepository : BaseRepository, ICategoryRepository<Category>
     {
-        #region metodos base
+        #region Contracts '''''''''''''''''''''''''''''''''''''''''''''''''''''
+
         public void Delete(int id)
         {
             using (var connection = new SQLiteConnection(this.ConnectionString))
@@ -84,6 +85,7 @@ namespace DataLayer.Repositories.Providers.SQLite
         {
             throw new NotImplementedException();
         }
+
         #endregion
     }
 }
