@@ -13,10 +13,10 @@ namespace PresentationLayer.Presenters
     public class ArticleCreatePresenter
     {
         IArticleCreateView _viewCreate { get; set; }
-        IArticleService<IEnumerable<Article>> _articleService { get; set; }
-        ICategoryService<IEnumerable<Category>> _categoryService { get; set; }
+        IArticleService<Article> _articleService { get; set; }
+        ICategoryService<Category> _categoryService { get; set; }
 
-        public ArticleCreatePresenter(IArticleCreateView view, IArticleService<IEnumerable<Article>> articleService, ICategoryService<IEnumerable<Category>> categoryService)
+        public ArticleCreatePresenter(IArticleCreateView view, IArticleService<Article> articleService, ICategoryService<Category> categoryService)
         {
             _viewCreate = view;
             _viewCreate.Presenter = this;
@@ -28,7 +28,7 @@ namespace PresentationLayer.Presenters
             _viewCreate.CancelClick += _viewCreate_CancelClick;
         }
 
-        public ArticleCreatePresenter(IArticleCreateView view, IArticleService<IEnumerable<Article>> service)
+        public ArticleCreatePresenter(IArticleCreateView view, IArticleService<Article> service)
         {
             _viewCreate = view;
             _viewCreate.Presenter = this;

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BussinesLayer.Services.Contracts
 {
-    public interface ICategoryService<T>
+    public interface ICategoryService<TEntity> where TEntity : class
     {
-        T GetCategories();
+        IEnumerable<TEntity> GetCategories();
         void CreateCategory(string name);
         void DeleteCategory(string id);
     }

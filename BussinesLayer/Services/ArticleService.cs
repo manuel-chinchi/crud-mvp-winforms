@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BussinesLayer.Services
 {
-    public class ArticleService : IArticleService<IEnumerable<Article>>
+    public class ArticleService : IArticleService<Article>
     {
         private readonly IArticleRepository<Article> _articleRepository;
 

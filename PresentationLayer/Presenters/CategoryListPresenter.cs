@@ -15,9 +15,9 @@ namespace PresentationLayer.Presenters
     {
         ICategoryListView _viewList { get; set; }
         ICategoryCreateView _viewCreate { get; set; }
-        ICategoryService<IEnumerable<Category>> _service { get; set; }
+        ICategoryService<Category> _service { get; set; }
 
-        public CategoryListPresenter(ICategoryListView view, ICategoryService<IEnumerable<Category>> service)
+        public CategoryListPresenter(ICategoryListView view, ICategoryService<Category> service)
         {
             _viewList = view;
             _viewList.Presenter = this;
