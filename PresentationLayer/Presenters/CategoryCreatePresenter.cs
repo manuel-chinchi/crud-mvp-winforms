@@ -13,9 +13,9 @@ namespace PresentationLayer.Presenters
     public class CategoryCreatePresenter
     {
         ICategoryCreateView _viewCreate { get; set; }
-        ICategoryService<IEnumerable<Category>> _service { get; set; }
+        ICategoryService<Category> _service { get; set; }
         
-        public CategoryCreatePresenter(ICategoryCreateView view, ICategoryService<IEnumerable<Category>> service)
+        public CategoryCreatePresenter(ICategoryCreateView view, ICategoryService<Category> service)
         {
             _viewCreate = view;
             _viewCreate.Presenter = this;
@@ -44,7 +44,7 @@ namespace PresentationLayer.Presenters
         {
             if (!string.IsNullOrEmpty(_viewCreate.NameC))
             {
-                _service.CreateCategory(_viewCreate.NameC);
+                _service.CreateCategory(new Category { Name = _viewCreate.NameC });
                 _viewCreate.Success = $"The category '{_viewCreate.NameC}' has been created";
                 _viewCreate.ShowSuccess = true;
                 _viewCreate.CloseView();
@@ -58,7 +58,7 @@ namespace PresentationLayer.Presenters
 
         public void SaveCategory()
         {
-            _service.CreateCategory(_viewCreate.NameC);
+            _service.CreateCategory(new Category { Name = _viewCreate.NameC });
             _viewCreate.Success = "Created category";
             _viewCreate.ShowSuccess = true;
         }

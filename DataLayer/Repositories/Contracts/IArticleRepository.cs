@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Repositories.Contracts
 {
-    public interface IArticleRepository<T> : IBaseRepository<T>
+    public interface IArticleRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
     {
-        IEnumerable<T> Search(Dictionary<string, object> filters);
+        IEnumerable<TEntity> Search(Dictionary<string, object> filters);
     }
 }

@@ -29,10 +29,10 @@ namespace PresentationLayer.Presenters
     public class ReportPresenter
     {
         IReportView _view { get; set; }
-        IArticleService<IEnumerable<Article>> _articleService { get; set; }
-        ICategoryService<IEnumerable<Category>> _categoryService { get; set; }
+        IArticleService<Article> _articleService { get; set; }
+        ICategoryService<Category> _categoryService { get; set; }
 
-        public ReportPresenter(IReportView view, IArticleService<IEnumerable<Article>> articleService, ICategoryService<IEnumerable<Category>> categoryService)
+        public ReportPresenter(IReportView view, IArticleService<Article> articleService, ICategoryService<Category> categoryService)
         {
             _view = view;
             _view.Presenter = this;

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace BussinesLayer.Services.Contracts
 {
-    public interface ICategoryService<T>
+    public interface ICategoryService<TEntity> where TEntity : class
     {
-        T GetCategories();
-        void CreateCategory(string name);
+        IEnumerable<TEntity> GetCategories();
+        void CreateCategory(TEntity category);
         void DeleteCategory(string id);
     }
 }

@@ -10,13 +10,18 @@ using System.Threading.Tasks;
 
 namespace BussinesLayer.Services
 {
-    public class CategoryService : ICategoryService<IEnumerable<Category>>
+    public class CategoryService : ICategoryService<Category>
     {
-        private readonly ICategoryRepository<Category> _categoryRepository = new CategoryRepository();
+        private readonly ICategoryRepository<Category> _categoryRepository;
 
-        public void CreateCategory(string name)
+        public CategoryService()
         {
-            _categoryRepository.Insert(new Category { Name = name });
+            _categoryRepository = RepositoryFactory.CreateCategoryRepository();
+        }
+
+        public void CreateCategory(Category category)
+        {
+            _categoryRepository.Insert(category);
         }
 
         public void DeleteCategory(string id)

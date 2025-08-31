@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace BussinesLayer.Services.Contracts
 {
-    public interface IArticleService<T>
+    public interface IArticleService<TEntity> where TEntity: class
     {
-        T GetArticles();
-        void CreateArticle(string name, string description, string stock, string categoryId);
-        void UpdateArticle(string name, string description, string stock, string id, string categoryId);
+        IEnumerable<TEntity> GetArticles();
+        void CreateArticle(TEntity article);
+        void UpdateArticle(TEntity article);
         void DeleteArticle(string id);
-        T SearchArticle(int includeName, int includeDescription, string search);
+        IEnumerable<TEntity> SearchArticle(int includeName, int includeDescription, string search);
     }
 }

@@ -198,9 +198,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Docs\BadCodes\ArticleListView_chkHeader.txt" />
-    <Content Include="Docs\BadCodes\DataGridViewHeaderCheckBox.txt" />
-    <Content Include="Docs\ui-dev-notes.txt" />
     <Content Include="Reports\CustomCode\Functions.vb" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
@@ -218,4 +215,10 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /Y /E "$(SolutionDir)DataLayer\bin\$(ConfigurationName)\x86\SQLite.Interop.dll" "$(TargetDir)x86\"
+xcopy /Y /E "$(SolutionDir)DataLayer\bin\$(ConfigurationName)\x64\SQLite.Interop.dll" "$(TargetDir)x64\"
+
+xcopy /Y /E "$(SolutionDir)DataLayer\Repositories\Providers\SQLite\App_Data\crud_mvp_winforms.db" "$(TargetDir)\Repositories\Providers\SQLite\App_Data"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

@@ -15,9 +15,9 @@ namespace PresentationLayer.Presenters
     {
         IArticleListView _viewList { get; set; }
         IArticleCreateView _viewCreate { get; set; }
-        IArticleService<IEnumerable<Article>> _service { get; set; }
+        IArticleService<Article> _service { get; set; }
 
-        public ArticleListPresenter(IArticleListView view, IArticleService<IEnumerable<Article>> service)
+        public ArticleListPresenter(IArticleListView view, IArticleService<Article> service)
         {
             _viewList = view;
             _viewList.Presenter = this;
