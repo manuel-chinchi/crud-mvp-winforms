@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Repositories.Contracts
 {
-    public interface ICategoryRepository<T> : IBaseRepository<T>
+    public interface ICategoryRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
     {
     }
 }

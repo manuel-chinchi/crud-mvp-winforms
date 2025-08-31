@@ -14,7 +14,7 @@ namespace DataLayer.Repositories.Providers.SQLite
         #region metodos base
         public void Delete(int id)
         {
-            using (var connection = new SQLiteConnection(_connectionString))
+            using (var connection = new SQLiteConnection(this.ConnectionString))
             {
                 connection.Open();
                 var cmd = new SQLiteCommand(Queries.SP_DELTECATEGORY, connection);
@@ -30,7 +30,7 @@ namespace DataLayer.Repositories.Providers.SQLite
         {
             List<Category> categories = new List<Category>();
 
-            using (var connection = new SQLiteConnection(_connectionString))
+            using (var connection = new SQLiteConnection(this.ConnectionString))
             {
                 connection.Open();
                 var cmd = new SQLiteCommand(Queries.SP_GETCATEGORIES, connection);
@@ -65,7 +65,7 @@ namespace DataLayer.Repositories.Providers.SQLite
 
         public void Insert(Category entity)
         {
-            using (var connection = new SQLiteConnection(_connectionString))
+            using (var connection = new SQLiteConnection(this.ConnectionString))
             {
                 connection.Open();
                 var datetime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Repositories.Contracts
 {
-    public interface IBaseRepository<T>
+    public interface IBaseRepository<TEntity> where TEntity : class
     {
-        T GetById(int id);
-        void Insert(T entity);
-        void Update(T entity);
+        TEntity GetById(int id);
+        void Insert(TEntity entity);
+        void Update(TEntity entity);
         void Delete(int id);
-        IEnumerable<T> GetAll();
+        IEnumerable<TEntity> GetAll();
     }
 }

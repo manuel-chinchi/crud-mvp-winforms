@@ -11,10 +11,55 @@ namespace DataLayer.Repositories.Providers.SQLite
 {
     public class ArticleRepository : BaseRepository, IArticleRepository<Article>
     {
-        #region metodos base
+        #region Contracts '''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+        public Article GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Insert(Article entity)
+        {
+            using (var connection = new SQLiteConnection(this.ConnectionString))
+            {
+                connection.Open();
+                var cmd = new SQLiteCommand(Queries.SP_INSERTARTICLE, connection);
+
+                var dateCreated = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
+                string dateUpdated = null;
+                cmd.Parameters.AddWithValue("@Name", entity.Name);
+                cmd.Parameters.AddWithValue("@Description", entity.Description);
+                cmd.Parameters.AddWithValue("@Stock", entity.Stock);
+                cmd.Parameters.AddWithValue("@CategoryId", entity.CategoryId);
+                cmd.Parameters.AddWithValue("@DateCreated", dateCreated);
+                cmd.Parameters.AddWithValue("@DateUpdated", dateUpdated);
+
+                cmd.ExecuteReader();
+                connection.Close();
+            }
+        }
+
+        public void Update(Article entity)
+        {
+            using (var connection = new SQLiteConnection(this.ConnectionString))
+            {
+                connection.Open();
+                var cmd = new SQLiteCommand(Queries.SP_UPDATEARTICLE, connection);
+
+                cmd.Parameters.AddWithValue("@Name", entity.Name);
+                cmd.Parameters.AddWithValue("@Description", entity.Description);
+                cmd.Parameters.AddWithValue("@Stock", entity.Stock);
+                cmd.Parameters.AddWithValue("@CategoryId", entity.CategoryId);
+                cmd.Parameters.AddWithValue("@Id", entity.Id);
+
+                cmd.ExecuteReader();
+                connection.Close();
+            }
+        }
+        
         public void Delete(int id)
         {
-            using (var connection = new SQLiteConnection(_connectionString))
+            using (var connection = new SQLiteConnection(this.ConnectionString))
             {
                 connection.Open();
                 var cmd = new SQLiteCommand(Queries.SP_DELETEARTICLE, connection);
@@ -29,7 +74,7 @@ namespace DataLayer.Repositories.Providers.SQLite
         public IEnumerable<Article> GetAll()
         {
             List<Article> articles = new List<Article>();
-            using (var connection = new SQLiteConnection(_connectionString))
+            using (var connection = new SQLiteConnection(this.ConnectionString))
             {
                 connection.Open();
                 var cmd = new SQLiteCommand(Queries.SP_GETARTICLES, connection);
@@ -69,32 +114,9 @@ namespace DataLayer.Repositories.Providers.SQLite
             return articles;
         }
 
-        public Article GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
+        #endregion
 
-        public void Insert(Article entity)
-        {
-            using (var connection = new SQLiteConnection(_connectionString))
-            {
-                connection.Open();
-                var cmd = new SQLiteCommand(Queries.SP_INSERTARTICLE, connection);
-
-                var dateCreated = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
-                string dateUpdated = null;
-                cmd.Parameters.AddWithValue("@Name", entity.Name);
-                cmd.Parameters.AddWithValue("@Description", entity.Description);
-                cmd.Parameters.AddWithValue("@Stock", entity.Stock);
-                cmd.Parameters.AddWithValue("@CategoryId", entity.CategoryId);
-                cmd.Parameters.AddWithValue("@DateCreated", dateCreated);
-                cmd.Parameters.AddWithValue("@DateUpdated", dateUpdated);
-
-                cmd.ExecuteReader();
-                connection.Close();
-            }
-        }
-
+        // TODO refactorizar. pasar algo como ~FiltersInfo en vez de diccionario
         public IEnumerable<Article> Search(Dictionary<string, object> filters)
         {
             int includeName = (int)filters["includeName"];
@@ -102,7 +124,7 @@ namespace DataLayer.Repositories.Providers.SQLite
             string search = (string)filters["search"];
 
             List<Article> articles = new List<Article>();
-            using (var connection = new SQLiteConnection(_connectionString))
+            using (var connection = new SQLiteConnection(this.ConnectionString))
             {
                 connection.Open();
                 var cmd = new SQLiteCommand(Queries.SP_SEARCHARTICLE, connection);
@@ -148,24 +170,5 @@ namespace DataLayer.Repositories.Providers.SQLite
             }
             return articles;
         }
-
-        public void Update(Article entity)
-        {
-            using (var connection = new SQLiteConnection(_connectionString))
-            {
-                connection.Open();
-                var cmd = new SQLiteCommand(Queries.SP_UPDATEARTICLE, connection);
-
-                cmd.Parameters.AddWithValue("@Name", entity.Name);
-                cmd.Parameters.AddWithValue("@Description", entity.Description);
-                cmd.Parameters.AddWithValue("@Stock", entity.Stock);
-                cmd.Parameters.AddWithValue("@CategoryId", entity.CategoryId);
-                cmd.Parameters.AddWithValue("@Id", entity.Id);
-
-                cmd.ExecuteReader();
-                connection.Close();
-            }
-        }
-        #endregion
     }
 }

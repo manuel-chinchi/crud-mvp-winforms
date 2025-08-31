@@ -20,7 +20,7 @@ namespace DataLayer.Repositories.Providers.MSSQLServer
 
         public void Insert(Category entity)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(this.ConnectionString))
             {
                 connection.Open();
                 connection.Execute(
@@ -43,7 +43,7 @@ namespace DataLayer.Repositories.Providers.MSSQLServer
 
         public void Delete(int id)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(this.ConnectionString))
             {
                 connection.Open();
                 connection.Execute(
@@ -63,7 +63,7 @@ namespace DataLayer.Repositories.Providers.MSSQLServer
         {
             IEnumerable<Category> result = new List<Category>();
 
-            using (var connection=new SqlConnection(_connectionString))
+            using (var connection=new SqlConnection(this.ConnectionString))
             {
                 connection.Open();
                 result = connection.Query<Category>("GetCategories", CommandType.StoredProcedure);

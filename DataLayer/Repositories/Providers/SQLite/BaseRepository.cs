@@ -1,5 +1,4 @@
-﻿using DataLayer.Repositories.Contracts;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -10,11 +9,16 @@ namespace DataLayer.Repositories.Providers.SQLite
 {
     public class BaseRepository
     {
-        protected string _connectionString;
+        private readonly string _connectionString;
+        public string ConnectionString
+        {
+            get { return _connectionString; }
+        }
+
         public BaseRepository()
         {
-            var full_cs = ConfigurationManager.ConnectionStrings["cs_sqlite"].ConnectionString;
-            _connectionString = full_cs.Replace("|DataDirectory|", AppDomain.CurrentDomain.BaseDirectory);
+            var cs = ConfigurationManager.ConnectionStrings["cs_sqlite"].ConnectionString;
+            _connectionString = cs.Replace("|DataDirectory|", AppDomain.CurrentDomain.BaseDirectory);
         }
     }
 }

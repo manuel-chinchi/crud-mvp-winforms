@@ -21,7 +21,7 @@ namespace DataLayer.Repositories.Providers.MSSQLServer
 
         public void Insert(Article entity)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(this.ConnectionString))
             {
                 connection.Open();
                 connection.Execute(
@@ -42,7 +42,7 @@ namespace DataLayer.Repositories.Providers.MSSQLServer
 
         public void Delete(int id)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(this.ConnectionString))
             {
                 connection.Open();
                 connection.Execute(
@@ -60,7 +60,7 @@ namespace DataLayer.Repositories.Providers.MSSQLServer
 
         public void Update(Article entity)
         {
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(this.ConnectionString))
             {
                 connection.Open();
                 connection.Execute(
@@ -84,7 +84,7 @@ namespace DataLayer.Repositories.Providers.MSSQLServer
         {
             IEnumerable<Article> result = new List<Article>();
 
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(this.ConnectionString))
             {
                 connection.Open();
                 result = connection.Query<Article>("GetArticles", CommandType.StoredProcedure);
@@ -97,7 +97,7 @@ namespace DataLayer.Repositories.Providers.MSSQLServer
         {
             IEnumerable<Article> result = new List<Article>();
 
-            using (var connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(this.ConnectionString))
             {
                 connection.Open();
                 result = connection.Query<Article>(
