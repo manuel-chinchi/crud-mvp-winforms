@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static PresentationLayer.Enums;
+using static PresentationLayer.Views.Helpers.Enums;
 
 namespace PresentationLayer.Views.Contracts
 {

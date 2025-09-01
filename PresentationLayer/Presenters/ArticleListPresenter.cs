@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static PresentationLayer.Views.Helpers.Enums;
 
 namespace PresentationLayer.Presenters
 {
@@ -65,11 +66,11 @@ namespace PresentationLayer.Presenters
         {
             var indices = _viewList.SelectedIndices;
             var articles = _viewList.Articles.Where((item, index) => indices.Contains(index)).ToList();
-            Enums.AlertResult result;
+            AlertResult result;
             if (articles.Count > 0)
             {
-                result = _viewList.Alert("You want to delete the selected items?", "Alert", Enums.AlertButtons.YesNo);
-                if (result == Enums.AlertResult.Yes)
+                result = _viewList.Alert("You want to delete the selected items?", "Alert", AlertButtons.YesNo);
+                if (result == AlertResult.Yes)
                 {
                     int count = articles.Count;
                     foreach (var article in articles)
@@ -78,7 +79,7 @@ namespace PresentationLayer.Presenters
                     }
                     //_viewList.Success = $"{count} articles were deleted";
                     //_viewList.ShowSuccess = true;
-                    _viewList.Alert($"{count} articles were deleted", "", Enums.AlertButtons.OK);
+                    _viewList.Alert($"{count} articles were deleted", "", AlertButtons.OK);
 
                     LoadArticles();
                     _viewList.FilterIncludeName = false;
@@ -87,7 +88,7 @@ namespace PresentationLayer.Presenters
             }
             else
             {
-                _viewList.Alert("Select an article", "Info", Enums.AlertButtons.OK);
+                _viewList.Alert("Select an article", "Info", AlertButtons.OK);
             }
         }
 
@@ -112,7 +113,7 @@ namespace PresentationLayer.Presenters
             }
             else
             {
-                _viewList.Alert("Select an article", "Info", Enums.AlertButtons.OK);
+                _viewList.Alert("Select an article", "Info", AlertButtons.OK);
             }
         }
 

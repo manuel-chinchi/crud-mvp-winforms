@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static PresentationLayer.Views.Helpers.Enums;
 
 namespace PresentationLayer.Presenters
 {
@@ -72,13 +73,13 @@ namespace PresentationLayer.Presenters
                 var filter = categories.Where(item => item.ArticlesRelated == 0).ToList();
                 if (filter.Count != categories.Count)
                 {
-                    _viewList.Alert("Categories that contain articles cannot be deleted", "Info", Enums.AlertButtons.OK);
+                    _viewList.Alert("Categories that contain articles cannot be deleted", "Info", AlertButtons.OK);
                     return;
                 }
 
-                Enums.AlertResult result = _viewList.Alert("You want to delete the selected items?", "Alert", Enums.AlertButtons.YesNo);
+                AlertResult result = _viewList.Alert("You want to delete the selected items?", "Alert", AlertButtons.YesNo);
 
-                if (result == Enums.AlertResult.Yes)
+                if (result == AlertResult.Yes)
                 {
                     int count = categories.Count;
 
@@ -90,7 +91,7 @@ namespace PresentationLayer.Presenters
             }
             else
             {
-                _viewList.Alert("Select an category", "Info", Enums.AlertButtons.OK);
+                _viewList.Alert("Select an category", "Info", AlertButtons.OK);
             }
         }
 

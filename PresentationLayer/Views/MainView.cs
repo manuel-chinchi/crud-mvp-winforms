@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static PresentationLayer.Views.Helpers.Enums;
 
 namespace PresentationLayer.Views
 {
@@ -36,7 +37,7 @@ namespace PresentationLayer.Views
             Presenter = new MainPresenter(this);
         }
 
-        public Enums.AlertResult Alert(string text, string title, Enums.AlertButtons buttons)
+        public AlertResult Alert(string text, string title, AlertButtons buttons)
         {
             throw new NotImplementedException();
         }
