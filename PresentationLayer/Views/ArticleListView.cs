@@ -194,9 +194,9 @@ namespace PresentationLayer.Views
             {
                 //var colIndex = dgvArticles.Columns["RowsSelector"].Index;
                 //bool isSelect = (bool)dgvArticles.Rows[e.RowIndex].Cells[colIndex].Value;
-                bool isSelect = (bool)dgvArticles.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
-                var row = dgvArticles.Rows[e.RowIndex];
-                row.DefaultCellStyle.BackColor = isSelect ? Color.Yellow : Color.White;
+                //bool isSelect = (bool)dgvArticles.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                //var row = dgvArticles.Rows[e.RowIndex];
+                //row.DefaultCellStyle.BackColor = isSelect ? Color.Yellow : Color.White;
             }
         }
 

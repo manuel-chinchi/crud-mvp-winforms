@@ -145,9 +145,9 @@ namespace PresentationLayer.Views
         {
             if (e.RowIndex >= 0)
             {
-                bool isSelect = (bool)dgvCategories.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
-                var row = dgvCategories.Rows[e.RowIndex];
-                row.DefaultCellStyle.BackColor = isSelect ? Color.Yellow : Color.White;
+                //bool isSelect = (bool)dgvCategories.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                //var row = dgvCategories.Rows[e.RowIndex];
+                //row.DefaultCellStyle.BackColor = isSelect ? Color.Yellow : Color.White;
             }
         }
 
