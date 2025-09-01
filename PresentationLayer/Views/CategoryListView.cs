@@ -69,16 +69,24 @@ namespace PresentationLayer.Views
         {
             get
             {
-                selectedIndices.Clear();
-                foreach (DataGridViewRow row in dgvCategories.Rows)
+                List<int> indices = new List<int>();
+                foreach (DataGridViewRow fila in dgvCategories.SelectedRows)
                 {
-                    bool isSelected = (bool)(row.Cells["RowsSelector"].Value ?? false);
-                    if (isSelected)
-                    {
-                        selectedIndices.Add(row.Index);
-                    }
+                    indices.Add(fila.Index);
                 }
-                return selectedIndices;
+                indices.Sort();
+                return indices;
+
+                //selectedIndices.Clear();
+                //foreach (DataGridViewRow row in dgvCategories.Rows)
+                //{
+                //    bool isSelected = (bool)(row.Cells["RowsSelector"].Value ?? false);
+                //    if (isSelected)
+                //    {
+                //        selectedIndices.Add(row.Index);
+                //    }
+                //}
+                //return selectedIndices;
             }
         }
 

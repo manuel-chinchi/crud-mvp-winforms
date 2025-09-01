@@ -95,16 +95,24 @@ namespace PresentationLayer.Views
         {
             get
             {
-                selectedIndices.Clear();
-                foreach (DataGridViewRow row in dgvArticles.Rows)
+                List<int> indices=new List<int>();
+                foreach (DataGridViewRow fila in dgvArticles.SelectedRows)
                 {
-                    bool isSelected = (bool)(row.Cells["RowsSelector"].Value ?? false);
-                    if (isSelected)
-                    {
-                        selectedIndices.Add(row.Index);
-                    }
+                    indices.Add(fila.Index);
                 }
-                return selectedIndices;
+                indices.Sort();
+                return indices;
+
+                //selectedIndices.Clear();
+                //foreach (DataGridViewRow row in dgvArticles.Rows)
+                //{
+                //    bool isSelected = (bool)(row.Cells["RowsSelector"].Value ?? false);
+                //    if (isSelected)
+                //    {
+                //        selectedIndices.Add(row.Index);
+                //    }
+                //}
+                //return selectedIndices;
             }
         }
 
@@ -189,6 +197,20 @@ namespace PresentationLayer.Views
                 bool isSelect = (bool)dgvArticles.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
                 var row = dgvArticles.Rows[e.RowIndex];
                 row.DefaultCellStyle.BackColor = isSelect ? Color.Yellow : Color.White;
+            }
+        }
+
+        private void dgvArticles_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvArticles.SelectedRows.Count>1 || dgvArticles.SelectedRows.Count==0)
+            {
+                btnEdit.Enabled = false;
+                btnEdit.Cursor = Cursors.Cross;
+            }
+            else
+            {
+                btnEdit.Enabled = true;
+                btnEdit.Cursor = Cursors.Default;
             }
         }
 

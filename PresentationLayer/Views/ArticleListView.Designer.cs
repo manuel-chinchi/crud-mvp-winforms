@@ -281,6 +281,7 @@ namespace PresentationLayer.Views
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvArticles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvArticles.ColumnHeadersHeight = 28;
+            this.dgvArticles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvArticles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.RowsSelector,
             this.colId,
@@ -309,11 +310,13 @@ namespace PresentationLayer.Views
             this.dgvArticles.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvArticles.RowHeadersVisible = false;
             this.dgvArticles.RowHeadersWidth = 51;
-            this.dgvArticles.RowTemplate.Height = 24;
+            this.dgvArticles.RowTemplate.Height = 28;
+            this.dgvArticles.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvArticles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvArticles.Size = new System.Drawing.Size(724, 444);
             this.dgvArticles.TabIndex = 12;
             this.dgvArticles.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArticles_CellValueChanged);
+            this.dgvArticles.SelectionChanged += new System.EventHandler(this.dgvArticles_SelectionChanged);
             // 
             // RowsSelector
             // 
