@@ -53,42 +53,6 @@ namespace PresentationLayer.Views
             }
         }
         public ArticleListPresenter Presenter { get; set; }
-        //public string Warning { get; set; }
-        //public bool ShowWarning
-        //{
-        //    get { return lblResult.Visible; }
-        //    set
-        //    {
-        //        if (value == true)
-        //        {
-        //            lblResult.Text = Warning;
-        //            lblResult.ForeColor = Color.Goldenrod;
-        //            this.ShowResult();
-        //        }
-        //    }
-        //}
-        //public string Error { get; set; }
-        //public bool ShowError { get; set; }
-        //public string Success { get; set; }
-        //public bool ShowSuccess
-        //{
-        //    get { return lblResult.Visible; }
-        //    set
-        //    {
-        //        if (value == true)
-        //        {
-        //            lblResult.Text = Success;
-        //            lblResult.ForeColor = Color.Green;
-        //            this.ShowResult();
-        //        }
-        //        else
-        //        {
-        //            if (timer != null && timer.Enabled)
-        //                timer.Stop();
-        //            lblResult.Visible = value;
-        //        }
-        //    }
-        //}
 
         private List<int> selectedIndices = new List<int>();
         public List<int> SelectedIndices

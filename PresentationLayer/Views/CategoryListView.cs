@@ -32,34 +32,6 @@ namespace PresentationLayer.Views
             }
         }
         public CategoryListPresenter Presenter { get; set; }
-        //public string Error { get; set; }
-        //public bool ShowError
-        //{
-        //    get { return lblResult.Visible; }
-        //    set
-        //    {
-        //        if (value == true)
-        //        {
-        //            lblResult.Text = Error;
-        //            lblResult.ForeColor = Color.Red;
-        //            this.ShowResult(5);
-        //        }
-        //    }
-        //}
-        //public string Success { get; set; }
-        //public bool ShowSuccess
-        //{
-        //    get { return lblResult.Visible; }
-        //    set
-        //    {
-        //        if (value == true)
-        //        {
-        //            lblResult.Text = Success;
-        //            lblResult.ForeColor = Color.Green;
-        //            this.ShowResult(3);
-        //        }
-        //    }
-        //}
 
         private List<int> selectedIndices = new List<int>();
         public List<int> SelectedIndices

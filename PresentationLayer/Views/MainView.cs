@@ -15,10 +15,6 @@ namespace PresentationLayer.Views
 {
     public partial class MainView : Form, IMainView
     {
-        //public string Error { get; set; }
-        //public bool ShowError { get;set; }
-        //public string Success { get;set; }
-        //public bool ShowSuccess { get;set; }
         public MainPresenter Presenter { get; set; }
 
         public event EventHandler ArticlesClick;
