@@ -70,6 +70,7 @@ namespace PresentationLayer.Views
             InitializeComponent();
             BindingEvents();
             Presenter = new CategoryListPresenter(this);
+            dgvCategories.AutoGenerateColumns = false;
         }
 
         private void BindingEvents()
