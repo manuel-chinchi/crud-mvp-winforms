@@ -41,7 +41,6 @@ namespace DataLayer.Repositories.Providers.SQLite
 
         public void Update(Article entity)
         {
-            /// TODO si se pasa un CategoryId =null el registro de borra. arreglar ese caso.
             using (var connection = new SQLiteConnection(this.ConnectionString))
             {
                 connection.Open();
