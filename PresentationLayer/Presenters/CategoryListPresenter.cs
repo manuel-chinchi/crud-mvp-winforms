@@ -65,7 +65,10 @@ namespace PresentationLayer.Presenters
         private void _view_DeleteClick(object sender, EventArgs e)
         {
             var indices = _viewList.SelectedIndices;
-            var categories = _viewList.Categories.Where((item, index) => indices.Contains(index)).ToList();
+            var categories = _viewList
+                .Categories
+                .Where((item, index) => indices.Contains(index))
+                .ToList();
 
             if (categories.Count > 0)
             {

@@ -65,7 +65,10 @@ namespace PresentationLayer.Presenters
         private void _viewList_DeleteClick(object sender, EventArgs e)
         {
             var indices = _viewList.SelectedIndices;
-            var articles = _viewList.Articles.Where((item, index) => indices.Contains(index)).ToList();
+            var articles = _viewList
+                .Articles
+                .Where((item, index) => indices.Contains(index))
+                .ToList();
             AlertResult result;
             if (articles.Count > 0)
             {
@@ -95,7 +98,10 @@ namespace PresentationLayer.Presenters
         private void _viewList_EditClick(object sender, EventArgs e)
         {
             var indices = _viewList.SelectedIndices;
-            var articles = _viewList.Articles.Where((item, index) => indices.Contains(index)).ToList();
+            var articles = _viewList
+                .Articles
+                .Where((item, index) => indices.Contains(index))
+                .ToList();
 
             if (articles.Count == 1)
             {
@@ -137,7 +143,10 @@ namespace PresentationLayer.Presenters
 
         private void SearchArticle()
         {
-            var result = _service.SearchArticle(Convert.ToInt32(_viewList.FilterIncludeName), Convert.ToInt32(_viewList.FilterIncludeDescription), _viewList.Search);
+            var result = _service.SearchArticle(
+                Convert.ToInt32(_viewList.FilterIncludeName), 
+                Convert.ToInt32(_viewList.FilterIncludeDescription), 
+                _viewList.Search);
             //_viewList.Error = "";
 
             if (_viewList.FilterIncludeName == false && _viewList.FilterIncludeDescription == false)

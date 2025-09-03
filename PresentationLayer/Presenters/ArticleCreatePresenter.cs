@@ -115,7 +115,10 @@ namespace PresentationLayer.Presenters
             _viewCreate.NameA = article.Name;
             _viewCreate.Description = article.Description;
             _viewCreate.Stock = article.Stock.ToString();
-            _viewCreate.ItemSelected = _viewCreate.Categories.ToList().FindIndex(c => c.Id == Convert.ToInt32(article.CategoryId));
+            _viewCreate.ItemSelected = _viewCreate
+                .Categories
+                .ToList()
+                .FindIndex(c => c.Id == Convert.ToInt32(article.CategoryId));
             _viewCreate.IsEditMode = true;
         }
     }
