@@ -100,49 +100,5 @@ namespace PresentationLayer.Presenters
             }
             _view.LoadReport(lr);
         }
-
-        public void LoadDefaultReport()
-        {
-            int index = _view.Reports.ToList().IndexOf((string)_view.SelectedItem);
-            object lr = null;
-            switch (index)
-            {
-                case (int)ReportResource.ArticlesReport:
-                    {
-                        var articles = _articleService.GetArticles();
-                        lr = ReportHelper.CreateLocalReport(
-                            ReportFiles.ARTICLESREPORT_RESX,
-                           "dsArticles", articles);
-                    }
-                    break;
-                case (int)ReportResource.ArticlesReportV2:
-                    {
-                        var articles = _articleService.GetArticles();
-                        lr = ReportHelper.CreateLocalReport(
-                           ReportFiles.ARTICLESREPORTV2_RESX,
-                           "dsArticles", articles);
-                    }
-                    break;
-                case (int)ReportResource.CategoriesReport:
-                    {
-                        var categories = _categoryService.GetCategories();
-                        lr = ReportHelper.CreateLocalReport(
-                           ReportFiles.CATEGORIESREPORT_RESX,
-                           "dsCategories",
-                           categories);
-                    }
-                    break;
-                case (int)ReportResource.CategoriesReportV2:
-                    {
-                        var categories = _categoryService.GetCategories();
-                        var articles = _articleService.GetArticles();
-                        lr = ReportHelper.CreateLocalReport(ReportFiles.CATEGORIESREPORTV2_RESX);
-                        ReportHelper.AddDataSource(lr, "dsCategories", categories);
-                        ReportHelper.AddDataSource(lr, "dsArticles", articles);
-                    }
-                    break;
-            }
-            _view.LoadReport(lr);
-        }
     }
 }
