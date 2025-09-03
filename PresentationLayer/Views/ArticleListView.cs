@@ -84,8 +84,6 @@ namespace PresentationLayer.Views
         public event EventHandler ShowAllClick;
         public event EventHandler ViewLoad;
 
-        private Timer timer;
-
         public ArticleListView()
         {
             InitializeComponent();
@@ -124,27 +122,6 @@ namespace PresentationLayer.Views
             this.ShowDialog();
         }
 
-        private void ShowResult(int interval = 3)
-        {
-            lblResult.Visible = true;
-
-            if (timer != null && timer.Enabled)
-            {
-                timer.Stop();
-            }
-
-            timer = new Timer();
-            timer.Interval = interval * 1000;
-            timer.Tick += (s, e) =>
-            {
-                lblResult.Hide();
-                timer.Stop();
-            };
-            timer.Start();
-        }
-
-        #region UI Settings
-
         private void pnlSearchContainer_MouseClick(object sender, MouseEventArgs e)
         {
             ucTxtExSearch.Focus();
@@ -175,8 +152,6 @@ namespace PresentationLayer.Views
                 btnEdit.Cursor = Cursors.Default;
             }
         }
-
-        #endregion
 
         public AlertResult Alert(string text, string title, AlertButtons buttons)
         {

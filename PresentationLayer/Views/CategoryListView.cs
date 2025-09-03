@@ -63,8 +63,6 @@ namespace PresentationLayer.Views
         public event EventHandler AddClick;
         public event EventHandler ViewLoad;
 
-        private Timer timer;
-
         public CategoryListView()
         {
             InitializeComponent();
@@ -90,27 +88,6 @@ namespace PresentationLayer.Views
             this.ShowDialog();
         }
 
-        private void ShowResult(int interval = 5)
-        {
-            lblResult.Visible = true;
-
-            if (timer != null && timer.Enabled)
-            {
-                timer.Stop();
-            }
-
-            timer = new Timer();
-            timer.Interval = interval * 1000;
-            timer.Tick += (s, e) =>
-            {
-                lblResult.Hide();
-                timer.Stop();
-            };
-            timer.Start();
-        }
-
-        #region UI settings
-
         private void dgvCategories_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -120,8 +97,6 @@ namespace PresentationLayer.Views
                 //row.DefaultCellStyle.BackColor = isSelect ? Color.Yellow : Color.White;
             }
         }
-
-        #endregion
 
         public Enums.AlertResult Alert(string text, string title, Enums.AlertButtons buttons)
         {

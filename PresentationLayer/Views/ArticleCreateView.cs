@@ -62,8 +62,6 @@ namespace PresentationLayer.Views
         public event EventHandler AcceptClick;
         public event EventHandler CancelClick;
 
-        private Timer timer;
-
         public ArticleCreateView()
         {
             InitializeComponent();
@@ -85,25 +83,6 @@ namespace PresentationLayer.Views
         {
             btnAccept.Click += delegate { AcceptClick?.Invoke(this, EventArgs.Empty); };
             btnCancel.Click += delegate { CancelClick?.Invoke(this, EventArgs.Empty); };
-        }
-
-        private void ShowResult(int interval = 5)
-        {
-            lblResult.Visible = true;
-
-            if (timer != null && timer.Enabled)
-            {
-                timer.Stop();
-            }
-
-            timer = new Timer();
-            timer.Interval = interval * 1000;
-            timer.Tick += (s, e) =>
-            {
-                lblResult.Hide();
-                timer.Stop();
-            };
-            timer.Start();
         }
 
         public Enums.AlertResult Alert(string text, string title, Enums.AlertButtons buttons)
