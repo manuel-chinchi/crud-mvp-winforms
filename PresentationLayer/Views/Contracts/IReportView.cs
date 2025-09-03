@@ -10,7 +10,7 @@ namespace PresentationLayer.Views.Contracts
 {
     public interface IReportView
     {
-        object ItemSelected { get; set; }
+        object SelectedItem { get; set; }
         IEnumerable<string> Reports { get; set; }
         void LoadReport(object localReport);
         ReportPresenter Presenter { get; set; }

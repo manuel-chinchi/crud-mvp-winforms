@@ -57,6 +57,7 @@ namespace PresentationLayer.Presenters
 
         private void _viewMain_ReportsClick(object sender, EventArgs e)
         {
+            _viewReports.Presenter.LoadDefaultReport();
             _viewReports.ShowView();
         }
     }

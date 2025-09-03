@@ -17,7 +17,7 @@ namespace PresentationLayer.Views
 {
     public partial class ReportView : Form, IReportView
     {
-        public object ItemSelected
+        public object SelectedItem
         {
             get { return cboReport.SelectedItem; }
             set { cboReport.SelectedItem = value; }
