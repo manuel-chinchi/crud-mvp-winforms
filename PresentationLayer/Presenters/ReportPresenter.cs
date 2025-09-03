@@ -33,7 +33,10 @@ namespace PresentationLayer.Presenters
         IArticleService<Article> _articleService { get; set; }
         ICategoryService<Category> _categoryService { get; set; }
 
-        public ReportPresenter(IReportView view, IArticleService<Article> articleService, ICategoryService<Category> categoryService)
+        public ReportPresenter(
+            IReportView view, 
+            IArticleService<Article> articleService, 
+            ICategoryService<Category> categoryService)
         {
             _view = view;
             _view.Presenter = this;

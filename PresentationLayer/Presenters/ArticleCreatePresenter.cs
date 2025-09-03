@@ -16,7 +16,10 @@ namespace PresentationLayer.Presenters
         IArticleService<Article> _articleService { get; set; }
         ICategoryService<Category> _categoryService { get; set; }
 
-        public ArticleCreatePresenter(IArticleCreateView view, IArticleService<Article> articleService, ICategoryService<Category> categoryService)
+        public ArticleCreatePresenter(
+            IArticleCreateView view, 
+            IArticleService<Article> articleService, 
+            ICategoryService<Category> categoryService)
         {
             _viewCreate = view;
             _viewCreate.Presenter = this;

@@ -15,7 +15,11 @@ namespace PresentationLayer.Presenters
         ICategoryListView _viewCategoryList;
         IReportView _viewReports;
 
-        public MainPresenter(IMainView view, IArticleListView viewArticleList, ICategoryListView viewCategoryList, IReportView viewReports)
+        public MainPresenter(
+            IMainView view, 
+            IArticleListView viewArticleList, 
+            ICategoryListView viewCategoryList, 
+            IReportView viewReports)
         {
             _viewMain = view;
             _viewMain.Presenter = this;
