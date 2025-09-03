@@ -15,8 +15,6 @@ using static PresentationLayer.Views.Helpers.Enums;
 
 namespace PresentationLayer.Views
 {
-    // TODO [list]
-    // 1.   cambiar colores de text de resultados al buscar/filtrar
     public partial class ArticleListView : Form, IArticleListView
     {
         public bool FilterIncludeName
