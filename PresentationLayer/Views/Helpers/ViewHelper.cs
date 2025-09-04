@@ -5,12 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
-using static PresentationLayer.Enums;
+using static PresentationLayer.Views.Helpers.Enums;
 
 namespace PresentationLayer.Views.Helpers
 {
     public static class ViewHelper
     {
+
+
         public static AlertResult Alert(string text, string title, Enums.AlertButtons buttons)
         {
             MessageBoxButtons buttonsNative;

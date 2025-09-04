@@ -9,15 +9,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static PresentationLayer.Views.Helpers.Enums;
 
 namespace PresentationLayer.Views
 {
     public partial class MainView : Form, IMainView
     {
-        public string Error { get; set; }
-        public bool ShowError { get;set; }
-        public string Success { get;set; }
-        public bool ShowSuccess { get;set; }
         public MainPresenter Presenter { get; set; }
 
         public event EventHandler ArticlesClick;
@@ -36,7 +33,7 @@ namespace PresentationLayer.Views
             Presenter = new MainPresenter(this);
         }
 
-        public Enums.AlertResult Alert(string text, string title, Enums.AlertButtons buttons)
+        public AlertResult Alert(string text, string title, AlertButtons buttons)
         {
             throw new NotImplementedException();
         }

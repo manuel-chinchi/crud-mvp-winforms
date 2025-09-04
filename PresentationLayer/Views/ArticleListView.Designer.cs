@@ -50,13 +50,13 @@ namespace PresentationLayer.Views
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.dgvArticles = new System.Windows.Forms.DataGridView();
-            this.pnlBody = new System.Windows.Forms.Panel();
             this.RowsSelector = new PresentationLayer.UserControls.GridViewCheckBoxColumn();
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnlBody = new System.Windows.Forms.Panel();
             this.pnlHeader.SuspendLayout();
             this.pnlHeaderOptions.SuspendLayout();
             this.pnlFilters.SuspendLayout();
@@ -105,7 +105,7 @@ namespace PresentationLayer.Views
             this.grpFilters.Controls.Add(this.chkDescription);
             this.grpFilters.Controls.Add(this.chkName);
             this.grpFilters.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grpFilters.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpFilters.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpFilters.Location = new System.Drawing.Point(0, 0);
             this.grpFilters.Name = "grpFilters";
             this.grpFilters.Size = new System.Drawing.Size(278, 39);
@@ -118,7 +118,7 @@ namespace PresentationLayer.Views
             this.chkDescription.AutoSize = true;
             this.chkDescription.Location = new System.Drawing.Point(156, 14);
             this.chkDescription.Name = "chkDescription";
-            this.chkDescription.Size = new System.Drawing.Size(101, 21);
+            this.chkDescription.Size = new System.Drawing.Size(104, 21);
             this.chkDescription.TabIndex = 8;
             this.chkDescription.Text = "Description";
             this.chkDescription.UseVisualStyleBackColor = true;
@@ -130,7 +130,7 @@ namespace PresentationLayer.Views
             this.chkName.AutoSize = true;
             this.chkName.Location = new System.Drawing.Point(83, 14);
             this.chkName.Name = "chkName";
-            this.chkName.Size = new System.Drawing.Size(67, 21);
+            this.chkName.Size = new System.Drawing.Size(69, 21);
             this.chkName.TabIndex = 7;
             this.chkName.Text = "Name";
             this.chkName.UseVisualStyleBackColor = true;
@@ -148,7 +148,7 @@ namespace PresentationLayer.Views
             // btnSearch
             // 
             this.btnSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.Location = new System.Drawing.Point(0, 5);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(149, 34);
@@ -175,7 +175,7 @@ namespace PresentationLayer.Views
             this.ucTxtExSearch.BorderColor = System.Drawing.SystemColors.WindowFrame;
             this.ucTxtExSearch.BorderWidth = 1;
             this.ucTxtExSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucTxtExSearch.FontTextBoxEx = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ucTxtExSearch.FontTextBoxEx = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ucTxtExSearch.InnerBackColor = System.Drawing.SystemColors.Window;
             this.ucTxtExSearch.Location = new System.Drawing.Point(5, 6);
             this.ucTxtExSearch.Multiline = false;
@@ -205,6 +205,7 @@ namespace PresentationLayer.Views
             this.pnlLeft.Controls.Add(this.btnEdit);
             this.pnlLeft.Controls.Add(this.btnAdd);
             this.pnlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlLeft.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlLeft.Location = new System.Drawing.Point(0, 50);
             this.pnlLeft.Name = "pnlLeft";
             this.pnlLeft.Padding = new System.Windows.Forms.Padding(5, 4, 5, 5);
@@ -214,7 +215,7 @@ namespace PresentationLayer.Views
             // lblResult
             // 
             this.lblResult.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResult.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblResult.ForeColor = System.Drawing.Color.Goldenrod;
             this.lblResult.Location = new System.Drawing.Point(5, 164);
             this.lblResult.Name = "lblResult";
@@ -226,7 +227,7 @@ namespace PresentationLayer.Views
             // btnShowAll
             // 
             this.btnShowAll.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnShowAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShowAll.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnShowAll.Location = new System.Drawing.Point(5, 124);
             this.btnShowAll.Name = "btnShowAll";
             this.btnShowAll.Size = new System.Drawing.Size(140, 40);
@@ -237,7 +238,7 @@ namespace PresentationLayer.Views
             // btnDelete
             // 
             this.btnDelete.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.Location = new System.Drawing.Point(5, 84);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(140, 40);
@@ -248,7 +249,7 @@ namespace PresentationLayer.Views
             // btnEdit
             // 
             this.btnEdit.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.Location = new System.Drawing.Point(5, 44);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(140, 40);
@@ -259,7 +260,7 @@ namespace PresentationLayer.Views
             // btnAdd
             // 
             this.btnAdd.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.Location = new System.Drawing.Point(5, 4);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(140, 40);
@@ -271,15 +272,17 @@ namespace PresentationLayer.Views
             // 
             this.dgvArticles.AllowUserToAddRows = false;
             this.dgvArticles.AllowUserToDeleteRows = false;
+            this.dgvArticles.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvArticles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvArticles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvArticles.ColumnHeadersHeight = 28;
+            this.dgvArticles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvArticles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.RowsSelector,
             this.colId,
@@ -289,7 +292,7 @@ namespace PresentationLayer.Views
             this.colCategory});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -308,21 +311,12 @@ namespace PresentationLayer.Views
             this.dgvArticles.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvArticles.RowHeadersVisible = false;
             this.dgvArticles.RowHeadersWidth = 51;
-            this.dgvArticles.RowTemplate.Height = 24;
+            this.dgvArticles.RowTemplate.Height = 28;
+            this.dgvArticles.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvArticles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvArticles.Size = new System.Drawing.Size(724, 444);
             this.dgvArticles.TabIndex = 12;
-            this.dgvArticles.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArticles_CellValueChanged);
-            // 
-            // pnlBody
-            // 
-            this.pnlBody.Controls.Add(this.dgvArticles);
-            this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlBody.Location = new System.Drawing.Point(150, 50);
-            this.pnlBody.Name = "pnlBody";
-            this.pnlBody.Padding = new System.Windows.Forms.Padding(4, 5, 5, 5);
-            this.pnlBody.Size = new System.Drawing.Size(733, 454);
-            this.pnlBody.TabIndex = 61;
+            this.dgvArticles.SelectionChanged += new System.EventHandler(this.dgvArticles_SelectionChanged);
             // 
             // RowsSelector
             // 
@@ -375,6 +369,16 @@ namespace PresentationLayer.Views
             this.colCategory.Name = "colCategory";
             this.colCategory.ReadOnly = true;
             this.colCategory.Width = 125;
+            // 
+            // pnlBody
+            // 
+            this.pnlBody.Controls.Add(this.dgvArticles);
+            this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlBody.Location = new System.Drawing.Point(150, 50);
+            this.pnlBody.Name = "pnlBody";
+            this.pnlBody.Padding = new System.Windows.Forms.Padding(4, 5, 5, 5);
+            this.pnlBody.Size = new System.Drawing.Size(733, 454);
+            this.pnlBody.TabIndex = 61;
             // 
             // ArticleListView
             // 

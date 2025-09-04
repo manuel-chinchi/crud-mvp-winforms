@@ -59,27 +59,8 @@ namespace PresentationLayer.Views
             }
         }
         public ArticleCreatePresenter Presenter { get; set; }
-        public string Error { get; set; }
-        public bool ShowError
-        {
-            get { return lblResult.Visible; }
-            set
-            {
-                if (value == true)
-                {
-                    lblResult.Text = Error;
-                    lblResult.ForeColor = Color.Red;
-                    this.ShowResult();
-                }
-            }
-        }
-        public string Success { get; set; }
-        public bool ShowSuccess { get; set; }
-
         public event EventHandler AcceptClick;
         public event EventHandler CancelClick;
-
-        private Timer timer;
 
         public ArticleCreateView()
         {
@@ -104,23 +85,9 @@ namespace PresentationLayer.Views
             btnCancel.Click += delegate { CancelClick?.Invoke(this, EventArgs.Empty); };
         }
 
-        private void ShowResult(int interval = 5)
+        public Enums.AlertResult Alert(string text, string title, Enums.AlertButtons buttons)
         {
-            lblResult.Visible = true;
-
-            if (timer != null && timer.Enabled)
-            {
-                timer.Stop();
-            }
-
-            timer = new Timer();
-            timer.Interval = interval * 1000;
-            timer.Tick += (s, e) =>
-            {
-                lblResult.Hide();
-                timer.Stop();
-            };
-            timer.Start();
+            return ViewHelper.Alert(text, title, buttons);
         }
 
         public Enums.AlertResult Alert(string text, string title, Enums.AlertButtons buttons)

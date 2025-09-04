@@ -57,18 +57,17 @@ namespace PresentationLayer.Views
             // cboReport
             // 
             this.cboReport.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cboReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboReport.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboReport.FormattingEnabled = true;
             this.cboReport.Location = new System.Drawing.Point(404, 3);
             this.cboReport.Name = "cboReport";
-            this.cboReport.Size = new System.Drawing.Size(396, 26);
+            this.cboReport.Size = new System.Drawing.Size(396, 25);
             this.cboReport.TabIndex = 2;
-            this.cboReport.Text = "ArticlesReport.rdlc";
             // 
             // lblChooseReport
             // 
             this.lblChooseReport.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblChooseReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblChooseReport.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblChooseReport.Location = new System.Drawing.Point(3, 0);
             this.lblChooseReport.Name = "lblChooseReport";
             this.lblChooseReport.Size = new System.Drawing.Size(395, 35);

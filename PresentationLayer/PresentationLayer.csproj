@@ -70,11 +70,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enums.cs" />
+    <Compile Include="Views\Helpers\Enums.cs" />
     <Compile Include="Presenters\ArticleCreatePresenter.cs" />
     <Compile Include="Presenters\CategoryCreatePresenter.cs" />
     <Compile Include="Presenters\ArticleListPresenter.cs" />
     <Compile Include="Presenters\CategoryListPresenter.cs" />
+    <Compile Include="Presenters\Helpers\ReportHelper.cs" />
     <Compile Include="Presenters\MainPresenter.cs" />
     <Compile Include="Presenters\ReportPresenter.cs" />
     <Compile Include="Program.cs" />

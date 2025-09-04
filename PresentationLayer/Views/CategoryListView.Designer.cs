@@ -29,6 +29,8 @@ namespace PresentationLayer.Views
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.pnlLeft = new System.Windows.Forms.Panel();
             this.lblResult = new System.Windows.Forms.Label();
@@ -68,7 +70,7 @@ namespace PresentationLayer.Views
             // lblResult
             // 
             this.lblResult.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResult.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblResult.ForeColor = System.Drawing.Color.Goldenrod;
             this.lblResult.Location = new System.Drawing.Point(5, 85);
             this.lblResult.Name = "lblResult";
@@ -80,7 +82,7 @@ namespace PresentationLayer.Views
             // btnDelete
             // 
             this.btnDelete.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.Location = new System.Drawing.Point(5, 45);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(140, 40);
@@ -91,7 +93,7 @@ namespace PresentationLayer.Views
             // btnAdd
             // 
             this.btnAdd.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.Location = new System.Drawing.Point(5, 5);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(140, 40);
@@ -113,22 +115,40 @@ namespace PresentationLayer.Views
             // 
             this.dgvCategories.AllowUserToAddRows = false;
             this.dgvCategories.AllowUserToDeleteRows = false;
-            this.dgvCategories.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCategories.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCategories.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvCategories.ColumnHeadersHeight = 29;
+            this.dgvCategories.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvCategories.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.RowsSelector,
             this.colId,
             this.colName,
             this.colArticlesRelated});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCategories.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvCategories.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCategories.Location = new System.Drawing.Point(0, 5);
             this.dgvCategories.Name = "dgvCategories";
             this.dgvCategories.RowHeadersVisible = false;
             this.dgvCategories.RowHeadersWidth = 51;
-            this.dgvCategories.RowTemplate.Height = 24;
+            this.dgvCategories.RowTemplate.Height = 28;
+            this.dgvCategories.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvCategories.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCategories.Size = new System.Drawing.Size(509, 421);
             this.dgvCategories.TabIndex = 1;
-            this.dgvCategories.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategories_CellValueChanged);
             // 
             // RowsSelector
             // 
@@ -158,7 +178,7 @@ namespace PresentationLayer.Views
             // colArticlesRelated
             // 
             this.colArticlesRelated.DataPropertyName = "ArticlesRelated";
-            this.colArticlesRelated.HeaderText = "Articles related";
+            this.colArticlesRelated.HeaderText = "Articles";
             this.colArticlesRelated.MinimumWidth = 6;
             this.colArticlesRelated.Name = "colArticlesRelated";
             this.colArticlesRelated.ReadOnly = true;

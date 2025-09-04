@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static PresentationLayer.Enums;
+using static PresentationLayer.Views.Helpers.Enums;
 
 namespace PresentationLayer.Views
 {
@@ -45,44 +45,22 @@ namespace PresentationLayer.Views
                 var bs = new BindingSource();
                 bs.DataSource = new SortableBindingList<Article>(value.ToList());
                 dgvArticles.DataSource = bs;
-                dgvArticles.Columns["CategoryId"].Visible = false;
             }
         }
         public ArticleListPresenter Presenter { get; set; }
-        public string Warning { get; set; }
-        public bool ShowWarning
+
+        private List<int> selectedIndices = new List<int>();
+        public List<int> SelectedIndices
         {
-            get { return lblResult.Visible; }
-            set
+            get
             {
-                if (value == true)
+                List<int> indices=new List<int>();
+                foreach (DataGridViewRow fila in dgvArticles.SelectedRows)
                 {
-                    lblResult.Text = Warning;
-                    lblResult.ForeColor = Color.Goldenrod;
-                    this.ShowResult();
+                    indices.Add(fila.Index);
                 }
-            }
-        }
-        public string Error { get; set; }
-        public bool ShowError { get; set; }
-        public string Success { get; set; }
-        public bool ShowSuccess
-        {
-            get { return lblResult.Visible; }
-            set
-            {
-                if (value == true)
-                {
-                    lblResult.Text = Success;
-                    lblResult.ForeColor = Color.Green;
-                    this.ShowResult();
-                }
-                else
-                {
-                    if (timer != null && timer.Enabled)
-                        timer.Stop();
-                    lblResult.Visible = value;
-                }
+                indices.Sort();
+                return indices;
             }
         }
 
@@ -111,13 +89,12 @@ namespace PresentationLayer.Views
         public event EventHandler ShowAllClick;
         public event EventHandler ViewLoad;
 
-        private Timer timer;
-
         public ArticleListView()
         {
             InitializeComponent();
             BindingEvents();
             Presenter = new ArticleListPresenter(this);
+            dgvArticles.AutoGenerateColumns = false;
         }
 
         private void BindingEvents()
@@ -150,47 +127,26 @@ namespace PresentationLayer.Views
             this.ShowDialog();
         }
 
-        private void ShowResult(int interval = 3)
-        {
-            lblResult.Visible = true;
-
-            if (timer != null && timer.Enabled)
-            {
-                timer.Stop();
-            }
-
-            timer = new Timer();
-            timer.Interval = interval * 1000;
-            timer.Tick += (s, e) =>
-            {
-                lblResult.Hide();
-                timer.Stop();
-            };
-            timer.Start();
-        }
-
-        #region UI Settings
-
         private void pnlSearchContainer_MouseClick(object sender, MouseEventArgs e)
         {
             ucTxtExSearch.Focus();
         }
 
-        private void dgvArticles_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        private void dgvArticles_SelectionChanged(object sender, EventArgs e)
         {
-            if (e.RowIndex >= 0)
+            if (dgvArticles.SelectedRows.Count>1 || dgvArticles.SelectedRows.Count==0)
             {
-                //var colIndex = dgvArticles.Columns["RowsSelector"].Index;
-                //bool isSelect = (bool)dgvArticles.Rows[e.RowIndex].Cells[colIndex].Value;
-                bool isSelect = (bool)dgvArticles.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
-                var row = dgvArticles.Rows[e.RowIndex];
-                row.DefaultCellStyle.BackColor = isSelect ? Color.Yellow : Color.White;
+                btnEdit.Enabled = false;
+                btnEdit.Cursor = Cursors.Cross;
+            }
+            else
+            {
+                btnEdit.Enabled = true;
+                btnEdit.Cursor = Cursors.Default;
             }
         }
 
-        #endregion
-
-        public AlertResult Alert(string text, string title, Enums.AlertButtons buttons)
+        public AlertResult Alert(string text, string title, AlertButtons buttons)
         {
             return ViewHelper.Alert(text, title, buttons);
         }

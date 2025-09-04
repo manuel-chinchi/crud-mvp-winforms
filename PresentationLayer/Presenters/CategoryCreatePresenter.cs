@@ -45,22 +45,16 @@ namespace PresentationLayer.Presenters
             if (!string.IsNullOrEmpty(_viewCreate.NameC))
             {
                 _service.CreateCategory(new Category { Name = _viewCreate.NameC });
-                _viewCreate.Success = $"The category '{_viewCreate.NameC}' has been created";
-                _viewCreate.ShowSuccess = true;
                 _viewCreate.CloseView();
             }
             else
             {
-                _viewCreate.Error = "The 'Name' field cannot be empty";
-                _viewCreate.ShowError = true;
             }
         }
 
         public void SaveCategory()
         {
             _service.CreateCategory(new Category { Name = _viewCreate.NameC });
-            _viewCreate.Success = "Created category";
-            _viewCreate.ShowSuccess = true;
         }
     }
 }

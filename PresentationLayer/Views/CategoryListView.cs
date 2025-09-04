@@ -32,32 +32,19 @@ namespace PresentationLayer.Views
             }
         }
         public CategoryListPresenter Presenter { get; set; }
-        public string Error { get; set; }
-        public bool ShowError
+
+        private List<int> selectedIndices = new List<int>();
+        public List<int> SelectedIndices
         {
-            get { return lblResult.Visible; }
-            set
+            get
             {
-                if (value == true)
+                List<int> indices = new List<int>();
+                foreach (DataGridViewRow fila in dgvCategories.SelectedRows)
                 {
-                    lblResult.Text = Error;
-                    lblResult.ForeColor = Color.Red;
-                    this.ShowResult(5);
+                    indices.Add(fila.Index);
                 }
-            }
-        }
-        public string Success { get; set; }
-        public bool ShowSuccess
-        {
-            get { return lblResult.Visible; }
-            set
-            {
-                if (value == true)
-                {
-                    lblResult.Text = Success;
-                    lblResult.ForeColor = Color.Green;
-                    this.ShowResult(3);
-                }
+                indices.Sort();
+                return indices;
             }
         }
 
@@ -83,13 +70,12 @@ namespace PresentationLayer.Views
         public event EventHandler AddClick;
         public event EventHandler ViewLoad;
 
-        private Timer timer;
-
         public CategoryListView()
         {
             InitializeComponent();
             BindingEvents();
             Presenter = new CategoryListPresenter(this);
+            dgvCategories.AutoGenerateColumns = false;
         }
 
         private void BindingEvents()
@@ -108,39 +94,6 @@ namespace PresentationLayer.Views
         {
             this.ShowDialog();
         }
-
-        private void ShowResult(int interval = 5)
-        {
-            lblResult.Visible = true;
-
-            if (timer != null && timer.Enabled)
-            {
-                timer.Stop();
-            }
-
-            timer = new Timer();
-            timer.Interval = interval * 1000;
-            timer.Tick += (s, e) =>
-            {
-                lblResult.Hide();
-                timer.Stop();
-            };
-            timer.Start();
-        }
-
-        #region UI settings
-
-        private void dgvCategories_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                bool isSelect = (bool)dgvCategories.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
-                var row = dgvCategories.Rows[e.RowIndex];
-                row.DefaultCellStyle.BackColor = isSelect ? Color.Yellow : Color.White;
-            }
-        }
-
-        #endregion
 
         public Enums.AlertResult Alert(string text, string title, Enums.AlertButtons buttons)
         {

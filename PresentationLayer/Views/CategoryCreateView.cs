@@ -15,34 +15,14 @@ namespace PresentationLayer.Views
 {
     public partial class CategoryCreateView : Form, ICategoryCreateView
     {
-
         public string NameC
         {
             get { return txtName.Text; }
             set { txtName.Text = value; }
         }
         public CategoryCreatePresenter Presenter { get; set; }
-        public string Error { get; set; }
-        public bool ShowError
-        {
-            get { return this.lblResult.Visible; }
-            set
-            {
-                if (value == true)
-                {
-                    lblResult.Text = Error;
-                    lblResult.ForeColor = Color.Red;
-                    this.ShowResult(5);
-                }
-            }
-        }
-        public string Success { get; set; }
-        public bool ShowSuccess { get; set; }
-
         public event EventHandler AcceptClick;
         public event EventHandler CancelClick;
-
-        private Timer timer;
 
         public CategoryCreateView()
         {
@@ -67,23 +47,9 @@ namespace PresentationLayer.Views
             this.ShowDialog();
         }
 
-        private void ShowResult(int interval = 5)
+        public Enums.AlertResult Alert(string text, string title, Enums.AlertButtons buttons)
         {
-            lblResult.Visible = true;
-
-            if (timer != null && timer.Enabled)
-            {
-                timer.Stop();
-            }
-
-            timer = new Timer();
-            timer.Interval = interval * 1000;
-            timer.Tick += (s, e) =>
-            {
-                lblResult.Hide();
-                timer.Stop();
-            };
-            timer.Start();
+            return ViewHelper.Alert(text, title, buttons);
         }
 
         public Enums.AlertResult Alert(string text, string title, Enums.AlertButtons buttons)

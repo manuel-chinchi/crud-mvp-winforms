@@ -16,24 +16,27 @@ namespace PresentationLayer.Presenters
         IArticleService<Article> _articleService { get; set; }
         ICategoryService<Category> _categoryService { get; set; }
 
-        public ArticleCreatePresenter(IArticleCreateView view, IArticleService<Article> articleService)
+        public ArticleCreatePresenter(
+            IArticleCreateView view, 
+            IArticleService<Article> articleService, 
+            ICategoryService<Category> categoryService)
         {
             _viewCreate = view;
             _viewCreate.Presenter = this;
             _articleService = articleService;
-            _categoryService = new CategoryService();
+            _categoryService = categoryService;
 
             _viewCreate.Categories = _categoryService.GetCategories();
             _viewCreate.AcceptClick += _viewCreate_AcceptClick;
             _viewCreate.CancelClick += _viewCreate_CancelClick;
         }
 
-        public ArticleCreatePresenter(IArticleCreateView view, IArticleService<Article> articleService, ICategoryService<Category> categoryService)
+        public ArticleCreatePresenter(IArticleCreateView view, IArticleService<Article> service)
         {
             _viewCreate = view;
             _viewCreate.Presenter = this;
-            _articleService = articleService;
-            _categoryService = categoryService;
+            _articleService = service;
+            _categoryService = new CategoryService();
 
             _viewCreate.Categories = _categoryService.GetCategories();
             _viewCreate.AcceptClick += _viewCreate_AcceptClick;
@@ -70,20 +73,18 @@ namespace PresentationLayer.Presenters
                 _articleService.UpdateArticle(
                     new Article
                     {
+                        Id =  Convert.ToInt32(_viewCreate.Id),
                         Name = _viewCreate.NameA,
                         Description = _viewCreate.Description,
-                        Stock = Convert.ToInt32(_viewCreate.Stock)
+                        Stock = Convert.ToInt32(_viewCreate.Stock),
+                        CategoryId = category.Id.ToString()
                     });
-                _viewCreate.Success = $"'Article id={_viewCreate.Id.ToString()}' has been updated.";
-                _viewCreate.ShowSuccess = true;
                 _viewCreate.IsEditMode = false;
             }
             else
             {
                 if (string.IsNullOrEmpty(_viewCreate.NameA))
                 {
-                    _viewCreate.Error = "The 'Name' field cannot be empty";
-                    _viewCreate.ShowError = true;
                     return;
                 }
                 if (string.IsNullOrEmpty(_viewCreate.Stock))
@@ -98,8 +99,6 @@ namespace PresentationLayer.Presenters
                         Stock = Convert.ToInt32(_viewCreate.Stock, 10),
                         CategoryId = category.Id.ToString()
                     });
-                _viewCreate.Success = $"The article '{_viewCreate.NameA}' has been created";
-                _viewCreate.ShowSuccess = true;
             }
             _viewCreate.CloseView();
         }
@@ -110,7 +109,10 @@ namespace PresentationLayer.Presenters
             _viewCreate.NameA = article.Name;
             _viewCreate.Description = article.Description;
             _viewCreate.Stock = article.Stock.ToString();
-            _viewCreate.ItemSelected = _viewCreate.Categories.ToList().FindIndex(c => c.Id == Convert.ToInt32(article.CategoryId));
+            _viewCreate.ItemSelected = _viewCreate
+                .Categories
+                .ToList()
+                .FindIndex(c => c.Id == Convert.ToInt32(article.CategoryId));
             _viewCreate.IsEditMode = true;
         }
     }

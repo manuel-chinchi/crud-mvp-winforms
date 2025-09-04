@@ -17,7 +17,7 @@ namespace PresentationLayer.Views
 {
     public partial class ReportView : Form, IReportView
     {
-        public object ItemSelected
+        public object SelectedItem
         {
             get { return cboReport.SelectedItem; }
             set { cboReport.SelectedItem = value; }
@@ -41,9 +41,9 @@ namespace PresentationLayer.Views
 
         public event EventHandler SelectReport;
 
-
-        public void ShowReport(LocalReport report)
+        public void LoadReport(object localReport)
         {
+            LocalReport report = (LocalReport)localReport;
             rpvReport.Reset();
             {
                 rpvReport.LocalReport.ReportEmbeddedResource = report.ReportEmbeddedResource;
