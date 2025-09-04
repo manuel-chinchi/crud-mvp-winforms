@@ -61,17 +61,6 @@ namespace PresentationLayer.Views
                 }
                 indices.Sort();
                 return indices;
-
-                //selectedIndices.Clear();
-                //foreach (DataGridViewRow row in dgvArticles.Rows)
-                //{
-                //    bool isSelected = (bool)(row.Cells["RowsSelector"].Value ?? false);
-                //    if (isSelected)
-                //    {
-                //        selectedIndices.Add(row.Index);
-                //    }
-                //}
-                //return selectedIndices;
             }
         }
 
@@ -123,18 +112,6 @@ namespace PresentationLayer.Views
         private void pnlSearchContainer_MouseClick(object sender, MouseEventArgs e)
         {
             ucTxtExSearch.Focus();
-        }
-
-        private void dgvArticles_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                //var colIndex = dgvArticles.Columns["RowsSelector"].Index;
-                //bool isSelect = (bool)dgvArticles.Rows[e.RowIndex].Cells[colIndex].Value;
-                //bool isSelect = (bool)dgvArticles.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
-                //var row = dgvArticles.Rows[e.RowIndex];
-                //row.DefaultCellStyle.BackColor = isSelect ? Color.Yellow : Color.White;
-            }
         }
 
         private void dgvArticles_SelectionChanged(object sender, EventArgs e)

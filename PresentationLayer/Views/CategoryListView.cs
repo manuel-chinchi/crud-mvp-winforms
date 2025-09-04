@@ -45,17 +45,6 @@ namespace PresentationLayer.Views
                 }
                 indices.Sort();
                 return indices;
-
-                //selectedIndices.Clear();
-                //foreach (DataGridViewRow row in dgvCategories.Rows)
-                //{
-                //    bool isSelected = (bool)(row.Cells["RowsSelector"].Value ?? false);
-                //    if (isSelected)
-                //    {
-                //        selectedIndices.Add(row.Index);
-                //    }
-                //}
-                //return selectedIndices;
             }
         }
 
@@ -86,16 +75,6 @@ namespace PresentationLayer.Views
         public void ShowView()
         {
             this.ShowDialog();
-        }
-
-        private void dgvCategories_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                //bool isSelect = (bool)dgvCategories.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
-                //var row = dgvCategories.Rows[e.RowIndex];
-                //row.DefaultCellStyle.BackColor = isSelect ? Color.Yellow : Color.White;
-            }
         }
 
         public Enums.AlertResult Alert(string text, string title, Enums.AlertButtons buttons)

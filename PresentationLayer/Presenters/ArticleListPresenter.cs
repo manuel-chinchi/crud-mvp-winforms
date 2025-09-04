@@ -80,8 +80,6 @@ namespace PresentationLayer.Presenters
                     {
                         _service.DeleteArticle(article.Id.ToString());
                     }
-                    //_viewList.Success = $"{count} articles were deleted";
-                    //_viewList.ShowSuccess = true;
                     _viewList.Alert($"{count} articles were deleted", "", AlertButtons.OK);
 
                     LoadArticles();
@@ -110,12 +108,7 @@ namespace PresentationLayer.Presenters
                 _viewCreate.Presenter.LoadArticleFromEdit(articles[0]);
                 _viewCreate.ShowView();
 
-                //if (!string.IsNullOrEmpty(_viewCreate.Success))
-                //{
-                //    _viewList.Success = _viewCreate.Success;
-                //    _viewList.ShowSuccess = true;
                 LoadArticles();
-                //}
             }
             else
             {
@@ -128,12 +121,7 @@ namespace PresentationLayer.Presenters
             _viewCreate = new ArticleCreateView();
             _viewCreate.ShowView();
 
-            //if (!string.IsNullOrEmpty(_viewCreate.Success))
-            {
-                //_viewList.Success = _viewCreate.Success;
-                //_viewList.ShowSuccess = true;
-                LoadArticles();
-            }
+            LoadArticles();
         }
 
         private void LoadArticles()
@@ -147,23 +135,16 @@ namespace PresentationLayer.Presenters
                 Convert.ToInt32(_viewList.FilterIncludeName), 
                 Convert.ToInt32(_viewList.FilterIncludeDescription), 
                 _viewList.Search);
-            //_viewList.Error = "";
 
             if (_viewList.FilterIncludeName == false && _viewList.FilterIncludeDescription == false)
             {
-                //_viewList.Warning = "Select a search filter";
-                //_viewList.ShowWarning = true;
                 return;
             }
             else if ((_viewList.FilterIncludeName || _viewList.FilterIncludeDescription) && result.Count() == 0)
             {
-                //_viewList.Success = "No results found";
-                //_viewList.ShowSuccess = true;
             }
             else
             {
-                //_viewList.Success = $"{result.Count()} results found";
-                //_viewList.ShowSuccess = true;
             }
 
             _viewList.Articles = result;

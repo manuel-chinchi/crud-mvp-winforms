@@ -316,7 +316,6 @@ namespace PresentationLayer.Views
             this.dgvArticles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvArticles.Size = new System.Drawing.Size(724, 444);
             this.dgvArticles.TabIndex = 12;
-            this.dgvArticles.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArticles_CellValueChanged);
             this.dgvArticles.SelectionChanged += new System.EventHandler(this.dgvArticles_SelectionChanged);
             // 
             // RowsSelector

@@ -24,9 +24,6 @@ namespace PresentationLayer.Views.Contracts
         event EventHandler ShowAllClick;
         event EventHandler ViewLoad;
 
-        //string Warning { get; set; }
-        //bool ShowWarning { get; set; }
-
         void ShowView();
         void CloseView();
     }

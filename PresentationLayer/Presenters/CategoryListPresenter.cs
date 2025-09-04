@@ -22,8 +22,6 @@ namespace PresentationLayer.Presenters
         {
             _viewList = view;
             _viewList.Presenter = this;
-            // TODO review
-            //_viewCreate = new CategoryCreateView();
             _service = service;
 
             _viewList.DeleteClick += _view_DeleteClick;
@@ -35,8 +33,6 @@ namespace PresentationLayer.Presenters
         {
             _viewList = view;
             _viewList.Presenter = this;
-            // TODO review
-            //_viewCreate = new CategoryCreateView();
             _service = new CategoryService();
             
             _viewList.DeleteClick += _view_DeleteClick;
@@ -54,12 +50,7 @@ namespace PresentationLayer.Presenters
             _viewCreate = new CategoryCreateView();
             _viewCreate.ShowView();
 
-            //if (!string.IsNullOrEmpty(_viewCreate.Success))
-            {
-                //_viewList.Success = _viewCreate.Success;
-                //_viewList.ShowSuccess = _viewCreate.ShowSuccess;
-                _viewList.Categories = _service.GetCategories();
-            }
+            _viewList.Categories = _service.GetCategories();
         }
 
         private void _view_DeleteClick(object sender, EventArgs e)
@@ -72,7 +63,6 @@ namespace PresentationLayer.Presenters
 
             if (categories.Count > 0)
             {
-                // filtro solo las categorias que no tengan articulos relacionados
                 var filter = categories.Where(item => item.ArticlesRelated == 0).ToList();
                 if (filter.Count != categories.Count)
                 {
@@ -87,8 +77,6 @@ namespace PresentationLayer.Presenters
                     int count = categories.Count;
 
                     DeleteCategories(categories);
-                    //_viewList.Success = $"{count} categories were deleted";
-                    //_viewList.ShowSuccess = true;
                     LoadCategories();
                 }
             }
