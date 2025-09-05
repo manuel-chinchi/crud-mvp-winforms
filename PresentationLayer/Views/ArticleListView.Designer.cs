@@ -44,7 +44,6 @@ namespace PresentationLayer.Views
             this.ucTxtExSearch = new PresentationLayer.UserControls.TextBoxEx();
             this.pnlHeaderLogo = new System.Windows.Forms.Panel();
             this.pnlLeft = new System.Windows.Forms.Panel();
-            this.lblResult = new System.Windows.Forms.Label();
             this.btnShowAll = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
@@ -199,7 +198,6 @@ namespace PresentationLayer.Views
             // 
             // pnlLeft
             // 
-            this.pnlLeft.Controls.Add(this.lblResult);
             this.pnlLeft.Controls.Add(this.btnShowAll);
             this.pnlLeft.Controls.Add(this.btnDelete);
             this.pnlLeft.Controls.Add(this.btnEdit);
@@ -211,18 +209,6 @@ namespace PresentationLayer.Views
             this.pnlLeft.Padding = new System.Windows.Forms.Padding(5, 4, 5, 5);
             this.pnlLeft.Size = new System.Drawing.Size(150, 454);
             this.pnlLeft.TabIndex = 60;
-            // 
-            // lblResult
-            // 
-            this.lblResult.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblResult.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblResult.ForeColor = System.Drawing.Color.Goldenrod;
-            this.lblResult.Location = new System.Drawing.Point(5, 164);
-            this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(140, 285);
-            this.lblResult.TabIndex = 45;
-            this.lblResult.Text = "result";
-            this.lblResult.Visible = false;
             // 
             // btnShowAll
             // 
@@ -418,7 +404,6 @@ namespace PresentationLayer.Views
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.DataGridView dgvArticles;
-        private System.Windows.Forms.Label lblResult;
         private System.Windows.Forms.Panel pnlHeaderLogo;
         private System.Windows.Forms.Panel pnlHeaderOptions;
         private System.Windows.Forms.GroupBox grpFilters;

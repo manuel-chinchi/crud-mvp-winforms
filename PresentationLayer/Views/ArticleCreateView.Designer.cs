@@ -42,7 +42,6 @@ namespace PresentationLayer.Views
             this.txtStock = new System.Windows.Forms.TextBox();
             this.lblCategories = new System.Windows.Forms.Label();
             this.cmbCategories = new System.Windows.Forms.ComboBox();
-            this.lblResult = new System.Windows.Forms.Label();
             this.pnlBody = new System.Windows.Forms.Panel();
             this.pnlHeader.SuspendLayout();
             this.pnlBottom.SuspendLayout();
@@ -192,19 +191,6 @@ namespace PresentationLayer.Views
             this.cmbCategories.Size = new System.Drawing.Size(272, 25);
             this.cmbCategories.TabIndex = 42;
             // 
-            // lblResult
-            // 
-            this.lblResult.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblResult.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblResult.ForeColor = System.Drawing.Color.Goldenrod;
-            this.lblResult.Location = new System.Drawing.Point(6, 213);
-            this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(269, 77);
-            this.lblResult.TabIndex = 44;
-            this.lblResult.Text = "result";
-            this.lblResult.Visible = false;
-            // 
             // pnlBody
             // 
             this.pnlBody.Controls.Add(this.lblName);
@@ -215,7 +201,6 @@ namespace PresentationLayer.Views
             this.pnlBody.Controls.Add(this.txtStock);
             this.pnlBody.Controls.Add(this.lblCategories);
             this.pnlBody.Controls.Add(this.cmbCategories);
-            this.pnlBody.Controls.Add(this.lblResult);
             this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlBody.Location = new System.Drawing.Point(0, 50);
             this.pnlBody.Name = "pnlBody";
@@ -253,7 +238,6 @@ namespace PresentationLayer.Views
         private System.Windows.Forms.Panel pnlBottom;
         private System.Windows.Forms.Button btnAccept;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Label lblResult;
         private System.Windows.Forms.ComboBox cmbCategories;
         private System.Windows.Forms.Label lblCategories;
         private System.Windows.Forms.TextBox txtStock;

@@ -33,7 +33,6 @@ namespace PresentationLayer.Views
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.pnlLeft = new System.Windows.Forms.Panel();
-            this.lblResult = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.pnlBody = new System.Windows.Forms.Panel();
@@ -57,7 +56,6 @@ namespace PresentationLayer.Views
             // 
             // pnlLeft
             // 
-            this.pnlLeft.Controls.Add(this.lblResult);
             this.pnlLeft.Controls.Add(this.btnDelete);
             this.pnlLeft.Controls.Add(this.btnAdd);
             this.pnlLeft.Dock = System.Windows.Forms.DockStyle.Left;
@@ -66,18 +64,6 @@ namespace PresentationLayer.Views
             this.pnlLeft.Padding = new System.Windows.Forms.Padding(5);
             this.pnlLeft.Size = new System.Drawing.Size(150, 431);
             this.pnlLeft.TabIndex = 2;
-            // 
-            // lblResult
-            // 
-            this.lblResult.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblResult.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblResult.ForeColor = System.Drawing.Color.Goldenrod;
-            this.lblResult.Location = new System.Drawing.Point(5, 85);
-            this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(140, 341);
-            this.lblResult.TabIndex = 42;
-            this.lblResult.Text = "result";
-            this.lblResult.Visible = false;
             // 
             // btnDelete
             // 
@@ -213,7 +199,6 @@ namespace PresentationLayer.Views
         private System.Windows.Forms.Panel pnlBody;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Label lblResult;
         private System.Windows.Forms.DataGridView dgvCategories;
         private UserControls.GridViewCheckBoxColumn RowsSelector;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
