@@ -18,7 +18,7 @@ namespace DataLayer.Repositories
             switch (databaseType)
             {
                 case "mssql":
-                    repository= new Providers.MSSQLServer.ArticleRepository();
+                    repository= new Providers.MSSQL.ArticleRepository();
                     break;
                 case "sqlite":
                     repository= new Providers.SQLite.ArticleRepository();
@@ -37,7 +37,7 @@ namespace DataLayer.Repositories
             switch (databaseType)
             {
                 case "mssql":
-                    repository = new Providers.MSSQLServer.CategoryRepository();
+                    repository = new Providers.MSSQL.CategoryRepository();
                     break;
                 case "sqlite":
                     repository = new Providers.SQLite.CategoryRepository();
