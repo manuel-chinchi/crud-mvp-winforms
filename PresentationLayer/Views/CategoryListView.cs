@@ -50,7 +50,7 @@ namespace PresentationLayer.Views
 
         public event EventHandler DeleteClick;
         public event EventHandler AddClick;
-        public event EventHandler ViewLoad;
+        public event EventHandler ViewLoad; 
 
         public CategoryListView()
         {
