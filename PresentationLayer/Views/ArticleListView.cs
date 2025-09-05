@@ -64,24 +64,6 @@ namespace PresentationLayer.Views
             }
         }
 
-        private List<int> selectedIndices = new List<int>();
-        public List<int> SelectedIndices
-        {
-            get
-            {
-                selectedIndices.Clear();
-                foreach (DataGridViewRow row in dgvArticles.Rows)
-                {
-                    bool isSelected = (bool)(row.Cells["RowsSelector"].Value ?? false);
-                    if (isSelected)
-                    {
-                        selectedIndices.Add(row.Index);
-                    }
-                }
-                return selectedIndices;
-            }
-        }
-
         public event EventHandler AddClick;
         public event EventHandler EditClick;
         public event EventHandler DeleteClick;

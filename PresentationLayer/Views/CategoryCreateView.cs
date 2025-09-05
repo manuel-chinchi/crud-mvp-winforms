@@ -51,10 +51,5 @@ namespace PresentationLayer.Views
         {
             return ViewHelper.Alert(text, title, buttons);
         }
-
-        public Enums.AlertResult Alert(string text, string title, Enums.AlertButtons buttons)
-        {
-            return ViewHelper.Alert(text, title, buttons);
-        }
     }
 }
