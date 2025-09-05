@@ -11,8 +11,6 @@ namespace PresentationLayer.Views.Helpers
 {
     public static class ViewHelper
     {
-
-
         public static AlertResult Alert(string text, string title, Enums.AlertButtons buttons)
         {
             MessageBoxButtons buttonsNative;

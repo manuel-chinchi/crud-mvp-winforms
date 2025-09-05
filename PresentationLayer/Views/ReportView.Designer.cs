@@ -57,6 +57,7 @@ namespace PresentationLayer.Views
             // cboReport
             // 
             this.cboReport.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cboReport.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboReport.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboReport.FormattingEnabled = true;
             this.cboReport.Location = new System.Drawing.Point(404, 3);
