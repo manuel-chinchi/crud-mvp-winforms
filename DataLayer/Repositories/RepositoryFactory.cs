@@ -11,16 +11,23 @@ namespace DataLayer.Repositories
 {
     public static class RepositoryFactory
     {
+        private enum ProvidersType
+        {
+            mssql,
+            sqlite,
+            mongodb // TODO a futuro
+        }
+
         public static IArticleRepository<Article> CreateArticleRepository()
         {
             string databaseType = ConfigurationManager.AppSettings["DatabaseType"].ToLower();
             IArticleRepository<Article> repository = null;
             switch (databaseType)
             {
-                case "mssql":
+                case nameof(ProvidersType.mssql):
                     repository= new Providers.MSSQL.ArticleRepository();
                     break;
-                case "sqlite":
+                case nameof(ProvidersType.sqlite):
                     repository= new Providers.SQLite.ArticleRepository();
                     break;
                 default:
@@ -36,10 +43,10 @@ namespace DataLayer.Repositories
             ICategoryRepository<Category> repository = null;
             switch (databaseType)
             {
-                case "mssql":
+                case nameof(ProvidersType.mssql):
                     repository = new Providers.MSSQL.CategoryRepository();
                     break;
-                case "sqlite":
+                case nameof(ProvidersType.sqlite):
                     repository = new Providers.SQLite.CategoryRepository();
                     break;
                 default:
