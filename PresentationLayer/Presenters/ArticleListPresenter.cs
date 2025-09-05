@@ -54,7 +54,6 @@ namespace PresentationLayer.Presenters
         private void _viewList_ShowAllClick(object sender, EventArgs e)
         {
             LoadArticles();
-            //_viewList.ShowSuccess = false;
         }
 
         private void _viewList_SearchClick(object sender, EventArgs e)
