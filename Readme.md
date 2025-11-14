@@ -1,39 +1,47 @@
 # Crud MVP WinForms
 
-Aplicación tipo CRUD hecha en Winforms con patrón MVP (Modelo-Vista-Presentador)
+Aplicación tipo CRUD hecha en WinForms utilizando el patrón MVP (Modelo-Vista-Presentador)
 
-## ¿De qué trata esta aplicación? 
+## Descripción general
 
 Este proyecto consiste en una pequeña aplicación de escritorio hecha en C# .Net Framework 4.5 
-y base de datos SQL Server (*). 
-La aplicación esta basada en un clásico sistema de inventario, para manejo y control de 
-artículos, categorías, proveedores, y todos los tipos comunes a este tipo de sistema.
+y base de datos SQL Server o SQLite.
 
-\(\*\) tabmién cuenta con una implementación SQLite configurable desde `App.config`
+**NOTA**: El proveedor de base de datos es configurable desde el archivo `App.config`.
 
-## ¿Cómo ejecutar la aplicación?
+## Características
 
-Para poder ejecutar el programa se requiere tener instalado los siguientes componentes
+* Creación, edición y borrado de items (artículos y categorias).
+* Módulo de reportes.
+
+## Requisitos previos
+
 
 * [Runtime de .Net Framework 4.5](https://www.microsoft.com/es-ar/download/details.aspx?id=42642)
-* [SQL Server 2018/2019](https://www.microsoft.com/es-ar/download/details.aspx?id=101064)
-* Microsoft SQL Server Management Studio (SSMS) *(opcional)*
+* [SQL Server 2017/2019](https://www.microsoft.com/es-ar/download/details.aspx?id=101064) (si se elige como proveedor de base de datos)
+* [Microsoft SQL Server Managment Studio (SSMS)](https://learn.microsoft.com/es-es/ssms/install/install) (opcional)
 
-Una vez instalados seguir los siguientes pasos para probar la aplicación.
+**NOTA**: Esta aplicación funciona únicamente sobre sistemas operativos Windows.
 
-1. Descargar la última versión del proyecto compilado [desde aquí](https://github.com/manuel-chinchi/crud-mvp-winforms/releases) y descomprimir
-en algún directorio.
-2. Abrir el script `db_squema_and_data.min.sql` desde SSMS y ejecutarlo
-para crear la base de datos.
-3. Abrir el archivo `crud-mvp-winforms.exe.config` y configurar la cadena de
-conexión a para que apunte a su base de datos local.
-4. Ejecutar el archivo `crud-mvp-winforms.exe` e interactuar, eso es todo.
+## Instalación
 
+1. Descargar la última versión del proyecto [desde aquí](https://github.com/manuel-chinchi/crud-mvp-winforms/releases) 
+y descomprimir en algún directorio.
+2. Si se elige proveedor de base de datos SQLite saltar al paso 4 directamente.
+3. Abrir el script `db_squema_and_data.min.sql` desde SSMS y ejecutarlo.
+4. Abrir el archivo `crud-mvp-winforms.exe.config` y configurar la cadena de conexión.
+    En caso de que 
+5. Ejecutar el archivo `crud-mvp-winforms.exe` e interactuar con la aplicación.
+
+Eso es todo.
+
+<!-- 
 **ADICIONAL**
 
 *Si quiere probar la aplicación solamente sin tener que crear o configurar una
 base de datos SQL Server puede descargar [desde aquí](https://github.com/manuel-chinchi/crud-mvp-winforms/releases/tag/v1.0.1) una versión portable
 que usa SQLite.*
+-->
 
 ## Arquitectura de la aplicación
 
@@ -56,20 +64,21 @@ Ademá, la aplicación se encuentra separada en cinco capas (proyectos) para su 
 
 * Visual Studio IDE 2019
   * Configuración
-    * Cascadia Code ExtraLight (fuente)
+    * Cascadia Code ExtraLight (tipo de fuente)
   * Extensiones
-    * Diseñador de informes RDLC de Microsoft para Visual Studio v15.3.1
-    * Git Diff Margin v3.12.1 (by Laurent Kempé)
-    * PowerShell Tools for Visual Studio v2024.1.0 (by Ironman Software)
+    * Microsoft RDLC Report Designer - v15.3.1
+    * Git Diff Margin - v3.12.1 (by Laurent Kempé)
+    * PowerShell Tools for Visual Studio - v2024.1.0 (by Ironman Software)
 * Sublime Text
 * Greenshot (capturas de pantalla)
 
+<!--
 ## Diagrama de clases
 
 <p align="center">
     <img src="resources/ClassDiagram.png">
 </p>
-
+-->
 
 ## Capturas
 
@@ -90,30 +99,28 @@ Validaciones
     <img src="resources/screenshots/SuccessMessage-ArticleListView.png" width="708">
 </p>
 
-## TODO
+## Lista TODO
 
-- [ ] reemplazar mensajes internos de las vistas (ShowWarning, ShowError, 
-  ShowSuccess) por una vista tipo popup o descartar esas notificaciones 
-  directamente
-- [ ] agregar validaciones en las vistas tipo 'create' 
+- [_] Reemplazar mensajes de notificaciones tipo `ShowWarning, ShowError, ShowSuccess`.
+
+- [_] Agregar validaciones en las vistas tipo `...CreateView`. 
+
+- [_] Unificar fuentes y tamaños en vistas.
 
 ## Licencia
-  GPL-3.0
 
+[GPL-3.0](https://www.gnu.org/licenses/gpl-3.0.txt)
 
-## Referencias útiles
+## Referencias
 
-- [System.Configuration reference not found](https://stackoverflow.com/questions/4431034/configurationmanager-not-found)
+- [ConfigurationManager reference not found](https://stackoverflow.com/questions/4431034/configurationmanager-not-found)
 - [DataGridView using SortableBindingList](https://stackoverflow.com/questions/23661195/datagridview-using-sortablebindinglist)
-- [CheckBox in header of DataGridView for select all rows](https://stackoverflow.com/questions/8906575/checkbox-in-the-header-of-a-datagridview-in-any-column)
-- [Checkbox in header of DataGridView](https://stackoverflow.com/questions/8906575/checkbox-in-the-header-of-a-datagridview-in-any-column)
-- [Multiselect in Visual Studio IDE](https://stackoverflow.com/questions/16495727/multiple-select-in-visual-studio)
-- [Binding controls with resources files](https://stackoverflow.com/questions/1322484/c-how-to-bind-the-text-of-a-winforms-button-to-a-resource)
-
-- MSTests utils
-  - [Documentacion MS](https://learn.microsoft.com/en-us/visualstudio/test/vstest-console-options?view=vs-2022)
-  - [Sample Export](https://stackoverflow.com/questions/56958300/how-do-i-save-test-results-from-test-explorer-in-visual-studio-2017)
-
-- Others
-  - https://www.youtube.com/watch?v=LULI64meTUs
+- [Checkbox in the header of a DataGridView in any column](https://stackoverflow.com/questions/8906575/checkbox-in-the-header-of-a-datagridview-in-any-column)
+- [Multiple select in Visual Studio?](https://stackoverflow.com/questions/16495727/multiple-select-in-visual-studio)
+- [C#: How to bind the text of a winforms button to a resource](https://stackoverflow.com/questions/1322484/c-how-to-bind-the-text-of-a-winforms-button-to-a-resource)
+- [VSTest.Console.exe command-line options](https://learn.microsoft.com/en-us/visualstudio/test/vstest-console-options?view=vs-2022)
+- [How do I save test results from Test Explorer in Visual Studio 2017?](https://stackoverflow.com/questions/56958300/how-do-i-save-test-results-from-test-explorer-in-visual-studio-2017)
+<!-- 
+- [Building Windows Forms in Visual Studio Code with PowerShell](https://www.youtube.com/watch?v=LULI64meTUs)
+-->
  
