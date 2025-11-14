@@ -133,7 +133,7 @@ $RECYCLE.BIN/
 
 _NCrunch*
 
-*.txt
+# *.txt
 /notas
 *.bmp
 *.zip 
