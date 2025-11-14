@@ -113,14 +113,13 @@ Validaciones
 
 ## Referencias
 
-- [System.Configuration reference not found](https://stackoverflow.com/questions/4431034/configurationmanager-not-found)
+- [ConfigurationManager reference not found](https://stackoverflow.com/questions/4431034/configurationmanager-not-found)
 - [DataGridView using SortableBindingList](https://stackoverflow.com/questions/23661195/datagridview-using-sortablebindinglist)
-- [CheckBox in header of DataGridView for select all rows](https://stackoverflow.com/questions/8906575/checkbox-in-the-header-of-a-datagridview-in-any-column)
-- [Checkbox in header of DataGridView](https://stackoverflow.com/questions/8906575/checkbox-in-the-header-of-a-datagridview-in-any-column)
-- [Multiselect in Visual Studio IDE](https://stackoverflow.com/questions/16495727/multiple-select-in-visual-studio)
-- [Binding controls with resources files](https://stackoverflow.com/questions/1322484/c-how-to-bind-the-text-of-a-winforms-button-to-a-resource)
-- [Documentacion MS](https://learn.microsoft.com/en-us/visualstudio/test/vstest-console-options?view=vs-2022)
-- [Sample Export](https://stackoverflow.com/questions/56958300/how-do-i-save-test-results-from-test-explorer-in-visual-studio-2017)
+- [Checkbox in the header of a DataGridView in any column](https://stackoverflow.com/questions/8906575/checkbox-in-the-header-of-a-datagridview-in-any-column)
+- [Multiple select in Visual Studio?](https://stackoverflow.com/questions/16495727/multiple-select-in-visual-studio)
+- [C#: How to bind the text of a winforms button to a resource](https://stackoverflow.com/questions/1322484/c-how-to-bind-the-text-of-a-winforms-button-to-a-resource)
+- [VSTest.Console.exe command-line options](https://learn.microsoft.com/en-us/visualstudio/test/vstest-console-options?view=vs-2022)
+- [How do I save test results from Test Explorer in Visual Studio 2017?](https://stackoverflow.com/questions/56958300/how-do-i-save-test-results-from-test-explorer-in-visual-studio-2017)
 <!-- 
 - [Building Windows Forms in Visual Studio Code with PowerShell](https://www.youtube.com/watch?v=LULI64meTUs)
 -->
