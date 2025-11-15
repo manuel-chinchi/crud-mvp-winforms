@@ -20,7 +20,7 @@ namespace DataLayer.Repositories
 
         public static IArticleRepository<Article> CreateArticleRepository()
         {
-            string databaseType = ConfigurationManager.AppSettings["DatabaseType"].ToLower();
+            string databaseType = ConfigurationManager.AppSettings["DatabaseProvider"].ToLower();
             IArticleRepository<Article> repository = null;
             switch (databaseType)
             {
@@ -39,7 +39,7 @@ namespace DataLayer.Repositories
 
         public static ICategoryRepository<Category> CreateCategoryRepository()
         {
-            string databaseType = ConfigurationManager.AppSettings["DatabaseType"].ToLower();
+            string databaseType = ConfigurationManager.AppSettings["DatabaseProvider"].ToLower();
             ICategoryRepository<Category> repository = null;
             switch (databaseType)
             {
