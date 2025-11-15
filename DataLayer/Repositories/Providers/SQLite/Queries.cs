@@ -8,31 +8,33 @@ namespace DataLayer.Repositories.Providers.SQLite
 {
     public class Queries
     {
+        // categories
         public const string SP_GETCATEGORIES = @"
         SELECT 
-            c.*, IFNULL(sub.ArticlesRelated, 0) AS ArticlesRelated
+            c.*, IFNULL(sub.TotalItems, 0) AS TotalItems
         FROM 
             Categories c
         LEFT JOIN
         (
             SELECT 
-                CategoryId, COUNT(*) AS ArticlesRelated
-            FROM Articles
+                CategoryId, COUNT(*) AS TotalItems
+            FROM
+                Articles
             GROUP BY CategoryId
         ) AS sub
         ON c.Id = sub.CategoryId;
         ";
         public const string SP_INSERTCATEGORY = @"
-        INSERT INTO Categories (Name,DateCreated)
+        INSERT INTO Categories (Name,CreatedAt)
         VALUES 
-            (@Name, @DateCreated)
+            (@Name, @CreatedAt)
         ";
         public const string SP_DELTECATEGORY = @"
         DELETE FROM Categories 
         WHERE Id = @Id
         ";
 
-
+        // articles
         public const string SP_GETARTICLES = @"
         SELECT 
             a.*, c.name as CategoryName
@@ -46,9 +48,9 @@ namespace DataLayer.Repositories.Providers.SQLite
         ";
         public const string SP_INSERTARTICLE = @"
         INSERT INTO 
-            Articles (Name, Description, Stock, CategoryId, DateCreated, DateUpdated)
+            Articles (Name, Description, Stock, CategoryId, CreatedAt, UpdatedAt)
         VALUES
-            (@Name, @Description, @Stock, @CategoryId, @DateCreated, @DateUpdated)
+            (@Name, @Description, @Stock, @CategoryId, @CreatedAt, @UpdatedAt)
         ";
         public const string SP_UPDATEARTICLE = @"
         UPDATE Articles
@@ -56,7 +58,7 @@ namespace DataLayer.Repositories.Providers.SQLite
             Description = @Description,
             Stock = @Stock,
             CategoryId = @CategoryId,
-            DateUpdated = CURRENT_TIMESTAMP
+            UpdatedAt = CURRENT_TIMESTAMP
         WHERE Id = @Id
         ";
         public const string SP_SEARCHARTICLE = @"

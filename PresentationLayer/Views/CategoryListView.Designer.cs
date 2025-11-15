@@ -163,7 +163,7 @@ namespace PresentationLayer.Views
             // 
             // colArticlesRelated
             // 
-            this.colArticlesRelated.DataPropertyName = "ArticlesRelated";
+            this.colArticlesRelated.DataPropertyName = "TotalItems";
             this.colArticlesRelated.HeaderText = "Articles";
             this.colArticlesRelated.MinimumWidth = 6;
             this.colArticlesRelated.Name = "colArticlesRelated";

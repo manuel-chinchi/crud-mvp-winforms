@@ -63,7 +63,7 @@ namespace PresentationLayer.Presenters
 
             if (categories.Count > 0)
             {
-                var filter = categories.Where(item => item.ArticlesRelated == 0).ToList();
+                var filter = categories.Where(item => item.TotalItems == 0).ToList();
                 if (filter.Count != categories.Count)
                 {
                     _viewList.Alert("Categories that contain articles cannot be deleted", "Info", AlertButtons.OK);

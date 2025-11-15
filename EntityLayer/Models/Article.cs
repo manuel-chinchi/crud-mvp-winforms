@@ -13,8 +13,8 @@ namespace EntityLayer.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public int Stock { get; set; }
-        public DateTime DateCreated { get; set; }
-        public DateTime? DateUpdated { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
         public string CategoryName { get; set; }
         public string CategoryId { get; set; }
     }

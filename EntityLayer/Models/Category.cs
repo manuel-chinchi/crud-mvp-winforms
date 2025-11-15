@@ -11,7 +11,7 @@ namespace EntityLayer.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public DateTime DateCreated { get; set; }
-        public int ArticlesRelated { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public int TotalItems { get; set; }
     }
 }

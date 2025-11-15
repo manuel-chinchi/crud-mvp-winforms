@@ -31,8 +31,8 @@ namespace DataLayer.Repositories.Providers.SQLite
                 cmd.Parameters.AddWithValue("@Description", entity.Description);
                 cmd.Parameters.AddWithValue("@Stock", entity.Stock);
                 cmd.Parameters.AddWithValue("@CategoryId", entity.CategoryId);
-                cmd.Parameters.AddWithValue("@DateCreated", dateCreated);
-                cmd.Parameters.AddWithValue("@DateUpdated", dateUpdated);
+                cmd.Parameters.AddWithValue("@CreatedAt", dateCreated);
+                cmd.Parameters.AddWithValue("@UpdatedAt", dateUpdated);
 
                 cmd.ExecuteReader();
                 connection.Close();
@@ -88,8 +88,8 @@ namespace DataLayer.Repositories.Providers.SQLite
                         var description = reader["description"];
                         var stock = reader["stock"];
                         var categoryId = reader["categoryId"];
-                        var dateCreated = reader["dateCreated"];
-                        var dateUpdated = reader["dateUpdated"];
+                        var dateCreated = reader["createdAt"];
+                        var dateUpdated = reader["updatedAt"];
                         if (dateUpdated == DBNull.Value)
                         {
                             dateUpdated = null;
@@ -103,8 +103,8 @@ namespace DataLayer.Repositories.Providers.SQLite
                             Description = Convert.ToString(description),
                             Stock = Convert.ToInt32(stock),
                             CategoryId = Convert.ToString(categoryId),
-                            DateCreated = Convert.ToDateTime(dateCreated),
-                            DateUpdated = Convert.ToDateTime(dateUpdated),
+                            CreatedAt = Convert.ToDateTime(dateCreated),
+                            UpdatedAt = Convert.ToDateTime(dateUpdated),
                             CategoryName = Convert.ToString(categoryName)
                         });
                     }
@@ -146,11 +146,11 @@ namespace DataLayer.Repositories.Providers.SQLite
                         var description = reader["description"];
                         var stock = reader["stock"];
                         var categoryId = reader["categoryId"];
-                        var dateCreated = reader["dateCreated"];
-                        var dateUpdated = reader["dateUpdated"];
-                        if (dateUpdated == DBNull.Value)
+                        var createdAt = reader["createdAt"];
+                        var updatedAt = reader["updatedAt"];
+                        if (updatedAt == DBNull.Value)
                         {
-                            dateUpdated = null;
+                            updatedAt = null;
                         }
                         var categoryName = reader["categoryName"];
 
@@ -161,8 +161,8 @@ namespace DataLayer.Repositories.Providers.SQLite
                             Description = Convert.ToString(description),
                             Stock = Convert.ToInt32(stock),
                             CategoryId = Convert.ToString(categoryId),
-                            DateCreated = Convert.ToDateTime(dateCreated),
-                            DateUpdated = Convert.ToDateTime(dateUpdated),
+                            CreatedAt = Convert.ToDateTime(createdAt),
+                            UpdatedAt = Convert.ToDateTime(updatedAt),
                             CategoryName = Convert.ToString(categoryName)
                         });
                     }

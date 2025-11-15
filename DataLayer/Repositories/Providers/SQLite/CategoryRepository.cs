@@ -42,15 +42,15 @@ namespace DataLayer.Repositories.Providers.SQLite
                     {
                         var id = reader["id"];
                         var name = reader["name"];
-                        var dateCreated = reader["dateCreated"];
-                        var articlesRelated = reader["articlesRelated"];
+                        var dateCreated = reader["createdAt"];
+                        var totalItems = reader["totalItems"];
 
                         categories.Add(new Category()
                         {
                             Id = Convert.ToInt32(id),
                             Name = Convert.ToString(name),
-                            DateCreated = Convert.ToDateTime(dateCreated),
-                            ArticlesRelated = Convert.ToInt32(articlesRelated)
+                            CreatedAt = Convert.ToDateTime(dateCreated),
+                            TotalItems = Convert.ToInt32(totalItems)
                         });
                     }
                 }
@@ -66,6 +66,8 @@ namespace DataLayer.Repositories.Providers.SQLite
 
         public void Insert(Category entity)
         {
+            // TODO cuando se tiene abierta la base de datos se produce un bloqueante q
+            //      hasta que se libere la instancia de uso. Revisar.
             using (var connection = new SQLiteConnection(this.ConnectionString))
             {
                 connection.Open();
@@ -74,7 +76,7 @@ namespace DataLayer.Repositories.Providers.SQLite
                 var cmd = new SQLiteCommand(Queries.SP_INSERTCATEGORY, connection);
 
                 cmd.Parameters.AddWithValue("@Name", entity.Name);
-                cmd.Parameters.AddWithValue("@DateCreated", datetime);
+                cmd.Parameters.AddWithValue("@CreatedAt", datetime);
 
                 cmd.ExecuteReader();
                 connection.Close();
